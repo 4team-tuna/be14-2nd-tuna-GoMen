@@ -581,84 +581,64 @@ VALUES
  (10, '스팸 메시지 전송'),
  (50, '타인의 저작물 무단 복제');
 
+
 CREATE TABLE `tbl_report` (
                               `report_id`	INT	NOT NULL PRIMARY KEY AUTO_INCREMENT,
                               `report_content`	VARCHAR(255)	NULL,
                               `created_at`	DATETIME	NOT NULL    DEFAULT NOW(),
                               `is_processed`	VARCHAR(255)	NOT NULL	DEFAULT 'N',
-                              `poster_id`	INT	NOT NULL,
+                              `is_processed_time`	DATETIME NULL,
+                              `poster_id`	INT NOT NULL,
                               `report_target_post_id`	INT	NULL,
                               `report_target_user_id`	INT	NULL,
                               `comment_id`	INT	NULL,
+                              violation_id INT NOT NULL,
                                 CONSTRAINT fk_tbl_report_to_tbl_user FOREIGN KEY (poster_id) REFERENCES tbl_user(user_id),
                                 CONSTRAINT fk_tbl_report_to_tbl_board FOREIGN KEY (report_target_post_id) REFERENCES tbl_board(post_id),
                                 CONSTRAINT fk_tbl_report_to_tbl_user2 FOREIGN KEY (report_target_user_id) REFERENCES tbl_user(user_id),
-                                CONSTRAINT fk_tbl_report_to_tbl_comment FOREIGN KEY (comment_id) REFERENCES tbl_comment(comment_id)
+                                CONSTRAINT fk_tbl_report_to_tbl_comment FOREIGN KEY (comment_id) REFERENCES tbl_comment(comment_id),
+                                CONSTRAINT fk_tbl_report_to_tbl_report_category FOREIGN KEY (violation_id) REFERENCES tbl_report_category(violation_id)
 );
 
-INSERT INTO `tbl_report` (
-                          `report_content`
-                         , `created_at`
-                         , `is_processed`
-                         , `poster_id`
-                         , `report_target_post_id`
-                         , `report_target_user_id`
-                         , `comment_id`
-)
+INSERT INTO `tbl_report` (`report_content`, `created_at`, `is_processed`, `is_processed_time`, `poster_id`, `report_target_post_id`, `report_target_user_id`, `comment_id`, `violation_id`)
 VALUES
-   ('부적절한 언어 사용', '2024-03-12 10:05:23', 'N', 1, 15, NULL, NULL),
-   ('불법적인 내용의 게시물 업로드', '2024-03-10 18:20:45', 'N', 3, NULL, 10, NULL),
-   ('허위 정보 유포', '2023-12-14 07:30:12', 'N', 5, NULL, NULL, 7),
-   ('반복적인 악성 댓글 달기', '2024-02-05 16:50:33', 'N', 8, 30, NULL, NULL),
-   ('게시물에서 다른 사용자 비방', '2024-01-20 22:10:54', 'N', 2, 10, NULL, 9),
-   ('회원 간 개인 정보 유출', '2024-03-01 12:25:10', 'N', 11, 35, 13, NULL),
-   ('불법 광고 게시물 등록', '2023-11-25 14:40:08', 'N', 7, NULL, 16, 2),
-   ('반복적으로 커뮤니티 규정 위반', '2024-02-16 09:12:28', 'N', 14, 45, 18, NULL),
-   ('스팸 메시지 전송', '2023-12-22 03:03:19', 'N', 20, NULL, 19, NULL),
-   ('타인의 저작물 무단 복제', '2024-02-01 11:30:47', 'N', 17, 5, NULL, 10),
-   ('부적절한 언어 사용', '2024-03-07 20:45:05', 'N', 9, 30, NULL, NULL),
-   ('불법적인 내용의 게시물 업로드', '2023-11-05 17:12:34', 'N', 6, 18, 23, 4),
-   ('허위 정보 유포', '2024-02-19 10:55:29', 'N', 15, 7, NULL, 8),
-   ('반복적인 악성 댓글 달기', '2024-03-11 14:30:11', 'N', 10, 15, NULL, 6),
-   ('게시물에서 다른 사용자 비방', '2023-12-25 09:25:47', 'N', 19, 22, 26, NULL),
-   ('회원 간 개인 정보 유출', '2024-02-13 11:10:30', 'N', 4, NULL, 27, 11),
-   ('불법 광고 게시물 등록', '2024-01-28 16:35:22', 'N', 16, NULL, 28, NULL),
-   ('반복적으로 커뮤니티 규정 위반', '2024-02-08 08:12:05', 'N', 18, 39, NULL, 12),
-   ('스팸 메시지 전송', '2023-11-11 05:20:13', 'N', 21, 41, 30, 13),
-   ('타인의 저작물 무단 복제', '2024-01-10 13:15:18', 'N', 25, 33, 31, NULL),
-   ('부적절한 언어 사용', '2023-12-01 18:30:22', 'N', 22, NULL, 32, 2),
-   ('불법적인 내용의 게시물 업로드', '2023-11-29 16:05:44', 'N', 12, NULL, 33, 14),
-   ('허위 정보 유포', '2024-02-14 10:45:56', 'N', 3, NULL, 34, 8),
-   ('반복적인 악성 댓글 달기', '2024-03-01 19:10:37', 'N', 30, NULL, NULL, 15),
-   ('게시물에서 다른 사용자 비방', '2023-10-28 04:15:29', 'N', 29, NULL, 36, 7),
-   ('회원 간 개인 정보 유출', '2024-02-22 06:30:13', 'N', 28, 49, 37, 9),
-   ('불법 광고 게시물 등록', '2024-01-17 12:50:59', 'N', 13, 21, NULL, 3),
-   ('반복적으로 커뮤니티 규정 위반', '2024-02-04 15:25:18', 'N', 5, 34, NULL, 15),
-   ('스팸 메시지 전송', '2023-12-15 23:00:45', 'N', 10, NULL, NULL, 2),
-   ('타인의 저작물 무단 복제', '2024-02-19 13:42:30', 'N', 7, NULL, 41, 2),
-   ('부적절한 언어 사용', '2024-03-05 09:55:03', 'N', 6, 32, 42, 12),
-   ('불법적인 내용의 게시물 업로드', '2023-12-08 07:15:25', 'N', 8, 50, 43, 13),
-   ('허위 정보 유포', '2023-10-22 11:32:12', 'N', 4, NULL, 44, 9),
-   ('반복적인 악성 댓글 달기', '2024-01-03 05:25:10', 'N', 20, 28, 45, NULL),
-   ('게시물에서 다른 사용자 비방', '2024-02-28 08:45:03', 'N', 12, 15, 46, 6),
-   ('회원 간 개인 정보 유출', '2023-12-17 09:35:18', 'N', 23, NULL, 47, NULL),
-   ('불법 광고 게시물 등록', '2024-03-06 20:10:29', 'N', 25, 41, 48, 2),
-   ('반복적으로 커뮤니티 규정 위반', '2023-11-23 17:50:14', 'N', 14, 10, NULL, 13),
-   ('스팸 메시지 전송', '2024-02-02 12:25:33', 'N', 27, NULL, 50, 7);
+    ('불법적인 게시물 신고', '2025-03-12 14:30:00', 'N', NULL, 5, 7, NULL, NULL, 1),
+    ('욕설이 포함된 댓글 신고', '2025-03-11 10:45:00', 'N', NULL, 2, NULL, 8, NULL, 2),
+    ('부적절한 이미지가 포함된 게시물 신고', '2025-03-09 11:00:00', 'Y', '2025-03-10 14:20:00', 15, NULL, NULL, NULL, 3),
+    ('허위 정보가 포함된 게시물 신고', '2025-03-07 09:15:00', 'N', NULL, 18, 1, NULL, NULL, 4),
+    ('사용자 정보 유출된 게시물 신고', '2025-03-05 13:30:00', 'Y', '2025-03-06 17:10:00', 10, NULL, 12, NULL, 5),
+    ('사기 게시물 신고', '2025-03-03 08:40:00', 'N', NULL, 3, NULL, 27, NULL, 6),
+    ('불법 거래 광고 게시물 신고', '2025-03-02 14:20:00', 'N', NULL, 8, NULL, NULL, NULL, 7),
+    ('타인의 개인정보 노출된 댓글 신고', '2025-02-28 11:55:00', 'Y', '2025-02-28 18:00:00', 22, NULL, NULL, 33, 8),
+    ('성희롱 댓글 신고', '2025-02-26 10:30:00', 'N', NULL, 19, NULL, 48, NULL, 9),
+    ('모욕적인 발언이 포함된 게시물 신고', '2025-02-24 16:10:00', 'N', NULL, 13, 2, NULL, NULL, 10),
+    ('저작권 침해 게시물 신고', '2025-02-22 12:00:00', 'N', NULL, 6, NULL, NULL, NULL, 1),
+    ('불법 다운로드 링크 게시물 신고', '2025-02-20 14:30:00', 'Y', '2025-02-21 12:20:00', 28, NULL, NULL, NULL, 2),
+    ('비방 댓글 신고', '2025-02-18 17:00:00', 'Y', '2025-02-19 09:10:00', 12, NULL, NULL, 4, 3),
+    ('혐오 표현이 포함된 댓글 신고', '2025-02-16 13:40:00', 'N', NULL, 9, NULL, NULL, 27, 4),
+    ('사생활 침해 게시물 신고', '2025-02-14 10:30:00', 'N', NULL, 21, NULL, NULL, NULL, 5),
+    ('허위 리뷰 게시물 신고', '2025-02-12 15:20:00', 'Y', '2025-02-13 14:50:00', 14, 14, NULL, NULL, 6),
+    ('불법 촬영물 게시물 신고', '2025-02-10 08:50:00', 'N', NULL, 16, NULL, NULL, NULL, 7),
+    ('불법 홍보 게시물 신고', '2025-02-08 09:30:00', 'Y', '2025-02-09 12:00:00', 23, NULL, NULL, NULL, 8),
+    ('낚시성 게시물 신고', '2025-02-06 11:00:00', 'N', NULL, 20, NULL, NULL, 19, 9),
+    ('다른 사용자 명예 훼손 게시물 신고', '2025-02-04 13:40:00', 'N', NULL, 30, NULL, NULL, NULL, 10),
+    ('무분별한 광고 게시물 신고', '2025-02-02 10:20:00', 'Y', '2025-02-03 11:00:00', 7, NULL, 50, NULL, 1),
+    ('타인의 권리 침해 댓글 신고', '2025-01-31 14:10:00', 'N', NULL, 26, NULL, NULL, 26, 2),
+    ('잘못된 정보 제공 게시물 신고', '2025-01-29 16:30:00', 'N', NULL, 5, NULL, NULL, NULL, 3),
+    ('사기성 댓글 신고', '2025-01-27 11:50:00', 'N', NULL, 31, NULL, 7, NULL, 4),
+    ('명백한 거짓 주장 포함 게시물 신고', '2025-01-25 10:00:00', 'N', NULL, 24, NULL, NULL, NULL, 5),
+    ('음란물 포함 게시물 신고', '2025-01-23 15:10:00', 'N', NULL, 11, NULL, NULL, NULL, 6),
+    ('온라인 괴롭힘 게시물 신고', '2025-01-21 09:20:00', 'Y', '2025-01-22 14:00:00', 17, NULL, 29, 4, 7),
+    ('부적절한 광고 게시물 신고', '2025-01-19 08:40:00', 'N', NULL, 34, NULL, NULL, NULL, 8),
+    ('편파적인 게시물 신고', '2025-01-17 13:00:00', 'N', NULL, 40, NULL, NULL, 3, 9),
+    ('인종차별적 발언 포함 게시물 신고', '2025-01-15 14:30:00', 'N', NULL, 18, NULL, 19, NULL, 10),
+    ('명예훼손성 댓글 신고', '2025-01-13 10:50:00', 'N', NULL, 8, NULL, NULL, 22, 1),
+    ('무단 전재 게시물 신고', '2025-01-11 11:00:00', 'N', NULL, 32, NULL, NULL, NULL, 2),
+    ('피싱 사이트 링크 포함 게시물 신고', '2025-01-09 09:30:00', 'N', NULL, 27, NULL, 45, NULL, 3),
+    ('부정확한 정보 제공 게시물 신고', '2025-01-07 15:40:00', 'Y', '2025-01-08 17:10:00', 29, NULL, NULL, NULL, 4),
+    ('자기 홍보성 게시물 신고', '2025-01-05 10:20:00', 'N', NULL, 12, NULL, NULL, 13, 5);
 
 
-CREATE TABLE `tbl_processed_report` (
-    `processed_report_id`	INT	NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `minus_point`	INT	NOT NULL,
-    `report_content`	VARCHAR(255)	NOT NULL,
-    `processed_at`	DATETIME	NOT NULL	DEFAULT NOW(),
-    `report_id`	INT	NOT NULL,
-    `violation_id`	INT	NOT NULL,
-    `report_target_user_id`	INT	NOT NULL,
-    CONSTRAINT fk_tbl_processed_report_to_tbl_report FOREIGN KEY (report_id) REFERENCES tbl_report(report_id),
-    CONSTRAINT fk_tbl_processed_report_to_tbl_report_category FOREIGN KEY (violation_id) REFERENCES tbl_report_category(violation_id),
-    CONSTRAINT fk_tbl_processed_report_to_tbl_user FOREIGN KEY (report_target_user_id) REFERENCES tbl_user(user_id)
-);
 
 # 신고 테이블 3개(신고, 처리된 신고, 위반사항) 생성 완료
 
@@ -775,7 +755,6 @@ INSERT INTO `tbl_mentoring_member` (
    (28, 14, 5),
    (29, 26, 9),
    (30, 4, 4);
-
 
 CREATE TABLE `tbl_board_file` (
   `file_id`	INT	NOT NULL PRIMARY KEY AUTO_INCREMENT,
