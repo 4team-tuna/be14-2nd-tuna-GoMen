@@ -1,4 +1,4 @@
-CREATE TABLE `tbl_user` (
+﻿CREATE TABLE `tbl_user` (
                             `user_id`	INT	PRIMARY KEY NOT NULL AUTO_INCREMENT,
                             `login_id`	VARCHAR(255)	NOT NULL,
                             `password`	VARCHAR(255)	NOT NULL,
