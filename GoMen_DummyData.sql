@@ -1,4 +1,4 @@
-﻿CREATE TABLE `tbl_user` (
+CREATE TABLE `tbl_user` (
                             `user_id`	INT	PRIMARY KEY NOT NULL AUTO_INCREMENT,
                             `login_id`	VARCHAR(255)	NOT NULL,
                             `password`	VARCHAR(255)	NOT NULL,
@@ -867,6 +867,42 @@ VALUES
     ('데이터베이스 성능 최적화 팁이 있나요?', NOW(), 14, 3),
     ('NoSQL과 관계형 데이터베이스의 차이에 대해 알고 싶습니다.', NOW(), 15, 1);
 
+## 답변
+CREATE TABLE `tbl_answer` (
+                              `answer_id` INT NOT NULL AUTO_INCREMENT COMMENT 'AUTO_INCREMENT',
+                              `answer_content` VARCHAR(255) NOT NULL,
+                              `answer_created_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                              `question_id` INT NULL,
+                              `answer_member_id` INT NOT NULL,
+                              `ref_answer_id` INT NULL,
+                              `mentoringSpace_id` INT NOT NULL,
+                              PRIMARY KEY (`answer_id`),
+                              CONSTRAINT `FK_tbl_answer_question` FOREIGN KEY (`question_id`) REFERENCES `tbl_question`(`question_id`),
+                              CONSTRAINT `FK_tbl_answer_user` FOREIGN KEY (`answer_member_id`) REFERENCES `tbl_user`(`user_id`),
+                              CONSTRAINT `FK_tbl_answer_ref_answer` FOREIGN KEY (`ref_answer_id`) REFERENCES `tbl_answer`(`answer_id`),
+                              CONSTRAINT `FK_tbl_answer_mentoring_space` FOREIGN KEY (`mentoringSpace_id`) REFERENCES `tbl_mentoring_space`(`mentoring_space_id`)
+) ENGINE=InnoDB;
+
+## 답변 데이터
+INSERT INTO tbl_answer (answer_content, question_id, answer_member_id, ref_answer_id, mentoringSpace_id)
+VALUES
+    -- 첫 번째 답변: 질문 1에 대한 기본 답변, 답글 없음.
+    ('이 질문에 대한 제 답변입니다.', 1, 6, NULL, 1),
+
+    -- 두 번째 답변: 질문 1에 대한 추가 의견, 첫 번째 답변을 참조(답글)
+    ('추가 의견을 덧붙입니다.', 1, 7, 1, 1),
+
+    -- 세 번째 답변: 질문 2에 대한 답변, 답글 없음.
+    ('해당 질문에 대한 제 생각을 공유합니다.', 2, 8, NULL, 2),
+
+    -- 네 번째 답변: 질문 3에 대한 답변, 답글 없음.
+    ('관련 경험을 바탕으로 답변드립니다.', 3, 9, NULL, 3),
+
+    -- 다섯 번째 답변: 질문 2에 대한 보충 설명, 세 번째 답변을 참조(답글)
+    ('이전 답변에 대한 보충 설명입니다.', 2, 10, 3, 2);
+
+##################################################################
+
 CREATE TABLE `tbl_mentoring_file` (
   `file_id`	INT	NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `address`	VARCHAR(255)	NOT NULL,
@@ -877,400 +913,40 @@ CREATE TABLE `tbl_mentoring_file` (
     CONSTRAINT fk_tbl_mentoring_file_to_tbl_answer FOREIGN KEY (answer_id) REFERENCES tbl_answer(answer_id)
 );
 
+## 멘토링 파일 데이터 필요
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## 팀 모집
+CREATE TABLE tbl_team_recruit (
+                                  team_post_id	INT	NOT NULL	COMMENT 'AUTO_INCREMENT',
+                                  team_name	VARCHAR(255)	NOT NULL,
+                                  team_introduce	VARCHAR(255)	NOT NULL,
+                                  leader_id	INT	NOT NULL
+);
 ALTER TABLE `tbl_team_recruit` ADD CONSTRAINT `PK_TBL_TEAM_RECRUIT` PRIMARY KEY (
                                                                                  `team_post_id`
     );
 
-ALTER TABLE `tbl_bookmark` ADD CONSTRAINT `PK_TBL_BOOKMARK` PRIMARY KEY (
-                                                                         `post_id`,
-                                                                         `user_id`
-    );
+INSERT INTO tbl_team_recruit (team_post_id, team_name, team_introduce, leader_id)
+VALUES
+    (1, 'Alpha Tech', '최신 AI와 로보틱스 기술을 활용한 혁신 솔루션 개발 팀입니다.', 7),
+    (2, 'Beta Innovators', '친환경 에너지 및 지속 가능한 기술 분야에서 미래를 선도합니다.', 8),
+    (3, 'Gamma Solutions', '업무 프로세스 혁신을 위한 맞춤형 소프트웨어 솔루션을 제공합니다.', 9),
+    (4, 'Delta Dynamics', '디지털 전환 및 애자일 프로젝트 관리 전문 팀입니다.', 10),
+    (5, 'Epsilon Enterprises', '기술과 금융 분야에서 최상의 컨설팅 서비스를 제공하는 팀입니다.', 11),
+    (6, 'Zeta Creative', '창의적인 아이디어와 디자인을 결합한 마케팅 팀입니다.', 12),
+    (7, 'Eta Developers', '최고의 개발 인력을 모아 안정적인 소프트웨어를 개발합니다.', 13),
+    (8, 'Theta Analytics', '빅데이터와 인사이트 분석을 통해 미래 가치를 창출합니다.', 14),
+    (9, 'Iota Innovators', '끊임없는 연구와 개발로 새로운 기술 패러다임을 제시합니다.', 15),
+    (10, 'Kappa Solutions', '고객 맞춤형 솔루션과 서비스를 제공하는 전문 팀입니다.', 16);
 
-ALTER TABLE `tbl_mentoring_file` ADD CONSTRAINT `PK_TBL_MENTORING_FILE` PRIMARY KEY (
-                                                                                     `file_id`
-    );
-
-ALTER TABLE `tbl_report_category` ADD CONSTRAINT `PK_TBL_REPORT_CATEGORY` PRIMARY KEY (
-                                                                                       `violation_id`
-    );
-
-ALTER TABLE `tbl_user` ADD CONSTRAINT `PK_TBL_USER` PRIMARY KEY (
-                                                                 `user_id`
-    );
-
-ALTER TABLE `tbl_title_list` ADD CONSTRAINT `PK_TBL_TITLE_LIST` PRIMARY KEY (
-                                                                             `member_id`,
-                                                                             `title_id`
-    );
-
-ALTER TABLE `tbl_question` ADD CONSTRAINT `PK_TBL_QUESTION` PRIMARY KEY (
-                                                                         `question_id`
-    );
-
-ALTER TABLE `tbl_processed_report` ADD CONSTRAINT `PK_TBL_PROCESSED_REPORT` PRIMARY KEY (
-                                                                                         `processed_report_id`
-    );
-
-ALTER TABLE `tbl_mentor_list` ADD CONSTRAINT `PK_TBL_MENTOR_LIST` PRIMARY KEY (
-                                                                               `mentor_id`
-    );
-
-ALTER TABLE `tbl_board_file` ADD CONSTRAINT `PK_TBL_BOARD_FILE` PRIMARY KEY (
-                                                                             `file_id`
-    );
-
-ALTER TABLE `tbl_mentoring` ADD CONSTRAINT `PK_TBL_MENTORING` PRIMARY KEY (
-                                                                           `mentor_id`,
-                                                                           `mentee_id`
-    );
-
-ALTER TABLE `tbl_mail` ADD CONSTRAINT `PK_TBL_MAIL` PRIMARY KEY (
-                                                                 `mail_id`
-    );
-
-ALTER TABLE `tbl_board` ADD CONSTRAINT `PK_TBL_BOARD` PRIMARY KEY (
-                                                                   `post_id`
-    );
-
-ALTER TABLE `tbl_title` ADD CONSTRAINT `PK_TBL_TITLE` PRIMARY KEY (
-                                                                   `title_id`
-    );
-
-ALTER TABLE `tbl_comment` ADD CONSTRAINT `PK_TBL_COMMENT` PRIMARY KEY (
-                                                                       `comment_id`
-    );
-
-ALTER TABLE `tbl_mentoring_space` ADD CONSTRAINT `PK_TBL_MENTORING_SPACE` PRIMARY KEY (
-                                                                                       `mentoringSpace_id`
-    );
-
-ALTER TABLE `tbl_career` ADD CONSTRAINT `PK_TBL_CAREER` PRIMARY KEY (
-                                                                     `user_id`
-    );
-
-ALTER TABLE `tbl_mentoring_member` ADD CONSTRAINT `PK_TBL_MENTORING_MEMBER` PRIMARY KEY (
-                                                                                         `mentoringSpace_id`,
-                                                                                         `user_id`
-    );
-
-ALTER TABLE `tbl_report` ADD CONSTRAINT `PK_TBL_REPORT` PRIMARY KEY (
-                                                                     `report_id`
-    );
-
-ALTER TABLE `tbl_answer` ADD CONSTRAINT `PK_TBL_ANSWER` PRIMARY KEY (
-                                                                     `answer_id`
-    );
-
-ALTER TABLE `tbl_rating_and_review` ADD CONSTRAINT `PK_TBL_RATING_AND_REVIEW` PRIMARY KEY (
-                                                                                           `rating_id`
-    );
-
-ALTER TABLE `tbl_like` ADD CONSTRAINT `PK_TBL_LIKE` PRIMARY KEY (
-                                                                 `post_id`,
-                                                                 `user_id`
-    );
-
-ALTER TABLE `tbl_applicant` ADD CONSTRAINT `PK_TBL_APPLICANT` PRIMARY KEY (
-                                                                           `team_post_id`,
-                                                                           `user_id`
-    );
-
-ALTER TABLE `tbl_team_recruit` ADD CONSTRAINT `FK_tbl_user_TO_tbl_team_recruit_1` FOREIGN KEY (
-                                                                                               `leader_id`
-    )
-    REFERENCES `tbl_user` (
-                           `user_id`
-        );
-
-ALTER TABLE `tbl_bookmark` ADD CONSTRAINT `FK_tbl_board_TO_tbl_bookmark_1` FOREIGN KEY (
-                                                                                        `post_id`
-    )
-    REFERENCES `tbl_board` (
-                            `post_id`
-        );
-
-ALTER TABLE `tbl_bookmark` ADD CONSTRAINT `FK_tbl_user_TO_tbl_bookmark_1` FOREIGN KEY (
-                                                                                       `user_id`
-    )
-    REFERENCES `tbl_user` (
-                           `user_id`
-        );
-
-ALTER TABLE `tbl_mentoring_file` ADD CONSTRAINT `FK_tbl_question_TO_tbl_mentoring_file_1` FOREIGN KEY (
-                                                                                                       `question_id`
-    )
-    REFERENCES `tbl_question` (
-                               `question_id`
-        );
-
-ALTER TABLE `tbl_mentoring_file` ADD CONSTRAINT `FK_tbl_answer_TO_tbl_mentoring_file_1` FOREIGN KEY (
-                                                                                                     `answer_id`
-    )
-    REFERENCES `tbl_answer` (
-                             `answer_id`
-        );
-
-ALTER TABLE `tbl_title_list` ADD CONSTRAINT `FK_tbl_user_TO_tbl_title_list_1` FOREIGN KEY (
-                                                                                           `member_id`
-    )
-    REFERENCES `tbl_user` (
-                           `user_id`
-        );
-
-ALTER TABLE `tbl_title_list` ADD CONSTRAINT `FK_tbl_title_TO_tbl_title_list_1` FOREIGN KEY (
-                                                                                            `title_id`
-    )
-    REFERENCES `tbl_title` (
-                            `title_id`
-        );
-
-ALTER TABLE `tbl_question` ADD CONSTRAINT `FK_tbl_user_TO_tbl_question_1` FOREIGN KEY (
-                                                                                       `member_id`
-    )
-    REFERENCES `tbl_user` (
-                           `user_id`
-        );
-
-ALTER TABLE `tbl_question` ADD CONSTRAINT `FK_tbl_mentoring_space_TO_tbl_question_1` FOREIGN KEY (
-                                                                                                  `mentoringSpace_id`
-    )
-    REFERENCES `tbl_mentoring_space` (
-                                      `mentoringSpace_id`
-        );
-
-ALTER TABLE `tbl_processed_report` ADD CONSTRAINT `FK_tbl_report_TO_tbl_processed_report_1` FOREIGN KEY (
-                                                                                                         `report_id`
-    )
-    REFERENCES `tbl_report` (
-                             `report_id`
-        );
-
-ALTER TABLE `tbl_processed_report` ADD CONSTRAINT `FK_tbl_report_category_TO_tbl_processed_report_1` FOREIGN KEY (
-                                                                                                                  `violation_id`
-    )
-    REFERENCES `tbl_report_category` (
-                                      `violation_id`
-        );
-
-ALTER TABLE `tbl_processed_report` ADD CONSTRAINT `FK_tbl_user_TO_tbl_processed_report_1` FOREIGN KEY (
-                                                                                                       `report_target_user_id`
-    )
-    REFERENCES `tbl_user` (
-                           `user_id`
-        );
-
-ALTER TABLE `tbl_mentor_list` ADD CONSTRAINT `FK_tbl_user_TO_tbl_mentor_list_1` FOREIGN KEY (
-                                                                                             `mentor_id`
-    )
-    REFERENCES `tbl_user` (
-                           `user_id`
-        );
-
-ALTER TABLE `tbl_board_file` ADD CONSTRAINT `FK_tbl_board_TO_tbl_board_file_1` FOREIGN KEY (
-                                                                                            `board_id`
-    )
-    REFERENCES `tbl_board` (
-                            `post_id`
-        );
-
-ALTER TABLE `tbl_mentoring` ADD CONSTRAINT `FK_tbl_mentor_list_TO_tbl_mentoring_1` FOREIGN KEY (
-                                                                                                `mentor_id`
-    )
-    REFERENCES `tbl_mentor_list` (
-                                  `mentor_id`
-        );
-
-ALTER TABLE `tbl_mentoring` ADD CONSTRAINT `FK_tbl_user_TO_tbl_mentoring_1` FOREIGN KEY (
-                                                                                         `mentee_id`
-    )
-    REFERENCES `tbl_user` (
-                           `user_id`
-        );
-
-ALTER TABLE `tbl_mail` ADD CONSTRAINT `FK_tbl_user_TO_tbl_mail_1` FOREIGN KEY (
-                                                                               `sender_id`
-    )
-    REFERENCES `tbl_user` (
-                           `user_id`
-        );
-
-ALTER TABLE `tbl_mail` ADD CONSTRAINT `FK_tbl_user_TO_tbl_mail_2` FOREIGN KEY (
-                                                                               `receiver_id`
-    )
-    REFERENCES `tbl_user` (
-                           `user_id`
-        );
-
-ALTER TABLE `tbl_board` ADD CONSTRAINT `FK_tbl_user_TO_tbl_board_1` FOREIGN KEY (
-                                                                                 `user_id`
-    )
-    REFERENCES `tbl_user` (
-                           `user_id`
-        );
-
-ALTER TABLE `tbl_comment` ADD CONSTRAINT `FK_tbl_user_TO_tbl_comment_1` FOREIGN KEY (
-                                                                                     `member_id`
-    )
-    REFERENCES `tbl_user` (
-                           `user_id`
-        );
-
-ALTER TABLE `tbl_comment` ADD CONSTRAINT `FK_tbl_board_TO_tbl_comment_1` FOREIGN KEY (
-                                                                                      `post_id`
-    )
-    REFERENCES `tbl_board` (
-                            `post_id`
-        );
-
-ALTER TABLE `tbl_comment` ADD CONSTRAINT `FK_tbl_comment_TO_tbl_comment_1` FOREIGN KEY (
-                                                                                        `ref_comment_id`
-    )
-    REFERENCES `tbl_comment` (
-                              `comment_id`
-        );
-
-ALTER TABLE `tbl_mentoring_space` ADD CONSTRAINT `FK_tbl_mentor_list_TO_tbl_mentoring_space_1` FOREIGN KEY (
-                                                                                                            `user_id`
-    )
-    REFERENCES `tbl_mentor_list` (
-                                  `mentor_id`
-        );
-
-ALTER TABLE `tbl_career` ADD CONSTRAINT `FK_tbl_user_TO_tbl_career_1` FOREIGN KEY (
-                                                                                   `user_id`
-    )
-    REFERENCES `tbl_user` (
-                           `user_id`
-        );
-
-ALTER TABLE `tbl_mentoring_member` ADD CONSTRAINT `FK_tbl_mentoring_space_TO_tbl_mentoring_member_1` FOREIGN KEY (
-                                                                                                                  `mentoringSpace_id`
-    )
-    REFERENCES `tbl_mentoring_space` (
-                                      `mentoringSpace_id`
-        );
-
-ALTER TABLE `tbl_mentoring_member` ADD CONSTRAINT `FK_tbl_user_TO_tbl_mentoring_member_1` FOREIGN KEY (
-                                                                                                       `user_id`
-    )
-    REFERENCES `tbl_user` (
-                           `user_id`
-        );
-
-ALTER TABLE `tbl_report` ADD CONSTRAINT `FK_tbl_user_TO_tbl_report_1` FOREIGN KEY (
-                                                                                   `poster_id`
-    )
-    REFERENCES `tbl_user` (
-                           `user_id`
-        );
-
-ALTER TABLE `tbl_report` ADD CONSTRAINT `FK_tbl_user_TO_tbl_report_2` FOREIGN KEY (
-                                                                                   `report_target_user_id`
-    )
-    REFERENCES `tbl_user` (
-                           `user_id`
-        );
-
-ALTER TABLE `tbl_report` ADD CONSTRAINT `FK_tbl_board_TO_tbl_report_1` FOREIGN KEY (
-                                                                                    `report_target_post_id`
-    )
-    REFERENCES `tbl_board` (
-                            `post_id`
-        );
-
-ALTER TABLE `tbl_report` ADD CONSTRAINT `FK_tbl_comment_TO_tbl_report_1` FOREIGN KEY (
-                                                                                      `comment_id`
-    )
-    REFERENCES `tbl_comment` (
-                              `comment_id`
-        );
-
-ALTER TABLE `tbl_answer` ADD CONSTRAINT `FK_tbl_question_TO_tbl_answer_1` FOREIGN KEY (
-                                                                                       `question_id`
-    )
-    REFERENCES `tbl_question` (
-                               `question_id`
-        );
-
-ALTER TABLE `tbl_answer` ADD CONSTRAINT `FK_tbl_user_TO_tbl_answer_1` FOREIGN KEY (
-                                                                                   `answer_member_id`
-    )
-    REFERENCES `tbl_user` (
-                           `user_id`
-        );
-
-ALTER TABLE `tbl_answer` ADD CONSTRAINT `FK_tbl_answer_TO_tbl_answer_1` FOREIGN KEY (
-                                                                                     `ref_answer_id`
-    )
-    REFERENCES `tbl_answer` (
-                             `answer_id`
-        );
-
-ALTER TABLE `tbl_answer` ADD CONSTRAINT `FK_tbl_mentoring_space_TO_tbl_answer_1` FOREIGN KEY (
-                                                                                              `mentoringSpace_id`
-    )
-    REFERENCES `tbl_mentoring_space` (
-                                      `mentoringSpace_id`
-        );
-
-ALTER TABLE `tbl_rating_and_review` ADD CONSTRAINT `FK_tbl_user_TO_tbl_rating_and_review_1` FOREIGN KEY (
-                                                                                                         `created_id`
-    )
-    REFERENCES `tbl_user` (
-                           `user_id`
-        );
-
-ALTER TABLE `tbl_rating_and_review` ADD CONSTRAINT `FK_tbl_user_TO_tbl_rating_and_review_2` FOREIGN KEY (
-                                                                                                         `target_id`
-    )
-    REFERENCES `tbl_user` (
-                           `user_id`
-        );
-
-ALTER TABLE `tbl_like` ADD CONSTRAINT `FK_tbl_board_TO_tbl_like_1` FOREIGN KEY (
-                                                                                `post_id`
-    )
-    REFERENCES `tbl_board` (
-                            `post_id`
-        );
-
-ALTER TABLE `tbl_like` ADD CONSTRAINT `FK_tbl_user_TO_tbl_like_1` FOREIGN KEY (
-                                                                               `user_id`
-    )
-    REFERENCES `tbl_user` (
-                           `user_id`
-        );
-
+####################################################
+## 팀 신청자
+CREATE TABLE `tbl_applicant` (
+                                 `team_post_id`	INT	NOT NULL,
+                                 `user_id`	INT	NOT NULL,
+                                 `introduce`	VARCHAR(255)	NOT NULL,
+                                 `is_processed`	VARCHAR(255)	NOT NULL
+);
 ALTER TABLE `tbl_applicant` ADD CONSTRAINT `FK_tbl_team_recruit_TO_tbl_applicant_1` FOREIGN KEY (
                                                                                                  `team_post_id`
     )
@@ -1284,4 +960,119 @@ ALTER TABLE `tbl_applicant` ADD CONSTRAINT `FK_tbl_user_TO_tbl_applicant_1` FORE
     REFERENCES `tbl_user` (
                            `user_id`
         );
+
+INSERT INTO tbl_applicant (team_post_id, user_id, introduce, is_processed)
+VALUES
+    -- 팀 1: 3명
+    (1, 20, 'I am excited to join Alpha Tech.', 'N'),
+    (1, 21, 'I have relevant experience in AI.', 'N'),
+    (1, 22, 'Looking forward to contributing to Alpha Tech.', 'N'),
+
+    -- 팀 2: 2명
+    (2, 23, 'Passionate about sustainable energy.', 'N'),
+    (2, 24, 'My skills in innovation will be valuable.', 'N'),
+
+    -- 팀 3: 4명
+    (3, 25, 'Experienced in software development.', 'N'),
+    (3, 26, 'Excited to improve workflow at Gamma Solutions.', 'N'),
+    (3, 27, 'I bring leadership experience.', 'N'),
+    (3, 28, 'Ready to tackle process innovations.', 'N'),
+
+    -- 팀 4: 2명
+    (4, 29, 'Interested in digital transformation projects.', 'N'),
+    (4, 30, 'Agile expert looking for new challenges.', 'N'),
+
+    -- 팀 5: 5명
+    (5, 31, 'Financial and technical background.', 'N'),
+    (5, 32, 'I can help in market research.', 'N'),
+    (5, 33, 'Skilled in consulting and technology.', 'N'),
+    (5, 34, 'Innovative thinker ready for challenges.', 'N'),
+    (5, 35, 'I have experience in cross-functional teams.', 'N'),
+
+    -- 팀 6: 3명
+    (6, 36, 'Creative designer with strong marketing skills.', 'N'),
+    (6, 37, 'Experience in creative campaigns.', 'N'),
+    (6, 38, 'Passionate about innovative design.', 'N'),
+
+    -- 팀 7: 4명
+    (7, 39, 'Proficient in various programming languages.', 'N'),
+    (7, 40, 'Strong developer with team spirit.', 'N'),
+    (7, 41, 'I have several years of industry experience.', 'N'),
+    (7, 42, 'Looking to contribute to cutting-edge projects.', 'N'),
+
+    -- 팀 8: 3명
+    (8, 43, 'Expert in data analytics and visualization.', 'N'),
+    (8, 44, 'I bring insights from big data.', 'N'),
+    (8, 45, 'Experienced in statistical analysis.', 'N'),
+
+    -- 팀 9: 2명
+    (9, 46, 'I am innovative and creative.', 'N'),
+    (9, 47, 'My background in research suits the role.', 'N'),
+
+    -- 팀 10: 5명
+    (10, 48, 'Customer-focused and experienced in solutions.', 'N'),
+    (10, 49, 'I can manage projects effectively.', 'N'),
+    (10, 50, 'Eager to drive new initiatives.', 'N'),
+    (10, 20, 'I bring a diverse skill set to Kappa Solutions.', 'N'),
+    (10, 21, 'Excited to collaborate with industry experts.', 'N');
+
+####################################################
+
+####################################################
+## 멘토링 신청
+CREATE TABLE `tbl_mentoring` (
+                                 `mentor_id`	INT	NOT NULL,
+                                 `mentee_id`	INT	NULL,
+                                 `team_id`	INT	NULL,
+                                 `is_accepted`	VARCHAR(255)	NOT NULL
+);
+ALTER TABLE `tbl_mentoring` ADD CONSTRAINT `PK_TBL_MENTORING` PRIMARY KEY (
+                                                                           `mentor_id`,
+                                                                           `mentee_id`,
+                                                                           `team_id`
+    );
+
+INSERT INTO tbl_mentoring (mentor_id, mentee_id, team_id, is_accepted)
+VALUES
+    -- 개별 멘토링 신청: mentee_id 채워지고 team_id는 NULL
+    (1, 20, 0, 'Y'),  -- 멘토 1이 회원 20번과 멘토링 (승인됨)
+    (2, 21, 0, 'Y'),  -- 멘토 2가 회원 21번과 멘토링 (승인됨)
+    (3, 22, 0, 'N'),  -- 멘토 3이 회원 22번과 멘토링 (미승인)
+
+    -- 팀 멘토링 신청: team_id 채워지고 mentee_id는 NULL
+    (4, 0, 1, 'Y'),   -- 멘토 4가 팀 모집 게시글 번호 1번(팀 1)을 대상으로 멘토링 (승인됨)
+    (5, 0, 2, 'N');   -- 멘토 5가 팀 모집 게시글 번호 2번(팀 2)을 대상으로 멘토링 (미승인)
+
+####################################################
+## 별점&리뷰
+CREATE TABLE `tbl_rating_and_review` (
+                                         `rating_id` INT NOT NULL AUTO_INCREMENT COMMENT 'AUTO_INCREMENT',
+                                         `star` INT NOT NULL,
+                                         `review` VARCHAR(255) NOT NULL,
+                                         `created_at` DATETIME NOT NULL DEFAULT NOW(),
+                                         `created_id` INT NOT NULL,
+                                         `target_id` INT NOT NULL,
+                                         PRIMARY KEY (`rating_id`)
+) ENGINE=InnoDB;
+ALTER TABLE `tbl_rating_and_review`
+    ADD CONSTRAINT `FK_Rating_CreatedID` FOREIGN KEY (`created_id`) REFERENCES `tbl_user`(`user_id`);
+
+ALTER TABLE `tbl_rating_and_review`
+    ADD CONSTRAINT `FK_Rating_TargetID` FOREIGN KEY (`target_id`) REFERENCES `tbl_user`(`user_id`);
+
+INSERT INTO tbl_rating_and_review (star, review, created_at, created_id, target_id)
+VALUES
+    (5, '훌륭한 멘토링과 조언을 주셨습니다.', NOW(), 6, 1),
+    (4, '아주 지식이 풍부하고 친근한 멘토입니다.', NOW(), 7, 2),
+    (3, '괜찮은 멘토링이었지만, 개선의 여지가 있습니다.', NOW(), 8, 3),
+    (5, '탁월한 지원과 커리어 조언에 감사합니다.', NOW(), 9, 4),
+    (4, '실용적인 통찰력을 주는 유익한 멘토입니다.', NOW(), 10, 5),
+    (5, '훌륭한 멘토, 적극 추천합니다!', NOW(), 11, 1),
+    (3, '보통 수준의 경험이었으며, 더 자세한 피드백을 기대했습니다.', NOW(), 12, 2),
+    (4, '제 학습 여정에 긍정적인 영향을 주었습니다.', NOW(), 13, 3),
+    (5, '매우 영감을 주는 멘토링 세션이었습니다.', NOW(), 14, 4),
+    (4, '명확한 소통과 전문적인 안내가 인상적이었습니다.', NOW(), 15, 5);
+
+
+
 
