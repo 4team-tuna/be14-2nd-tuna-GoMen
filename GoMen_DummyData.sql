@@ -913,7 +913,39 @@ CREATE TABLE `tbl_mentoring_file` (
     CONSTRAINT fk_tbl_mentoring_file_to_tbl_answer FOREIGN KEY (answer_id) REFERENCES tbl_answer(answer_id)
 );
 
-## 멘토링 파일 데이터 필요
+INSERT INTO `tbl_mentoring_file` (`address`, `file_type`, `question_id`, `answer_id`)
+VALUES
+    ('path/to/file1.pdf', 'pdf', 3, 1),
+    ('path/to/file2.pdf', 'pdf', 5, 2),
+    ('path/to/file3.pdf', 'pdf', 8, 4),
+    ('path/to/file4.pdf', 'pdf', 1, 5),
+    ('path/to/file5.pdf', 'pdf', 7, 3),
+    ('path/to/file6.pdf', 'pdf', 2, 1),
+    ('path/to/file7.pdf', 'pdf', 9, 2),
+    ('path/to/file8.pdf', 'pdf', 4, 3),
+    ('path/to/file9.pdf', 'pdf', 6, 5),
+    ('path/to/file10.pdf', 'pdf', 10, 4),
+    ('path/to/file11.pdf', 'pdf', 3, 2),
+    ('path/to/file12.pdf', 'pdf', 1, 4),
+    ('path/to/file13.pdf', 'pdf', 5, 3),
+    ('path/to/file14.pdf', 'pdf', 8, 5),
+    ('path/to/file15.pdf', 'pdf', 7, 1),
+    ('path/to/file16.pdf', 'pdf', 4, 2),
+    ('path/to/file17.pdf', 'pdf', 9, 5),
+    ('path/to/file18.pdf', 'pdf', 2, 4),
+    ('path/to/file19.pdf', 'pdf', 6, 1),
+    ('path/to/file20.pdf', 'pdf', 10, 3),
+    ('path/to/file21.pdf', 'pdf', 5, 4),
+    ('path/to/file22.pdf', 'pdf', 3, 5),
+    ('path/to/file23.pdf', 'pdf', 1, 2),
+    ('path/to/file24.pdf', 'pdf', 8, 1),
+    ('path/to/file25.pdf', 'pdf', 6, 3),
+    ('path/to/file26.pdf', 'pdf', 4, 5),
+    ('path/to/file27.pdf', 'pdf', 7, 2),
+    ('path/to/file28.pdf', 'pdf', 9, 3),
+    ('path/to/file29.pdf', 'pdf', 2, 5),
+    ('path/to/file30.pdf', 'pdf', 10, 1);
+
 
 ## 팀 모집
 CREATE TABLE tbl_team_recruit (
