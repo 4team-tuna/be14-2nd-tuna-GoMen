@@ -1,4 +1,4 @@
-package com.ohgiraffers.gomen.teamRecruitmentBoard;
+package com.tuna.gomen.teamRecruitmentBoard;
 
 public class dummy {
 }

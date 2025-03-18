@@ -1,4 +1,4 @@
-package com.ohgiraffers.gomen.member;
+package com.tuna.gomen.member;
 
 public class dummy {
 }

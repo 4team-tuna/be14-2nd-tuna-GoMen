@@ -1,4 +1,4 @@
-package com.ohgiraffers.gomen.mentoringSpace;
+package com.tuna.gomen.mentoringSpace;
 
 public class dummy {
 }

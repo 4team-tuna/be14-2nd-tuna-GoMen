@@ -1,4 +1,4 @@
-package com.ohgiraffers.gomen.board;
+package com.tuna.gomen.board;
 
 public class dummy {
 }

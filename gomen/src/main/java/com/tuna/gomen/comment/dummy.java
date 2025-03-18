@@ -1,4 +1,4 @@
-package com.ohgiraffers.gomen.comment;
+package com.tuna.gomen.comment;
 
 public class dummy {
 }
