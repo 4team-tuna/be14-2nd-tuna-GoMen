@@ -1,6 +1,6 @@
 name: "Enhancement"
 description: "새로운 기능 추가"
-title : "[MOVIE/MEMBER]"
+title : "[MEMBER]"
 labels: ["enhancement"]
 projects: ["4team-tuna/2"]
 body:
