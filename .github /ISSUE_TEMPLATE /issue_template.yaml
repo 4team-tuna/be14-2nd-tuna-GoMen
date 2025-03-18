@@ -1,7 +1,7 @@
-name: "🐣Enhancement"
+name: "🐣 Enhancement"
 description: "새로운 기능 추가"
 title : "[MEMBER]"
-labels: ["🐣enhancement"]
+labels: ["🐣 enhancement"]
 projects: ["4team-tuna/GoMen"]
 body:
   - type: textarea
