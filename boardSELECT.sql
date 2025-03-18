@@ -1,5 +1,20 @@
 SELECT
     b.post_id,
+    b.category,
+    b.title,
+    b.content,
+    b.created_at,
+    b.modified_at,
+    b.is_blinded,
+    b.is_deleted,
+    u.user_id,
+    u.nickname AS author_nickname
+FROM tbl_board b
+         JOIN tbl_user u ON b.user_id = u.user_id
+ORDER BY b.created_at DESC;    -- 최신순 정렬
+
+SELECT
+    b.post_id,
     bo.category,
     bo.title,
     bo.content,
@@ -13,6 +28,9 @@ FROM tbl_bookmark b
          JOIN tbl_board bo ON b.post_id = bo.post_id
          JOIN tbl_user u ON bo.user_id = u.user_id
 WHERE b.user_id = 50; -- 특정 사용자가 북마크한 게시글 정보 조회
+ORDER BY b.created_at DESC; -- 최신 북마크 순 정렬
+
+
 
 
 
@@ -30,8 +48,9 @@ FROM tbl_board
 WHERE post_id = 2; --  게시글의 내용(컬럼들) 조회
 
 
+
 SELECT
-    u.user_id,
+     u.user_id,
     u.login_id,
     u.name,
     u.nickname,
@@ -48,21 +67,26 @@ SELECT
     u.violation_score
 FROM tbl_board bo
          JOIN tbl_user u ON bo.user_id = u.user_id
-WHERE bo.post_id = 2; -- 특정 게시글 작성자의 정보 조회
+WHERE bo.post_id = 2; -- 특정 게시글의 작성자의 정보 조회
 
 
-SELECT
-    c.comment_id,
-    c.comment_content,
-    c.created_at,
-    c.updated_at,
-    c.is_blinded,
+
+
+
+
+
+SELECT 
+    c.comment_id, 
+    c.comment_content, 
+    c.created_at, 
+    c.updated_at, 
+    c.is_blinded, 
     c.is_deleted,
-    c.user_id,
-    u.nickname AS commenter_nickname,
-    c.post_id,
+    c.user_id, 
+    u.nickname AS commenter_nickname, 
+    c.post_id, 
     c.ref_comment_id
 FROM tbl_comment c
-         JOIN tbl_user u ON c.user_id = u.user_id
-WHERE c.post_id = 8 -- 특정 게시글의 댓글 조회, ref_comment_id로 대댓글구분
+JOIN tbl_user u ON c.user_id = u.user_id
+WHERE c.post_id = 8 -- 특정 게시글의 댓글 조회
 ORDER BY c.created_at ASC; -- 댓글 작성 시간 순 정렬
