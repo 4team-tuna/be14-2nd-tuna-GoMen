@@ -34,7 +34,7 @@ CREATE TABLE `tbl_user` (
                             `updated_at`	DATETIME	NULL,
                             `will_be_activated`	DATETIME	NOT NULL	DEFAULT NOW(),
                             `is_quitted`	VARCHAR(255)	NOT NULL	DEFAULT 'N',
-                            `깃허브주소`	VARCHAR(255)	NULL,
+                            `github_adress`	VARCHAR(255)	NULL,
                             `extension_count`	INT	NOT NULL	DEFAULT 0,
                             `career_info`	VARCHAR(255)	NULL,
                             `is_mentor`	VARCHAR(255)	NOT NULL	DEFAULT 'N',
