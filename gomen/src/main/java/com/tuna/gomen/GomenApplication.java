@@ -1,4 +1,4 @@
-package com.ohgiraffers.gomen;
+package com.tuna.gomen;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
