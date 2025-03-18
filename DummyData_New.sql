@@ -1,3 +1,27 @@
+-- 기존 테이블이 존재하면 삭제
+DROP TABLE IF EXISTS tbl_board_file;
+DROP TABLE IF EXISTS tbl_mentoring_file;
+DROP TABLE IF EXISTS tbl_answer;
+DROP TABLE IF EXISTS tbl_question;
+DROP TABLE IF EXISTS tbl_rating_and_review;
+DROP TABLE IF EXISTS tbl_mentoring;
+DROP TABLE IF EXISTS tbl_applicant;
+DROP TABLE IF EXISTS tbl_team_recruit;
+DROP TABLE IF EXISTS tbl_mentoring_member;
+DROP TABLE IF EXISTS tbl_mentoring_space;
+DROP TABLE IF EXISTS tbl_mentor_list;
+DROP TABLE IF EXISTS tbl_report;
+DROP TABLE IF EXISTS tbl_report_category;
+DROP TABLE IF EXISTS tbl_bookmark;
+DROP TABLE IF EXISTS tbl_like;
+DROP TABLE IF EXISTS tbl_comment;
+DROP TABLE IF EXISTS tbl_board;
+DROP TABLE IF EXISTS tbl_mail;
+DROP TABLE IF EXISTS tbl_title_list;
+DROP TABLE IF EXISTS tbl_title;
+DROP TABLE IF EXISTS tbl_career;
+DROP TABLE IF EXISTS tbl_user;
+
 CREATE TABLE `tbl_user` (
                             `user_id`	INT	NOT NULL PRIMARY KEY AUTO_INCREMENT,
                             `login_id`	VARCHAR(255)	NOT NULL,
