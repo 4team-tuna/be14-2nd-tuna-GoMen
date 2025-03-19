@@ -35,17 +35,14 @@ ORDER BY b.created_at DESC; -- 최신 북마크 순 정렬
 
 
 SELECT
-    post_id,
-    category,
-    title,
-    content,
-    created_at,
-    modified_at,
-    is_blinded,
-    is_deleted,
-    user_id
-FROM tbl_board
-WHERE post_id = 2; --  게시글의 내용(컬럼들) 조회
+    b.post_id, b.category, b.title, b.content,
+    b.created_at, b.modified_at, b.is_blinded,
+    b.is_deleted, b.user_id, u.nickname AS author_nickname,
+    f.file_id, f.address
+FROM tbl_board b
+         JOIN tbl_user u ON b.user_id = u.user_id
+         LEFT JOIN tbl_board_file f ON b.post_id = f.board_id --파일없어도 조회가능
+WHERE b.is_deleted = 'N' AND b.post_id = 28; --특정 게시글의 정보조회
 
 
 
