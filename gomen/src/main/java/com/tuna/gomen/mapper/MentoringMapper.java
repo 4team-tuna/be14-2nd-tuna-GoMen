@@ -1,4 +1,4 @@
 package com.tuna.gomen.mapper;
 
-public class MentoringMapper {
+public interface MentoringMapper {
 }
