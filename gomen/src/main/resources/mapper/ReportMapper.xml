@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tuna.gomen.mapper.ReportMapper">
+
+    <resultMap id="ReportWithUserResultMap" type="com.tuna.gomen.report.Report">
+        <id column="report_id" property="reportId"/>
+        <result column="report_content" property="reportContent"/>
+        <result column="created_at" property="createdAt"/>
+        <result column="is_processed" property="isProcessed"/>
+        <result column="is_processed_time" property="isProcessedTime"/>
+        <result column="poster_id" property="posterId"/>
+        <result column="report_target_post_id" property="reportTargetPostId"/>
+        <result column="report_target_user_id" property="reportTargetUserId"/>
+        <result column="comment_id" property="commentId"/>
+        <result column="violation_id" property="violationId"/>
+
+        <!-- 신고한 회원 닉네임 -->
+        <result column="reporter_nickname" property="reporterNickname"/>
+        <!-- 신고 대상 회원 닉네임 -->
+        <result column="reported_nickname" property="reportedNickname"/>
+    </resultMap>
+
+    <select id="getProcessedReportsWithUser" resultMap="ReportWithUserResultMap">
+        SELECT
+            r.report_id,
+            r.report_content,
+            r.created_at,
+            r.is_processed,
+            r.is_processed_time,
+            r.poster_id,
+            r.report_target_post_id,
+            r.report_target_user_id,
+            r.comment_id,
+            r.violation_id,
+            reporter.nickname AS reporter_nickname,
+            target.nickname AS reported_nickname
+        FROM tbl_report r
+                 INNER JOIN tbl_user reporter ON r.poster_id = reporter.user_id
+                 INNER JOIN tbl_user target ON r.report_target_user_id = target.user_id
+        WHERE r.is_processed = 'Y'
+    </select>
+
+
+</mapper>
+
+
