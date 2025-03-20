@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.tuna.gomen.report")
+@MapperScan("com.tuna.gomen.mapper")
 public class GomenApplication {
 
     public static void main(String[] args) {

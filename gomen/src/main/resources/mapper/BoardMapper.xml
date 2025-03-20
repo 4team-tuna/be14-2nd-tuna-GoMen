@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tuna.gomen.mapper.BoardMapper">
+    <!-- resultMap 정의 -->
+    <resultMap id="BoardResultMap" type="com.tuna.gomen.board.domain.entity.BoardEntity">
+        <id property="postId" column="post_id"/>
+        <result property="category" column="category"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="createdAt" column="created_at"/>
+        <result property="modifiedAt" column="modified_at"/>
+        <result property="isBlinded" column="is_blinded"/>
+        <result property="isDeleted" column="is_deleted"/>
+        <result property="userId" column="user_id"/>
+    </resultMap>
+
+    <!-- findAll 쿼리 추가 -->
+    <select id="findAll" resultMap="BoardResultMap">
+        SELECT
+            post_id,
+            category,
+            title,
+            content,
+            created_at,
+            modified_at,
+            is_blinded,
+            is_deleted,
+            user_id
+        FROM tbl_board
+        ORDER BY created_at DESC
+    </select>
+
+
+
+
+
+</mapper>

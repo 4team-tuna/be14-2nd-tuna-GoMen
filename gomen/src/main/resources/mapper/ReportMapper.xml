@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.tuna.gomen.report.ReportMapper">
+<mapper namespace="com.tuna.gomen.mapper.ReportMapper">
 
     <resultMap id="ReportWithUserResultMap" type="com.tuna.gomen.report.Report">
         <id column="report_id" property="reportId"/>
