@@ -57,6 +57,32 @@
         ORDER BY created_at DESC
     </select>
 
+    <!-- 특정 게시글의 작성자 회원정보 조회 -->
+    <select id="findAuthorByPostId" resultType="com.tuna.gomen.board.domain.entity.UserEntity">
+        SELECT u.user_id, u.login_id, u.name, u.phone_number, u.nickname,
+                u.career_info, u.created_at
+        FROM tbl_user u
+                 JOIN tbl_board b ON u.user_id = b.user_id
+        WHERE b.post_id = #{postId}
+    </select>
+
+    <!-- 특정 게시글의 댓글 조회 -->
+    <!-- http://localhost:8080/gomen/boards/5/comments -->
+    <select id="findCommentsByPostId" resultMap="CommentResultMap">
+        SELECT c.comment_id, c.comment_content, c.created_at, c.user_id, u.nickname AS userNickname
+        FROM tbl_comment c
+                 JOIN tbl_user u ON c.user_id = u.user_id
+        WHERE c.post_id = #{postId}
+        ORDER BY c.created_at ASC
+    </select>
+
+    <!-- 댓글 resultMap 추가 -->
+    <resultMap id="CommentResultMap" type="com.tuna.gomen.board.domain.entity.CommentEntity">
+        <id property="commentId" column="comment_id"/>
+        <result property="commentContent" column="comment_content"/>
+        <result property="createdAt" column="created_at"/>
+        <result property="userId" column="user_id"/>
+    </resultMap>
 
 
 

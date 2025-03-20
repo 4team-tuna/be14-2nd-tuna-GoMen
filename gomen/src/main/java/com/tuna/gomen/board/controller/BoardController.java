@@ -1,12 +1,13 @@
 package com.tuna.gomen.board.controller;
 
 import com.tuna.gomen.board.dto.BoardDto;
+import com.tuna.gomen.board.dto.CommentDto;
+import com.tuna.gomen.board.dto.UserDto;
 import com.tuna.gomen.board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -44,4 +45,23 @@ public class BoardController {
     public List<BoardDto> getBoardsByTitleKeyword(@RequestParam String keyword) {
         return boardService.getBoardsByTitleKeyword(keyword);
     }
+
+    // 특정 게시글의 작성자 회원정보 조회
+    @GetMapping("/{postId}/author")
+    public ResponseEntity<UserDto> getAuthorByPostId(@PathVariable Long postId) {
+        UserDto author = boardService.getAuthorByPostId(postId);
+        if (author == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.ok(author);
+    }
+
+    // 특정 게시글의 댓글 조회
+    @GetMapping("/{postId}/comments")
+    public ResponseEntity<List<CommentDto>> getCommentsByPostId(@PathVariable Long postId) {
+        List<CommentDto> comments = boardService.getCommentsByPostId(postId);
+        return ResponseEntity.ok(comments);
+    }
 }
+
+

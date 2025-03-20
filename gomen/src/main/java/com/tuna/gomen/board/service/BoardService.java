@@ -1,7 +1,10 @@
 package com.tuna.gomen.board.service;
 
 import com.tuna.gomen.board.domain.entity.BoardEntity;
+import com.tuna.gomen.board.domain.entity.UserEntity;
 import com.tuna.gomen.board.dto.BoardDto;
+import com.tuna.gomen.board.dto.CommentDto;
+import com.tuna.gomen.board.dto.UserDto;
 import com.tuna.gomen.mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,6 +50,8 @@ public class BoardService {
                 .collect(Collectors.toList());
     }
 
+
+
     // Entity -> DTO 변환 메서드
     private BoardDto convertToDto(BoardEntity entity) {
         BoardDto dto = new BoardDto();
@@ -60,5 +65,34 @@ public class BoardService {
         dto.setIsDeleted(entity.getIsDeleted());
         dto.setUserId(entity.getUserId());
         return dto;
+    }
+
+    // 특정 게시글의 작성자 정보 조회
+    public UserDto getAuthorByPostId(Long postId) {
+        UserEntity user = boardMapper.findAuthorByPostId(postId);
+        if (user == null) return null;
+
+        UserDto dto = new UserDto();
+        dto.setUserId(user.getUserId());
+        dto.setLoginId(user.getLoginId());
+        dto.setName(user.getName());
+        dto.setPhoneNumber(user.getPhoneNumber());
+        dto.setNickname(user.getNickname());
+        dto.setCareerInfo(user.getCareerInfo());
+        dto.setCreatedAt(user.getCreatedAt());
+        return dto;
+    }
+
+    // 특정 게시글의 댓글 조회
+    public List<CommentDto> getCommentsByPostId(Long postId) {
+        return boardMapper.findCommentsByPostId(postId).stream().map(comment -> {
+            CommentDto dto = new CommentDto();
+            dto.setCommentId(comment.getCommentId());
+            dto.setCommentContent(comment.getCommentContent());
+            dto.setCreatedAt(comment.getCreatedAt());
+            dto.setUserId(comment.getUserId());
+            dto.setUserNickname(comment.getUserId() != null ? boardMapper.findAuthorByPostId(comment.getUserId()).getNickname() : "익명");
+            return dto;
+        }).collect(Collectors.toList());
     }
 }
