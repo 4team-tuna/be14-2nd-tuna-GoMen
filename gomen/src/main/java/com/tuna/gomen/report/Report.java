@@ -26,7 +26,7 @@ public class Report {
     private String phoneNumber;
     private String isMentor;
 
-    // 🚨 추가: 신고한 회원 닉네임 & 신고 대상 회원 닉네임
+    // 추가: 신고한 회원 닉네임 & 신고 대상 회원 닉네임
     private String reporterNickname;
     private String reportedNickname;
 }

@@ -33,6 +33,32 @@
     </select>
 
 
+    <!-- 특정 사용자의 게시글 조회 -->
+    <!-- http://localhost:8080/gomen/boards/user?userId=5 -->
+    <select id="findByUserId" resultMap="BoardResultMap">
+        SELECT * FROM tbl_board
+        WHERE user_id = #{userId}
+        ORDER BY created_at DESC
+    </select>
+
+    <!-- 특정 카테고리의 게시글 조회 -->
+    <!-- http://localhost:8080/gomen/boards/category?category=3 -->
+    <select id="findByCategory" resultMap="BoardResultMap">
+        SELECT * FROM tbl_board
+        WHERE category = #{category}
+        ORDER BY created_at DESC
+    </select>
+
+    <!-- 특정 키워드가 포함된 제목의 게시글 조회 -->
+    <!-- http://localhost:8080/gomen/boards/search?keyword=자바 -->
+    <select id="findByTitleKeyword" resultMap="BoardResultMap">
+        SELECT * FROM tbl_board
+        WHERE title LIKE CONCAT('%', #{keyword}, '%')
+        ORDER BY created_at DESC
+    </select>
+
+
+
 
 
 
