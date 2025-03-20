@@ -1,5 +1,6 @@
-package com.tuna.gomen.report;
+package com.tuna.gomen.mapper;
 
+import com.tuna.gomen.report.Report;
 import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 
