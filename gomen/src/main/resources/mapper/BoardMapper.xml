@@ -84,6 +84,33 @@
         <result property="userId" column="user_id"/>
     </resultMap>
 
+    <!-- 특정 게시글 조회 (파일 목록 포함) -->
+    <!-- http://localhost:8080/gomen/boards/5 -->
+    <select id="getBoardDetails" resultMap="OneBoardResultMap">
+        SELECT b.post_id AS postId, b.category, b.title, b.content, b.created_at AS createdAt,
+               b.modified_at AS modifiedAt, b.is_blinded AS isBlinded, b.is_deleted AS isDeleted,
+               b.user_id AS userId, f.address AS fileAddress
+        FROM tbl_board b
+                 LEFT JOIN tbl_board_file f ON b.post_id = f.board_id
+        WHERE b.post_id = #{postId}
+    </select>
+
+    <resultMap id="OneBoardResultMap"  type="com.tuna.gomen.board.domain.entity.BoardEntity">
+        <id property="postId" column="postId"/>
+        <result property="category" column="category"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="createdAt" column="createdAt"/>
+        <result property="modifiedAt" column="modifiedAt"/>
+        <result property="isBlinded" column="isBlinded"/>
+        <result property="isDeleted" column="isDeleted"/>
+        <result property="userId" column="userId"/>
+        <collection property="fileAddresses" ofType="String">
+            <result column="fileAddress"/>
+        </collection>
+    </resultMap>
+
+
 
 
 
