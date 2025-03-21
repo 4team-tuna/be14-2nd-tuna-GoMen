@@ -46,6 +46,19 @@ public class BoardController {
         return boardService.getBoardsByTitleKeyword(keyword);
     }
 
+
+    //특정 게시글 내용 조회
+    @GetMapping("/{postId}")
+    public ResponseEntity<BoardDto> getBoardDetails(@PathVariable int postId) {
+        BoardDto board = boardService.getBoardDetails(postId);
+        if (board != null) {
+            return ResponseEntity.ok(board);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+
+
     // 특정 게시글의 작성자 회원정보 조회
     @GetMapping("/{postId}/author")
     public ResponseEntity<UserDto> getAuthorByPostId(@PathVariable Long postId) {
@@ -62,6 +75,8 @@ public class BoardController {
         List<CommentDto> comments = boardService.getCommentsByPostId(postId);
         return ResponseEntity.ok(comments);
     }
+
+
 }
 
 

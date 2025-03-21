@@ -3,6 +3,7 @@ package com.tuna.gomen.mapper;
 import com.tuna.gomen.board.domain.entity.BoardEntity;
 import com.tuna.gomen.board.domain.entity.CommentEntity;
 import com.tuna.gomen.board.domain.entity.UserEntity;
+import com.tuna.gomen.board.dto.BoardDto;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -27,5 +28,8 @@ public interface BoardMapper {
 
     // 특정 게시글의 댓글 조회
     List<CommentEntity> findCommentsByPostId(@Param("postId") Long postId);
+
+    //특정 게시글 조회
+    BoardEntity getBoardDetails(int postId);
 }
 
