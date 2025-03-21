@@ -1,14 +1,15 @@
-package com.tuna.gomen.mentorList;
+package com.tuna.gomen.mentorList.dto;
 
 import lombok.*;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-public class MentorList {
+@ToString
+public class MentorListDTO {
     private int mentorId;
     private String mExpert;
     private String mContent;
     private String isDeleted;
-
-
 }

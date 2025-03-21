@@ -1,5 +1,7 @@
-package com.tuna.gomen.mentorList;
+package com.tuna.gomen.mentorList.controller;
 
+import com.tuna.gomen.mentorList.dto.MentorListDTO;
+import com.tuna.gomen.mentorList.service.MentorListService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,7 +1,8 @@
-package com.tuna.gomen.mentorList;
+package com.tuna.gomen.mentorList.service;
 
 import com.tuna.gomen.mapper.MentorListMapper;
-import com.tuna.gomen.mentoring.MentoringService;
+import com.tuna.gomen.mentorList.domain.entity.MentorList;
+import com.tuna.gomen.mentorList.dto.MentorListDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,4 +1,6 @@
-package com.tuna.gomen.mentorList;
+package com.tuna.gomen.mentorList.service;
+
+import com.tuna.gomen.mentorList.dto.MentorListDTO;
 
 import java.util.List;
 
