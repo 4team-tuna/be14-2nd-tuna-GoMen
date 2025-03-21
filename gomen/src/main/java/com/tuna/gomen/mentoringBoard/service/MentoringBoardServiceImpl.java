@@ -1,6 +1,8 @@
-package com.tuna.gomen.mentoringBoard;
+package com.tuna.gomen.mentoringBoard.service;
 
 import com.tuna.gomen.mapper.MentoringBoardMapper;
+import com.tuna.gomen.mentoringBoard.domain.entity.MentoringBoard;
+import com.tuna.gomen.mentoringBoard.dto.MentoringBoardDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

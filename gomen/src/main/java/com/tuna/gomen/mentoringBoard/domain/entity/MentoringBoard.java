@@ -1,4 +1,4 @@
-package com.tuna.gomen.mentoringBoard;
+package com.tuna.gomen.mentoringBoard.domain.entity;
 
 import lombok.Getter;
 import lombok.Setter;

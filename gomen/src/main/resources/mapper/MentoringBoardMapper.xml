@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.tuna.gomen.mapper.MentoringBoardMapper">
-        <resultMap id="MentoringBoardResultMap" type="com.tuna.gomen.mentoringBoard.MentoringBoard">
+        <resultMap id="MentoringBoardResultMap" type="com.tuna.gomen.mentoringBoard.domain.entity.MentoringBoard">
             <id column="user_id" property="userId"/>
             <result column="leftover_questions" property="leftOverQuestions"/>
         </resultMap>
