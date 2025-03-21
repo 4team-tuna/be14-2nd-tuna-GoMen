@@ -18,8 +18,8 @@ public class MentoringBoardServiceImpl implements MentoringBoardService {
     }
 
     @Override
-    public List<MentoringBoardDTO> getMentoringBoardByQuestions(Integer userId) {
-        List<MentoringBoard> mentoringBoardQuestions = mentoringBoardMapper.getMentoringBoardByQuestions(userId);
+    public List<MentoringBoardDTO> selectLeftOverQuestion(Integer userId) {
+        List<MentoringBoard> mentoringBoardQuestions = mentoringBoardMapper.selectLeftOverQuestion(userId);
 
         return mentoringBoardQuestions.stream()
                 .map(mentoringBoard -> new MentoringBoardDTO(

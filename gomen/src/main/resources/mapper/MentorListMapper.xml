@@ -12,6 +12,7 @@
     </resultMap>
 
 <!--    멘토 리스트 조회-->
+<!--    localhost:8080/gomen/mentorlist -->
     <select id="findAllActiveMentors" resultMap="mentorListResultMap">
         SELECT mentor_id
              , m_expert

@@ -22,8 +22,8 @@ public class MentoringBoardController {
     }
 
     @GetMapping("/leftquestion")
-    public List<MentoringBoardDTO> getMentoringBoardByQuestions(@RequestParam Integer userId) {
-        return MentoringBoardService.getMentoringBoardByQuestions(userId);
+    public List<MentoringBoardDTO> selectLeftOverQuestion(@RequestParam Integer userId) {
+        return MentoringBoardService.selectLeftOverQuestion(userId);
     }
 
 
