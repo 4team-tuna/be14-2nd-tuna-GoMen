@@ -1,4 +1,4 @@
-package com.tuna.gomen.board.domain.entity;
+package com.tuna.gomen.board.query.entity;
 
 import lombok.Getter;
 import lombok.Setter;
