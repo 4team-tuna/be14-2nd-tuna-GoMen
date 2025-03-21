@@ -29,6 +29,17 @@ public class BoardService {
                 .collect(Collectors.toList());
     }
 
+    // 특정 한 게시물 조회
+    public BoardDto getBoardDetails(int postId) {
+        // BoardEntity 반환을 예상하고, 이를 BoardDto로 변환
+        BoardEntity boardEntity = boardMapper.getBoardDetails(postId);
+        if (boardEntity == null) {
+            return null;  // 게시물이 없을 경우 null 반환
+        }
+        return convertToDto(boardEntity);  // 엔티티를 DTO로 변환하여 반환
+    }
+
+
     // 특정 사용자의 게시글 조회
     public List<BoardDto> getBoardsByUserId(Long userId) {
         return boardMapper.findByUserId(userId).stream()
