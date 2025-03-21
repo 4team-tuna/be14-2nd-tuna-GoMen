@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tuna.gomen.mapper.UserMapper">
+    <resultMap type="com.tuna.gomen.user.dto.UserDTO" id="userResultMap">
+        <id property="userId" column="user_id"/>
+        <result property="loginId" column="login_id"/>
+        <result property="password" column="password"/>
+        <result property="name" column="name"/>
+        <result property="personalNumber" column="personal_number"/>
+        <result property="phoneNumber" column="phone_number"/>
+        <result property="nickname" column="nickname"/>
+        <result property="createdAt" column="created_at"/>
+        <result property="updatedAt" column="updated_at"/>
+        <result property="willBeActivated" column="will_be_activated"/>
+        <result property="isQuitted" column="is_quitted"/>
+        <result property="githubAdress" column="github_adress"/>
+        <result property="extensionCount" column="extension_count"/>
+        <result property="careerInfo" column="career_info"/>
+        <result property="isMentor" column="is_mentor"/>
+        <result property="violationScore" column="violation_score"/>
+    </resultMap>
+
+<!--    전체 유저 데이터 조회-->
+<!--    localhost:8080/user/selectAll-->
+    <select id="selectAllUsers" resultMap="userResultMap">
+        SELECT
+            USER_ID,
+            LOGIN_ID,
+            PASSWORD,
+            NAME,
+            PERSONAL_NUMBER,
+            PHONE_NUMBER,
+            NICKNAME,
+            CREATED_AT,
+            UPDATED_AT,
+            WILL_BE_ACTIVATED,
+            IS_QUITTED,
+            GITHUB_ADRESS,
+            EXTENSION_COUNT,
+            CAREER_INFO,
+            IS_MENTOR,
+            VIOLATION_SCORE
+        FROM tbl_user;
+    </select>
+
+<!--    유저id로 유저 데이터 조회-->
+<!--    localhost:8080/api/user/findUserByUserId?userId=1-->
+    <select id="selectUserByUserId" resultMap="userResultMap" parameterType="int">
+        SELECT
+            USER_ID,
+            LOGIN_ID,
+            PASSWORD,
+            NAME,
+            PERSONAL_NUMBER,
+            NICKNAME,
+            CREATED_AT,
+            UPDATED_AT,
+            WILL_BE_ACTIVATED,
+            IS_QUITTED,
+            GITHUB_ADRESS,
+            EXTENSION_COUNT,
+            CAREER_INFO,
+            IS_MENTOR,
+            VIOLATION_SCORE
+        FROM tbl_user
+        WHERE USER_ID = ${userId}
+    </select>
+
+<!--    로그인id로 유저 데이터 조회-->
+<!--    localhost:8080/api/user/findUserPasswordByLoginId?loginId=user17-->
+    <select id="selectUserByLoginId" resultMap="userResultMap" parameterType="string">
+        SELECT
+            USER_ID,
+            LOGIN_ID,
+            PASSWORD,
+            NAME,
+            PERSONAL_NUMBER,
+            NICKNAME,
+            CREATED_AT,
+            UPDATED_AT,
+            WILL_BE_ACTIVATED,
+            IS_QUITTED,
+            GITHUB_ADRESS,
+            EXTENSION_COUNT,
+            CAREER_INFO,
+            IS_MENTOR,
+            VIOLATION_SCORE
+        FROM tbl_user
+        WHERE LOGIN_ID = '${loginId}'
+    </select>
+
+<!--    닉네임으로 유저 검색-->
+<!--    localhost:8080/api/user/findUserByNickname?nickname=a-->
+    <select id="selectUserByNickname" resultMap="userResultMap" parameterType="string">
+        SELECT
+            USER_ID,
+            LOGIN_ID,
+            PASSWORD,
+            NAME,
+            PERSONAL_NUMBER,
+            NICKNAME,
+            CREATED_AT,
+            UPDATED_AT,
+            WILL_BE_ACTIVATED,
+            IS_QUITTED,
+            GITHUB_ADRESS,
+            EXTENSION_COUNT,
+            CAREER_INFO,
+            IS_MENTOR,
+            VIOLATION_SCORE
+        FROM tbl_user
+        WHERE NICKNAME LIKE '%${nickname}%'
+    </select>
+
+<!--    게시글id로 작성자 닉네임 조회-->
+<!--    localhost:8080/api/user/findUserNicknameByPostId?postId=5-->
+    <select id="selectUserByPostId" resultMap="userResultMap" parameterType="int">
+        SELECT
+            USER_ID,
+            LOGIN_ID,
+            PASSWORD,
+            NAME,
+            PERSONAL_NUMBER,
+            NICKNAME,
+            CREATED_AT,
+            UPDATED_AT,
+            WILL_BE_ACTIVATED,
+            IS_QUITTED,
+            GITHUB_ADRESS,
+            EXTENSION_COUNT,
+            CAREER_INFO,
+            IS_MENTOR,
+            VIOLATION_SCORE
+        FROM tbl_user
+        WHERE user_id = (select user_id
+                           from tbl_board
+                           where post_id = ${postId})
+    </select>
+
+<!--    댓글id로 댓글 작성자 닉네임 조회-->
+<!--    localhost:8080/api/user/findUserNicknameByCommentId?commentId=3-->
+    <select id="selectUserByCommentId" resultMap="userResultMap" parameterType="int">
+        SELECT
+            USER_ID,
+            LOGIN_ID,
+            PASSWORD,
+            NAME,
+            PERSONAL_NUMBER,
+            NICKNAME,
+            CREATED_AT,
+            UPDATED_AT,
+            WILL_BE_ACTIVATED,
+            IS_QUITTED,
+            GITHUB_ADRESS,
+            EXTENSION_COUNT,
+            CAREER_INFO,
+            IS_MENTOR,
+            VIOLATION_SCORE
+        FROM tbl_user
+        WHERE user_id = (select user_id
+                           from tbl_comment
+                           where comment_id = ${commentId})
+    </select>
+
+<!--    질문id로 질문 작성자 닉네임 조회-->
+<!--    localhost:8080/api/user/findUserNicknameByQuestionId?questionId=1-->
+    <select id="selectUserByQuestionId" resultMap="userResultMap" parameterType="int">
+        SELECT
+            USER_ID,
+            LOGIN_ID,
+            PASSWORD,
+            NAME,
+            PERSONAL_NUMBER,
+            NICKNAME,
+            CREATED_AT,
+            UPDATED_AT,
+            WILL_BE_ACTIVATED,
+            IS_QUITTED,
+            GITHUB_ADRESS,
+            EXTENSION_COUNT,
+            CAREER_INFO,
+            IS_MENTOR,
+            VIOLATION_SCORE
+        FROM tbl_user
+        WHERE user_id = (select question_id
+                           from tbl_question
+                           where question_id = ${questionId})
+    </select>
+
+<!--    답변id로 답변 작성자 닉네임 조회-->
+<!--    localhost:8080/api/user/findUserNicknameByAnswerId?answerId=3-->
+    <select id="selectUserByAnswerId" resultMap="userResultMap" parameterType="int">
+        SELECT
+            USER_ID,
+            LOGIN_ID,
+            PASSWORD,
+            NAME,
+            PERSONAL_NUMBER,
+            NICKNAME,
+            CREATED_AT,
+            UPDATED_AT,
+            WILL_BE_ACTIVATED,
+            IS_QUITTED,
+            GITHUB_ADRESS,
+            EXTENSION_COUNT,
+            CAREER_INFO,
+            IS_MENTOR,
+            VIOLATION_SCORE
+        FROM tbl_user
+        WHERE user_id = (select answer_id
+                           from tbl_answer
+                           where answer_id = ${answerId})
+    </select>
+
+
+</mapper>
