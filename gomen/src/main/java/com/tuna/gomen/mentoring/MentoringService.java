@@ -8,12 +8,10 @@ import org.springframework.stereotype.Service;
 public class MentoringService {
 
     private MentoringMapper mentoringMapper;
-//    private UserMapper userMapper;
 
     @Autowired
     public MentoringService(MentoringMapper mentoringMapper) {
         this.mentoringMapper = mentoringMapper;
     }
 
-//    public void find
 }
