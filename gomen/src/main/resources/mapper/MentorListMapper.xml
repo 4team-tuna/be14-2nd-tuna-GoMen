@@ -11,9 +11,13 @@
         <result column="is_deleted" property="isDeleted"/>
     </resultMap>
 
+<!--    멘토 리스트 조회-->
     <select id="findAllActiveMentors" resultMap="mentorListResultMap">
-        SELECT mentor_id, m_expert, m_content, is_deleted
-        FROM tbl_mentor_list
-        WHERE is_deleted = 'N'
+        SELECT mentor_id
+             , m_expert
+             , m_content
+             , is_deleted
+          FROM tbl_mentor_list
+         WHERE is_deleted = 'N'
     </select>
 </mapper>

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/gomen")
+@RequestMapping("/gomen/mentorlist")
 @Slf4j
 public class MentorListController {
 
@@ -20,7 +20,8 @@ public class MentorListController {
         this.mentorListService = mentorListService;
     }
 
-    @GetMapping("/mentorlist")
+    // 멘토 리스트 조회
+    @GetMapping
     public List<MentorListDTO> getMentors() {
         return mentorListService.findAllActiveMentors();
     }

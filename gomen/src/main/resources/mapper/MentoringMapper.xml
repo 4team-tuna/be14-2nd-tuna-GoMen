@@ -16,6 +16,11 @@
 <!--    </resultMap>-->
 
     <!-- 사용자 목록 조회 -->
-
+    <select id="selectLeftoverQuestion" resultMap="leftoverReusltMap">
+        SELECT user_id
+             , leftover_questions
+          FROM tbl_mentoring_member
+         WHERE user_id = 23
+    </select>
 
 </mapper>
