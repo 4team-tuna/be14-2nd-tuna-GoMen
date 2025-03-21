@@ -1,7 +1,10 @@
 package com.tuna.gomen.board.service;
 
 import com.tuna.gomen.board.domain.entity.BoardEntity;
+import com.tuna.gomen.board.domain.entity.UserEntity;
 import com.tuna.gomen.board.dto.BoardDto;
+import com.tuna.gomen.board.dto.CommentDto;
+import com.tuna.gomen.board.dto.UserDto;
 import com.tuna.gomen.mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,25 +22,76 @@ public class BoardService {
         this.boardMapper = boardMapper;
     }
 
-    // 기존 Entity 조회 메서드 (필요시 보존)
-    public List<BoardEntity> getAllBoards() {
-        return boardMapper.findAll();
+    // 기존 전체 조회
+    public List<BoardDto> getAllBoardDtos() {
+        return boardMapper.findAll().stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
     }
 
-    // Entity를 DTO로 변환하는 메서드 추가
-    public List<BoardDto> getAllBoardDtos() {
-        List<BoardEntity> entities = boardMapper.findAll();
-        return entities.stream().map(entity -> {
-            BoardDto dto = new BoardDto();
-            dto.setPostId(entity.getPostId());
-            dto.setCategory(entity.getCategory());
-            dto.setTitle(entity.getTitle());
-            dto.setContent(entity.getContent());
-            dto.setCreatedAt(entity.getCreatedAt());
-            dto.setModifiedAt(entity.getModifiedAt());
-            dto.setIsBlinded(entity.getIsBlinded());
-            dto.setIsDeleted(entity.getIsDeleted());
-            dto.setUserId(entity.getUserId());
+    // 특정 사용자의 게시글 조회
+    public List<BoardDto> getBoardsByUserId(Long userId) {
+        return boardMapper.findByUserId(userId).stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+
+    // 특정 카테고리의 게시글 조회
+    public List<BoardDto> getBoardsByCategory(String category) {
+        return boardMapper.findByCategory(category).stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+
+    // 특정 키워드가 포함된 제목의 게시글 조회
+    public List<BoardDto> getBoardsByTitleKeyword(String keyword) {
+        return boardMapper.findByTitleKeyword(keyword).stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+
+
+
+    // Entity -> DTO 변환 메서드
+    private BoardDto convertToDto(BoardEntity entity) {
+        BoardDto dto = new BoardDto();
+        dto.setPostId(entity.getPostId());
+        dto.setCategory(entity.getCategory());
+        dto.setTitle(entity.getTitle());
+        dto.setContent(entity.getContent());
+        dto.setCreatedAt(entity.getCreatedAt());
+        dto.setModifiedAt(entity.getModifiedAt());
+        dto.setIsBlinded(entity.getIsBlinded());
+        dto.setIsDeleted(entity.getIsDeleted());
+        dto.setUserId(entity.getUserId());
+        return dto;
+    }
+
+    // 특정 게시글의 작성자 정보 조회
+    public UserDto getAuthorByPostId(Long postId) {
+        UserEntity user = boardMapper.findAuthorByPostId(postId);
+        if (user == null) return null;
+
+        UserDto dto = new UserDto();
+        dto.setUserId(user.getUserId());
+        dto.setLoginId(user.getLoginId());
+        dto.setName(user.getName());
+        dto.setPhoneNumber(user.getPhoneNumber());
+        dto.setNickname(user.getNickname());
+        dto.setCareerInfo(user.getCareerInfo());
+        dto.setCreatedAt(user.getCreatedAt());
+        return dto;
+    }
+
+    // 특정 게시글의 댓글 조회
+    public List<CommentDto> getCommentsByPostId(Long postId) {
+        return boardMapper.findCommentsByPostId(postId).stream().map(comment -> {
+            CommentDto dto = new CommentDto();
+            dto.setCommentId(comment.getCommentId());
+            dto.setCommentContent(comment.getCommentContent());
+            dto.setCreatedAt(comment.getCreatedAt());
+            dto.setUserId(comment.getUserId());
+            dto.setUserNickname(comment.getUserId() != null ? boardMapper.findAuthorByPostId(comment.getUserId()).getNickname() : "익명");
             return dto;
         }).collect(Collectors.toList());
     }
