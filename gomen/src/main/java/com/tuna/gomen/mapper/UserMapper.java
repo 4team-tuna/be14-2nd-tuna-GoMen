@@ -1,6 +1,6 @@
 package com.tuna.gomen.mapper;
 
-import com.tuna.gomen.user.UserDTO;
+import com.tuna.gomen.user.dto.UserDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

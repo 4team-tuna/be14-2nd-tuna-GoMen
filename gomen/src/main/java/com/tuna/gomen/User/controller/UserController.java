@@ -1,11 +1,11 @@
-package com.tuna.gomen.user;
+package com.tuna.gomen.user.controller;
 
+import com.tuna.gomen.user.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import com.tuna.gomen.user.UserController;
-import com.tuna.gomen.user.UserService;
+import com.tuna.gomen.user.service.UserService;
 
 import java.util.List;
 

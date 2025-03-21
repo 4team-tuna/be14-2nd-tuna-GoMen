@@ -1,8 +1,7 @@
-package com.tuna.gomen.user;
+package com.tuna.gomen.user.service;
 
 import com.tuna.gomen.mapper.UserMapper;
-import com.tuna.gomen.user.UserDTO;
-import org.mybatis.spring.SqlSessionTemplate;
+import com.tuna.gomen.user.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

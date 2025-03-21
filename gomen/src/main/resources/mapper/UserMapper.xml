@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tuna.gomen.mapper.UserMapper">
-    <resultMap type="com.tuna.gomen.user.UserDTO" id="userResultMap">
+    <resultMap type="com.tuna.gomen.user.dto.UserDTO" id="userResultMap">
         <id property="userId" column="user_id"/>
         <result property="loginId" column="login_id"/>
         <result property="password" column="password"/>

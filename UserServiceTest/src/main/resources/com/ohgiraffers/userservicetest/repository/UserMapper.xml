@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ohgiraffers.userservicetest.repository.UserMapper">
+    <resultMap type="com.ohgiraffers.userservicetest.dto.UserDTO" id="userResultMap">
+        <id property="userId" column="user_id"/>
+        <result property="loginId" column="login_id"/>
+        <result property="password" column="password"/>
+    </resultMap>
+
+    <!--    전체 유저 데이터 조회-->
+    <!--    localhost:8080/user/selectAll-->
+    <select id="selectAllUsers" resultMap="userResultMap">
+        SELECT
+            USER_ID,
+            LOGIN_ID,
+            PASSWORD
+        FROM tbl_user;
+    </select>
+</mapper>
