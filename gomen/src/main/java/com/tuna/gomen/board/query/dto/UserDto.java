@@ -1,4 +1,4 @@
-package com.tuna.gomen.board.domain.entity;
+package com.tuna.gomen.board.query.dto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class UserEntity {
+public class UserDto {
     private Long userId;
     private String loginId;
     private String name;

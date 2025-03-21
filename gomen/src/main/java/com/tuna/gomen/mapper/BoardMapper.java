@@ -1,9 +1,8 @@
 package com.tuna.gomen.mapper;
 
-import com.tuna.gomen.board.domain.entity.BoardEntity;
-import com.tuna.gomen.board.domain.entity.CommentEntity;
-import com.tuna.gomen.board.domain.entity.UserEntity;
-import com.tuna.gomen.board.dto.BoardDto;
+import com.tuna.gomen.board.query.entity.BoardEntity;
+import com.tuna.gomen.board.query.entity.CommentEntity;
+import com.tuna.gomen.board.query.entity.UserEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

@@ -1,10 +1,10 @@
-package com.tuna.gomen.board.service;
+package com.tuna.gomen.board.query.service;
 
-import com.tuna.gomen.board.domain.entity.BoardEntity;
-import com.tuna.gomen.board.domain.entity.UserEntity;
-import com.tuna.gomen.board.dto.BoardDto;
-import com.tuna.gomen.board.dto.CommentDto;
-import com.tuna.gomen.board.dto.UserDto;
+import com.tuna.gomen.board.query.entity.BoardEntity;
+import com.tuna.gomen.board.query.entity.UserEntity;
+import com.tuna.gomen.board.query.dto.BoardDto;
+import com.tuna.gomen.board.query.dto.CommentDto;
+import com.tuna.gomen.board.query.dto.UserDto;
 import com.tuna.gomen.mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,11 +31,11 @@ public class BoardService {
 
     // 특정 한 게시물 조회
     public BoardDto getBoardDetails(int postId) {
-        // BoardEntity 반환을 예상하고, 이를 BoardDto로 변환
         BoardEntity boardEntity = boardMapper.getBoardDetails(postId);
         if (boardEntity == null) {
             return null;  // 게시물이 없을 경우 null 반환
         }
+//        System.out.println("fileAddresses: " + boardEntity.getFileAddresses()); // 여기서 문제확인
         return convertToDto(boardEntity);  // 엔티티를 DTO로 변환하여 반환
     }
 
@@ -75,6 +75,7 @@ public class BoardService {
         dto.setIsBlinded(entity.getIsBlinded());
         dto.setIsDeleted(entity.getIsDeleted());
         dto.setUserId(entity.getUserId());
+        dto.setFileAddresses(entity.getFileAddresses());
         return dto;
     }
 

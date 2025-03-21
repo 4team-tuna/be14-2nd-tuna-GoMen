@@ -766,8 +766,8 @@ VALUES
     ('모바일 앱 개발팀 모집', 'iOS 개발팀', 'Swift와 iOS 개발 경험이 있는 팀원을 모집합니다.', 3, 'N', 'N', '2024-02-12 11:45:00'),
     ('데이터 분석팀 모집', '데이터 분석팀', 'Python과 데이터 분석 툴을 활용한 분석팀 모집', 4, 'N', 'N', '2024-02-15 13:00:00'),
     ('게임 개발팀 모집', 'Unity 게임팀', 'Unity로 게임을 개발할 팀원 모집', 5, 'N', 'N', '2024-02-18 09:20:00'),
-    ('DevOps 팀 모집', '클라우드 인프라 팀', 'AWS, Docker, Kubernetes 등을 다룰 DevOps 팀 모집', 6, 'N', 'N', '2024-02-21 16:30:00'),
-    ('풀스택 개발팀 모집', '풀스택 개발팀', '프론트엔드와 백엔드 모두 다룰 수 있는 팀원 모집', 7, 'N', 'N', '2024-02-25 14:15:00'),
+    ('DevOps 팀 모집', '클라우드 인프라 팀', 'AWS, Docker, Kubernetes 등을 다룰 DevOps 팀 모집', 6, 'N', 'Y', '2024-02-21 16:30:00'),
+    ('풀스택 개발팀 모집', '풀스택 개발팀', '프론트엔드와 백엔드 모두 다룰 수 있는 팀원 모집', 7, 'N', 'Y', '2024-02-25 14:15:00'),
     ('게임 기획팀 모집', '게임 기획 팀', '게임 디자인 및 기획에 참여할 팀원 모집', 8, 'N', 'N', '2024-02-28 12:05:00'),
     ('서버 개발팀 모집', 'Node.js 서버팀', 'Node.js와 Express.js를 이용한 서버 개발 팀원 모집', 9, 'N', 'N', '2024-03-02 10:40:00'),
     ('웹 디자인팀 모집', 'UI/UX 디자인 팀', '웹 디자인과 UX/UI를 담당할 디자이너 모집', 10, 'N', 'N', '2024-03-05 09:00:00'),
@@ -843,15 +843,15 @@ VALUES
     (5, 35, 'I have experience in cross-functional teams.', 'N'),
 
     -- 팀 6: 3명
-    (6, 36, 'Creative designer with strong marketing skills.', 'N'),
-    (6, 37, 'Experience in creative campaigns.', 'N'),
-    (6, 38, 'Passionate about innovative design.', 'N'),
+    (6, 36, 'Creative designer with strong marketing skills.', 'Y'),
+    (6, 37, 'Experience in creative campaigns.', 'Y'),
+    (6, 38, 'Passionate about innovative design.', 'Y'),
 
     -- 팀 7: 4명
-    (7, 39, 'Proficient in various programming languages.', 'N'),
-    (7, 40, 'Strong developer with team spirit.', 'N'),
-    (7, 41, 'I have several years of industry experience.', 'N'),
-    (7, 42, 'Looking to contribute to cutting-edge projects.', 'N'),
+    (7, 39, 'Proficient in various programming languages.', 'Y'),
+    (7, 40, 'Strong developer with team spirit.', 'Y'),
+    (7, 41, 'I have several years of industry experience.', 'Y'),
+    (7, 42, 'Looking to contribute to cutting-edge projects.', 'Y'),
 
     -- 팀 8: 3명
     (8, 43, 'Expert in data analytics and visualization.', 'N'),

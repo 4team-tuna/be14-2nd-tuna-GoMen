@@ -6,6 +6,6 @@ spring:
     password: gomendb
 
 mybatis:
-  type-aliases-package: com.tuna.gomen.report
+  type-aliases-package: com.tuna.gomen.report, com.tuna.gomen.teamRecruitBoard, com.tuna.gomen.applicant
   mapper-locations: classpath:mapper/*.xml
 

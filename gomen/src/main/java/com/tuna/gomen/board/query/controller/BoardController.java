@@ -1,9 +1,9 @@
-package com.tuna.gomen.board.controller;
+package com.tuna.gomen.board.query.controller;
 
-import com.tuna.gomen.board.dto.BoardDto;
-import com.tuna.gomen.board.dto.CommentDto;
-import com.tuna.gomen.board.dto.UserDto;
-import com.tuna.gomen.board.service.BoardService;
+import com.tuna.gomen.board.query.dto.BoardDto;
+import com.tuna.gomen.board.query.dto.CommentDto;
+import com.tuna.gomen.board.query.dto.UserDto;
+import com.tuna.gomen.board.query.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

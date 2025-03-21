@@ -1,4 +1,4 @@
-package com.tuna.gomen.board.dto;
+package com.tuna.gomen.board.query.dto;
 
 import lombok.Getter;
 import lombok.Setter;
