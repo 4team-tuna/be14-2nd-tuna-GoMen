@@ -1,4 +1,4 @@
-package com.tuna.gomen.user.repository;
+package com.tuna.gomen.user.command.repository;
 
 
 import com.tuna.gomen.user.command.entity.User;

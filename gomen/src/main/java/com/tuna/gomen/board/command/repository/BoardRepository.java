@@ -1,4 +1,4 @@
-package com.tuna.gomen.board.repository;
+package com.tuna.gomen.board.command.repository;
 
 
 import com.tuna.gomen.board.command.entity.Board;

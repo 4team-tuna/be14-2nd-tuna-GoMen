@@ -2,12 +2,12 @@ package com.tuna.gomen.bookMarkandLike.service;
 
 
 import com.tuna.gomen.board.command.entity.Board;
-import com.tuna.gomen.board.repository.BoardRepository;
+import com.tuna.gomen.board.command.repository.BoardRepository;
 import com.tuna.gomen.bookMarkandLike.dto.LikeDTO;
 import com.tuna.gomen.bookMarkandLike.entity.Like;
 import com.tuna.gomen.bookMarkandLike.repository.LikeRepository;
 import com.tuna.gomen.user.command.entity.User;
-import com.tuna.gomen.user.repository.UserRepository;
+import com.tuna.gomen.user.command.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
