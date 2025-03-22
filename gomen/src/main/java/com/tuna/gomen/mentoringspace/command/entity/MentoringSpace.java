@@ -1,4 +1,4 @@
-package com.tuna.gomen.mentoringspace.command;
+package com.tuna.gomen.mentoringspace.command.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -29,6 +29,6 @@ public class MentoringSpace {
     @Column(name = "is_activated", nullable = false)
     private String isActivated;
 
-    @Column(name = "user_id", nullable = false)
-    private Integer userId;
+    @Column(name = "mentor_id", nullable = false)
+    private Integer mentorId;
 }

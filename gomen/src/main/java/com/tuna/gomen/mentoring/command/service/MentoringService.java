@@ -22,7 +22,7 @@ public class MentoringService {
         this.mentorListRepository = mentorListRepository;
     }
 
-
+    @Transactional
     public Mentoring applyMentoring(MentoringRequest request) {
 
         boolean mentorExists = mentorListRepository.existsById(request.getMentorId());
