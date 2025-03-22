@@ -6,6 +6,7 @@ import com.tuna.gomen.bookMarkandLike.entity.Bookmark;
 import com.tuna.gomen.bookMarkandLike.service.BookmarkService;
 import com.tuna.gomen.bookMarkandLike.service.BookmarkService2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,6 +28,10 @@ public class BookmarkController {
         return bookmarkService.getBookmarkedPostsByUserId(userId);
     }
 
+    /// /////////////////////////////////////////////////
+    /// //////////////////////////////////////////
+    /// //////////////////////////////////////////////////
+    /// ///////////////////////////////////////////////////////////////////
     //    아래부터는 command
 
     @Autowired
@@ -44,6 +49,14 @@ public class BookmarkController {
             throw new IllegalArgumentException("Post ID cannot be null");
         }
         return bookmarkService2.addBookmark(userId, postId);
+    }
+
+
+    @DeleteMapping("/remove")
+    //http://localhost:8080/gomen/bookmarks/remove?userId=숫자&postId=숫자(db에 존재하는 데이터 아니면 오류뜸)
+    public ResponseEntity<String> removeBookmark(@RequestParam Integer userId, @RequestParam Integer postId) {
+        bookmarkService2.removeBookmark(userId, postId);
+        return ResponseEntity.ok("Bookmark removed successfully");
     }
 
 }
