@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
-@Service
+
+@Service("queryBookmarkService")  // 쿼리용 서비스
 public class BookmarkService {
 
     private final BookmarkMapper bookmarkMapper;
@@ -16,7 +17,7 @@ public class BookmarkService {
         this.bookmarkMapper = bookmarkMapper;
     }
 
-    public List<BookmarkedBoardDto> getBookmarkedPostsByUserId(Long userId) {
+    public List<BookmarkedBoardDto> getBookmarkedPostsByUserId(Integer userId) {
         return bookmarkMapper.findBookmarkedPostsByUserId(userId);
     }
 }

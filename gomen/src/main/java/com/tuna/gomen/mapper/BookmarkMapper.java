@@ -7,6 +7,6 @@ import java.util.List;
 
     @Mapper
     public interface BookmarkMapper {
-        List<BookmarkedBoardDto> findBookmarkedPostsByUserId(@Param("userId") Long userId);
+        List<BookmarkedBoardDto> findBookmarkedPostsByUserId(@Param("userId") Integer userId);
     }
 

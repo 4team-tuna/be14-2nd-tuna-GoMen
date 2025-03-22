@@ -4,6 +4,14 @@ spring:
     url: jdbc:mariadb://localhost:3306/gomendb
     username: gomendb
     password: gomendb
+  jpa:
+    hibernate:
+      ddl-auto: none   # DDL 자동 업데이트: 'none', 'update', 'create', 'create-drop' 중 선택
+    show-sql: true       # SQL 쿼리 로그 출력 여부
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect # MariaDB를 위한 Hibernate Dialect
+        format_sql: true    # 쿼리 포맷팅 여부
 
 mybatis:
   type-aliases-package: com.tuna.gomen.report, com.tuna.gomen.teamRecruitBoard, com.tuna.gomen.applicant
