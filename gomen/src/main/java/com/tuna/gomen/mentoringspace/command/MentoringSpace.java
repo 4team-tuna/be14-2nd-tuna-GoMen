@@ -1,16 +1,20 @@
 package com.tuna.gomen.mentoringspace.command;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
-@Table(name = "tbl_mentoring_sapce")
+@Table(name = "tbl_mentoring_space")
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
 public class MentoringSpace {
 
     @Id
     @Column(name = "mentoring_space_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer mentoringSpaceId;
 
     @Column(name = "personal_information", nullable = false)

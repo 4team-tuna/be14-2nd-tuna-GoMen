@@ -1,4 +1,6 @@
 package com.tuna.gomen.mentoringspace.command;
 
-public interface MentoringSpaceRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface MentoringSpaceRepository extends JpaRepository<MentoringSpace, Integer> {
 }

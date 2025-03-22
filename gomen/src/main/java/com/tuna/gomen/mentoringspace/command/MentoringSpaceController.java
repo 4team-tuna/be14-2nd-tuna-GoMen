@@ -1,8 +1,10 @@
 package com.tuna.gomen.mentoringspace.command;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -16,5 +18,9 @@ public class MentoringSpaceController {
         this.mentoringSpaceService = mentoringSpaceService;
     }
 
-//    @PostMapping("/")
+    @PostMapping("/create")
+    public ResponseEntity<MentoringSpace> saveOrUpdate(@RequestBody MentoringSpace space) {
+        MentoringSpace result = mentoringSpaceService.createMentoringSpace(space);
+        return ResponseEntity.ok(result);
+    }
 }
