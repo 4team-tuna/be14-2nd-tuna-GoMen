@@ -4,16 +4,14 @@ import com.tuna.gomen.mapper.MentoringMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+//@Service
 public class MentoringService {
 
     private MentoringMapper mentoringMapper;
-//    private UserMapper userMapper;
 
-    @Autowired
+//    @Autowired
     public MentoringService(MentoringMapper mentoringMapper) {
         this.mentoringMapper = mentoringMapper;
     }
 
-//    public void
 }
