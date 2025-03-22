@@ -555,23 +555,26 @@ VALUES
 ###################################################### tbl_like / tbl_bookmark
 
 CREATE TABLE `tbl_report_category` (
-                                       `violation_id`	INT	PRIMARY KEY NOT NULL AUTO_INCREMENT,
-                                       `minus_point`	INT	NOT NULL,
-                                       `content`	VARCHAR(255)	NOT NULL
+                                       `violation_id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+                                       `minus_point` INT NOT NULL,
+                                       `content` VARCHAR(255) NOT NULL,
+                                       `category_name` VARCHAR(255) NOT NULL
 );
 
-INSERT INTO `tbl_report_category` (`minus_point`, `content`)
+
+INSERT INTO `tbl_report_category` (`minus_point`, `content`, `category_name`)
 VALUES
-    (10, '부적절한 언어 사용'),
-    (30, '불법적인 내용의 게시물 업로드'),
-    (50, '허위 정보 유포'),
-    (100, '반복적인 악성 댓글 달기'),
-    (30, '게시물에서 다른 사용자 비방'),
-    (50, '회원 간 개인 정보 유출'),
-    (10, '불법 광고 게시물 등록'),
-    (100, '반복적으로 커뮤니티 규정 위반'),
-    (10, '스팸 메시지 전송'),
-    (50, '타인의 저작물 무단 복제');
+    (10, '부적절한 언어 사용', '언어폭력'),
+    (30, '불법적인 내용의 게시물 업로드', '불법콘텐츠'),
+    (50, '허위 정보 유포', '허위정보'),
+    (100, '반복적인 악성 댓글 달기', '악성댓글'),
+    (30, '게시물에서 다른 사용자 비방', '비방행위'),
+    (50, '회원 간 개인 정보 유출', '개인정보'),
+    (10, '불법 광고 게시물 등록', '광고/스팸'),
+    (100, '반복적으로 커뮤니티 규정 위반', '규칙위반'),
+    (10, '스팸 메시지 전송', '스팸'),
+    (50, '타인의 저작물 무단 복제', '저작권침해');
+
 
 ############################################################# tbl_report_category
 
@@ -961,7 +964,7 @@ CREATE TABLE `tbl_answer` (
                               `answer_id` INT NOT NULL AUTO_INCREMENT COMMENT 'AUTO_INCREMENT',
                               `answer_content` VARCHAR(255) NOT NULL,
                               `answer_created_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                                is_deleted VARCHAR(255) NOT NULL DEFAULT 'N',
+                              is_deleted VARCHAR(255) NOT NULL DEFAULT 'N',
                               `question_id` INT NULL,
                               `answer_member_id` INT NOT NULL,
                               `ref_answer_id` INT NULL,
@@ -1080,4 +1083,3 @@ VALUES
     ('file_path_30.mp4', 24);
 
 ################################################## tbl_board_file
-
