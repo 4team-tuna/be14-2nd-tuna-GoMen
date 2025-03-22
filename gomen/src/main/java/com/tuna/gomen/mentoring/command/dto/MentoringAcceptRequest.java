@@ -1,4 +1,4 @@
-package com.tuna.gomen.mentoring.command;
+package com.tuna.gomen.mentoring.command.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,8 +9,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class MentoringRequest {
+public class MentoringAcceptRequest {
     private Integer mentorId;
     private Integer menteeId;
     private Integer teamId;
+    private String isAccepted;
 }

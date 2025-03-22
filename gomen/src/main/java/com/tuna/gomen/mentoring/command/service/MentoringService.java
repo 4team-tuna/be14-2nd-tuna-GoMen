@@ -1,6 +1,11 @@
-package com.tuna.gomen.mentoring.command;
+package com.tuna.gomen.mentoring.command.service;
 
-import com.tuna.gomen.mentorList.command.MentorListRepository;
+import com.tuna.gomen.mentorList.command.repository.MentorListRepository;
+import com.tuna.gomen.mentoring.command.dto.MentoringAcceptRequest;
+import com.tuna.gomen.mentoring.command.dto.MentoringRequest;
+import com.tuna.gomen.mentoring.command.entity.MentoringRequestPK;
+import com.tuna.gomen.mentoring.command.entity.Mentoring;
+import com.tuna.gomen.mentoring.command.repository.MentoringRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

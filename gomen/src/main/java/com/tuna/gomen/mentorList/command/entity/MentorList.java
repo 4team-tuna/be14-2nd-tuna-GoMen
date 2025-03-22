@@ -1,4 +1,4 @@
-package com.tuna.gomen.mentorList.command;
+package com.tuna.gomen.mentorList.command.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

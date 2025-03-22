@@ -1,5 +1,9 @@
-package com.tuna.gomen.mentoring.command;
+package com.tuna.gomen.mentoring.command.controller;
 
+import com.tuna.gomen.mentoring.command.dto.MentoringAcceptRequest;
+import com.tuna.gomen.mentoring.command.dto.MentoringRequest;
+import com.tuna.gomen.mentoring.command.service.MentoringService;
+import com.tuna.gomen.mentoring.command.entity.Mentoring;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
