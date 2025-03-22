@@ -12,6 +12,11 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect # MariaDB를 위한 Hibernate Dialect
         format_sql: true    # 쿼리 포맷팅 여부
+  servlet:
+    multipart:
+      enabled: true         # 멀티파트 업로드 활성화
+      max-file-size: 2MB    # 파일 크기 제한
+      max-request-size: 2MB # 전체 요청 크기 제한
 
 mybatis:
   type-aliases-package: com.tuna.gomen.report, com.tuna.gomen.teamRecruitBoard, com.tuna.gomen.applicant

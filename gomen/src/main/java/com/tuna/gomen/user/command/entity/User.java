@@ -5,6 +5,8 @@ import lombok.Setter;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @Entity
@@ -15,7 +17,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String loginId;
 
     @Column(nullable = false)
@@ -30,8 +32,33 @@ public class User {
     @Column(nullable = false)
     private String phoneNumber;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String nickname;
 
-    // 기타 필드 생략
+    @Column(nullable = false)
+    private LocalDateTime createdAt = LocalDateTime.now();
+
+    @Column
+    private LocalDateTime modifiedAt;
+
+    @Column(nullable = false)
+    private LocalDateTime willBeActivated = LocalDateTime.now();
+
+    @Column(nullable = false, length = 1)
+    private String isQuitted = "N";
+
+    @Column
+    private String githubAddress;
+
+    @Column(nullable = false)
+    private int extensionCount = 0;
+
+    @Column
+    private String careerInfo;
+
+    @Column(nullable = false, length = 1)
+    private String isMentor = "N";
+
+    @Column(nullable = false)
+    private int violationScore = 0;
 }

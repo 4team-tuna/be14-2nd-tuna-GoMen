@@ -1,11 +1,13 @@
 package com.tuna.gomen.board.command.entity;
 
+import com.tuna.gomen.file.entity.BoardFile;
 import com.tuna.gomen.user.command.entity.User;
 import lombok.Getter;
 import lombok.Setter;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -41,4 +43,14 @@ public class Board {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    // 📌 파일 리스트 추가 (Board <-> BoardFile 연결)
+    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<BoardFile> files;
+
+    // 📌 파일 추가 메서드
+    public void addFile(BoardFile file) {
+        file.setBoard(this);
+        this.files.add(file);
+    }
 }
