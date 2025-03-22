@@ -51,4 +51,18 @@ public class BookmarkService2 {
 
         return new BookmarkDTO(userId, postId);  // 엔티티 → DTO 변환 후 반환
     }
+
+    @Transactional
+    public void removeBookmark(Integer userId, Integer postId) {
+        System.out.println("In Service Layer: Removing bookmark for postId = " + postId);
+
+        // 사용자가 해당 post를 북마크했는지(존재하는 데이터인지 확인) 아니면 오류.
+        Bookmark bookmark = bookmarkRepository.findByUserIdAndPostId(userId, postId)
+                .orElseThrow(() -> new RuntimeException("Bookmark not found"));
+
+        bookmarkRepository.deleteByUserIdAndPostId(userId, postId);
+
+        System.out.println("Bookmark removed successfully for postId = " + postId);
+    }
+
 }
