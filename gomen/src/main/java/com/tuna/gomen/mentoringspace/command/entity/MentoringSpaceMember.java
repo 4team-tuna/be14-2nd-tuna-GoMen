@@ -3,31 +3,41 @@ package com.tuna.gomen.mentoringspace.command.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Table(name = "tbl_mentoring_member")
+@IdClass(MentoringSpaceMemberPK.class)
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 public class MentoringSpaceMember {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "mentoring_space_member_id")
-    private Integer id;
+    @Column(name = "mentoring_space_id")
+    private Integer mentoringSpace;
+
+    @Id
+    @Column(name = "user_id")
+    private Integer mentee;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "mentoring_space_id", nullable = false)
-    private MentoringSpace mentoringSpace;
+    @JoinColumn(name = "mentoring_space_id", insertable = false, updatable = false)
+    private MentoringSpace mentoringSpaceEntity;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User mentee;
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    private User userEntity;
 
-    @Column(name = "joined_at", nullable = false)
-    private LocalDateTime joinedAt;
+    @Column(name = "leftover_questions", nullable = false)
+    private Integer leftoverQuestion = 10;
+
+    @Override
+    public String toString() {
+        return "MentoringSpaceMember{" +
+                "mentoringSpace=" + mentoringSpace +
+                ", mentee=" + mentee +
+                ", leftoverQuestion=" + leftoverQuestion +
+                '}';
+    }
 
 }

@@ -1,13 +1,12 @@
 package com.tuna.gomen.mentoringspace.command.controller;
 
+import com.tuna.gomen.mentoringspace.command.dto.MentoringSpaceMemberRequest;
+import com.tuna.gomen.mentoringspace.command.dto.MentoringSpaceMemberResponse;
 import com.tuna.gomen.mentoringspace.command.entity.MentoringSpaceMember;
 import com.tuna.gomen.mentoringspace.command.service.MentoringSpaceMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/gomen/mentoringspace/member")
@@ -20,10 +19,20 @@ public class MentoringSpaceMemberController {
         this.memberService = memberService;
     }
 
-    @PostMapping("/register")
-    public ResponseEntity<MentoringSpaceMember> register(@RequestParam Integer mentoringSpaceId,
-                                                         @RequestParam Integer userId) {
-        MentoringSpaceMember registered = memberService.registerMember(mentoringSpaceId, userId);
-        return ResponseEntity.ok(registered);
+    @PostMapping("/add")
+    public ResponseEntity<MentoringSpaceMemberResponse> addMember(@RequestBody MentoringSpaceMemberRequest request) {
+
+        MentoringSpaceMember registered = memberService.addMember(
+                request.getMentoringSpaceId(),
+                request.getUserId()
+        );
+
+        MentoringSpaceMemberResponse response = new MentoringSpaceMemberResponse(
+                registered.getMentoringSpace(),
+                registered.getMentee(),
+                registered.getLeftoverQuestion()
+        );
+
+        return ResponseEntity.ok(response);
     }
 }
