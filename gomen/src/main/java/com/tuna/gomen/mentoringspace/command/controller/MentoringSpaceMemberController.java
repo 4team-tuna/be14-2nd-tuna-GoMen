@@ -19,6 +19,8 @@ public class MentoringSpaceMemberController {
         this.memberService = memberService;
     }
 
+    // 멘토링 멤버 등록
+    // localhost:8080/gomen/mentoringspace/member/add
     @PostMapping("/add")
     public ResponseEntity<MentoringSpaceMemberResponse> addMember(@RequestBody MentoringSpaceMemberRequest request) {
 

@@ -21,5 +21,8 @@ public class User {
     @Column(name = "user_id")
     private Integer userId;
 
+    @Column(name = "is_mentor")
+    private String isMentor;
+
 
 }

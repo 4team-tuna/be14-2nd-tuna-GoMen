@@ -18,12 +18,16 @@ public class MentoringSpaceController {
         this.mentoringSpaceService = mentoringSpaceService;
     }
 
+    // 멘토링 공간 생성
+    // localhost:8080/gomen/mentoringspace/create
     @PostMapping("/create")
     public ResponseEntity<MentoringSpace> createMentoringSpace(@RequestBody MentoringSpace request) {
         MentoringSpace result = mentoringSpaceService.createMentoringSpace(request);
         return ResponseEntity.ok(result);
     }
 
+    // 멘토링 공간 수정
+    // localhost:8080/gomen/mentoringspace/update/31
     @PatchMapping("/update/{mentoringSpaceId}")
     public ResponseEntity<MentoringSpace> updateMentoringSpace(@PathVariable Integer mentoringSpaceId,
                                                                @RequestBody MentoringSpace request) {
