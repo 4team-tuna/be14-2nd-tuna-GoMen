@@ -58,11 +58,6 @@ public class BookmarkController {
     }
 
 
-    @DeleteMapping("/remove")
-    //http://localhost:8080/gomen/bookmarks/remove?userId=숫자&postId=숫자(db에 존재하는 데이터 아니면 오류뜸)
-    public ResponseEntity<String> removeBookmark(@RequestParam Integer userId, @RequestParam Integer postId) {
-        bookmarkService2.removeBookmark(userId, postId);
-        return ResponseEntity.ok("Bookmark removed successfully");
-    }
+
 
 }
