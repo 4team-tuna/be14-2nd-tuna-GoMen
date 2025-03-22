@@ -33,5 +33,8 @@ public class User {
     @Column(nullable = false)
     private String nickname;
 
+    @Column
+    private String isMentor;
+
     // 기타 필드 생략
 }

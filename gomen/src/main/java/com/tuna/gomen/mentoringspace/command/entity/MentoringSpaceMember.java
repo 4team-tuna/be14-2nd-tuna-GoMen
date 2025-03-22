@@ -1,5 +1,6 @@
 package com.tuna.gomen.mentoringspace.command.entity;
 
+import com.tuna.gomen.user.command.entity.User;
 import jakarta.persistence.*;
 import lombok.*;
 

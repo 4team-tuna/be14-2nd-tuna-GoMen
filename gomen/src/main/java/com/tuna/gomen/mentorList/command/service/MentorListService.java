@@ -5,8 +5,8 @@ import com.tuna.gomen.mentorList.command.dto.MentorListResponse;
 import com.tuna.gomen.mentorList.command.entity.MentorList;
 import com.tuna.gomen.mentorList.command.repository.MentorListRepository;
 
-import com.tuna.gomen.mentoringspace.command.entity.User;
-import com.tuna.gomen.mentoringspace.command.repository.UserRepository;
+import com.tuna.gomen.user.command.entity.User;
+import com.tuna.gomen.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
