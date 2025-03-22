@@ -637,7 +637,7 @@ VALUES
 ######################################################################################### tbl_report
 
 CREATE TABLE `tbl_mentor_list` (
-                                   `mentor_id`	INT	NOT NULL,
+                                   `mentor_id`	INT NOT NULL PRIMARY KEY,
                                    `m_expert`	VARCHAR(255)	NULL,
                                    `m_content`	VARCHAR(255)	NULL,
                                    `is_deleted`	VARCHAR(255)	NOT NULL	DEFAULT 'N'
@@ -660,8 +660,8 @@ CREATE TABLE `tbl_mentoring_space` (
                                        `information_is_opened`	VARCHAR(255)	NOT NULL,
                                        `extension_count`	INT	NOT NULL	DEFAULT 0,
                                        `is_activated`	VARCHAR(255)	NOT NULL	DEFAULT 'Y'	,
-                                       `user_id`	INT	NOT NULL,
-                                       CONSTRAINT fk_tbl_mentoring_space_to_tbl_user FOREIGN KEY (user_id) REFERENCES tbl_user(user_id)
+                                       `mentor_id`	INT	NOT NULL,
+                                       CONSTRAINT fk_tbl_mentoring_space_to_tbl_mentor_list FOREIGN KEY (mentor_id) REFERENCES tbl_mentor_list(mentor_id)
 );
 
 INSERT INTO `tbl_mentoring_space` (
@@ -669,7 +669,7 @@ INSERT INTO `tbl_mentoring_space` (
                                   , `information_is_opened`
                                   , `extension_count`
                                   , `is_activated`
-                                  , `user_id`
+                                  , `mentor_id`
 ) VALUES
       ('연락처: 010-1234-5678, 카카오톡 ID: mentor1', 'N', 0, 'Y', 1),
       ('연락처: 010-2345-6789, 카카오톡 ID: devmentor2', 'Y', 2, 'Y', 2),
