@@ -1,6 +1,6 @@
 package com.tuna.gomen.mapper;
 
-import com.tuna.gomen.mentoringBoard.domain.entity.MentoringBoard;
+import com.tuna.gomen.mentoringBoard.query.domain.entity.MentoringBoard;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package com.tuna.gomen.mentoringBoard.controller;
+package com.tuna.gomen.mentoringBoard.query.controller;
 
-import com.tuna.gomen.mentoringBoard.dto.MentoringBoardDTO;
+import com.tuna.gomen.mentoringBoard.query.dto.MentoringBoardDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +15,10 @@ import java.util.List;
 @Slf4j
 public class MentoringBoardController {
 
-    private final com.tuna.gomen.mentoringBoard.service.MentoringBoardService MentoringBoardService;
+    private final com.tuna.gomen.mentoringBoard.query.service.MentoringBoardService MentoringBoardService;
 
     @Autowired
-    public MentoringBoardController(com.tuna.gomen.mentoringBoard.service.MentoringBoardService mentoringBoardService) {
+    public MentoringBoardController(com.tuna.gomen.mentoringBoard.query.service.MentoringBoardService mentoringBoardService) {
         MentoringBoardService = mentoringBoardService;
     }
 

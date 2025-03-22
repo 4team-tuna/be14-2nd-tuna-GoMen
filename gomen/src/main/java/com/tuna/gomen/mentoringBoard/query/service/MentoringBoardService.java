@@ -1,6 +1,6 @@
-package com.tuna.gomen.mentoringBoard.service;
+package com.tuna.gomen.mentoringBoard.query.service;
 
-import com.tuna.gomen.mentoringBoard.dto.MentoringBoardDTO;
+import com.tuna.gomen.mentoringBoard.query.dto.MentoringBoardDTO;
 
 import java.util.List;
 

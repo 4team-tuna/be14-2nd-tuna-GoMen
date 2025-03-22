@@ -1,4 +1,4 @@
-package com.tuna.gomen.mentorList.domain.entity;
+package com.tuna.gomen.mentorList.query.domain.entity;
 
 import lombok.*;
 

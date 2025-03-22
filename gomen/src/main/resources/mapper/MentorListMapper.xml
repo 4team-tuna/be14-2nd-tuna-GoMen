@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.tuna.gomen.mapper.MentorListMapper">
-    <resultMap id="mentorListResultMap" type="com.tuna.gomen.mentorList.domain.entity.MentorList">
+    <resultMap id="mentorListResultMap" type="com.tuna.gomen.mentorList.query.domain.entity.MentorList">
         <id column="mentor_id" property="mentorId"/>
         <result column="m_expert" property="mExpert"/>
         <result column="m_content" property="mContent"/>

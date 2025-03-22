@@ -1,4 +1,4 @@
-package com.tuna.gomen.mentoringBoard.dto;
+package com.tuna.gomen.mentoringBoard.query.dto;
 
 import lombok.*;
 
