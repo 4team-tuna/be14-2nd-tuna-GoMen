@@ -38,17 +38,23 @@ public class BookmarkController {
     private BookmarkService2 bookmarkService2;
 
     @PostMapping("/add")
-//    http://localhost:8080/gomen/bookmarks/add?userId=숫자&postId=숫자
-    public BookmarkDTO addBookmark(@RequestParam Integer userId, @RequestParam Integer postId) {
+// URL: http://localhost:8080/gomen/bookmarks/add
+    public BookmarkDTO addBookmark(@RequestBody Bookmark request) {
+        System.out.println("컨트롤러: Received postId: " + request.getPostId());
 
-        // 디버그용 로그 출력
-        System.out.println("컨트롤러: Received postId: " + postId);
-
-        // postId가 null일 경우 예외 처리
-        if (postId == null) {
+        if (request.getPostId() == null) {
             throw new IllegalArgumentException("Post ID cannot be null");
         }
-        return bookmarkService2.addBookmark(userId, postId);
+
+        return bookmarkService2.addBookmark(request.getUserId(), request.getPostId());
+    }
+
+
+    @DeleteMapping("/remove")
+    //http://localhost:8080/gomen/bookmarks/remove?userId=숫자&postId=숫자(db에 존재하는 데이터 아니면 오류뜸)
+    public ResponseEntity<String> removeBookmark(@RequestParam Integer userId, @RequestParam Integer postId) {
+        bookmarkService2.removeBookmark(userId, postId);
+        return ResponseEntity.ok("Bookmark removed successfully");
     }
 
 
