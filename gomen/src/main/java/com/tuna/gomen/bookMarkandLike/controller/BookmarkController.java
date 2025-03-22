@@ -33,6 +33,7 @@ public class BookmarkController {
     private BookmarkService2 bookmarkService2;
 
     @PostMapping("/add")
+//    http://localhost:8080/gomen/bookmarks/add?userId=숫자&postId=숫자
     public BookmarkDTO addBookmark(@RequestParam Integer userId, @RequestParam Integer postId) {
 
         // 디버그용 로그 출력
