@@ -43,4 +43,6 @@ public class User {
     private String isMentor;
 
     // 기타 필드 생략
+
+
 }
