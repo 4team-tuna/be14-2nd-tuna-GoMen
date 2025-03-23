@@ -20,9 +20,23 @@ public class AnswerController {
 
     // 답변 등록
     // localhost:8080/gomen/answers/create/1
+    // localhost:8080/gomen/answers/create/5
     @PostMapping("/create/{userId}")
     public ResponseEntity<AnswerResponse> createAnswer(@PathVariable Integer userId,
                                                         @RequestBody AnswerRequest request) {
         return ResponseEntity.ok(answerService.createAnswer(userId,request));
+    }
+
+    @PatchMapping("/update/{answerId}/{userId}")
+    public ResponseEntity<AnswerResponse> updateAnswer(@PathVariable Integer answerId,
+                                                       @PathVariable Integer userId,
+                                                       @RequestBody AnswerRequest request) {
+        return ResponseEntity.ok(answerService.updateAnswer(answerId,userId,request));
+    }
+
+    @DeleteMapping("/delete/{answerId}/{userId}")
+    public ResponseEntity<AnswerResponse> deleteAnswer(@PathVariable Integer answerId,
+                                                       @PathVariable Integer userId) {
+        return ResponseEntity.ok(answerService.deleteAnswer(answerId,userId));
     }
 }

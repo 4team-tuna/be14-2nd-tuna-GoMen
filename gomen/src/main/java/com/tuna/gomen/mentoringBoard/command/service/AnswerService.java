@@ -7,7 +7,6 @@ import com.tuna.gomen.mentoringBoard.command.entity.Question;
 import com.tuna.gomen.mentoringBoard.command.repository.AnswerRepository;
 import com.tuna.gomen.mentoringBoard.command.repository.QuestionRepository;
 import com.tuna.gomen.mentoringspace.command.entity.MentoringSpace;
-import com.tuna.gomen.mentoringspace.command.repository.MentoringSpaceMemberRepository;
 import com.tuna.gomen.mentoringspace.command.repository.MentoringSpaceRepository;
 import com.tuna.gomen.user.command.entity.User;
 import com.tuna.gomen.user.repository.UserRepository;
@@ -39,35 +38,44 @@ public class AnswerService {
 
     @Transactional
     public AnswerResponse createAnswer(Integer userId, AnswerRequest request) {
-        Question question = questionRepository.findById(request.getQuestionId())
-                .orElseThrow(() -> new IllegalArgumentException("해당 질문이 존재하지 않습니다."));
-
-        Integer mentoringSpaceId = question.getMentoringSpaceId().getMentoringSpaceId();
-
-        MentoringSpace mentoringSpace = mentoringSpaceRepository.findById(mentoringSpaceId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 멘토링 공간이 존재하지 않습니다."));
-
-        User member = userRepository.findById(userId)
+        User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("유저 없음"));
-
-        boolean isMentor = mentoringSpace.getMentorId().equals(userId);
-        boolean isMember = question.getMemberId().getUserId().equals(userId);
-
-        if (!(isMentor || isMember)) {
-            throw new IllegalArgumentException("멘토링 공간의 멘토 또는 질문 작성자만 답변할 수 있습니다.");
-        }
 
         Answer answer = new Answer();
         answer.setAnswerContent(request.getAnswerContent());
-        answer.setAnswerMemberId(member);
-        answer.setQuestionId(question);
-        answer.setMentoringSpaceId(question.getMentoringSpaceId());
+        answer.setAnswerMemberId(user);
         answer.setAnswerCreatedTime(LocalDateTime.now());
 
         if (request.getRefAnswerId() != null) {
+            // 대댓글 처리 (질문자는 refAnswerId만 가지고 요청)
             Answer refAnswer = answerRepository.findById(request.getRefAnswerId())
                     .orElseThrow(() -> new IllegalArgumentException("참조 답변이 존재하지 않습니다."));
+
+            Question question = refAnswer.getQuestionId();
+            MentoringSpace space = refAnswer.getMentoringSpaceId();
+
+            boolean isMember = question.getMemberId().getUserId().equals(userId);
+
+            if (!isMember) {
+                throw new IllegalArgumentException("질문자만 대댓글을 작성할 수 있습니다.");
+            }
+
+            answer.setQuestionId(question);
+            answer.setMentoringSpaceId(space);
             answer.setRefAnswerId(refAnswer);
+        } else {
+            // 일반 답변 처리 (멘토만 가능)
+            Question question = questionRepository.findById(request.getQuestionId())
+                    .orElseThrow(() -> new IllegalArgumentException("해당 질문이 존재하지 않습니다."));
+
+            MentoringSpace space = question.getMentoringSpaceId();
+
+            if (!space.getMentorId().equals(userId)) {
+                throw new IllegalArgumentException("멘토만 답변을 작성할 수 있습니다.");
+            }
+
+            answer.setQuestionId(question);
+            answer.setMentoringSpaceId(space);
         }
 
         Answer saved = answerRepository.save(answer);
@@ -79,8 +87,62 @@ public class AnswerService {
                 saved.getQuestionId().getQuestionId(),
                 saved.getAnswerMemberId().getUserId(),
                 saved.getMentoringSpaceId().getMentoringSpaceId(),
-                saved.getRefAnswerId() != null ? saved.getRefAnswerId().getAnswerId() : null
+                saved.getRefAnswerId() != null ? saved.getRefAnswerId().getAnswerId() : null,
+                saved.getIsDeleted()
         );
 
+    }
+
+    @Transactional
+    public AnswerResponse updateAnswer(Integer answerId,Integer userId, AnswerRequest request) {
+
+        Answer answer = answerRepository.findById(answerId)
+                .orElseThrow(() -> new IllegalArgumentException("답변이 존재하지 않습니다."));
+
+        if (!answer.getAnswerMemberId().getUserId().equals(userId)) {
+            throw new IllegalArgumentException("본인이 작성한 답변만 수정할 수 있습니다.");
+        }
+
+        if ("Y".equals(answer.getIsDeleted())) {
+            throw new IllegalArgumentException("삭제된 답변은 수정할 수 없습니다.");
+        }
+
+        answer.setAnswerContent(request.getAnswerContent());
+
+        return new AnswerResponse(
+                answer.getAnswerId(),
+                answer.getAnswerContent(),
+                answer.getAnswerCreatedTime(),
+                answer.getQuestionId().getQuestionId(),
+                answer.getAnswerMemberId().getUserId(),
+                answer.getMentoringSpaceId().getMentoringSpaceId(),
+                answer.getRefAnswerId() != null ? answer.getRefAnswerId().getAnswerId() : null,
+                answer.getIsDeleted()
+        );
+    }
+
+    @Transactional
+    public AnswerResponse deleteAnswer(Integer answerId, Integer userId) {
+        Answer answer = answerRepository.findById(answerId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 답변이 존재하지 않습니다."));
+
+        // 작성자 본인만 삭제 가능
+        if (!answer.getAnswerMemberId().getUserId().equals(userId)) {
+            throw new IllegalArgumentException("답변 작성자만 삭제할 수 있습니다.");
+        }
+
+        answer.setIsDeleted("Y");
+        answerRepository.save(answer);
+
+        return new AnswerResponse(
+                answer.getAnswerId(),
+                answer.getAnswerContent(),
+                answer.getAnswerCreatedTime(),
+                answer.getQuestionId().getQuestionId(),
+                answer.getAnswerMemberId().getUserId(),
+                answer.getMentoringSpaceId().getMentoringSpaceId(),
+                answer.getRefAnswerId() != null ? answer.getRefAnswerId().getAnswerId() : null,
+                answer.getIsDeleted()
+        );
     }
 }

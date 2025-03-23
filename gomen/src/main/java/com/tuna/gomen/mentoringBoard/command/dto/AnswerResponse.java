@@ -19,4 +19,5 @@ public class AnswerResponse {
     private Integer answerMemberId;
     private Integer mentoringSpaceId;
     private Integer refAnswerId;
+    private String isDeleted;
 }
