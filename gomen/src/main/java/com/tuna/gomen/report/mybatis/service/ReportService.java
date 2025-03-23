@@ -1,11 +1,15 @@
-package com.tuna.gomen.report;
+// 📁 com.tuna.gomen.report.mybatis.service
+
+package com.tuna.gomen.report.mybatis.service;
 
 import com.tuna.gomen.mapper.ReportMapper;
+import com.tuna.gomen.report.mybatis.model.Report;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
-@Service
+@Service("mybatisReportService")
 @RequiredArgsConstructor
 public class ReportService {
     private final ReportMapper reportMapper;
@@ -14,4 +18,3 @@ public class ReportService {
         return reportMapper.getProcessedReportsWithUser();
     }
 }
-

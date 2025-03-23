@@ -4,7 +4,7 @@
 
 <mapper namespace="com.tuna.gomen.mapper.ReportMapper">
 
-    <resultMap id="ReportWithUserResultMap" type="com.tuna.gomen.report.Report">
+    <resultMap id="ReportWithUserResultMap" type="com.tuna.gomen.report.mybatis.model.Report">
         <id column="report_id" property="reportId"/>
         <result column="report_content" property="reportContent"/>
         <result column="created_at" property="createdAt"/>
@@ -15,10 +15,7 @@
         <result column="report_target_user_id" property="reportTargetUserId"/>
         <result column="comment_id" property="commentId"/>
         <result column="violation_id" property="violationId"/>
-
-        <!-- 신고한 회원 닉네임 -->
         <result column="reporter_nickname" property="reporterNickname"/>
-        <!-- 신고 대상 회원 닉네임 -->
         <result column="reported_nickname" property="reportedNickname"/>
     </resultMap>
 
@@ -42,7 +39,7 @@
         WHERE r.is_processed = 'Y'
     </select>
 
-
 </mapper>
+
 
 

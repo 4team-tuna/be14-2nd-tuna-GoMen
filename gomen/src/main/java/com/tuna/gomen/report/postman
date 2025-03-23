@@ -1,0 +1,22 @@
+[회원 신고]
+http://localhost:8080/gomen/report
+body
+{
+  "reportContent": "욕설로 인해 신고합니다.",
+  "posterId": 5,
+  "reportTargetUserId": 30,
+  "violationId": 2
+}
+----------------------------------------------------
+
+[신고 처리상태 Y로 변경]
+http://localhost:8080/gomen/report/요기에 신고 id 넣기/process?status=Y
+----------------------------------------------------
+
+[처리 완료 신고 목록]
+http://localhost:8080/gomen/report/processed
+----------------------------------------------------
+
+[처리 미완료 신고 목록]
+http://localhost:8080/gomen/report/unprocessed
+----------------------------------------------------

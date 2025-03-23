@@ -33,5 +33,25 @@ public class User {
     @Column(nullable = false)
     private String nickname;
 
+    @Column
+    private Integer violationScore;
+
+    @Column
+    private String IsQuitted;
+
+
+
+
+
+
+
+
+
+
+
+
+
     // 기타 필드 생략
+
+
 }
