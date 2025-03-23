@@ -1,11 +1,13 @@
 package com.tuna.gomen.mentoringspace.command.repository;
 
+import com.tuna.gomen.mentoringspace.command.entity.MentoringSpace;
 import com.tuna.gomen.mentoringspace.command.entity.MentoringSpaceMember;
+import com.tuna.gomen.user.command.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MentoringSpaceMemberRepository extends JpaRepository<MentoringSpaceMember, Integer> {
-    boolean existsByMentoringSpaceAndMentee(Integer mentoringSpace, Integer mentee);
+    boolean existsByMentoringSpaceIdAndUserId(MentoringSpace mentoringSpace, User userId);
 
 }

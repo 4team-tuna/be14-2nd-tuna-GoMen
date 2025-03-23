@@ -14,20 +14,14 @@ import lombok.*;
 public class MentoringSpaceMember {
 
     @Id
-    @Column(name = "mentoring_space_id")
-    private Integer mentoringSpace;
-
-    @Id
-    @Column(name = "user_id")
-    private Integer mentee;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mentoring_space_id")
-    private MentoringSpace mentoringSpaceEntity;
+    private MentoringSpace mentoringSpaceId;
 
+    @Id
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User userEntity;
+    private User userId;
 
     @Column(name = "leftover_questions", nullable = false)
     private Integer leftoverQuestion = 10;
@@ -35,8 +29,6 @@ public class MentoringSpaceMember {
     @Override
     public String toString() {
         return "MentoringSpaceMember{" +
-                "mentoringSpace=" + mentoringSpace +
-                ", mentee=" + mentee +
                 ", leftoverQuestion=" + leftoverQuestion +
                 '}';
     }

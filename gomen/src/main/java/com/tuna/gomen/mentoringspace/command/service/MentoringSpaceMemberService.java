@@ -29,21 +29,20 @@ public class MentoringSpaceMemberService {
 
     @Transactional
     public MentoringSpaceMember addMember(Integer mentoringSpaceId, Integer userId) {
-        if (mentoringSpaceMemberRepository.existsByMentoringSpaceAndMentee(mentoringSpaceId, userId)) {
-            throw new IllegalArgumentException("이미 등록된 멤버입니다.");
-        }
-
         MentoringSpace space = mentoringSpaceRepository.findById(mentoringSpaceId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 멘토링 공간입니다."));
 
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 사용자입니다."));
 
+        // 여기서 exists 확인
+        if (mentoringSpaceMemberRepository.existsByMentoringSpaceIdAndUserId(space, user)) {
+            throw new IllegalArgumentException("이미 등록된 멤버입니다.");
+        }
+
         MentoringSpaceMember member = new MentoringSpaceMember();
-        member.setMentoringSpace(space.getMentoringSpaceId());  // ID 값 세팅
-        member.setMentee(user.getUserId());                     // ID 값 세팅
-        member.setMentoringSpaceEntity(space);                  // 연관관계 객체 세팅
-        member.setUserEntity(user);                             // 연관관계 객체 세팅
+        member.setMentoringSpaceId(space);
+        member.setUserId(user);
 
         return mentoringSpaceMemberRepository.save(member);
     }

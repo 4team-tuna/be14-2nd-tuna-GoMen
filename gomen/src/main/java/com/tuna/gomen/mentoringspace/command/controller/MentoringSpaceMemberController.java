@@ -30,8 +30,8 @@ public class MentoringSpaceMemberController {
         );
 
         MentoringSpaceMemberResponse response = new MentoringSpaceMemberResponse(
-                registered.getMentoringSpace(),
-                registered.getMentee(),
+                registered.getMentoringSpaceId().getMentoringSpaceId(),
+                registered.getUserId().getUserId(),
                 registered.getLeftoverQuestion()
         );
 
