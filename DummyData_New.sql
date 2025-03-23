@@ -935,7 +935,7 @@ CREATE TABLE `tbl_question` (
                                 `question_created_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
                                 is_deleted VARCHAR(255) NOT NULL DEFAULT 'N',
                                 `member_id` INT NOT NULL,
-                                `mentoringSpace_id` INT NOT NULL,
+                                `mentoring_space_id` INT NOT NULL,
                                 PRIMARY KEY (`question_id`)
 ) ENGINE=InnoDB;
 
@@ -943,10 +943,10 @@ ALTER TABLE `tbl_question`
     ADD CONSTRAINT `FK_tbl_question_member` FOREIGN KEY (`member_id`) REFERENCES `tbl_user`(`user_id`);
 
 ALTER TABLE `tbl_question`
-    ADD CONSTRAINT `FK_tbl_question_mentoring_space` FOREIGN KEY (`mentoringSpace_id`) REFERENCES `tbl_mentoring_space`(`mentoring_space_id`);
+    ADD CONSTRAINT `FK_tbl_question_mentoring_space` FOREIGN KEY (`mentoring_space_id`) REFERENCES `tbl_mentoring_space`(`mentoring_space_id`);
 
 ## 질문
-INSERT INTO tbl_question (question_content, question_created_time, member_id, mentoringSpace_id)
+INSERT INTO tbl_question (question_content, question_created_time, member_id, mentoring_space_id)
 VALUES
     ('SQL에서 JOIN의 종류는 무엇인가요?', NOW(), 6, 1),
     ('InnoDB와 MyISAM의 차이는 무엇인가요?', NOW(), 7, 1),
@@ -968,16 +968,16 @@ CREATE TABLE `tbl_answer` (
                               `question_id` INT NULL,
                               `answer_member_id` INT NOT NULL,
                               `ref_answer_id` INT NULL,
-                              `mentoringSpace_id` INT NOT NULL,
+                              `mentoring_space_id` INT NOT NULL,
                               PRIMARY KEY (`answer_id`),
                               CONSTRAINT `FK_tbl_answer_question` FOREIGN KEY (`question_id`) REFERENCES `tbl_question`(`question_id`),
                               CONSTRAINT `FK_tbl_answer_user` FOREIGN KEY (`answer_member_id`) REFERENCES `tbl_user`(`user_id`),
                               CONSTRAINT `FK_tbl_answer_ref_answer` FOREIGN KEY (`ref_answer_id`) REFERENCES `tbl_answer`(`answer_id`),
-                              CONSTRAINT `FK_tbl_answer_mentoring_space` FOREIGN KEY (`mentoringSpace_id`) REFERENCES `tbl_mentoring_space`(`mentoring_space_id`)
+                              CONSTRAINT `FK_tbl_answer_mentoring_space` FOREIGN KEY (`mentoring_space_id`) REFERENCES `tbl_mentoring_space`(`mentoring_space_id`)
 ) ENGINE=InnoDB;
 
 ## 답변 데이터
-INSERT INTO tbl_answer (answer_content, question_id, answer_member_id, ref_answer_id, mentoringSpace_id)
+INSERT INTO tbl_answer (answer_content, question_id, answer_member_id, ref_answer_id, mentoring_space_id)
 VALUES
     -- 첫 번째 답변: 질문 1에 대한 기본 답변, 답글 없음.
     ('이 질문에 대한 제 답변입니다.', 1, 6, NULL, 1),
