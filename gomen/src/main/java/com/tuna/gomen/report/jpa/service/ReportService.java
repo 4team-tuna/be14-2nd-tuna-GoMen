@@ -7,7 +7,7 @@ import com.tuna.gomen.report.jpa.entity.Report;
 import com.tuna.gomen.report.jpa.entity.ReportCategory;
 import com.tuna.gomen.report.jpa.repository.ReportCategoryRepository;
 import com.tuna.gomen.report.jpa.repository.ReportRepository;
-import com.tuna.gomen.user.entity.User;
+import com.tuna.gomen.user.command.entity.User;
 import com.tuna.gomen.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

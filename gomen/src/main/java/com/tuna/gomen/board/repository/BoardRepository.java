@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BoardRepository extends JpaRepository<Board, Integer> {
     // 추가적인 메소드 구현이 필요하다면 여기에 추가
+
 }
