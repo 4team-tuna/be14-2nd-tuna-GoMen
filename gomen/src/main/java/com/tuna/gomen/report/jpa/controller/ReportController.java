@@ -18,6 +18,7 @@ public class ReportController {
     @Qualifier("jpaReportService")
     private final ReportService reportService;
 
+
     @PostMapping
     public ResponseEntity<?> createReport(@RequestBody ReportDto reportDto) {
         reportService.createReport(reportDto);
