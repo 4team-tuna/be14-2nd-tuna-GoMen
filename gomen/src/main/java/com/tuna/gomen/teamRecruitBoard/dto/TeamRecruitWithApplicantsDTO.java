@@ -1,6 +1,7 @@
 package com.tuna.gomen.teamRecruitBoard.dto;
 
 import com.tuna.gomen.applicant.dto.ApplicantDTO;
+import com.tuna.gomen.user.command.entity.User;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 public class TeamRecruitWithApplicantsDTO {
 
-    private Long teamPostId;
+    private Integer teamPostId;
     private String postTitle;
     private String teamName;
     private String teamIntroduce;

@@ -16,13 +16,13 @@ public class ApplicantController {
 
     // 특정 팀 모집 게시글에 대한 지원자 목록 조회
     @GetMapping("/{teamPostId}")
-    public List<ApplicantDTO> getApplicants(@PathVariable Long teamPostId) {
+    public List<ApplicantDTO> getApplicants(@PathVariable Integer teamPostId) {
         return applicantService.getApplicants(teamPostId);
     }
 
     // 특정 유저가 지원한 모집 게시글 목록 조회
     @GetMapping("/my-applications/{userId}")
-    public List<ApplicantDTO> getMyApplications(@PathVariable Long userId) {
+    public List<ApplicantDTO> getMyApplications(@PathVariable Integer userId) {
         return applicantService.getMyApplications(userId);
     }
 
@@ -34,7 +34,7 @@ public class ApplicantController {
 
     // 특정 유저가 지원한 모집 게시글 상세 조회
     @GetMapping("/my-applications/details/{userId}")
-    public List<ApplicantDTO> getMyApplicationsWithDetails(@PathVariable Long userId) {
+    public List<ApplicantDTO> getMyApplicationsWithDetails(@PathVariable Integer userId) {
         return applicantService.getMyApplicationsWithDetails(userId);
     }
 }
