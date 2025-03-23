@@ -1,5 +1,6 @@
 package com.tuna.gomen.mentoringspace.command.controller;
 
+import com.tuna.gomen.mentoringspace.command.dto.PersonalInformationUpdateRequest;
 import com.tuna.gomen.mentoringspace.command.service.MentoringSpaceService;
 import com.tuna.gomen.mentoringspace.command.entity.MentoringSpace;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,19 @@ public class MentoringSpaceController {
     public ResponseEntity<MentoringSpace> updateMentoringSpace(@PathVariable Integer mentoringSpaceId,
                                                                @RequestBody MentoringSpace request) {
         MentoringSpace updated = mentoringSpaceService.updateMentoringSpace(mentoringSpaceId,request);
+        return ResponseEntity.ok(updated);
+    }
+
+    // 멘토링 연락처 등록,수정
+
+    @PatchMapping("/update/{mentoringSpaceId}/personal-info")
+    public ResponseEntity<MentoringSpace> updatePersonalInformation(
+                                                                @PathVariable Integer mentoringSpaceId,
+                                                                @RequestBody PersonalInformationUpdateRequest request) {
+        MentoringSpace updated = mentoringSpaceService.updatePersonalInformation(
+                mentoringSpaceId,
+                request.getPersonalInformation()
+        );
         return ResponseEntity.ok(updated);
     }
 

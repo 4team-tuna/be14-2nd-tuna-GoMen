@@ -39,6 +39,9 @@ public class User {
     @Column
     private String IsQuitted;
 
+    @Column(nullable = false)
+    private String isMentor = "N";
+
 
 
 

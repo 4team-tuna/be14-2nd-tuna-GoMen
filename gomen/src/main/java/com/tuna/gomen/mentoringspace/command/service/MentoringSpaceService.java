@@ -39,4 +39,15 @@ public class MentoringSpaceService {
 
         return mentoringSpaceRepository.save(space);
     }
+
+    @Transactional
+    public MentoringSpace updatePersonalInformation(Integer mentoringSpaceId, String personalInformation) {
+        MentoringSpace space = mentoringSpaceRepository.findByMentoringSpaceId(mentoringSpaceId)
+                .orElseThrow(() -> new IllegalArgumentException("멘토링 공간이 존재하지 않습니다."));
+
+        space.setPersonalInformation(personalInformation);
+        space.setInformationIsOpened("Y");
+
+        return mentoringSpaceRepository.save(space);
+    }
 }
