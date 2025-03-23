@@ -10,11 +10,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ApplicantDTO {
-    private Long userId;
+    private Integer userId;
     private String nickname;
     private String introduce;
     private String isProcessed;
-    private Long teamPostId;
+    private Integer teamPostId;
     private String postTitle;
     private String teamName;
 }

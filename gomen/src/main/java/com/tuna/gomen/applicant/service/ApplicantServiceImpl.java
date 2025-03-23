@@ -13,12 +13,12 @@ public class ApplicantServiceImpl implements ApplicantService {
     private ApplicantMapper applicantMapper;
 
     @Override
-    public List<ApplicantDTO> getApplicants(Long teamPostId) {
+    public List<ApplicantDTO> getApplicants(Integer teamPostId) {
         return applicantMapper.findApplicantsByPostId(teamPostId);
     }
 
     @Override
-    public List<ApplicantDTO> getMyApplications(Long userId) {
+    public List<ApplicantDTO> getMyApplications(Integer userId) {
         return applicantMapper.findMyApplications(userId);
     }
 
@@ -28,7 +28,7 @@ public class ApplicantServiceImpl implements ApplicantService {
 //    }
 
     @Override
-    public List<ApplicantDTO> getMyApplicationsWithDetails(Long userId) {
+    public List<ApplicantDTO> getMyApplicationsWithDetails(Integer userId) {
         return applicantMapper.findMyApplicationsWithDetails(userId);
     }
 }
