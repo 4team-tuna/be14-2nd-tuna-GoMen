@@ -1,10 +1,11 @@
 package com.tuna.gomen.user.controller;
 
 import com.tuna.gomen.user.dto.UserDTO;
+import com.tuna.gomen.user.vo.RequestQuitVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import com.tuna.gomen.user.service.UserService;
 
 import java.util.List;
@@ -77,6 +78,41 @@ public class UserController {
             }
         }
         return "없는 닉네임입니다.";
+    }
+
+    @PostMapping("/regist")
+    public ResponseEntity<UserDTO> registUser(@RequestBody UserDTO newUser) {
+
+        try {
+            userService.registUser(newUser);
+        } catch (Exception e) {
+            throw new RuntimeException("이미 사용중인 아이디입니다.");
+        }
+
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(newUser);
+    }
+
+    @GetMapping("/quit")
+    public ResponseEntity<RequestQuitVO> quitUser(@RequestBody RequestQuitVO quitVO){
+        try {
+            userService.quitUser(quitVO);
+        } catch (Exception e){
+            throw new RuntimeException("회원 탈퇴 과정 중 오류 발생!!");
+        }
+
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(quitVO);
+    }
+
+    @PostMapping("/delete")
+    public ResponseEntity<RequestQuitVO> deleteUser(@RequestBody RequestQuitVO quitVO){
+        try {
+            userService.deleteUser(quitVO);
+        } catch (Exception e) {
+            throw new RuntimeException("회원 삭제에서 오류 발생");
+        }
+
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(quitVO);
     }
 }
 

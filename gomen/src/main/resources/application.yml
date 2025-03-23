@@ -1,3 +1,6 @@
+server:
+#  port: 8111
+
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
@@ -8,6 +11,7 @@ spring:
     hibernate:
       ddl-auto: none   # DDL 자동 업데이트: 'none', 'update', 'create', 'create-drop' 중 선택
     show-sql: true       # SQL 쿼리 로그 출력 여부
+    database: mysql
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect # MariaDB를 위한 Hibernate Dialect
@@ -17,3 +21,15 @@ mybatis:
   type-aliases-package: com.tuna.gomen.report, com.tuna.gomen.teamRecruitBoard, com.tuna.gomen.applicant
   mapper-locations: classpath:mapper/*.xml
 
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+token:
+  expiration_time: 43200000
+  secret: s/w88qlS9DkmlYAkG7PP0OLuwennyhkOqIoB1svvPPFZIDGq8FPY4lUb2NNxgOjbUkdvw0zXlXG7FVmUwuvIdg==

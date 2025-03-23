@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class UserDTO {
-    private int userId;
+    private Integer userId;
     private String loginId;
     private String password;
     private String name;
@@ -16,8 +16,8 @@ public class UserDTO {
     private java.util.Date willBeActivated;
     private String isQuitted;
     private String githubAdress;
-    private int extensionCount;
+    private Integer extensionCount;
     private String careerInfo;
     private String isMentor;
-    private int violationScore;
+    private Integer violationScore;
 }

@@ -6,7 +6,7 @@ import com.tuna.gomen.board.repository.BoardRepository;
 import com.tuna.gomen.bookMarkandLike.dto.LikeDTO;
 import com.tuna.gomen.bookMarkandLike.entity.Like;
 import com.tuna.gomen.bookMarkandLike.repository.LikeRepository;
-import com.tuna.gomen.user.command.entity.User;
+import com.tuna.gomen.user.command.entity.UserEntity;
 import com.tuna.gomen.user.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +37,7 @@ public class LikeService2 {
             throw new IllegalArgumentException("Post ID cannot be null");
         }
 
-        User user = userRepository.findById(userId)
+        UserEntity user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
         Board board = boardRepository.findById(postId)
                 .orElseThrow(() -> new RuntimeException("Post not found"));

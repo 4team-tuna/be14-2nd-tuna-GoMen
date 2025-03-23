@@ -1,6 +1,6 @@
 package com.tuna.gomen.board.command.entity;
 
-import com.tuna.gomen.user.command.entity.User;
+import com.tuna.gomen.user.command.entity.UserEntity;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -40,5 +40,5 @@ public class Board {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private UserEntity user;
 }

@@ -1,7 +1,7 @@
 package com.tuna.gomen.bookMarkandLike.entity;
 
 import com.tuna.gomen.board.command.entity.Board;
-import com.tuna.gomen.user.command.entity.User;
+import com.tuna.gomen.user.command.entity.UserEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -30,5 +30,5 @@ public class Bookmark {
 
     @ManyToOne
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
-    private User user;
+    private UserEntity user;
 }
