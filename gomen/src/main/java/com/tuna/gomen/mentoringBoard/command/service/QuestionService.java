@@ -1,9 +1,11 @@
 package com.tuna.gomen.mentoringBoard.command.service;
 
-import com.tuna.gomen.mentoringBoard.command.dto.QuestionCreateRequest;
-import com.tuna.gomen.mentoringBoard.command.dto.QuestionCreateResponse;
+import com.tuna.gomen.mentoringBoard.command.dto.QuestionRequest;
+import com.tuna.gomen.mentoringBoard.command.dto.QuestionResponse;
+import com.tuna.gomen.mentoringBoard.command.dto.QuestionUpdateRequest;
 import com.tuna.gomen.mentoringBoard.command.enriry.Question;
 import com.tuna.gomen.mentoringBoard.command.repository.QuestionRepository;
+import com.tuna.gomen.mentoringspace.command.entity.MentoringSpace;
 import com.tuna.gomen.mentoringspace.command.repository.MentoringSpaceRepository;
 import com.tuna.gomen.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,25 +31,62 @@ public class QuestionService {
     }
 
     @Transactional
-    public QuestionCreateResponse createQuestion(Integer userId, QuestionCreateRequest request) {
+    public QuestionResponse createQuestion(Integer userId, QuestionRequest request) {
         Question question = new Question();
         question.setQuestionContent(request.getQuestionContent());
         question.setQuestionCreatedTime(LocalDateTime.now());
         question.setMemberId(userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("유저 없음")));
 
-        // 멘토링 공간 설정 필요하면 여기서 추가
         question.setMentoringSpaceId(mentoringSpaceRepository.findById(request.getMentoringSpaceId())
                 .orElseThrow(() -> new IllegalArgumentException("멘토링 공간 없음")));
 
         Question saved = questionRepository.save(question);
 
-        return new QuestionCreateResponse(
+        return new QuestionResponse(
                 saved.getQuestionId(),
                 saved.getQuestionContent(),
                 saved.getQuestionCreatedTime(),
                 saved.getMemberId().getUserId(),
-                saved.getMentoringSpaceId().getMentoringSpaceId()
+                saved.getMentoringSpaceId().getMentoringSpaceId(),
+                saved.getIsDeleted()
+        );
+    }
+
+    @Transactional
+    public QuestionResponse updateQuestion(Integer questionId, QuestionUpdateRequest request) {
+        Question question = questionRepository.findById(questionId)
+                .orElseThrow(() -> new IllegalArgumentException("질문이 존재하지 않습니다."));
+
+        question.setQuestionContent(request.getQuestionContent());
+
+        Question updated = questionRepository.save(question);
+
+        return new QuestionResponse(
+                updated.getQuestionId(),
+                updated.getQuestionContent(),
+                updated.getQuestionCreatedTime(),
+                updated.getMemberId().getUserId(),
+                updated.getMentoringSpaceId().getMentoringSpaceId(),
+                updated.getIsDeleted()
+        );
+
+    }
+
+    public QuestionResponse deleteQuestion(Integer questionId) {
+        Question question = questionRepository.findById(questionId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 질문이 존재하지 않습니다."));
+
+        question.setIsDeleted("Y");
+        Question deleted = questionRepository.save(question);
+
+        return new QuestionResponse(
+                deleted.getQuestionId(),
+                deleted.getQuestionContent(),
+                deleted.getQuestionCreatedTime(),
+                deleted.getMemberId().getUserId(),
+                deleted.getMentoringSpaceId().getMentoringSpaceId(),
+                deleted.getIsDeleted()
         );
     }
 }

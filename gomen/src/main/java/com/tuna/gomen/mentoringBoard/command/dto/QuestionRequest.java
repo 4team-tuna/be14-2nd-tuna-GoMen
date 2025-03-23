@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class QuestionCreateRequest {
+public class QuestionRequest {
     private String questionContent;
     private Integer mentoringSpaceId;
 }
