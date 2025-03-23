@@ -27,8 +27,8 @@ public class MentoringController {
     // localhost:8080/gomen/mentoring/apply
     @PostMapping("/apply")
     public ResponseEntity<Mentoring> applyMentoring(@RequestBody MentoringRequest request) {
-        Mentoring aplly = mentoringService.applyMentoring(request);
-        return ResponseEntity.ok(aplly);
+        Mentoring apply = mentoringService.applyMentoring(request);
+        return ResponseEntity.ok(apply);
     }
 
     @PatchMapping("/accept")
