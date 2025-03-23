@@ -1,6 +1,5 @@
 package com.tuna.gomen.board.repository;
 
-
 import com.tuna.gomen.board.command.entity.Board;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

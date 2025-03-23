@@ -39,8 +39,17 @@ public class User {
     @Column
     private String IsQuitted;
 
-    @Column
-    private String isMentor;
+
+
+
+
+
+
+
+
+
+
+
 
     // 기타 필드 생략
 
