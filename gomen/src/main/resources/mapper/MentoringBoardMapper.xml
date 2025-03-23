@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tuna.gomen.mapper.MentoringBoardMapper">
+        <resultMap id="MentoringBoardResultMap" type="com.tuna.gomen.mentoringBoard.query.domain.entity.MentoringBoard">
+            <id column="user_id" property="userId"/>
+            <result column="leftover_questions" property="leftOverQuestions"/>
+        </resultMap>
+
+<!--    남은 질문 횟수 조회-->
+<!--    http://localhost:8080/gomen/mentoringboard/leftquestion?userId=23 -->
+    <select id="selectLeftOverQuestion" resultMap="MentoringBoardResultMap">
+        SELECT user_id
+             , leftover_questions
+          FROM tbl_mentoring_member
+         WHERE user_id = #{userId}
+    </select>
+</mapper>

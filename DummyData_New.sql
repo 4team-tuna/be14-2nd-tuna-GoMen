@@ -555,23 +555,26 @@ VALUES
 ###################################################### tbl_like / tbl_bookmark
 
 CREATE TABLE `tbl_report_category` (
-                                       `violation_id`	INT	PRIMARY KEY NOT NULL AUTO_INCREMENT,
-                                       `minus_point`	INT	NOT NULL,
-                                       `content`	VARCHAR(255)	NOT NULL
+                                       `violation_id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+                                       `minus_point` INT NOT NULL,
+                                       `content` VARCHAR(255) NOT NULL,
+                                       `category_name` VARCHAR(255) NOT NULL
 );
 
-INSERT INTO `tbl_report_category` (`minus_point`, `content`)
+
+INSERT INTO `tbl_report_category` (`minus_point`, `content`, `category_name`)
 VALUES
-    (10, '부적절한 언어 사용'),
-    (30, '불법적인 내용의 게시물 업로드'),
-    (50, '허위 정보 유포'),
-    (100, '반복적인 악성 댓글 달기'),
-    (30, '게시물에서 다른 사용자 비방'),
-    (50, '회원 간 개인 정보 유출'),
-    (10, '불법 광고 게시물 등록'),
-    (100, '반복적으로 커뮤니티 규정 위반'),
-    (10, '스팸 메시지 전송'),
-    (50, '타인의 저작물 무단 복제');
+    (10, '부적절한 언어 사용', '언어폭력'),
+    (30, '불법적인 내용의 게시물 업로드', '불법콘텐츠'),
+    (50, '허위 정보 유포', '허위정보'),
+    (100, '반복적인 악성 댓글 달기', '악성댓글'),
+    (30, '게시물에서 다른 사용자 비방', '비방행위'),
+    (50, '회원 간 개인 정보 유출', '개인정보'),
+    (10, '불법 광고 게시물 등록', '광고/스팸'),
+    (100, '반복적으로 커뮤니티 규정 위반', '규칙위반'),
+    (10, '스팸 메시지 전송', '스팸'),
+    (50, '타인의 저작물 무단 복제', '저작권침해');
+
 
 ############################################################# tbl_report_category
 
@@ -634,7 +637,7 @@ VALUES
 ######################################################################################### tbl_report
 
 CREATE TABLE `tbl_mentor_list` (
-                                   `mentor_id`	INT	NOT NULL,
+                                   `mentor_id`	INT NOT NULL PRIMARY KEY,
                                    `m_expert`	VARCHAR(255)	NULL,
                                    `m_content`	VARCHAR(255)	NULL,
                                    `is_deleted`	VARCHAR(255)	NOT NULL	DEFAULT 'N'
@@ -657,8 +660,8 @@ CREATE TABLE `tbl_mentoring_space` (
                                        `information_is_opened`	VARCHAR(255)	NOT NULL,
                                        `extension_count`	INT	NOT NULL	DEFAULT 0,
                                        `is_activated`	VARCHAR(255)	NOT NULL	DEFAULT 'Y'	,
-                                       `user_id`	INT	NOT NULL,
-                                       CONSTRAINT fk_tbl_mentoring_space_to_tbl_user FOREIGN KEY (user_id) REFERENCES tbl_user(user_id)
+                                       `mentor_id`	INT	NOT NULL,
+                                       CONSTRAINT fk_tbl_mentoring_space_to_tbl_mentor_list FOREIGN KEY (mentor_id) REFERENCES tbl_mentor_list(mentor_id)
 );
 
 INSERT INTO `tbl_mentoring_space` (
@@ -666,7 +669,7 @@ INSERT INTO `tbl_mentoring_space` (
                                   , `information_is_opened`
                                   , `extension_count`
                                   , `is_activated`
-                                  , `user_id`
+                                  , `mentor_id`
 ) VALUES
       ('연락처: 010-1234-5678, 카카오톡 ID: mentor1', 'N', 0, 'Y', 1),
       ('연락처: 010-2345-6789, 카카오톡 ID: devmentor2', 'Y', 2, 'Y', 2),
@@ -932,7 +935,7 @@ CREATE TABLE `tbl_question` (
                                 `question_created_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
                                 is_deleted VARCHAR(255) NOT NULL DEFAULT 'N',
                                 `member_id` INT NOT NULL,
-                                `mentoringSpace_id` INT NOT NULL,
+                                `mentoring_space_id` INT NOT NULL,
                                 PRIMARY KEY (`question_id`)
 ) ENGINE=InnoDB;
 
@@ -940,10 +943,10 @@ ALTER TABLE `tbl_question`
     ADD CONSTRAINT `FK_tbl_question_member` FOREIGN KEY (`member_id`) REFERENCES `tbl_user`(`user_id`);
 
 ALTER TABLE `tbl_question`
-    ADD CONSTRAINT `FK_tbl_question_mentoring_space` FOREIGN KEY (`mentoringSpace_id`) REFERENCES `tbl_mentoring_space`(`mentoring_space_id`);
+    ADD CONSTRAINT `FK_tbl_question_mentoring_space` FOREIGN KEY (`mentoring_space_id`) REFERENCES `tbl_mentoring_space`(`mentoring_space_id`);
 
 ## 질문
-INSERT INTO tbl_question (question_content, question_created_time, member_id, mentoringSpace_id)
+INSERT INTO tbl_question (question_content, question_created_time, member_id, mentoring_space_id)
 VALUES
     ('SQL에서 JOIN의 종류는 무엇인가요?', NOW(), 6, 1),
     ('InnoDB와 MyISAM의 차이는 무엇인가요?', NOW(), 7, 1),
@@ -961,20 +964,20 @@ CREATE TABLE `tbl_answer` (
                               `answer_id` INT NOT NULL AUTO_INCREMENT COMMENT 'AUTO_INCREMENT',
                               `answer_content` VARCHAR(255) NOT NULL,
                               `answer_created_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                                is_deleted VARCHAR(255) NOT NULL DEFAULT 'N',
+                              is_deleted VARCHAR(255) NOT NULL DEFAULT 'N',
                               `question_id` INT NULL,
                               `answer_member_id` INT NOT NULL,
                               `ref_answer_id` INT NULL,
-                              `mentoringSpace_id` INT NOT NULL,
+                              `mentoring_space_id` INT NOT NULL,
                               PRIMARY KEY (`answer_id`),
                               CONSTRAINT `FK_tbl_answer_question` FOREIGN KEY (`question_id`) REFERENCES `tbl_question`(`question_id`),
                               CONSTRAINT `FK_tbl_answer_user` FOREIGN KEY (`answer_member_id`) REFERENCES `tbl_user`(`user_id`),
                               CONSTRAINT `FK_tbl_answer_ref_answer` FOREIGN KEY (`ref_answer_id`) REFERENCES `tbl_answer`(`answer_id`),
-                              CONSTRAINT `FK_tbl_answer_mentoring_space` FOREIGN KEY (`mentoringSpace_id`) REFERENCES `tbl_mentoring_space`(`mentoring_space_id`)
+                              CONSTRAINT `FK_tbl_answer_mentoring_space` FOREIGN KEY (`mentoring_space_id`) REFERENCES `tbl_mentoring_space`(`mentoring_space_id`)
 ) ENGINE=InnoDB;
 
 ## 답변 데이터
-INSERT INTO tbl_answer (answer_content, question_id, answer_member_id, ref_answer_id, mentoringSpace_id)
+INSERT INTO tbl_answer (answer_content, question_id, answer_member_id, ref_answer_id, mentoring_space_id)
 VALUES
     -- 첫 번째 답변: 질문 1에 대한 기본 답변, 답글 없음.
     ('이 질문에 대한 제 답변입니다.', 1, 6, NULL, 1),
@@ -1080,4 +1083,3 @@ VALUES
     ('file_path_30.mp4', 24);
 
 ################################################## tbl_board_file
-

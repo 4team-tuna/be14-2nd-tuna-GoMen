@@ -1,26 +1,26 @@
 package com.tuna.gomen.mapper;
 
 import com.tuna.gomen.teamRecruitBoard.dto.TeamRecruitWithApplicantsDTO;
+import java.time.LocalDate;
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface TeamRecruitBoardMapper {
 
-    List<TeamRecruitWithApplicantsDTO> findTeamRecruitWithApplicants(Long teamPostId);
+    List<TeamRecruitWithApplicantsDTO> findAllRecruitPosts();
 
-    List<TeamRecruitWithApplicantsDTO> findMyApplications(Long userId);
+    List<TeamRecruitWithApplicantsDTO> findRecruitPostsByLeaderNickname(String nickname);
 
-    List<TeamRecruitWithApplicantsDTO> findAllTeamRecruitPosts();
+    List<TeamRecruitWithApplicantsDTO> findRecruitPostsByTitle(String title);
 
-    TeamRecruitWithApplicantsDTO findTeamRecruitPostDetails(Long teamPostId);
+    List<TeamRecruitWithApplicantsDTO> findRecruitPostsByTeamName(String teamName);
 
-//    List<TeamRecruitWithApplicantsDTO> findMyApplicationsWithStatus(Long userId);
+    List<TeamRecruitWithApplicantsDTO> findRecentRecruitPosts();
 
-    List<TeamRecruitWithApplicantsDTO> findCompletedPosts();
+    List<TeamRecruitWithApplicantsDTO> findTeamRecruitPostsByDateRange(LocalDate startDate, LocalDate endDate);
 
-    List<TeamRecruitWithApplicantsDTO> findActivePosts();
+    List<TeamRecruitWithApplicantsDTO> findActiveRecruitPosts();
 
-    List<TeamRecruitWithApplicantsDTO> findMyApplicationsWithDetails(Long userId);
 }
 
