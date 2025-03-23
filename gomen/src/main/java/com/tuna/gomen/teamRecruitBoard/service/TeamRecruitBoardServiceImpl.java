@@ -37,7 +37,10 @@ public class TeamRecruitBoardServiceImpl implements TeamRecruitBoardServiceInter
             throw new IllegalStateException("삭제 권한이 없습니다.");
         }
 
-        // 삭제 진행
-        teamRecruitBoardRepository.delete(post);
+        // 소프트 딜리트 처리: isDeleted 값을 'Y'로 변경
+        post.setIsDeleted("Y");  // 'Y'로 설정하여 삭제된 상태로 표시
+
+        // 게시글 수정 (isDeleted 컬럼만 업데이트)
+        teamRecruitBoardRepository.save(post);  // 업데이트된 상태 저장
     }
 }
