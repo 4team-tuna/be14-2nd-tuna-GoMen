@@ -70,6 +70,7 @@ public class TeamRecruitBoardController {
         return teamRecruitBoardService.getActiveRecruitPosts();
     }
 
+//    http://localhost:8080/gomen/team-recruit/create
     @PostMapping("/create")
     public ResponseEntity<String> createTeamRecruit(
             @RequestParam String postTitle,
@@ -95,7 +96,9 @@ public class TeamRecruitBoardController {
         return ResponseEntity.ok("팀 모집 글이 성공적으로 생성되었습니다.");
     }
 
+
     // 팀 모집 게시글 삭제 (리더만 가능)
+//    http://localhost:8080/gomen/team-recruit/delete/31?leaderId=1
     @DeleteMapping("/delete/{teamPostId}")
     public ResponseEntity<String> deleteTeamRecruit(
             @PathVariable Integer teamPostId,
