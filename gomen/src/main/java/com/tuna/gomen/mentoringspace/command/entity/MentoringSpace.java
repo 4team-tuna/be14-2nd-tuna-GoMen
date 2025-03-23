@@ -18,16 +18,16 @@ public class MentoringSpace {
     private Integer mentoringSpaceId;
 
     @Column(name = "personal_information", nullable = false)
-    private String personalInformation;
+    private String personalInformation = "";
 
     @Column(name = "information_is_opened", nullable = false)
-    private String informationIsOpened;
+    private String informationIsOpened = "N";
 
     @Column(name = "extension_count", nullable = false)
-    private Integer extensionCount;
+    private Integer extensionCount = 0;
 
     @Column(name = "is_activated", nullable = false)
-    private String isActivated;
+    private String isActivated = "Y";
 
     @Column(name = "mentor_id", nullable = false)
     private Integer mentorId;
