@@ -14,6 +14,6 @@ spring:
         format_sql: true    # 쿼리 포맷팅 여부
 
 mybatis:
-  type-aliases-package: com.tuna.gomen.report, com.tuna.gomen.teamRecruitBoard, com.tuna.gomen.applicant
+  type-aliases-package: com.tuna.gomen.report.mybatis.model, com.tuna.gomen.teamRecruitBoard, com.tuna.gomen.applicant
   mapper-locations: classpath:mapper/*.xml
 
