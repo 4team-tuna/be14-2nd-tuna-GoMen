@@ -1,4 +1,4 @@
-package com.tuna.gomen.mentoringBoard.command.enriry;
+package com.tuna.gomen.mentoringBoard.command.entity;
 
 import com.tuna.gomen.mentoringspace.command.entity.MentoringSpace;
 import com.tuna.gomen.user.command.entity.User;

@@ -6,17 +6,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class QuestionResponse {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class AnswerRequest {
     private Integer questionId;
-    private String questionContent;
-    private LocalDateTime questionCreatedTime;
-    private Integer memberId;
-    private Integer mentoringSpaceId;
-    private String isDeleted;
+    private String answerContent;
+    private Integer refAnswerId;
 }
+

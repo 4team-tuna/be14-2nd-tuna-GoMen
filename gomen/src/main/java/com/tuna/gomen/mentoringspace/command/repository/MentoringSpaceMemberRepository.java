@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MentoringSpaceMemberRepository extends JpaRepository<MentoringSpaceMember, Integer> {
     boolean existsByMentoringSpaceAndMentee(Integer mentoringSpace, Integer mentee);
+
 }

@@ -22,11 +22,11 @@ public class MentoringSpaceMember {
     private Integer mentee;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "mentoring_space_id", insertable = false, updatable = false)
+    @JoinColumn(name = "mentoring_space_id")
     private MentoringSpace mentoringSpaceEntity;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    @JoinColumn(name = "user_id")
     private User userEntity;
 
     @Column(name = "leftover_questions", nullable = false)
