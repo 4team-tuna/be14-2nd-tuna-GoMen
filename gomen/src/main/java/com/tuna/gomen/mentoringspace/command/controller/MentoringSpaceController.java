@@ -37,7 +37,7 @@ public class MentoringSpaceController {
     }
 
     // 멘토링 연락처 등록,수정
-
+    // localhost:8080/gomen/mentoringspace/update/31/personal-info
     @PatchMapping("/update/{mentoringSpaceId}/personal-info")
     public ResponseEntity<MentoringSpace> updatePersonalInformation(
                                                                 @PathVariable Integer mentoringSpaceId,
@@ -47,6 +47,14 @@ public class MentoringSpaceController {
                 request.getPersonalInformation()
         );
         return ResponseEntity.ok(updated);
+    }
+
+    // 멘토링 공간 비활성화
+    // localhost:8080/gomen/mentoringspace/deactivate/31
+    @PatchMapping("/deactivate/{mentoringSpaceId}")
+    public ResponseEntity<Void> deactivateMentoringSpace(@PathVariable Integer mentoringSpaceId) {
+        mentoringSpaceService.deactivateMentoringSpace(mentoringSpaceId);
+        return ResponseEntity.noContent().build();
     }
 
 
