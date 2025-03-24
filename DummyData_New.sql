@@ -662,8 +662,8 @@ CREATE TABLE `tbl_mentoring_space` (
                                        `extension_count`	INT	NOT NULL	DEFAULT 0,
                                        `extension_requested` VARCHAR(255) NOT NULL DEFAULT 'N',
                                        `is_activated`	VARCHAR(255)	NOT NULL	DEFAULT 'Y'	,
-                                       'extension_requested' VARCHAR(255) NOT NULL DEFAULT 'N'
-                                       `mentor_id`	INT	NOT NULL,
+                                       'extension_requested' VARCHAR(255) NOT NULL DEFAULT 'N' ,
+                                       `mentor_id`	INT	NOT NULL
                                        CONSTRAINT fk_tbl_mentoring_space_to_tbl_mentor_list FOREIGN KEY (mentor_id) REFERENCES tbl_mentor_list(mentor_id)
 );
 
