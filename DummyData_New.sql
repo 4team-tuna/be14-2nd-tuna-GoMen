@@ -658,7 +658,9 @@ CREATE TABLE `tbl_mentoring_space` (
                                        `mentoring_space_id`	INT	NOT NULL PRIMARY KEY AUTO_INCREMENT,
                                        `personal_information`	VARCHAR(255)	NOT NULL,
                                        `information_is_opened`	VARCHAR(255)	NOT NULL,
+                                       `personal_info_requested` VARCHAR(255) NOT NULL DEFAULT 'N',
                                        `extension_count`	INT	NOT NULL	DEFAULT 0,
+                                       `extension_requested` VARCHAR(255) NOT NULL DEFAULT 'N',
                                        `is_activated`	VARCHAR(255)	NOT NULL	DEFAULT 'Y'	,
                                        `mentor_id`	INT	NOT NULL,
                                        CONSTRAINT fk_tbl_mentoring_space_to_tbl_mentor_list FOREIGN KEY (mentor_id) REFERENCES tbl_mentor_list(mentor_id)
@@ -801,7 +803,7 @@ CREATE TABLE `tbl_applicant` (
                                  `team_post_id`	INT	NOT NULL,
                                  `user_id`	INT	NOT NULL,
                                  `introduce`	VARCHAR(255)	NOT NULL,
-                                 `is_processed`	VARCHAR(255)	NOT NULL
+                                 `is_processed`	VARCHAR(255)
 );
 ALTER TABLE `tbl_applicant` ADD CONSTRAINT `FK_tbl_team_recruit_TO_tbl_applicant_1` FOREIGN KEY (
                                                                                                  `team_post_id`
@@ -933,7 +935,7 @@ CREATE TABLE `tbl_question` (
                                 `question_id` INT NOT NULL AUTO_INCREMENT COMMENT 'AUTO_INCREMENT',
                                 `question_content` VARCHAR(255) NOT NULL,
                                 `question_created_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                                is_deleted VARCHAR(255) NOT NULL DEFAULT 'N',
+                                `is_deleted` VARCHAR(255) NOT NULL DEFAULT 'N',
                                 `member_id` INT NOT NULL,
                                 `mentoring_space_id` INT NOT NULL,
                                 PRIMARY KEY (`question_id`)

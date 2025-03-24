@@ -5,9 +5,9 @@ import java.util.List;
 
 public interface ApplicantService {
 
-    List<ApplicantDTO> getApplicants(Long teamPostId);
-    List<ApplicantDTO> getMyApplications(Long userId);
+    List<ApplicantDTO> getApplicants(Integer teamPostId);
+    List<ApplicantDTO> getMyApplications(Integer userId);
 //    List<ApplicantDTO> getMyApplicationsWithStatus(Long userId);
-    List<ApplicantDTO> getMyApplicationsWithDetails(Long userId);
+    List<ApplicantDTO> getMyApplicationsWithDetails(Integer userId);
 
 }

@@ -1,4 +1,4 @@
-package com.tuna.gomen.report;
+package com.tuna.gomen.report.mybatis.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -18,17 +18,12 @@ public class Report {
     private Integer commentId;
     private int violationId;
 
-    // 회원 정보 추가
     private int userId;
     private String loginId;
     private String name;
     private String nickname;
     private String phoneNumber;
     private String isMentor;
-
-    // 추가: 신고한 회원 닉네임 & 신고 대상 회원 닉네임
     private String reporterNickname;
     private String reportedNickname;
 }
-
-
