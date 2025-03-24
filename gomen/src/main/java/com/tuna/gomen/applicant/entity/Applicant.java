@@ -15,7 +15,7 @@ public class Applicant {
 
     @Id
     @Column(name = "team_post_id")
-    private Long teamPostId;
+    private Integer teamPostId;
 
     @Id
     @Column(name = "user_id")
@@ -29,9 +29,9 @@ public class Applicant {
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private User user;
 
-    @Column(name = "introduce", nullable = false, length = 500)
+    @Column(name = "introduce", nullable = false)
     private String introduce;
 
-    @Column(name = "is_processed", nullable = false)
-    private Boolean isProcessed;
+    @Column(name = "is_processed")
+    private String isProcessed;
 }
