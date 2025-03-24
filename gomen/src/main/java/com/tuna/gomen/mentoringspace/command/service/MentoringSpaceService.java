@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class MentoringSpaceService {
 
@@ -92,6 +94,40 @@ public class MentoringSpaceService {
         }
 
         space.setExtensionRequested("Y");
+    }
+
+    @Transactional
+    public void approveExtension(Integer spaceId) {
+        MentoringSpace space = mentoringSpaceRepository.findById(spaceId)
+                .orElseThrow(() -> new RuntimeException("멘토링 공간을 찾을 수 없습니다."));
+
+        if (space.getExtensionRequested().equals("N")) {
+            throw new RuntimeException("연장 요청이 없습니다.");
+        }
+
+        MentoringSpaceMember member = mentoringSpaceMemberRepository.findByMentoringSpaceId_MentoringSpaceId(spaceId);
+
+        // 연장 수락 처리
+        space.setExtensionCount(space.getExtensionCount() + 1);
         member.setLeftoverQuestion(member.getLeftoverQuestion() + 10);
+        space.setExtensionRequested("N");
+
+        mentoringSpaceMemberRepository.save(member);
+        mentoringSpaceRepository.save(space);
+    }
+
+    @Transactional
+    public void rejectExtension(Integer spaceId) {
+
+        MentoringSpace space = mentoringSpaceRepository.findById(spaceId)
+                .orElseThrow(() -> new RuntimeException("멘토링 공간을 찾을 수 없습니다."));
+
+        if ("N".equals(space.getExtensionRequested())) {
+            throw new RuntimeException("연장 요청이 없습니다.");
+        }
+        
+        space.setIsActivated("N");
+
+        mentoringSpaceRepository.save(space);
     }
 }

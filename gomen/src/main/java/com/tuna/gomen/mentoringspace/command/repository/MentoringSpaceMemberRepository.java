@@ -6,6 +6,7 @@ import com.tuna.gomen.user.command.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -14,4 +15,5 @@ public interface MentoringSpaceMemberRepository extends JpaRepository<MentoringS
 
     Optional<MentoringSpaceMember> findByMentoringSpaceIdAndUserId(MentoringSpace mentoringSpace, User userId);
 
+    MentoringSpaceMember findByMentoringSpaceId_MentoringSpaceId(Integer mentoringSpaceId);
 }
