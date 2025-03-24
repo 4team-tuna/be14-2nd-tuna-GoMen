@@ -1,5 +1,6 @@
 package com.tuna.gomen.security;
 
+import com.tuna.gomen.user.dto.UserDTO;
 import com.tuna.gomen.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +9,12 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Slf4j
 @Component
@@ -32,14 +36,18 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
 
         UserDetails userDetails = userService.loadUserDetailsByLoginId(loginId);
 
-        if(!password.equals(userDetails.getPassword())) {
+        if(!passwordEncoder.matches(password, userDetails.getPassword())) {
             throw new BadCredentialsException("비밀번호가 일치하지 않습니다.");
         }
-
-        /* 설명. 비밀번호 일치 시에 token발행 */
-        UsernamePasswordAuthenticationToken authenticationToken =
-                new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-        return authenticationToken;
+        UserDTO userDTO = userService.selectUserByLoginId(loginId);
+        if(userDTO.getIsQuitted().equals("Y")){
+            throw new RuntimeException("탈퇴한 회원입니다.");
+        } else {
+            /* 설명. 비밀번호 일치 시에 token발행 */
+            UsernamePasswordAuthenticationToken authenticationToken =
+                    new UsernamePasswordAuthenticationToken(userDetails, null, authentication.getAuthorities());
+            return authenticationToken;
+        }
     }
 
     /* 설명. UsernamePasswordAuthenticationToken이 생성 시에 이 프로바이더를 인식하도록 설정 */

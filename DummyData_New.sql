@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS tbl_user;
 
 CREATE TABLE `tbl_user` (
                             `user_id`	INT	NOT NULL PRIMARY KEY AUTO_INCREMENT,
-                            `login_id`	VARCHAR(255)	NOT NULL,
+                            `login_id`	VARCHAR(255)	NOT NULL UNIQUE,
                             `password`	VARCHAR(255)	NOT NULL,
                             `name`	VARCHAR(255)	NOT NULL,
                             `personal_number`	VARCHAR(255)	NOT NULL,

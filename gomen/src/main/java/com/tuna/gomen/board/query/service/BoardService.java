@@ -1,11 +1,15 @@
 package com.tuna.gomen.board.query.service;
 
+import com.tuna.gomen.board.command.entity.Board;
 import com.tuna.gomen.board.query.entity.BoardEntity;
 import com.tuna.gomen.board.query.entity.UserEntity;
 import com.tuna.gomen.board.query.dto.BoardDto;
 import com.tuna.gomen.board.query.dto.CommentDto;
 import com.tuna.gomen.board.query.dto.UserDto;
+import com.tuna.gomen.board.repository.BoardRepository;
 import com.tuna.gomen.mapper.BoardMapper;
+import jakarta.servlet.http.HttpServletRequest;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,10 +20,14 @@ import java.util.stream.Collectors;
 public class BoardService {
 
     private final BoardMapper boardMapper;
+    private final ModelMapper modelMapper;
+    private final BoardRepository boardRepository;
 
     @Autowired
-    public BoardService(BoardMapper boardMapper) {
+    public BoardService(BoardMapper boardMapper, ModelMapper modelMapper, BoardRepository boardRepository) {
         this.boardMapper = boardMapper;
+        this.modelMapper = modelMapper;
+        this.boardRepository = boardRepository;
     }
 
     // 기존 전체 조회

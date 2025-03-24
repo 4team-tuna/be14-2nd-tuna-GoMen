@@ -81,16 +81,16 @@ public class UserController {
     }
 
     @PostMapping("/regist")
-    public ResponseEntity<UserDTO> registUser(@RequestBody UserDTO newUser) {
+    public ResponseEntity<UserDTO> registUser(@RequestBody UserDTO userDTO) {
 
         try {
-            userService.registUser(newUser);
+            userService.registUser(userDTO);
         } catch (Exception e) {
             throw new RuntimeException("이미 사용중인 아이디입니다.");
         }
 
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(newUser);
+                .body(userDTO);
     }
 
     @GetMapping("/quit")
@@ -98,13 +98,13 @@ public class UserController {
         try {
             userService.quitUser(quitVO);
         } catch (Exception e){
-            throw new RuntimeException("회원 탈퇴 과정 중 오류 발생!!");
+            throw new RuntimeException("회원 탈퇴 과정 중 오류 발생");
         }
 
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(quitVO);
     }
 
-    @PostMapping("/delete")
+    @PostMapping("/admin/delete")
     public ResponseEntity<RequestQuitVO> deleteUser(@RequestBody RequestQuitVO quitVO){
         try {
             userService.deleteUser(quitVO);

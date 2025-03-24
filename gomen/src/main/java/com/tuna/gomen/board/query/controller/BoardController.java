@@ -4,6 +4,7 @@ import com.tuna.gomen.board.query.dto.BoardDto;
 import com.tuna.gomen.board.query.dto.CommentDto;
 import com.tuna.gomen.board.query.dto.UserDto;
 import com.tuna.gomen.board.query.service.BoardService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -75,8 +76,6 @@ public class BoardController {
         List<CommentDto> comments = boardService.getCommentsByPostId(postId);
         return ResponseEntity.ok(comments);
     }
-
-
 }
 
 

@@ -12,6 +12,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -70,17 +71,16 @@ public class UserService {
             throw new UsernameNotFoundException(loginId + "라는 id가 존재하지 않습니다.");
         }
 
-        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-        grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-        grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-
         return new User(loginUser.getLoginId(), loginUser.getPassword(),
-                true, true, true, true, grantedAuthorities);
+                true, true, true, true, new ArrayList<>());
     }
 
     @Transactional
     public void registUser(UserDTO userDTO) {
         UserEntity user = modelMapper.map(userDTO, UserEntity.class);
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String password = encoder.encode(user.getPassword());
+        user.setPassword(password);
         userRepository.save(user);
     }
 

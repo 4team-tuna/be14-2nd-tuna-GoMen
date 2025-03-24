@@ -41,8 +41,9 @@ public class WebSecurity {
 
         /* 설명. 허용되는 경로 및 권한 설정 */
         http.authorizeHttpRequests(authz ->
-                        authz.requestMatchers(new AntPathRequestMatcher("/gomen/**", "POST")).permitAll()
-                                .requestMatchers(new AntPathRequestMatcher("/gomen/**", "GET")).hasRole("ADMIN")
+                                authz.requestMatchers(new AntPathRequestMatcher("/gomen/user/admin/delete")).hasRole("ADMIN")
+                                .requestMatchers(new AntPathRequestMatcher("/gomen/**", "POST")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/gomen/**", "GET")).permitAll()
                                 .anyRequest().authenticated()
         )
         .authenticationManager(authenticationManager())

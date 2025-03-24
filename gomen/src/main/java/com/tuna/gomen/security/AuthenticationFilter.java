@@ -16,6 +16,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -42,11 +43,16 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
             /* 설명. request를 통해 넘어온 json(login시 id/pwd)를 RequestLoginVO 옮겨 담기 */
             RequestLoginVO creds = new ObjectMapper().readValue(request.getInputStream(), RequestLoginVO.class);
+            List<GrantedAuthority> authorities = new ArrayList<>();
+            authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+            if(creds.getLoginId().equals("ADMIN")){
+                authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+            }
 
             return getAuthenticationManager().authenticate(new UsernamePasswordAuthenticationToken(
                     creds.getLoginId(),
                     creds.getPassword(),
-                    new ArrayList<>()));
+                    authorities));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -56,6 +62,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
 
+        log.info("토큰에 들어있는 권한 : {}", authResult.getAuthorities());
         log.info("secret key: {}", env.getProperty("token.secret"));    // 토큰 생성에 필요한 secret key
 
         // loginId, 권한 목록, 만료 시간
