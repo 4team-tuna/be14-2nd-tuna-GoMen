@@ -9,7 +9,7 @@ import com.tuna.gomen.mentoringBoard.command.repository.QuestionRepository;
 import com.tuna.gomen.mentoringspace.command.entity.MentoringSpace;
 import com.tuna.gomen.mentoringspace.command.repository.MentoringSpaceRepository;
 import com.tuna.gomen.user.command.entity.User;
-import com.tuna.gomen.user.repository.UserRepository;
+import com.tuna.gomen.user.command.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
