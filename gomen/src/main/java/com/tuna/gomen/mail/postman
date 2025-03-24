@@ -1,0 +1,17 @@
+[쪽지 보내기]
+[POST 요청]
+http://localhost:8080/gomen/mail/send
+senderId      2
+receiverId    3
+content       2가 3에게 보낸 쪽지입니다
+------------------------------------------위 형식으로 body 요청.  문의는 끼끼 아버님께
+
+[내가(특정 회원이) 받은 쪽지 확인하기]-- 3번이 받은쪽지
+[GET 요청]
+http://localhost:8080/gomen/mail/received/3
+
+------------------------------------------
+
+[내가(특정 회원이) 보낸 쪽지 확인하기]-- 2번이 보낸 쪽지
+[GET 요청]
+http://localhost:8080/gomen/mail/sent/2
