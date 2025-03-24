@@ -11,7 +11,7 @@ import com.tuna.gomen.user.service.UserService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/gomen")
+@RequestMapping("/gomen/user")
 public class UserController {
     private UserService userService;
 
