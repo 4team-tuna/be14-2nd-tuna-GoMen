@@ -9,11 +9,11 @@ import lombok.Setter;
 @Setter
 @EqualsAndHashCode
 public class TitleListId implements Serializable {
+
     private Integer userId;
     private Integer titleId;
 
-    public TitleListId() {
-    }
+    public TitleListId() {}
 
     public TitleListId(Integer userId, Integer titleId) {
         this.userId = userId;

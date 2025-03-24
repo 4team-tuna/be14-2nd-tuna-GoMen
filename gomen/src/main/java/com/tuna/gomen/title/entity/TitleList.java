@@ -4,6 +4,7 @@ import com.tuna.gomen.user.command.entity.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -16,7 +17,9 @@ import org.hibernate.annotations.OnDeleteAction;
 @Table(name = "tbl_title_list")
 @Getter
 @Setter
+@IdClass(TitleListId.class)
 public class TitleList {
+
     @Id
     @Column(name = "user_id")
     private Integer userId;
@@ -31,8 +34,6 @@ public class TitleList {
 
     @ManyToOne
     @JoinColumn(name = "title_id", insertable = false, updatable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)  // 부모 삭제 시 자식도 자동으로 삭제
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Title title;
-
-
 }
