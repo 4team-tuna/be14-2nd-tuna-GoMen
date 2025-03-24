@@ -250,10 +250,11 @@ VALUES
 ################################ tbl_title / tbl_title_list
 
 CREATE TABLE `tbl_mail` (
-                            `mail_id`	INT	NOT NULL PRIMARY KEY 	AUTO_INCREMENT,
-                            `sender_id`	INT	NOT NULL,
-                            `receiver_id`	INT	NOT NULL,
-                            `content`	VARCHAR(255)	NOT NULL
+                            `mail_id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                            `sender_id` INT NOT NULL,
+                            `receiver_id` INT NOT NULL,
+                            `content` VARCHAR(255) NOT NULL,
+                            `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 INSERT INTO `tbl_mail` (`sender_id`, `receiver_id`, `content`)
