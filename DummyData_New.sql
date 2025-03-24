@@ -654,59 +654,58 @@ VALUES
 
 ################################################################ tbl_mentor_list
 
-CREATE TABLE `tbl_mentoring_space` (
-                                       `mentoring_space_id`	INT	NOT NULL PRIMARY KEY AUTO_INCREMENT,
-                                       `personal_information`	VARCHAR(255),
-                                       `information_is_opened`	VARCHAR(255)	NOT NULL,
-                                       `personal_info_requested` VARCHAR(255) NOT NULL DEFAULT 'N',
-                                       `extension_count`	INT	NOT NULL	DEFAULT 0,
-                                       `extension_requested` VARCHAR(255) NOT NULL DEFAULT 'N',
-                                       `is_activated`	VARCHAR(255)	NOT NULL	DEFAULT 'Y',
-                                       'extension_requested' VARCHAR(255) NOT NULL DEFAULT 'N',
-                                       `mentor_id`	INT	NOT NULL,
-                                       CONSTRAINT fk_tbl_mentoring_space_to_tbl_mentor_list FOREIGN KEY (mentor_id) REFERENCES tbl_mentor_list(mentor_id)
+CREATE TABLE tbl_mentoring_space (
+    mentoring_space_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    personal_information VARCHAR(255),
+    information_is_opened VARCHAR(255) NOT NULL,
+    personal_info_requested VARCHAR(255) NOT NULL DEFAULT 'N',
+    extension_count INT NOT NULL DEFAULT 0,
+    extension_requested VARCHAR(255) NOT NULL DEFAULT 'N',
+    is_activated VARCHAR(255) NOT NULL DEFAULT 'Y',
+    mentor_id INT NOT NULL,
+    CONSTRAINT fk_tbl_mentoring_space_to_tbl_mentor_list
+        FOREIGN KEY (mentor_id) REFERENCES tbl_mentor_list(mentor_id)
 );
 
-INSERT INTO `tbl_mentoring_space` (
-                                    `personal_information`
-                                  , `information_is_opened`
-                                  , `extension_count`
-                                  , `is_activated`
-                                  , 'extension_requested'
-                                  , `mentor_id`
-                                  
+INSERT INTO tbl_mentoring_space (
+    personal_information,
+    information_is_opened,
+    personal_info_requested,
+    extension_count,
+    extension_requested,
+    is_activated,
+    mentor_id
 ) VALUES
-      
-    ('연락처: 010-1234-5678, 카카오톡 ID: mentor1', 'N', 0, 'N', 'Y', 1),
-    ('연락처: 010-2345-6789, 카카오톡 ID: devmentor2', 'Y', 2, 'N', 'Y', 2),
-    ('연락처: 010-3456-7890, 카카오톡 ID: codingexpert3', 'Y', 0, 'N', 'Y', 3),
-    ('연락처: 010-4567-8901, 카카오톡 ID: pythonmentor4', 'Y', 1, 'N', 'Y', 4),
-    ('연락처: 010-5678-9012, 카카오톡 ID: javaandroid5', 'N', 0, 'N', 'Y', 5),
-    ('연락처: 010-6789-0123, 카카오톡 ID: reactmentor1', 'Y', 0, 'N', 'Y', 1),
-    ('연락처: 010-7890-1234, 카카오톡 ID: expressjsmentor2', 'N', 1, 'N', 'Y', 2),
-    ('연락처: 010-8901-2345, 카카오톡 ID: javaexpert3', 'Y', 0, 'N', 'Y', 3),
-    ('연락처: 010-9012-3456, 카카오톡 ID: aihelper4', 'N', 0, 'N', 'N', 4),
-    ('연락처: 010-0123-4567, 카카오톡 ID: vuejsmentor5', 'Y', 3, 'N', 'Y', 5),
-    ('연락처: 010-1234-5678, 카카오톡 ID: nodementor1', 'N', 2, 'N', 'Y', 1),
-    ('연락처: 010-2345-6789, 카카오톡 ID: jsreactmentor2', 'Y', 0, 'N', 'Y', 2),
-    ('연락처: 010-3456-7890, 카카오톡 ID: datasciencementor3', 'N', 1, 'N', 'Y', 3),
-    ('연락처: 010-4567-8901, 카카오톡 ID: springbootmentor4', 'Y', 3, 'N', 'Y', 4),
-    ('연락처: 010-5678-9012, 카카오톡 ID: iosmentor5', 'N', 2, 'N', 'Y', 5),
-    ('연락처: 010-6789-0123, 카카오톡 ID: javamentor1', 'N', 0, 'N', 'Y', 1),
-    ('연락처: 010-7890-1234, 카카오톡 ID: reactreduxmentor2', 'N', 1, 'N', 'N', 2),
-    ('연락처: 010-8901-2345, 카카오톡 ID: csharpmentor3', 'N', 0, 'N', 'Y', 3),
-    ('연락처: 010-9012-3456, 카카오톡 ID: aiandmlmentor4', 'Y', 3, 'N', 'Y', 4),
-    ('연락처: 010-0123-4567, 카카오톡 ID: angularmentor5', 'Y', 4, 'N', 'Y', 5),
-    ('연락처: 010-1234-5678, 카카오톡 ID: pythonreactmentor1', 'N', 0, 'N', 'Y', 1),
-    ('연락처: 010-2345-6789, 카카오톡 ID: rubyrailsmentor2', 'Y', 3, 'N', 'Y', 2),
-    ('연락처: 010-3456-7890, 카카오톡 ID: javaexpertmentor3', 'N', 2, 'N', 'Y', 3),
-    ('연락처: 010-4567-8901, 카카오톡 ID: kotlinmentor4', 'N', 0, 'N', 'Y', 4),
-    ('연락처: 010-5678-9012, 카카오톡 ID: htmlcssmentor5', 'Y', 4, 'N', 'Y', 5),
-    ('연락처: 010-6789-0123, 카카오톡 ID: vuejstypescriptmentor1', 'N', 0, 'N', 'Y', 1),
-    ('연락처: 010-7890-1234, 카카오톡 ID: javaspringmentor2', 'Y', 3, 'N', 'Y', 2),
-    ('연락처: 010-8901-2345, 카카오톡 ID: vuefirebasementor3', 'Y', 0, 'N', 'N', 3),
-    ('연락처: 010-9012-3456, 카카오톡 ID: aimentalmentor4', 'Y', 2, 'N', 'Y', 4),
-    ('연락처: 010-0123-4567, 카카오톡 ID: javascriptmentor5', 'Y', 0, 'N', 'Y', 5);
+    ('연락처: 010-1234-5678, 카카오톡 ID: mentor1', 'N', 'N', 0, 'N', 'Y', 1),
+    ('연락처: 010-2345-6789, 카카오톡 ID: devmentor2', 'Y', 'N', 2, 'N', 'Y', 2),
+    ('연락처: 010-3456-7890, 카카오톡 ID: codingexpert3', 'Y', 'N', 0, 'N', 'Y', 3),
+    ('연락처: 010-4567-8901, 카카오톡 ID: pythonmentor4', 'Y', 'N', 1, 'N', 'Y', 4),
+    ('연락처: 010-5678-9012, 카카오톡 ID: javaandroid5', 'N', 'N', 0, 'N', 'Y', 5),
+    ('연락처: 010-6789-0123, 카카오톡 ID: reactmentor1', 'Y', 'N', 0, 'N', 'Y', 1),
+    ('연락처: 010-7890-1234, 카카오톡 ID: expressjsmentor2', 'N', 'N', 1, 'N', 'Y', 2),
+    ('연락처: 010-8901-2345, 카카오톡 ID: javaexpert3', 'Y', 'N', 0, 'N', 'Y', 3),
+    ('연락처: 010-9012-3456, 카카오톡 ID: aihelper4', 'N', 'N', 0, 'N', 'N', 4),
+    ('연락처: 010-0123-4567, 카카오톡 ID: vuejsmentor5', 'Y', 'N', 3, 'N', 'Y', 5),
+    ('연락처: 010-1234-5678, 카카오톡 ID: nodementor1', 'N', 'N', 2, 'N', 'Y', 1),
+    ('연락처: 010-2345-6789, 카카오톡 ID: jsreactmentor2', 'Y', 'N', 0, 'N', 'Y', 2),
+    ('연락처: 010-3456-7890, 카카오톡 ID: datasciencementor3', 'N', 'N', 1, 'N', 'Y', 3),
+    ('연락처: 010-4567-8901, 카카오톡 ID: springbootmentor4', 'Y', 'N', 3, 'N', 'Y', 4),
+    ('연락처: 010-5678-9012, 카카오톡 ID: iosmentor5', 'N', 'N', 2, 'N', 'Y', 5),
+    ('연락처: 010-6789-0123, 카카오톡 ID: javamentor1', 'N', 'N', 0, 'N', 'Y', 1),
+    ('연락처: 010-7890-1234, 카카오톡 ID: reactreduxmentor2', 'N', 'N', 1, 'N', 'N', 2),
+    ('연락처: 010-8901-2345, 카카오톡 ID: csharpmentor3', 'N', 'N', 0, 'N', 'Y', 3),
+    ('연락처: 010-9012-3456, 카카오톡 ID: aiandmlmentor4', 'Y', 'N', 3, 'N', 'Y', 4),
+    ('연락처: 010-0123-4567, 카카오톡 ID: angularmentor5', 'Y', 'N', 4, 'N', 'Y', 5),
+    ('연락처: 010-1234-5678, 카카오톡 ID: pythonreactmentor1', 'N', 'N', 0, 'N', 'Y', 1),
+    ('연락처: 010-2345-6789, 카카오톡 ID: rubyrailsmentor2', 'Y', 'N', 3, 'N', 'Y', 2),
+    ('연락처: 010-3456-7890, 카카오톡 ID: javaexpertmentor3', 'N', 'N', 2, 'N', 'Y', 3),
+    ('연락처: 010-4567-8901, 카카오톡 ID: kotlinmentor4', 'N', 'N', 0, 'N', 'Y', 4),
+    ('연락처: 010-5678-9012, 카카오톡 ID: htmlcssmentor5', 'Y', 'N', 4, 'N', 'Y', 5),
+    ('연락처: 010-6789-0123, 카카오톡 ID: vuejstypescriptmentor1', 'N', 'N', 0, 'N', 'Y', 1),
+    ('연락처: 010-7890-1234, 카카오톡 ID: javaspringmentor2', 'Y', 'N', 3, 'N', 'Y', 2),
+    ('연락처: 010-8901-2345, 카카오톡 ID: vuefirebasementor3', 'Y', 'N', 0, 'N', 'N', 3),
+    ('연락처: 010-9012-3456, 카카오톡 ID: aimentalmentor4', 'Y', 'N', 2, 'N', 'Y', 4),
+    ('연락처: 010-0123-4567, 카카오톡 ID: javascriptmentor5', 'Y', 'N', 0, 'N', 'Y', 5);
 
 CREATE TABLE `tbl_mentoring_member` (
                                         `mentoring_space_id`	INT	NOT NULL,
