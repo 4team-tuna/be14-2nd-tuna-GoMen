@@ -656,7 +656,7 @@ VALUES
 
 CREATE TABLE `tbl_mentoring_space` (
                                        `mentoring_space_id`	INT	NOT NULL PRIMARY KEY AUTO_INCREMENT,
-                                       `personal_information`	VARCHAR(255)	NOT NULL,
+                                       `personal_information`	VARCHAR(255),
                                        `information_is_opened`	VARCHAR(255)	NOT NULL,
                                        `personal_info_requested` VARCHAR(255) NOT NULL DEFAULT 'N',
                                        `extension_count`	INT	NOT NULL	DEFAULT 0,
