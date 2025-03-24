@@ -1,5 +1,6 @@
 package com.tuna.gomen.security;
 
+import com.tuna.gomen.user.service.UserService;
 import jakarta.servlet.Filter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -20,6 +21,7 @@ public class WebSecurity {
     private JwtAuthenticationProvider jwtAuthenticationProvider;
     private Environment env;
     private JwtUtil jwtUtil;
+    private UserService userService;
 
     @Autowired
     public WebSecurity(JwtAuthenticationProvider jwtAuthenticationProvider,
@@ -59,7 +61,7 @@ public class WebSecurity {
     }
 
     private Filter getAuthenticationFilter(AuthenticationManager authenticationManager) {
-        return new AuthenticationFilter(authenticationManager, env);
+        return new AuthenticationFilter(authenticationManager, env, userService);
     }
 
 }

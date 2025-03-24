@@ -2,7 +2,6 @@ package com.tuna.gomen.user.repository;
 
 
 import com.tuna.gomen.user.command.entity.UserEntity;
-import com.tuna.gomen.user.command.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

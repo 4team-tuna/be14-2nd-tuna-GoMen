@@ -1,7 +1,7 @@
 package com.tuna.gomen.applicant.entity;
 
 import com.tuna.gomen.teamRecruitBoard.entity.TeamRecruitBoard;
-import com.tuna.gomen.user.command.entity.User;
+import com.tuna.gomen.user.command.entity.UserEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,7 +27,7 @@ public class Applicant {
 
     @ManyToOne
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
-    private User user;
+    private UserEntity user;
 
     @Column(name = "introduce", nullable = false, length = 500)
     private String introduce;

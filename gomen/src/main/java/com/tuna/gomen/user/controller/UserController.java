@@ -83,11 +83,11 @@ public class UserController {
     @PostMapping("/regist")
     public ResponseEntity<UserDTO> registUser(@RequestBody UserDTO userDTO) {
 
-        try {
+//        try {
             userService.registUser(userDTO);
-        } catch (Exception e) {
-            throw new RuntimeException("이미 사용중인 아이디입니다.");
-        }
+//        } catch (Exception e) {
+//            throw new RuntimeException("계정 생성 과정에서 오류.");
+//        }
 
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(userDTO);

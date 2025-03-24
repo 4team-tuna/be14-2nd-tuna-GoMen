@@ -10,10 +10,12 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -39,7 +41,11 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
         if(!passwordEncoder.matches(password, userDetails.getPassword())) {
             throw new BadCredentialsException("비밀번호가 일치하지 않습니다.");
         }
+
         UserDTO userDTO = userService.selectUserByLoginId(loginId);
+        String loginIdAndUserId = loginId + "@" + userDTO.getUserId();
+        userDetails = new User(loginIdAndUserId, password,
+                true, true, true, true, new ArrayList<>());
         if(userDTO.getIsQuitted().equals("Y")){
             throw new RuntimeException("탈퇴한 회원입니다.");
         } else {

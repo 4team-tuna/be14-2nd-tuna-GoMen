@@ -1,6 +1,8 @@
 package com.tuna.gomen.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tuna.gomen.user.dto.UserDTO;
+import com.tuna.gomen.user.service.UserService;
 import com.tuna.gomen.user.vo.RequestLoginVO;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -29,11 +31,13 @@ import java.util.stream.Collectors;
 @Slf4j
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private Environment env;
+    private UserService userService;
 
 
-    public AuthenticationFilter(AuthenticationManager authenticatonManager, Environment env) {
+    public AuthenticationFilter(AuthenticationManager authenticatonManager, Environment env, UserService userService) {
         super(authenticatonManager);
         this.env = env;
+        this.userService = userService;
     }
 
     /* 설명. 로그인 시도 시 동작하는 기능(POST / login 요청 시) */
@@ -67,14 +71,19 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
         // loginId, 권한 목록, 만료 시간
         User user = (User) authResult.getPrincipal();   // UserDetails -> User (다운캐스팅)
-        String id = user.getUsername();
+        String loginId = user.getUsername().split("@")[0];
+        String userId = user.getUsername().split("@")[1];
+
         List<String> roles = authResult.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
         int expiration_time = env.getProperty("token.expiration_time", Integer.class);
+        log.info("expiration_time: {}", expiration_time);
 
         // 토큰 생성
-        Claims claims = Jwts.claims().setSubject(id);
+        Claims claims = Jwts.claims().setSubject(loginId);
+        claims.put("userId", userId);
+        claims.put("loginId", loginId);
         claims.put("auth", roles);
         String token = Jwts.builder().setClaims(claims)
                 .setExpiration(new Date(System.currentTimeMillis() + Long.parseLong(env.getProperty("token.expiration_time"))))
@@ -82,5 +91,6 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
                 .compact();
 
         response.addHeader("token", token);
+        log.info("생성된 token : {}", token);
     }
 }

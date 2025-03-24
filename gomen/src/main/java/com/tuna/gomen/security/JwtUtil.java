@@ -57,7 +57,9 @@ public class JwtUtil {
 
     public Authentication getAuthentication(String token) {
         Claims claims = parseClaims(token);
+
         UserDetails userDetails = userService.loadUserDetailsByLoginId(claims.getSubject());
+
         List<GrantedAuthority> authorities = new ArrayList<>();
         if(claims.get("auth") == null){
             throw new RuntimeException("권한 정보가 없는 토큰입니다.");
