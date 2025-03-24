@@ -11,7 +11,7 @@ import com.tuna.gomen.user.service.UserService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/gomen/user")
+@RequestMapping("/gomen")
 public class UserController {
     private UserService userService;
 
@@ -23,7 +23,6 @@ public class UserController {
     @RequestMapping("/selectAll")
     public List<UserDTO> selectAllUsers() {
         List<UserDTO> users = userService.selectAllUsers();
-//        users.forEach(System.out::println);
         return users;
     }
 

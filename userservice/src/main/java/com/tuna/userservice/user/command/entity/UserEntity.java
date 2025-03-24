@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -35,13 +36,13 @@ public class UserEntity {
     private String nickname;
 
     @Column(nullable = false)
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
     @Column(nullable = true)
-    private Date updatedAt;
+    private LocalDateTime updatedAt;
 
     @Column(nullable = false)
-    private Date willBeActivated;
+    private LocalDateTime willBeActivated;
 
     @Column(nullable = false)
     private String isQuitted;
@@ -63,8 +64,8 @@ public class UserEntity {
 
     @PrePersist
     public void prePersist() {
-        this.createdAt = new Date();
-        this.willBeActivated = new Date();
+        this.createdAt = LocalDateTime.now();
+        this.willBeActivated = LocalDateTime.now();
         this.isQuitted = "N";
         this.extensionCount = 0;
         this.isMentor = "N";

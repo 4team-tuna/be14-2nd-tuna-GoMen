@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/gomen/user")
+@RequestMapping("/user")
 public class UserController {
     private UserService userService;
 
@@ -104,7 +104,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(quitVO);
     }
 
-    @DeleteMapping("/admin/delete")
+    @DeleteMapping("/delete")
     public ResponseEntity<RequestQuitVO> deleteUser(@RequestBody RequestQuitVO quitVO){
         try {
             userService.deleteUser(quitVO);
