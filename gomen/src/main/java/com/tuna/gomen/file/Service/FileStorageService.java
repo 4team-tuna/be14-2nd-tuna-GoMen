@@ -16,13 +16,13 @@ public class FileStorageService {
     private final String fileStoragePath = "C:/uploads/"; // 파일 저장 경로
 
     public void deleteFile(String filename) {
-        // 만약 filename이 절대 경로로 시작하는 경우, 파일 경로에서 중복되는 부분을 제거
-        if (filename.startsWith(fileStoragePath)) {
-            filename = filename.substring(fileStoragePath.length()); // 중복된 경로 부분 제거
+        // filename이 절대 경로일 경우, 올바른 상대 경로로 변환
+        if (Paths.get(filename).isAbsolute()) {
+            filename = new File(filename).getName(); // 파일명만 추출
         }
 
-        // 경로를 안전하게 결합
-        Path filePath = Paths.get(fileStoragePath, filename).normalize(); // 'fileStoragePath'와 'filename'을 결합하고, 경로 정리
+        // 경로를 안전하게 결합하고 정리
+        Path filePath = Paths.get(fileStoragePath, filename).normalize();
         File file = filePath.toFile();
 
         if (file.exists()) {
@@ -36,6 +36,7 @@ public class FileStorageService {
             System.out.println("File does not exist: " + file.getPath());
         }
     }
+
 
 
     public String storeFile(MultipartFile file) throws IOException {
