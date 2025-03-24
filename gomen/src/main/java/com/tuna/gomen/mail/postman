@@ -1,5 +1,6 @@
 [쪽지 보내기]
 [POST 요청]
+http://localhost:8080/gomen/mail/send
 senderId      2
 receiverId    3
 content       2가 3에게 보낸 쪽지입니다
