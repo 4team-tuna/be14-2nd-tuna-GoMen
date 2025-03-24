@@ -13,4 +13,5 @@ public interface MentoringSpaceMemberRepository extends JpaRepository<MentoringS
     boolean existsByMentoringSpaceIdAndUserId(MentoringSpace mentoringSpace, User userId);
 
     Optional<MentoringSpaceMember> findByMentoringSpaceIdAndUserId(MentoringSpace mentoringSpace, User userId);
+
 }

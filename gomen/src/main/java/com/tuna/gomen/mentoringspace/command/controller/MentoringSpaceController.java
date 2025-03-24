@@ -57,5 +57,13 @@ public class MentoringSpaceController {
         return ResponseEntity.noContent().build();
     }
 
+    // 멘토링 연장 요청
+    @PostMapping("/extension-request/{spaceId}")
+    public ResponseEntity<String> requestExtension(@PathVariable Integer spaceId,
+                                                   @RequestParam Integer userId) {
+        mentoringSpaceService.requestExtension(spaceId, userId);
+        return ResponseEntity.ok("연장 요청이 완료되었습니다.");
+    }
+
 
 }

@@ -1,7 +1,12 @@
 package com.tuna.gomen.mentoringspace.command.service;
 
 import com.tuna.gomen.mentoringspace.command.entity.MentoringSpace;
+import com.tuna.gomen.mentoringspace.command.entity.MentoringSpaceMember;
+import com.tuna.gomen.mentoringspace.command.repository.MentoringSpaceMemberRepository;
 import com.tuna.gomen.mentoringspace.command.repository.MentoringSpaceRepository;
+import com.tuna.gomen.user.command.entity.User;
+import com.tuna.gomen.user.command.repository.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,10 +15,16 @@ import org.springframework.transaction.annotation.Transactional;
 public class MentoringSpaceService {
 
     private final MentoringSpaceRepository mentoringSpaceRepository;
+    private final MentoringSpaceMemberRepository mentoringSpaceMemberRepository;
+    private final UserRepository userRepository;
+
 
     @Autowired
-    public MentoringSpaceService(MentoringSpaceRepository mentoringSpaceRepository) {
+    public MentoringSpaceService(MentoringSpaceRepository mentoringSpaceRepository,
+                                 MentoringSpaceMemberRepository mentoringSpaceMemberRepository, UserRepository userRepository) {
         this.mentoringSpaceRepository = mentoringSpaceRepository;
+        this.mentoringSpaceMemberRepository = mentoringSpaceMemberRepository;
+        this.userRepository = userRepository;
     }
 
     @Transactional
@@ -57,5 +68,30 @@ public class MentoringSpaceService {
                 .orElseThrow(() -> new IllegalArgumentException("해당 멘토링 공간이 존재하지 않습니다."));
 
         space.setIsActivated("N");
+    }
+
+    @Transactional
+    public void requestExtension(Integer spaceId, Integer userId) {
+
+        MentoringSpace space = mentoringSpaceRepository.findById(spaceId)
+                .orElseThrow(() -> new EntityNotFoundException("멘토링 공간이 존재하지 않습니다."));
+
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException("사용자가 존재하지 않습니다."));
+
+        MentoringSpaceMember member = mentoringSpaceMemberRepository
+                .findByMentoringSpaceIdAndUserId(space, user)
+                .orElseThrow(() -> new IllegalArgumentException("해당 멘토링 공간의 멤버가 아닙니다."));
+
+        if (member.getLeftoverQuestion() > 0) {
+            throw new IllegalStateException("남은 질문이 있어 연장 요청이 불가능합니다.");
+        }
+
+        if ("Y".equals(space.getExtensionRequested())) {
+            throw new IllegalStateException("이미 연장 요청이 진행 중입니다.");
+        }
+
+        space.setExtensionRequested("Y");
+        member.setLeftoverQuestion(member.getLeftoverQuestion() + 10);
     }
 }
