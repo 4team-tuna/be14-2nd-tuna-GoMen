@@ -20,6 +20,9 @@ public class MentoringSpace {
     @Column(name = "personal_information", nullable = false)
     private String personalInformation = "";
 
+    @Column(name = "personal_info_requested", nullable = false)
+    private String personalInfoRequested = "N";
+
     @Column(name = "information_is_opened", nullable = false)
     private String informationIsOpened = "N";
 

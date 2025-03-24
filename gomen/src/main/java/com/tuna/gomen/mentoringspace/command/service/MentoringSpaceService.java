@@ -125,9 +125,37 @@ public class MentoringSpaceService {
         if ("N".equals(space.getExtensionRequested())) {
             throw new RuntimeException("연장 요청이 없습니다.");
         }
-        
+
         space.setIsActivated("N");
 
         mentoringSpaceRepository.save(space);
     }
+
+    @Transactional
+    public void requestPersonalInfo(Integer spaceId) {
+        MentoringSpace space = mentoringSpaceRepository.findById(spaceId)
+                .orElseThrow(() -> new RuntimeException("해당 멘토링 공간이 없습니다."));
+
+        if ("Y".equals(space.getPersonalInfoRequested())) {
+            throw new RuntimeException("이미 개인정보 공개 요청이 진행 중입니다.");
+        }
+
+        space.setPersonalInfoRequested("Y");
+        mentoringSpaceRepository.save(space);
+    }
+
+    @Transactional
+    public void approvePersonalInfoRequest(Integer mentoringSpaceId) {
+        MentoringSpace space = mentoringSpaceRepository.findById(mentoringSpaceId)
+                .orElseThrow(() -> new RuntimeException("멘토링 공간을 찾을 수 없습니다."));
+
+        if ("N".equals(space.getPersonalInfoRequested())) {
+            throw new IllegalStateException("개인정보 공개 요청이 없습니다.");
+        }
+
+        space.setInformationIsOpened("Y");
+
+        mentoringSpaceRepository.save(space);
+    }
+
 }

@@ -49,6 +49,22 @@ public class MentoringSpaceController {
         return ResponseEntity.ok(updated);
     }
 
+    // 개인정보 공개 요청
+    // localhost:8080/gomen/mentoringspace/request-personal-info/31
+    @PatchMapping("/request-personal-info/{spaceId}")
+    public ResponseEntity<String> requestPersonalInfo(@PathVariable Integer spaceId) {
+        mentoringSpaceService.requestPersonalInfo(spaceId);
+        return ResponseEntity.ok("개인정보 공개 요청이 완료되었습니다.");
+    }
+
+    // 멘토 개인정보 공개 요청 수락
+    // localhost:8080/gomen/mentoringspace/approve-personal-info-request/31
+    @PatchMapping("/approve-personal-info-request/{mentoringSpaceId}")
+    public ResponseEntity<String> approvePersonalInfoRequest(@PathVariable Integer mentoringSpaceId) {
+        mentoringSpaceService.approvePersonalInfoRequest(mentoringSpaceId);
+        return ResponseEntity.ok("개인정보 공개 요청이 승인되었습니다.");
+    }
+
     // 멘토링 공간 비활성화
     // localhost:8080/gomen/mentoringspace/deactivate/31
     @PatchMapping("/deactivate/{mentoringSpaceId}")
@@ -75,11 +91,11 @@ public class MentoringSpaceController {
     }
 
     // 멘토링 연장 요청 거절
+    // localhost:8080/gomen/mentoringspace/extension-request/reject/31
     @PatchMapping("/extension-request/reject/{spaceId}")
     public ResponseEntity<String> rejectExtension(@PathVariable Integer spaceId) {
         mentoringSpaceService.rejectExtension(spaceId);
         return ResponseEntity.ok("연장 요청이 거절되어 멘토링 공간이 비활성화되었습니다.");
     }
-
 
 }
