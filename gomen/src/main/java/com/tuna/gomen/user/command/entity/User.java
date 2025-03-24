@@ -41,7 +41,6 @@ public class User {
     @Column
     private LocalDateTime updatedAt;
 
-    @Column(nullable = false)
     private LocalDateTime willBeActivated = LocalDateTime.now();
 
     @Column(nullable = false, length = 1)

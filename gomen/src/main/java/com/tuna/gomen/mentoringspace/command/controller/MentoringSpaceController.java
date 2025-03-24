@@ -1,0 +1,61 @@
+package com.tuna.gomen.mentoringspace.command.controller;
+
+import com.tuna.gomen.mentoringspace.command.dto.PersonalInformationUpdateRequest;
+import com.tuna.gomen.mentoringspace.command.service.MentoringSpaceService;
+import com.tuna.gomen.mentoringspace.command.entity.MentoringSpace;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+@Controller
+@RequestMapping("/gomen/mentoringspace")
+public class MentoringSpaceController {
+
+    private final MentoringSpaceService mentoringSpaceService;
+
+    @Autowired
+    public MentoringSpaceController(MentoringSpaceService mentoringSpaceService) {
+        this.mentoringSpaceService = mentoringSpaceService;
+    }
+
+    // 멘토링 공간 생성
+    // localhost:8080/gomen/mentoringspace/create
+    @PostMapping("/create")
+    public ResponseEntity<MentoringSpace> createMentoringSpace(@RequestBody MentoringSpace request) {
+        MentoringSpace result = mentoringSpaceService.createMentoringSpace(request);
+        return ResponseEntity.ok(result);
+    }
+
+    // 멘토링 공간 수정
+    // localhost:8080/gomen/mentoringspace/update/31
+    @PatchMapping("/update/{mentoringSpaceId}")
+    public ResponseEntity<MentoringSpace> updateMentoringSpace(@PathVariable Integer mentoringSpaceId,
+                                                               @RequestBody MentoringSpace request) {
+        MentoringSpace updated = mentoringSpaceService.updateMentoringSpace(mentoringSpaceId,request);
+        return ResponseEntity.ok(updated);
+    }
+
+    // 멘토링 연락처 등록,수정
+    // localhost:8080/gomen/mentoringspace/update/31/personal-info
+    @PatchMapping("/update/{mentoringSpaceId}/personal-info")
+    public ResponseEntity<MentoringSpace> updatePersonalInformation(
+                                                                @PathVariable Integer mentoringSpaceId,
+                                                                @RequestBody PersonalInformationUpdateRequest request) {
+        MentoringSpace updated = mentoringSpaceService.updatePersonalInformation(
+                mentoringSpaceId,
+                request.getPersonalInformation()
+        );
+        return ResponseEntity.ok(updated);
+    }
+
+    // 멘토링 공간 비활성화
+    // localhost:8080/gomen/mentoringspace/deactivate/31
+    @PatchMapping("/deactivate/{mentoringSpaceId}")
+    public ResponseEntity<Void> deactivateMentoringSpace(@PathVariable Integer mentoringSpaceId) {
+        mentoringSpaceService.deactivateMentoringSpace(mentoringSpaceId);
+        return ResponseEntity.noContent().build();
+    }
+
+
+}

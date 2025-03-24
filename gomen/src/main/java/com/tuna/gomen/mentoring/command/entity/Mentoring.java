@@ -1,4 +1,4 @@
-package com.tuna.gomen.mentoring.command;
+package com.tuna.gomen.mentoring.command.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

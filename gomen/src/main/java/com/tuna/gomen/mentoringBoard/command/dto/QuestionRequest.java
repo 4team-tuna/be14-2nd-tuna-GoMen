@@ -1,4 +1,4 @@
-package com.tuna.gomen.mentoring.command;
+package com.tuna.gomen.mentoringBoard.command.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,8 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class MentoringRequest {
-    private Integer mentorId;
-    private Integer menteeId;
-    private Integer teamId;
+public class QuestionRequest {
+    private String questionContent;
+    private Integer mentoringSpaceId;
 }
