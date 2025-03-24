@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mailMapper.xml -->
+<mapper namespace="com.tuna.gomen.mapper.MailMapper">
+
+    <resultMap id="MailResultMap" type="com.tuna.gomen.mail.Mail">
+        <result property="mailId" column="mail_id"/>
+        <result property="senderId" column="sender_id"/>
+        <result property="receiverId" column="receiver_id"/>
+        <result property="content" column="content"/>
+        <result property="createdAt" column="created_at"/>
+    </resultMap>
+
+    <!-- Sender가 보낸 쪽지 조회 -->
+    <select id="selectSentMails" resultType="com.tuna.gomen.mail.Mail" resultMap="MailResultMap">
+        SELECT * FROM tbl_mail WHERE sender_id = #{senderId}
+    </select>
+
+    <!-- Receiver가 받은 쪽지 조회 -->
+    <select id="selectReceivedMails" resultType="com.tuna.gomen.mail.Mail" resultMap="MailResultMap">
+        SELECT * FROM tbl_mail WHERE receiver_id = #{receiverId}
+    </select>
+
+    <!-- 쪽지 보내기 -->
+    <insert id="sendMail" parameterType="com.tuna.gomen.mail.Mail">
+        INSERT INTO tbl_mail (sender_id, receiver_id, content)
+        VALUES (#{senderId}, #{receiverId}, #{content})
+    </insert>
+
+</mapper>
