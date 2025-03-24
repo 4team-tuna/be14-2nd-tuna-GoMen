@@ -1,6 +1,7 @@
 package com.tuna.gomen.teamRecruitBoard.entity;
 
 import com.tuna.gomen.user.command.entity.User;
+import com.tuna.gomen.user.command.entity.UserEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -43,6 +44,6 @@ public class TeamRecruitBoard {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "leader_id", nullable = false)
-    private User leader;  // 팀 리더 (tbl_user와 외래키 관계)
+    private UserEntity leader;  // 팀 리더 (tbl_user와 외래키 관계)
 
 }

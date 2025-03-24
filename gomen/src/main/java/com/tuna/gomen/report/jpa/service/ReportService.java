@@ -8,6 +8,7 @@ import com.tuna.gomen.report.jpa.entity.ReportCategory;
 import com.tuna.gomen.report.jpa.repository.ReportCategoryRepository;
 import com.tuna.gomen.report.jpa.repository.ReportRepository;
 import com.tuna.gomen.user.command.entity.User;
+import com.tuna.gomen.user.command.entity.UserEntity;
 import com.tuna.gomen.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -49,7 +50,7 @@ public class ReportService {
                 .orElseGet(() -> getTargetUserIdByPostOrComment(report));
 
         if (targetId != null) {
-            User user = userRepository.findById(targetId).orElseThrow();
+            UserEntity user = userRepository.findById(targetId).orElseThrow();
             int updatedScore = user.getViolationScore() + minus;
             user.setViolationScore(updatedScore);
             if (updatedScore >= 100) {

@@ -1,5 +1,6 @@
 package com.tuna.gomen.teamRecruitBoard.controller;
 
+import com.tuna.gomen.user.command.entity.UserEntity;
 import com.tuna.gomen.user.repository.UserRepository;
 import com.tuna.gomen.teamRecruitBoard.dto.TeamRecruitWithApplicantsDTO;
 import com.tuna.gomen.teamRecruitBoard.entity.TeamRecruitBoard;
@@ -79,7 +80,7 @@ public class TeamRecruitBoardController {
             @RequestParam Integer leaderId) {  // leaderId를 요청에서 받음
 
         // User 엔티티를 leaderId로 조회
-        User leader = userRepository.findById(leaderId)
+        UserEntity leader = userRepository.findById(leaderId)
                 .orElseThrow(() -> new RuntimeException("리더를 찾을 수 없습니다."));
 
         // TeamRecruitBoard 엔티티 생성 및 값 설정
