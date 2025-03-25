@@ -1,5 +1,7 @@
 package com.tuna.gomen.mentoringBoard.command.service;
 
+import com.tuna.gomen.file.Service.FileStorageService;
+import com.tuna.gomen.file.entity.MentoringFile;
 import com.tuna.gomen.mentoringBoard.command.dto.AnswerRequest;
 import com.tuna.gomen.mentoringBoard.command.dto.AnswerResponse;
 import com.tuna.gomen.mentoringBoard.command.entity.Answer;
@@ -13,8 +15,13 @@ import com.tuna.gomen.user.command.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class AnswerService {
@@ -23,17 +30,20 @@ public class AnswerService {
     private final QuestionRepository questionRepository;
     private final UserRepository userRepository;
     private final MentoringSpaceRepository mentoringSpaceRepository;
+    private final FileStorageService fileStorageService;
 
 
     @Autowired
     public AnswerService(AnswerRepository answerRepository,
                          QuestionRepository questionRepository,
                          UserRepository userRepository,
-                         MentoringSpaceRepository mentoringSpaceRepository) {
+                         MentoringSpaceRepository mentoringSpaceRepository,
+                         FileStorageService fileStorageService) {
         this.answerRepository = answerRepository;
         this.questionRepository = questionRepository;
         this.userRepository = userRepository;
         this.mentoringSpaceRepository = mentoringSpaceRepository;
+        this.fileStorageService = fileStorageService;
     }
 
     @Transactional
@@ -78,7 +88,32 @@ public class AnswerService {
             answer.setMentoringSpaceId(space);
         }
 
+        if (request.getFiles() != null && !request.getFiles().isEmpty()) {
+            MentoringSpace space = answer.getMentoringSpaceId();
+            if (space.getExtensionCount() == 0) {
+                throw new IllegalStateException("멘토링 공간의 extensionCount가 0이므로 파일 업로드 불가");
+            }
+
+            for (MultipartFile file : request.getFiles()) {
+                String originalFileName = file.getOriginalFilename();
+                String storedFileName = UUID.randomUUID().toString() + "_" + originalFileName;
+                String filePath = fileStorageService.storeFile(file, storedFileName);
+
+                MentoringFile mentoringFile = new MentoringFile();
+                mentoringFile.setOriginalFileName(originalFileName);
+                mentoringFile.setStoredFileName(storedFileName);
+                mentoringFile.setFilePath(filePath);
+                mentoringFile.setAnswerId(answer);
+
+                answer.getFiles().add(mentoringFile);
+            }
+        }
+
         Answer saved = answerRepository.save(answer);
+
+        List<String> filePaths = saved.getFiles().stream()
+                .map(f -> f.getFilePath())
+                .collect(Collectors.toList());
 
         return new AnswerResponse(
                 saved.getAnswerId(),
@@ -88,7 +123,8 @@ public class AnswerService {
                 saved.getAnswerMemberId().getUserId(),
                 saved.getMentoringSpaceId().getMentoringSpaceId(),
                 saved.getRefAnswerId() != null ? saved.getRefAnswerId().getAnswerId() : null,
-                saved.getIsDeleted()
+                saved.getIsDeleted(),
+                filePaths
         );
 
     }
@@ -109,15 +145,48 @@ public class AnswerService {
 
         answer.setAnswerContent(request.getAnswerContent());
 
+        // 파일 업로드
+        if (request.getFiles() != null && !request.getFiles().isEmpty()) {
+            MentoringSpace space = answer.getMentoringSpaceId();
+
+            if (space.getExtensionCount() == 0) {
+                throw new IllegalStateException("멘토링 공간의 extensionCount가 0이므로 파일 업로드 불가");
+            }
+
+            // 기존 파일 전체 삭제
+            answer.getFiles().clear();
+
+            for (MultipartFile file : request.getFiles()) {
+                String originalFileName = file.getOriginalFilename();
+                String storedFileName = UUID.randomUUID().toString() + "_" + originalFileName;
+                String filePath = fileStorageService.storeFile(file, storedFileName);
+
+                MentoringFile newFile = new MentoringFile();
+                newFile.setOriginalFileName(originalFileName);
+                newFile.setStoredFileName(storedFileName);
+                newFile.setFilePath(filePath);
+                newFile.setAnswerId(answer);
+
+                answer.getFiles().add(newFile);
+            }
+        }
+
+        Answer updated = answerRepository.save(answer);
+
+        List<String> filePaths = updated.getFiles().stream()
+                .map(f -> f.getFilePath())
+                .collect(Collectors.toList());
+
         return new AnswerResponse(
-                answer.getAnswerId(),
-                answer.getAnswerContent(),
-                answer.getAnswerCreatedTime(),
-                answer.getQuestionId().getQuestionId(),
-                answer.getAnswerMemberId().getUserId(),
-                answer.getMentoringSpaceId().getMentoringSpaceId(),
-                answer.getRefAnswerId() != null ? answer.getRefAnswerId().getAnswerId() : null,
-                answer.getIsDeleted()
+                updated.getAnswerId(),
+                updated.getAnswerContent(),
+                updated.getAnswerCreatedTime(),
+                updated.getQuestionId().getQuestionId(),
+                updated.getAnswerMemberId().getUserId(),
+                updated.getMentoringSpaceId().getMentoringSpaceId(),
+                updated.getRefAnswerId() != null ? updated.getRefAnswerId().getAnswerId() : null,
+                updated.getIsDeleted(),
+                filePaths
         );
     }
 
@@ -142,7 +211,8 @@ public class AnswerService {
                 answer.getAnswerMemberId().getUserId(),
                 answer.getMentoringSpaceId().getMentoringSpaceId(),
                 answer.getRefAnswerId() != null ? answer.getRefAnswerId().getAnswerId() : null,
-                answer.getIsDeleted()
+                answer.getIsDeleted(),
+                Collections.emptyList()
         );
     }
 }

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -19,4 +20,5 @@ public class QuestionResponse {
     private Integer memberId;
     private Integer mentoringSpaceId;
     private String isDeleted;
+    private List<String> filePaths;
 }

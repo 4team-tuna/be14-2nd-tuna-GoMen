@@ -46,4 +46,14 @@ public class FileStorageService {
         return filePath.toString(); // 저장된 파일의 경로 반환
     }
 
+    public String storeFile(MultipartFile file, String storedFileName) {
+        try {
+            Path path = Paths.get(fileStoragePath).resolve(storedFileName);
+            Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+            return path.toString();
+        } catch (IOException e) {
+            throw new RuntimeException("파일 저장 실패", e);
+        }
+    }
+
 }

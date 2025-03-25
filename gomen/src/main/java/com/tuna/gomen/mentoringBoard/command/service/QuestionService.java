@@ -1,5 +1,8 @@
 package com.tuna.gomen.mentoringBoard.command.service;
 
+import com.tuna.gomen.file.Service.FileStorageService;
+import com.tuna.gomen.file.entity.MentoringFile;
+import com.tuna.gomen.file.repository.MentoringFileRepository;
 import com.tuna.gomen.mentoringBoard.command.dto.QuestionRequest;
 import com.tuna.gomen.mentoringBoard.command.dto.QuestionResponse;
 import com.tuna.gomen.mentoringBoard.command.dto.QuestionUpdateRequest;
@@ -14,8 +17,13 @@ import com.tuna.gomen.user.command.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class QuestionService {
@@ -24,16 +32,18 @@ public class QuestionService {
     private final UserRepository userRepository;
     private final MentoringSpaceRepository mentoringSpaceRepository;
     private final MentoringSpaceMemberRepository mentoringSpaceMemberRepository;
+    private final FileStorageService fileStorageService;
 
     @Autowired
     public QuestionService(QuestionRepository questionRepository,
                            UserRepository userRepository,
                            MentoringSpaceRepository mentoringSpaceRepository,
-                           MentoringSpaceMemberRepository mentoringSpaceMemberRepository) {
+                           MentoringSpaceMemberRepository mentoringSpaceMemberRepository, FileStorageService fileStorageService) {
         this.questionRepository = questionRepository;
         this.userRepository = userRepository;
         this.mentoringSpaceRepository = mentoringSpaceRepository;
         this.mentoringSpaceMemberRepository = mentoringSpaceMemberRepository;
+        this.fileStorageService = fileStorageService;
     }
 
     @Transactional
@@ -61,7 +71,31 @@ public class QuestionService {
         question.setMemberId(user);
         question.setMentoringSpaceId(space);
 
+        if (request.getFiles() != null && !request.getFiles().isEmpty()) {
+            if (space.getExtensionCount() == 0) {
+                throw new IllegalStateException("멘토링 공간의 extensionCount가 0이므로 파일 업로드 불가");
+            }
+
+            for (MultipartFile file : request.getFiles()) {
+                String originalFileName = file.getOriginalFilename();
+                String storedFileName = UUID.randomUUID().toString() + "_" + originalFileName;
+                String filePath = fileStorageService.storeFile(file, storedFileName);
+
+                MentoringFile mentoringFile = new MentoringFile();
+                mentoringFile.setOriginalFileName(originalFileName);
+                mentoringFile.setStoredFileName(storedFileName);
+                mentoringFile.setFilePath(filePath);
+                mentoringFile.setQuestionId(question);
+
+                question.getFiles().add(mentoringFile);
+            }
+        }
+
         Question saved = questionRepository.save(question);
+
+        List<String> filePaths = saved.getFiles().stream()
+                .map(MentoringFile::getFilePath)
+                .collect(Collectors.toList());
 
         return new QuestionResponse(
                 saved.getQuestionId(),
@@ -69,7 +103,8 @@ public class QuestionService {
                 saved.getQuestionCreatedTime(),
                 saved.getMemberId().getUserId(),
                 saved.getMentoringSpaceId().getMentoringSpaceId(),
-                saved.getIsDeleted()
+                saved.getIsDeleted(),
+                filePaths
         );
     }
 
@@ -88,7 +123,8 @@ public class QuestionService {
                 updated.getQuestionCreatedTime(),
                 updated.getMemberId().getUserId(),
                 updated.getMentoringSpaceId().getMentoringSpaceId(),
-                updated.getIsDeleted()
+                updated.getIsDeleted(),
+                Collections.emptyList()
         );
 
     }
@@ -106,7 +142,8 @@ public class QuestionService {
                 deleted.getQuestionCreatedTime(),
                 deleted.getMemberId().getUserId(),
                 deleted.getMentoringSpaceId().getMentoringSpaceId(),
-                deleted.getIsDeleted()
+                deleted.getIsDeleted(),
+                Collections.emptyList()
         );
     }
 }
