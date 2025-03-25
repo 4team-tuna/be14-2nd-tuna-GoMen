@@ -5,7 +5,7 @@ import lombok.Setter;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -32,43 +32,33 @@ public class UserEntity {
     @Column(nullable = false)
     private String phoneNumber;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String nickname;
 
     @Column(nullable = false)
-    private java.util.Date createdAt;
+    private LocalDateTime createdAt = LocalDateTime.now();
 
-    @Column(nullable = true)
-    private java.util.Date updatedAt;
+    @Column
+    private LocalDateTime updatedAt;
 
-    @Column(nullable = false)
-    private java.util.Date willBeActivated;
+    private LocalDateTime willBeActivated = LocalDateTime.now();
 
-    @Column(nullable = false)
-    private String isQuitted;
+    @Column(nullable = false, length = 1)
+    private String isQuitted = "N";
 
-    @Column(nullable = true)
+    @Column
     private String githubAdress;
 
     @Column(nullable = false)
-    private Integer extensionCount;
+    private int extensionCount = 0;
 
-    @Column(nullable = true)
+    @Column
     private String careerInfo;
 
-    @Column(nullable = false)
-    private String isMentor;
+    @Column(nullable = false, length = 1)
+    private String isMentor = "N";
 
     @Column(nullable = false)
-    private Integer violationScore;
-
-    @PrePersist
-    public void prePersist() {
-        this.createdAt = new Date();
-        this.willBeActivated = new Date();
-        this.isQuitted = "N";
-        this.extensionCount = 0;
-        this.isMentor = "N";
-        this.violationScore = 0;
-    }
+    private int violationScore = 0;
 }
+

@@ -11,5 +11,4 @@ public interface TeamRecruitBoardRepository extends JpaRepository<TeamRecruitBoa
     // 특정 팀 모집글 조회
     Optional<TeamRecruitBoard> findById(Integer teamPostId);
 
-
 }

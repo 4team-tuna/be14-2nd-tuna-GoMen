@@ -10,4 +10,7 @@ public interface ApplicantService {
 //    List<ApplicantDTO> getMyApplicationsWithStatus(Long userId);
     List<ApplicantDTO> getMyApplicationsWithDetails(Integer userId);
 
+    void applyToTeam(Integer teamPostId, Integer userId, String introduce);
+    void cancelApplication(Integer teamPostId, Integer userId);
+    void processApplication(Integer teamPostId, Integer userId, String isProcessed);
 }

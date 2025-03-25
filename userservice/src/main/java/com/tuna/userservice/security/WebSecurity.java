@@ -45,7 +45,7 @@ public class WebSecurity {
         http.authorizeHttpRequests(authz ->
                                 authz.requestMatchers(new AntPathRequestMatcher("/user/delete")).hasRole("ADMIN")
                                 .requestMatchers(new AntPathRequestMatcher("/user/**", "POST")).permitAll()
-                                .requestMatchers(new AntPathRequestMatcher("/user/**", "GET")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/user/**", "GET")).hasRole("USER")
                                 .anyRequest().authenticated()
         )
         .authenticationManager(authenticationManager())

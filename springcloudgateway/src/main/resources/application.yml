@@ -28,16 +28,16 @@ spring:
           predicates:
             - Path=/user/**
           filters:
-            - AuthorizationHeaderFilter
+#            - AuthorizationHeaderFilter
 #            - RewritePath=/user/(?<segment>.*), /$\{segment}
 
         - id: gomen-service
           uri: lb://TUNA-GOMEN-SERVICE
           predicates:
             - Path=/gomen/**
-#          filters:
+          filters:
 #            - RewritePath=/gomen-service/(?<segment>.*), /$\{segment}
-#            - AuthorizationHeaderFilter
+            - AuthorizationHeaderFilter
 
 token:
   expiration_time: 43200000

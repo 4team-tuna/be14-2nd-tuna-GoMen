@@ -2,8 +2,8 @@ package com.tuna.gomen.user.service;
 
 import com.tuna.gomen.mapper.UserMapper;
 import com.tuna.gomen.user.command.entity.UserEntity;
+import com.tuna.gomen.user.command.repository.UserRepository;
 import com.tuna.gomen.user.dto.UserDTO;
-import com.tuna.gomen.user.repository.UserRepository;
 import com.tuna.gomen.user.vo.RequestQuitVO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

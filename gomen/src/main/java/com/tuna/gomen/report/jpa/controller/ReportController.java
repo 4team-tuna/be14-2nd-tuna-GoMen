@@ -25,15 +25,6 @@ public class ReportController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/processed")
-    public List<Report> getProcessedReports() {
-        return reportService.getProcessedReports();
-    }
-
-    @GetMapping("/unprocessed")
-    public List<Report> getUnprocessedReports() {
-        return reportService.getUnprocessedReports();
-    }
 
     @PatchMapping("/{reportId}/process")
     public ResponseEntity<Report> processReport(@PathVariable int reportId) {

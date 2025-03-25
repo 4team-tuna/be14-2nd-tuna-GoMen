@@ -1,11 +1,25 @@
 [회원 신고]
 http://localhost:8080/gomen/report
-body
+--body--
 {
-  "reportContent": "욕설로 인해 신고합니다.",
-  "posterId": 5,
+  "reportContent": "그냥 혜영님 신고 ",
+  "posterId": 1,
   "reportTargetUserId": 30,
-  "violationId": 2
+  "violationId": 3
+}
+or
+{
+  "reportContent": "이혜영 게시물 신고 ",
+  "posterId": 1,
+  "reportTargetPostId": 30,
+  "violationId": 3
+}
+or
+{
+  "reportContent": "이혜영 댓글 신고 ",
+  "posterId": 1,
+  "commentId": 30,
+  "violationId": 3
 }
 ----------------------------------------------------
 
@@ -14,9 +28,6 @@ http://localhost:8080/gomen/report/요기에 신고 id 넣기/process?status=Y
 ----------------------------------------------------
 
 [처리 완료 신고 목록]
-http://localhost:8080/gomen/report/processed
+http://localhost:8080/gomen/reports/processed
 ----------------------------------------------------
 
-[처리 미완료 신고 목록]
-http://localhost:8080/gomen/report/unprocessed
-----------------------------------------------------

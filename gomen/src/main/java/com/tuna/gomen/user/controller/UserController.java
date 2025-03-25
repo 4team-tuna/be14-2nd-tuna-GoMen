@@ -11,7 +11,7 @@ import com.tuna.gomen.user.service.UserService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/gomen/user")
+@RequestMapping("/user")
 public class UserController {
     private UserService userService;
 
@@ -83,7 +83,7 @@ public class UserController {
     public ResponseEntity<UserDTO> registUser(@RequestBody UserDTO userDTO) {
 
 //        try {
-            userService.registUser(userDTO);
+        userService.registUser(userDTO);
 //        } catch (Exception e) {
 //            throw new RuntimeException("계정 생성 과정에서 오류.");
 //        }
@@ -92,7 +92,7 @@ public class UserController {
                 .body(userDTO);
     }
 
-    @GetMapping("/quit")
+    @PostMapping("/quit")
     public ResponseEntity<RequestQuitVO> quitUser(@RequestBody RequestQuitVO quitVO){
         try {
             userService.quitUser(quitVO);
@@ -103,7 +103,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(quitVO);
     }
 
-    @PostMapping("/admin/delete")
+    @PostMapping("/delete")
     public ResponseEntity<RequestQuitVO> deleteUser(@RequestBody RequestQuitVO quitVO){
         try {
             userService.deleteUser(quitVO);

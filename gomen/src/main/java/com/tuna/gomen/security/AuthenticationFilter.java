@@ -1,7 +1,6 @@
 package com.tuna.gomen.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tuna.gomen.user.dto.UserDTO;
 import com.tuna.gomen.user.service.UserService;
 import com.tuna.gomen.user.vo.RequestLoginVO;
 import io.jsonwebtoken.Claims;

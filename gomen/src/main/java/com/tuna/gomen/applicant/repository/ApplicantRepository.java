@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ApplicantRepository extends JpaRepository<Applicant, ApplicantId> {
-
+    boolean existsByTeamPostIdAndUserId(Integer teamPostId, Integer userId);
 }
