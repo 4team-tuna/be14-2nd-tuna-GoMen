@@ -9,6 +9,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/gomen/questions")
@@ -26,9 +29,12 @@ public class QuestionController {
     @PostMapping(value = "/create/{userId}", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<QuestionResponse> createQuestion(@PathVariable Integer userId,
                                                            @RequestPart("request") QuestionRequest request,
-                                                           RequestPart(value = "files", required = false) List<MultipartFile> files) {
+                                                           @RequestPart(value = "files", required = false) List<MultipartFile> files) {
 
-        request.setFiles(files);
+        if(files != null) {  // 파일이 있을 경우만 DTO에 설정
+            request.setFiles(files);
+        }
+
         return ResponseEntity.ok(questionService.createQuestion(userId,request));
     }
 
