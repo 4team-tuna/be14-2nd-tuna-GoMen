@@ -18,6 +18,7 @@ public class BoardDTO {
     private Integer category;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
+    private Integer userId;
 
     private List<String> fileAddresses; // 🔥 파일 경로 리스트 추가
 
@@ -29,6 +30,7 @@ public class BoardDTO {
         dto.setContent(board.getContent());
         dto.setCreatedAt(board.getCreatedAt());
         dto.setModifiedAt(board.getModifiedAt());
+        dto.setUserId(board.getWriterId());  // 🔥 유저 ID 설정
 
         // 📌 파일 정보를 DTO에 추가
         if (files != null) {

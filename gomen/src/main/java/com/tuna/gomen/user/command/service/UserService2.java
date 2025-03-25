@@ -10,9 +10,9 @@ public class UserService2 {
     @Autowired
     private UserRepository userRepository;
 
-    public User getDefaultUser() {
-        return userRepository.findById(1)
-                .orElseThrow(() -> new RuntimeException("User with ID 1 not found"));
+    public User getUserById(Integer userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("사용자를 찾을 수 없습니다. ID: " + userId));
     }
 
 }

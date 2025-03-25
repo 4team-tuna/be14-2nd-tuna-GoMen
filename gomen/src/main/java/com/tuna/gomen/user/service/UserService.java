@@ -1,9 +1,11 @@
 package com.tuna.gomen.user.service;
 
 import com.tuna.gomen.mapper.UserMapper;
+import com.tuna.gomen.user.command.entity.User;
 import com.tuna.gomen.user.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.tuna.gomen.user.command.repository.UserRepository;
 
 import java.util.List;
 
@@ -12,7 +14,8 @@ public class UserService {
     private final UserMapper userMapper;
 
     @Autowired
-    public UserService(UserMapper userMapper) {
+    public UserService(UserMapper userMapper)
+    {
         this.userMapper = userMapper;
     }
 
@@ -47,4 +50,5 @@ public class UserService {
     public UserDTO selectUserByAnswerId(int answerId) {
         return userMapper.selectUserByAnswerId(answerId);
     }
+
 }

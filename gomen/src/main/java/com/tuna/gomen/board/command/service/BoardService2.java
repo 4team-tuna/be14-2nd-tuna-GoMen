@@ -4,11 +4,13 @@ import com.tuna.gomen.board.command.entity.Board;
 import com.tuna.gomen.board.command.repository.BoardRepository;
 import com.tuna.gomen.file.entity.BoardFile;
 import com.tuna.gomen.file.repository.BoardFileRepository;
+import com.tuna.gomen.user.command.entity.User;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
+import com.tuna.gomen.user.command.repository.UserRepository;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -41,7 +43,7 @@ public class BoardService2 {
         this.fileStorageService = fileStorageService;
     }
 
-    private static final String UPLOAD_DIR = "C:/uploads/"; // 파일 저장 경로
+
 
     @Transactional
     public Board createBoard(Board board, List<MultipartFile> files) throws IOException {
