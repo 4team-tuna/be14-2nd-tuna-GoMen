@@ -107,18 +107,17 @@ public class BoardService2 {
 
     public void deleteFilesByIds(List<Integer> fileIds) {
         for (Integer fileId : fileIds) {
-            // 파일 삭제 처리
             BoardFile boardFile = boardFileRepository.findById(fileId)
                     .orElseThrow(() -> new RuntimeException("파일을 찾을 수 없습니다. fileId: " + fileId));
 
-            // 경로를 올바르게 처리하여 파일 삭제
             String filePath = boardFile.getAddress();
-            fileStorageService.deleteFile(filePath);  // 파일 경로로 파일 삭제
+            fileStorageService.deleteFile(filePath);  // ✅ 실제 파일 삭제
+            boardFileRepository.delete(boardFile);  // ✅ DB에서 파일 삭제
 
-            // 데이터베이스에서 파일 정보 삭제
-            boardFileRepository.delete(boardFile);  // 데이터베이스에서 파일 정보 삭제
+            System.out.println("🗑 파일 삭제 완료: " + filePath);
         }
     }
+
 
 
 
@@ -139,21 +138,25 @@ public class BoardService2 {
         List<BoardFile> savedFiles = new ArrayList<>();
 
         for (MultipartFile file : files) {
-            // 1️⃣ 파일을 로컬 저장소에 저장
             String storedFilePath = fileStorageService.storeFile(file);
+            System.out.println("📁 저장된 파일 경로: " + storedFilePath);  // ✅ 저장 경로 확인
 
-            // 2️⃣ 새로운 파일 엔티티 생성
             BoardFile boardFile = new BoardFile();
             boardFile.setBoard(board);
             boardFile.setAddress(storedFilePath);
 
-            // 3️⃣ DB 저장 (기존 파일 유지하면서 새로운 파일만 추가)
-            boardFile = boardFileRepository.save(boardFile);
+            boardFile = boardFileRepository.save(boardFile);  // ✅ 파일 DB 저장
+            System.out.println("✅ 파일 DB 저장 완료: " + boardFile.getFileId()); // ✅ 저장된 ID 확인
+
             savedFiles.add(boardFile);
         }
 
-        return savedFiles; // 새로 저장된 파일 리스트 반환
+        return savedFiles;  // ✅ 저장된 파일 리스트 반환
     }
+
+
+
+
 
 
     public void softDeleteBoard(Integer postId) {

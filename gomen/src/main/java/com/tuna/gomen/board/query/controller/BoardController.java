@@ -12,12 +12,14 @@ import com.tuna.gomen.board.query.service.BoardService;
 import com.tuna.gomen.file.entity.BoardFile;
 import com.tuna.gomen.file.repository.BoardFileRepository;
 import com.tuna.gomen.user.command.entity.User;
+import com.tuna.gomen.user.command.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import com.tuna.gomen.user.command.service.UserService2;
+
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -30,16 +32,16 @@ public class BoardController {
 
     private final BoardService boardService;
     private final BoardService2 boardService2;
-    private final BoardFileRepository boardFileRepository;
     private final UserService2 userService2;
+    private final BoardFileRepository boardFileRepository;
 
     @Autowired
     public BoardController(BoardService boardService, BoardService2 boardService2,
-                           BoardFileRepository boardFileRepository, UserService2 userService2) {
+                            UserService2 userService2, BoardFileRepository boardFileRepository) {
         this.boardService = boardService;
         this.boardService2 = boardService2;
-        this.boardFileRepository = boardFileRepository;
         this.userService2 = userService2;
+        this.boardFileRepository = boardFileRepository;
     }
 
     // 전체 게시글 조회
@@ -160,18 +162,23 @@ public class BoardController {
         existingBoard.setContent(boardDTO.getContent());
         existingBoard.setModifiedAt(LocalDateTime.now());
 
-        // 📌 3. 삭제할 파일 삭제
+        // 3. 삭제할 파일이 있으면 삭제
         if (deleteFileIds != null && !deleteFileIds.isEmpty()) {
             boardService2.deleteFilesByIds(deleteFileIds);
         }
 
-        // 📌 4. 기존 파일 유지 + 새로운 파일만 추가
+        // 4. 새로운 파일이 있는 경우만 추가
         if (files != null && !files.isEmpty()) {
-            List<BoardFile> newFiles = boardService2.saveFiles(existingBoard, files);
-            for (BoardFile file : newFiles) {
-                existingBoard.addFile(file);  // ✅ 기존 파일 유지하면서 새로운 파일만 추가
+            List<MultipartFile> validFiles = files.stream()
+                    .filter(file -> file.getSize() > 0)  // 🚀 **빈 파일 필터링**
+                    .toList();
+
+            if (!validFiles.isEmpty()) {  // 🚀 **진짜 파일이 있을 때만 저장**
+                List<BoardFile> newFiles = boardService2.saveFiles(existingBoard, validFiles);
+                existingBoard.getFiles().addAll(newFiles);
             }
         }
+
 
         // 📌 5. 수정된 게시글 저장
         Board updatedBoard = boardService2.updateBoard(existingBoard);
