@@ -46,4 +46,9 @@ public class Comment {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ref_comment_id")
     private Comment parentComment;
+
+    // 댓글 신고시 해당 회원에게 벌점 부여 위해 필요-석현
+    public Integer getWriterId() {
+        return user != null ? user.getUserId() : null;
+    }
 }
