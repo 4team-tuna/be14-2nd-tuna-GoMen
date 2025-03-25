@@ -60,6 +60,7 @@ public class ApplicantServiceImpl implements ApplicantService {
         applicantRepository.deleteById(applicantId);  // 하드 딜리트
     }
 
+    // 팀 신청 처리 (PUT)
     @Transactional
     @Override
     public void processApplication(Integer teamPostId, Integer userId, String isProcessed) {

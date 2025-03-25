@@ -1,5 +1,6 @@
 package com.tuna.gomen.user.command.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
