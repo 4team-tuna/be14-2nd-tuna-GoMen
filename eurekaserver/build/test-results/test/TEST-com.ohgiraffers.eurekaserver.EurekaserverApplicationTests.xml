@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohgiraffers.eurekaserver.EurekaserverApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-03-24T06:24:20.102Z" hostname="DESKTOP-H194VK8" time="0.644">
+  <properties/>
+  <testcase name="contextLoads()" classname="com.ohgiraffers.eurekaserver.EurekaserverApplicationTests" time="0.644"/>
+  <system-out><![CDATA[15:24:16.038 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.ohgiraffers.eurekaserver.EurekaserverApplicationTests]: EurekaserverApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:24:16.141 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.ohgiraffers.eurekaserver.EurekaserverApplication for test class com.ohgiraffers.eurekaserver.EurekaserverApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.4)
+
+2025-03-24T15:24:16.757+09:00  INFO 19268 --- [    Test worker] c.o.e.EurekaserverApplicationTests       : Starting EurekaserverApplicationTests using Java 17.0.3 with PID 19268 (started by Playdata in C:\lecture\be14-2nd-tuna-GoMen\eurekaserver)
+2025-03-24T15:24:16.758+09:00  INFO 19268 --- [    Test worker] c.o.e.EurekaserverApplicationTests       : No active profile set, falling back to 1 default profile: "default"
+2025-03-24T15:24:17.975+09:00  INFO 19268 --- [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=a81586d0-40dc-3b15-b4b7-155036bb52a1
+2025-03-24T15:24:18.484+09:00  INFO 19268 --- [    Test worker] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-03-24T15:24:19.448+09:00  WARN 19268 --- [    Test worker] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2025-03-24T15:24:19.623+09:00  INFO 19268 --- [    Test worker] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2025-03-24T15:24:19.657+09:00  INFO 19268 --- [    Test worker] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2025-03-24T15:24:19.658+09:00  INFO 19268 --- [    Test worker] com.netflix.discovery.DiscoveryClient    : Client configured to neither register nor query for data.
+2025-03-24T15:24:19.660+09:00  INFO 19268 --- [    Test worker] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1742797459660 with initial instances count: 0
+2025-03-24T15:24:19.700+09:00  INFO 19268 --- [    Test worker] c.n.eureka.DefaultEurekaServerContext    : Initializing ...
+2025-03-24T15:24:19.701+09:00  INFO 19268 --- [    Test worker] c.n.eureka.cluster.PeerEurekaNodes       : Adding new peer nodes [http://localhost:8761/eureka/]
+2025-03-24T15:24:19.819+09:00  INFO 19268 --- [    Test worker] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2025-03-24T15:24:19.820+09:00  INFO 19268 --- [    Test worker] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2025-03-24T15:24:19.820+09:00  INFO 19268 --- [    Test worker] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2025-03-24T15:24:19.820+09:00  INFO 19268 --- [    Test worker] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2025-03-24T15:24:19.888+09:00  INFO 19268 --- [    Test worker] c.n.eureka.cluster.PeerEurekaNodes       : Replica node URL:  http://localhost:8761/eureka/
+2025-03-24T15:24:19.896+09:00  INFO 19268 --- [    Test worker] c.n.e.registry.AbstractInstanceRegistry  : Finished initializing remote region registries. All known remote regions: []
+2025-03-24T15:24:19.896+09:00  INFO 19268 --- [    Test worker] c.n.eureka.DefaultEurekaServerContext    : Initialized
+2025-03-24T15:24:19.986+09:00  INFO 19268 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-03-24T15:24:20.030+09:00  INFO 19268 --- [    Test worker] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application UNKNOWN with eureka with status UP
+2025-03-24T15:24:20.042+09:00  INFO 19268 --- [      Thread-12] o.s.c.n.e.server.EurekaServerBootstrap   : isAws returned false
+2025-03-24T15:24:20.043+09:00  INFO 19268 --- [      Thread-12] o.s.c.n.e.server.EurekaServerBootstrap   : Initialized server context
+2025-03-24T15:24:20.043+09:00  INFO 19268 --- [      Thread-12] c.n.e.r.PeerAwareInstanceRegistryImpl    : Got 1 instances from neighboring DS node
+2025-03-24T15:24:20.043+09:00  INFO 19268 --- [      Thread-12] c.n.e.r.PeerAwareInstanceRegistryImpl    : Renew threshold is: 1
+2025-03-24T15:24:20.043+09:00  INFO 19268 --- [      Thread-12] c.n.e.r.PeerAwareInstanceRegistryImpl    : Changing status to UP
+2025-03-24T15:24:20.045+09:00  INFO 19268 --- [      Thread-12] e.s.EurekaServerInitializerConfiguration : Started Eureka Server
+2025-03-24T15:24:20.048+09:00  INFO 19268 --- [    Test worker] c.o.e.EurekaserverApplicationTests       : Started EurekaserverApplicationTests in 3.688 seconds (process running for 4.814)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

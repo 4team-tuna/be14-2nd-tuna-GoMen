@@ -1,0 +1,37 @@
+server:
+  port: 0
+
+spring:
+  application:
+    name: tuna-user-service
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/gomendb
+    username: gomendb
+    password: gomendb
+  jpa:
+    hibernate:
+      ddl-auto: none   # DDL ?? ????: 'none', 'update', 'create', 'create-drop' ? ??
+    show-sql: true       # SQL ?? ?? ?? ??
+    database: mysql
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect # MariaDB? ?? Hibernate Dialect
+        format_sql: true    # ?? ??? ??
+
+mybatis:
+  type-aliases-package: com.tuna.gomen.report.mybatis.model, com.tuna.gomen.teamRecruitBoard, com.tuna.gomen.applicant
+  mapper-locations: classpath:mapper/*.xml
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+token:
+  expiration_time: 43200000
+  secret: Wg1aYrHUMNSmB7ircggZ+7kuH8VptDOxngpDpE92YQ9ExopMJNqHHywZSUJ8uc2EY32Qxun3w8JlikUX0je3bQ==

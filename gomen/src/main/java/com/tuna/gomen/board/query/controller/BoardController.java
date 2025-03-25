@@ -12,7 +12,6 @@ import com.tuna.gomen.board.query.service.BoardService;
 import com.tuna.gomen.file.entity.BoardFile;
 import com.tuna.gomen.file.repository.BoardFileRepository;
 import com.tuna.gomen.user.command.entity.User;
-import com.tuna.gomen.user.command.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
