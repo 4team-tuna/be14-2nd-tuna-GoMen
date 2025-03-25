@@ -18,12 +18,10 @@ public class Report {
     private Integer commentId;
     private int violationId;
 
-    private int userId;
-    private String loginId;
-    private String name;
-    private String nickname;
-    private String phoneNumber;
-    private String isMentor;
+    // 사용자 식별 정보는 nickname만 사용
     private String reporterNickname;
     private String reportedNickname;
+
+    // 신고 사유 카테고리
+    private String violationCategory;
 }
