@@ -1,5 +1,6 @@
 package com.tuna.gomen.mentoringBoard.command.service;
 
+import com.tuna.gomen.file.entity.MentoringFile;
 import com.tuna.gomen.mentoringBoard.command.dto.QuestionRequest;
 import com.tuna.gomen.mentoringBoard.command.dto.QuestionResponse;
 import com.tuna.gomen.mentoringBoard.command.dto.QuestionUpdateRequest;
@@ -14,8 +15,10 @@ import com.tuna.gomen.user.command.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Service
 public class QuestionService {
@@ -60,6 +63,26 @@ public class QuestionService {
         question.setQuestionCreatedTime(LocalDateTime.now());
         question.setMemberId(user);
         question.setMentoringSpaceId(space);
+
+        if (request.getFiles() != null && !request.getFiles().isEmpty()) {
+            if (space.getExtensionCount() == 0) {
+                throw new IllegalStateException("멘토링 공간의 extensionCount가 0이므로 파일 업로드 불가");
+            }
+
+            for (MultipartFile file : request.getFiles()) {
+                String originalFileName = file.getOriginalFilename();
+                String storedFileName = UUID.randomUUID().toString() + "_" + originalFileName;
+                String filePath = fileStorageService.storeFile(file, storedFileName);
+
+                MentoringFile mentoringFile = new MentoringFile();
+                mentoringFile.setOriginalFileName(originalFileName);
+                mentoringFile.setStoredFileName(storedFileName);
+                mentoringFile.setFilePath(filePath);
+                mentoringFile.setQuestionId(question);
+
+                question.getFiles().add(mentoringFile);
+            }
+        }
 
         Question saved = questionRepository.save(question);
 

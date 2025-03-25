@@ -5,6 +5,7 @@ import com.tuna.gomen.mentoringBoard.command.dto.QuestionResponse;
 import com.tuna.gomen.mentoringBoard.command.dto.QuestionUpdateRequest;
 import com.tuna.gomen.mentoringBoard.command.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -22,10 +23,12 @@ public class QuestionController {
 
     // 멘토링 질문 등록
     // localhost:8080/gomen/questions/create/5
-    @PostMapping("/create/{userId}")
+    @PostMapping(value = "/create/{userId}", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<QuestionResponse> createQuestion(@PathVariable Integer userId,
-                                                     @RequestBody QuestionRequest request) {
+                                                           @RequestPart("request") QuestionRequest request,
+                                                           RequestPart(value = "files", required = false) List<MultipartFile> files) {
 
+        request.setFiles(files);
         return ResponseEntity.ok(questionService.createQuestion(userId,request));
     }
 
