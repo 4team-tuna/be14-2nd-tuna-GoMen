@@ -3,16 +3,14 @@ package com.tuna.gomen.board.query.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tuna.gomen.board.command.dto.BoardDTO;
 import com.tuna.gomen.board.command.entity.Board;
-import com.tuna.gomen.board.command.repository.BoardRepository;
+
 import com.tuna.gomen.board.command.service.BoardService2;
 import com.tuna.gomen.board.query.dto.BoardDto;
 import com.tuna.gomen.board.query.dto.CommentDto;
 import com.tuna.gomen.board.query.dto.UserDto;
 import com.tuna.gomen.board.query.service.BoardService;
 import com.tuna.gomen.file.entity.BoardFile;
-import com.tuna.gomen.file.repository.BoardFileRepository;
 import com.tuna.gomen.user.command.entity.User;
-import com.tuna.gomen.user.command.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,15 +31,13 @@ public class BoardController {
     private final BoardService boardService;
     private final BoardService2 boardService2;
     private final UserService2 userService2;
-    private final BoardFileRepository boardFileRepository;
 
     @Autowired
     public BoardController(BoardService boardService, BoardService2 boardService2,
-                            UserService2 userService2, BoardFileRepository boardFileRepository) {
+                            UserService2 userService2) {
         this.boardService = boardService;
         this.boardService2 = boardService2;
         this.userService2 = userService2;
-        this.boardFileRepository = boardFileRepository;
     }
 
     // 전체 게시글 조회
@@ -105,7 +101,6 @@ public class BoardController {
     /// /// 설명.아래부턴JPA(DML)/////////////////////////////////
     /// /// 설명.아래부턴JPA(DML)/////////////////////////////////
     ///
-    // 게시글 작성 (파일 포함)
     @PostMapping
     public BoardDTO createBoard(@RequestParam("board") String boardJson,
                                 @RequestParam(value = "files", required = false) List<MultipartFile> files) throws IOException {
@@ -116,26 +111,29 @@ public class BoardController {
         System.out.println("BoardDTO: " + boardDTO);
         System.out.println("Files: " + files);
 
+        // 📌 1. 유저 ID를 이용해 유저 가져오기
+        User user = userService2.getUserById(boardDTO.getUserId()); // 유저 ID로 조회
+        if (user == null) {
+            throw new RuntimeException("유효하지 않은 사용자 ID입니다.");
+        }
+
+        // 📌 2. 게시글 객체 생성 및 유저 설정
         Board board = new Board();
         board.setCategory(boardDTO.getCategory());
         board.setTitle(boardDTO.getTitle());
         board.setContent(boardDTO.getContent());
+        board.setUser(user); // 유저 설정
 
-
-        // DB에서 ID=1인 유저 가져오기
-        User user = userService2.getDefaultUser();
-        board.setUser(user);  // 게시글 작성자 설정
-
-        // 📌 1. 먼저 게시글을 저장해야 Board 객체가 DB에 존재함
+        // 📌 3. 먼저 게시글을 저장해야 Board 객체가 DB에 존재함
         Board savedBoard = boardService2.createBoard(board, null);
 
-        // 파일 업로드 및 저장
+        // 📌 4. 파일 업로드 및 저장
         List<BoardFile> savedFiles = new ArrayList<>();
         if (files != null && !files.isEmpty()) {
             savedFiles = boardService2.uploadFiles(files, savedBoard);
         }
 
-        // 4️⃣ DTO 변환 (파일 정보 포함)
+        // 📌 5. DTO 변환 (파일 정보 포함)
         return BoardDTO.fromEntity(savedBoard, savedFiles);
     }
 
