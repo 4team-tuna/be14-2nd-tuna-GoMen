@@ -26,10 +26,12 @@
 ---
 
 ## 팀원 소개
+
 | 이혜영 | 이준규 | 한석현 | 김성민 | 서민종 |
 |--------|--------|--------|--------|--------|
-| ![사진](#) | ![Image](https://github.com/user-attachments/assets/058daceb-2a13-4c5d-a6c6-59dfd3b5e62f) | ![Image](https://github.com/user-attachments/assets/c17d7bc2-4a71-4323-8fb4-7fb38f518daa) | ![사진](#) | ![Image](https://github.com/user-attachments/assets/4a166e64-9e42-44ae-b554-ab4547eb79bf) |
+| ![사진](#) | <img src="https://github.com/user-attachments/assets/058daceb-2a13-4c5d-a6c6-59dfd3b5e62f" width="200" height="200"> | <img src="https://github.com/user-attachments/assets/c17d7bc2-4a71-4323-8fb4-7fb38f518daa" width="200" height="200"> | ![사진](#) | <img src="https://github.com/user-attachments/assets/4a166e64-9e42-44ae-b554-ab4547eb79bf" width="200" height="200"> |
 | ISTP | ESTP | ENFP | ESFP | ENFP |
+
 
 ---
 
