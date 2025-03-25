@@ -11,6 +11,7 @@ import com.tuna.gomen.user.command.entity.User;
 import com.tuna.gomen.user.command.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -55,30 +56,40 @@ public class ReportService {
         return reportRepository.findByIsProcessed("N");
     }
 
+    //신고 처리: 벌점 부여 + 블라인드 처리 포함(게시글, 댓글 둘 다)
+    @Transactional
     public Report processReport(int reportId) {
         Report report = reportRepository.findById(reportId)
                 .orElseThrow(() -> new RuntimeException("신고 내역 없음"));
 
-        report.setIsProcessed("Y");
-        report.setIsProcessedTime(LocalDateTime.now());
+        if ("N".equals(report.getIsProcessed())) {
+            report.setIsProcessed("Y");
+            report.setIsProcessedTime(LocalDateTime.now());
 
-        int minus = report.getViolation().getMinusPoint();
-        Integer targetId = Optional.ofNullable(report.getReportTargetUserId())
-                .orElseGet(() -> getTargetUserIdByPostOrComment(report));
+            int minus = report.getViolation().getMinusPoint();
+            Integer targetId = Optional.ofNullable(report.getReportTargetUserId())
+                    .orElseGet(() -> getTargetUserIdByPostOrComment(report));
 
-        if (targetId != null) {
-            User user = userRepository.findById(targetId).orElseThrow();
-            int updatedScore = user.getViolationScore() + minus;
-            user.setViolationScore(updatedScore);
-            if (updatedScore >= 100) {
-                user.setIsQuitted("Y");
+            if (targetId != null) {
+                User user = userRepository.findById(targetId).orElseThrow();
+                int updatedScore = user.getViolationScore() + minus;
+                user.setViolationScore(updatedScore);
+                if (updatedScore >= 100) {
+                    user.setIsQuitted("Y");
+                }
+                userRepository.save(user);
             }
-            userRepository.save(user);
+
+            // 블라인드 처리
+            blindTargetPostOrComment(report);
+
+            reportRepository.save(report);
         }
 
-        return reportRepository.save(report);
+        return report;
     }
 
+    // 게시글 또는 댓글 작성자 ID를 추출
     private Integer getTargetUserIdByPostOrComment(Report report) {
         if (report.getReportTargetPostId() != null) {
             return postRepository.findById(report.getReportTargetPostId())
@@ -93,5 +104,25 @@ public class ReportService {
         }
 
         return null;
+    }
+
+
+    // 게시글 또는 댓글 블라인드 처리
+    private void blindTargetPostOrComment(Report report) {
+        if (report.getReportTargetPostId() != null) {
+            postRepository.findById(report.getReportTargetPostId())
+                    .ifPresent(post -> {
+                        post.setIsBlinded("Y");
+                        postRepository.save(post);
+                    });
+        }
+
+        if (report.getCommentId() != null) {
+            commentRepository.findById(report.getCommentId())
+                    .ifPresent(comment -> {
+                        comment.setIsBlinded("Y");
+                        commentRepository.save(comment);
+                    });
+        }
     }
 }
