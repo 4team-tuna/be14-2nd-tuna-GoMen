@@ -1,7 +1,7 @@
-// 📁 com.tuna.gomen.report.jpa.service
-
 package com.tuna.gomen.report.jpa.service;
 
+import com.tuna.gomen.board.command.repository.BoardRepository;
+import com.tuna.gomen.comment.repository.CommentRepository;
 import com.tuna.gomen.report.jpa.dto.ReportDto;
 import com.tuna.gomen.report.jpa.entity.Report;
 import com.tuna.gomen.report.jpa.entity.ReportCategory;
@@ -23,10 +23,28 @@ public class ReportService {
     private final ReportRepository reportRepository;
     private final ReportCategoryRepository categoryRepository;
     private final UserRepository userRepository;
+    private final BoardRepository postRepository;
+    private final CommentRepository commentRepository;
 
     public Report createReport(Report report) {
         report.setCreatedAt(LocalDateTime.now());
         return reportRepository.save(report);
+    }
+
+    public void createReport(ReportDto dto) {
+        Report report = new Report();
+        report.setPosterId(dto.getPosterId());
+        report.setReportContent(dto.getReportContent());
+        report.setCommentId(dto.getCommentId());
+        report.setReportTargetPostId(dto.getReportTargetPostId());
+        report.setReportTargetUserId(dto.getReportTargetUserId());
+
+        ReportCategory category = categoryRepository
+                .findById(dto.getViolationId())
+                .orElseThrow(() -> new RuntimeException("존재하지 않는 신고 사유입니다."));
+        report.setViolation(category);
+
+        reportRepository.save(report);
     }
 
     public List<Report> getProcessedReports() {
@@ -62,23 +80,18 @@ public class ReportService {
     }
 
     private Integer getTargetUserIdByPostOrComment(Report report) {
-        // TODO: 게시글/댓글 작성자 조회 로직 필요
+        if (report.getReportTargetPostId() != null) {
+            return postRepository.findById(report.getReportTargetPostId())
+                    .map(post -> post.getWriterId())
+                    .orElse(null);
+        }
+
+        if (report.getCommentId() != null) {
+            return commentRepository.findById(report.getCommentId())
+                    .map(comment -> comment.getWriterId())
+                    .orElse(null);
+        }
+
         return null;
-    }
-
-    public void createReport(ReportDto dto) {
-        Report report = new Report();
-        report.setPosterId(dto.getPosterId());
-        report.setReportContent(dto.getReportContent());
-        report.setCommentId(dto.getCommentId());
-        report.setReportTargetPostId(dto.getReportTargetPostId());
-        report.setReportTargetUserId(dto.getReportTargetUserId());
-
-        ReportCategory category = categoryRepository
-                .findById(dto.getViolationId())
-                .orElseThrow(() -> new RuntimeException("존재하지 않는 신고 사유입니다."));
-        report.setViolation(category);
-
-        reportRepository.save(report);
     }
 }

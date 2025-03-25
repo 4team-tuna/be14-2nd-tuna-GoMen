@@ -53,4 +53,10 @@ public class Board {
         file.setBoard(this);
         this.files.add(file);
     }
+
+    // 게시글 신고시 해당 회원에게 벌점 부여 위해 필요-석현
+    public Integer getWriterId() {
+        return user != null ? user.getUserId() : null;
+    }
+
 }
