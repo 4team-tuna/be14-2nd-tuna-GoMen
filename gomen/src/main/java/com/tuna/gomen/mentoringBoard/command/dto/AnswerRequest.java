@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -15,5 +18,6 @@ public class AnswerRequest {
     private Integer questionId;
     private String answerContent;
     private Integer refAnswerId;
+    private List<MultipartFile> files;
 }
 
