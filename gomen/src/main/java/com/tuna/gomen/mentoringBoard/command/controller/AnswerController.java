@@ -29,7 +29,8 @@ public class AnswerController {
     @PostMapping(value = "/create/{userId}" , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<AnswerResponse> createAnswer(@PathVariable Integer userId,
                                                        @RequestPart("request") AnswerRequest request,
-                                                       @RequestPart(value = "files", required = false) List<MultipartFile> files) {
+                                                       @RequestPart(value = "files", required = false)
+                                                           List<MultipartFile> files) {
         if(files != null) {  // 파일이 있을 경우만 DTO에 설정
             request.setFiles(files);
         }
@@ -42,7 +43,14 @@ public class AnswerController {
     @PatchMapping("/update/{answerId}/{userId}")
     public ResponseEntity<AnswerResponse> updateAnswer(@PathVariable Integer answerId,
                                                        @PathVariable Integer userId,
-                                                       @RequestBody AnswerRequest request) {
+                                                       @RequestPart("request") AnswerRequest request,
+                                                       @RequestPart(value = "files", required = false)
+                                                           List<MultipartFile> files) {
+
+        if(files != null) {  // 파일이 있을 경우만 DTO에 설정
+            request.setFiles(files);
+        }
+
         return ResponseEntity.ok(answerService.updateAnswer(answerId,userId,request));
     }
 
