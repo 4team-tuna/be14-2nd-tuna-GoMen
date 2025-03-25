@@ -153,5 +153,5 @@ SELECT a.user_id,
   FROM tbl_applicant a
   JOIN tbl_user u ON a.user_id = u.user_id
   JOIN tbl_team_recruit t ON a.team_post_id = t.team_post_id
-  JOIN tbl_user leader ON t.leader_id = leader.user_id  <!-- 팀장 정보 조인 -->
+  JOIN tbl_user leader ON t.leader_id = leader.user_id 
  WHERE a.user_id = #{userId}
