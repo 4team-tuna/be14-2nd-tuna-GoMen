@@ -101,14 +101,59 @@
 </details>
 
 <details><summary>👥 게시글 수정 </summary>
-![게시글 수정(파일추가업로드, 내용수정)](https://github.com/user-attachments/assets/98ebde41-0aa8-43a3-b2f2-fef813dcc99c)
+      <img src="https://github.com/user-attachments/assets/98ebde41-0aa8-43a3-b2f2-fef813dcc99c">
 
 </details>
 
 <details><summary>👥 게시글 삭제 </summary>
-![게시글 삭제(Y)](https://github.com/user-attachments/assets/8f68bb1e-eede-4291-8172-10ff80503daa)
+
+   <img src="https://github.com/user-attachments/assets/8f68bb1e-eede-4291-8172-10ff80503daa">
 
 </details>
+
+<details><summary>👥 댓글 작성 </summary>
+
+   <img src="https://github.com/user-attachments/assets/8f68bb1e-eede-4291-8172-10ff80503daa">
+
+</details>
+
+<details><summary>👥 댓글 수정 </summary>
+
+   <img src="https://github.com/user-attachments/assets/8f68bb1e-eede-4291-8172-10ff80503daa">
+
+</details>
+
+<details><summary>👥 댓글 삭제 </summary>
+
+   <img src="https://github.com/user-attachments/assets/8f68bb1e-eede-4291-8172-10ff80503daa">
+
+</details>
+
+<details><summary>👥 북마크 생성 </summary>
+
+   <img src="https://github.com/user-attachments/assets/8f68bb1e-eede-4291-8172-10ff80503daa">
+
+</details>
+
+<details><summary>👥 북마크 삭제 </summary>
+
+   <img src="https://github.com/user-attachments/assets/8f68bb1e-eede-4291-8172-10ff80503daa">
+
+</details>
+
+<details><summary>👥 좋아요 생성 </summary>
+
+   <img src="https://github.com/user-attachments/assets/8f68bb1e-eede-4291-8172-10ff80503daa">
+
+</details>
+
+<details><summary>👥 좋아요 삭제 </summary>
+
+   <img src="https://github.com/user-attachments/assets/8f68bb1e-eede-4291-8172-10ff80503daa">
+
+</details>
+
+
 
 ### 4-2. MENTORING
 <details><summary>👩🏻‍💻 사용자 정보</summary>
