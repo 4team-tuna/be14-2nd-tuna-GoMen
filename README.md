@@ -192,6 +192,17 @@
 
 
 ### 4-5. Mail
+<details><summary> 받은 쪽지 조회 </summary>
+<img src="https://github.com/user-attachments/assets/c84ea150-674f-4f61-a40b-22d8a8342f1a">
+</details>
+
+<details><summary> 보낸 쪽지 조회 </summary>
+<img src="https://github.com/user-attachments/assets/2ea0deb2-708a-4fef-b44a-f096604e8074">
+</details>
+
+<details><summary> 쪽지 보내기 </summary>
+<img src="https://github.com/user-attachments/assets/c1a209d7-76c4-4aea-9db1-e63682f926d6">
+</details>
 ### 4-6. Report
 <details><summary> 회원 신고 </summary>
 <img src="https://github.com/user-attachments/assets/c45e5149-335a-4a1a-8606-cd34910e384a">
