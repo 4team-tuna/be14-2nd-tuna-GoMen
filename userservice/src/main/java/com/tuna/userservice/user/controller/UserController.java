@@ -1,17 +1,17 @@
-package com.tuna.gomen.user.controller;
+package com.tuna.userservice.user.controller;
 
-import com.tuna.gomen.user.dto.UserDTO;
-import com.tuna.gomen.user.vo.RequestQuitVO;
+import com.tuna.userservice.user.dto.UserDTO;
+import com.tuna.userservice.user.service.UserService;
+import com.tuna.userservice.user.vo.RequestQuitVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.tuna.gomen.user.service.UserService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/gomen/user")
+@RequestMapping("/user")
 public class UserController {
     private UserService userService;
 
@@ -84,7 +84,7 @@ public class UserController {
     public ResponseEntity<UserDTO> registUser(@RequestBody UserDTO userDTO) {
 
 //        try {
-        userService.registUser(userDTO);
+            userService.registUser(userDTO);
 //        } catch (Exception e) {
 //            throw new RuntimeException("계정 생성 과정에서 오류.");
 //        }
@@ -93,7 +93,7 @@ public class UserController {
                 .body(userDTO);
     }
 
-    @PostMapping("/quit")
+    @GetMapping("/quit")
     public ResponseEntity<RequestQuitVO> quitUser(@RequestBody RequestQuitVO quitVO){
         try {
             userService.quitUser(quitVO);
@@ -104,7 +104,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(quitVO);
     }
 
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public ResponseEntity<RequestQuitVO> deleteUser(@RequestBody RequestQuitVO quitVO){
         try {
             userService.deleteUser(quitVO);

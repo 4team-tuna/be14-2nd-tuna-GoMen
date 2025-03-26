@@ -1,16 +1,17 @@
-package com.tuna.gomen.user.service;
+package com.tuna.userservice.user.service;
 
-import com.tuna.gomen.mapper.UserMapper;
-import com.tuna.gomen.user.command.entity.User;
-import com.tuna.gomen.user.dto.UserDTO;
-import com.tuna.gomen.user.vo.RequestQuitVO;
+import com.tuna.userservice.mapper.UserMapper;
+import com.tuna.userservice.user.command.entity.UserEntity;
+import com.tuna.userservice.user.dto.UserDTO;
+import com.tuna.userservice.user.repository.UserRepository;
+import com.tuna.userservice.user.vo.RequestQuitVO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import com.tuna.gomen.user.command.repository.UserRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
@@ -19,15 +20,14 @@ import java.util.List;
 @Service
 public class UserService {
     private final UserMapper userMapper;
-    private final ModelMapper modelMapper;
     private final UserRepository userRepository;
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public UserService(UserMapper userMapper, ModelMapper modelMapper, UserRepository userRepository)
-    {
+    public UserService(UserMapper userMapper, UserRepository userRepository, ModelMapper modelMapper) {
         this.userMapper = userMapper;
-        this.modelMapper = modelMapper;
         this.userRepository = userRepository;
+        this.modelMapper = modelMapper;
     }
 
     public List<UserDTO> selectAllUsers() {
@@ -69,13 +69,13 @@ public class UserService {
             throw new UsernameNotFoundException(loginId + "라는 id가 존재하지 않습니다.");
         }
 
-        return new org.springframework.security.core.userdetails.User(loginUser.getLoginId(), loginUser.getPassword(),
+        return new User(loginUser.getLoginId(), loginUser.getPassword(),
                 true, true, true, true, new ArrayList<>());
     }
 
     @Transactional
     public void registUser(UserDTO userDTO) {
-        User user = modelMapper.map(userDTO, User.class);
+        UserEntity user = modelMapper.map(userDTO, UserEntity.class);
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String password = encoder.encode(user.getPassword());
         user.setPassword(password);
@@ -85,7 +85,7 @@ public class UserService {
     @Transactional
     public void quitUser(RequestQuitVO quitVO) {
         UserDTO userDTO = selectUserByLoginId(quitVO.getLoginId());
-        User user = modelMapper.map(userDTO, User.class);
+        UserEntity user = modelMapper.map(userDTO, UserEntity.class);
         user.setIsQuitted("Y");
         userRepository.save(user);
     }
@@ -93,7 +93,7 @@ public class UserService {
     @Transactional
     public void deleteUser(RequestQuitVO quitVO) {
         UserDTO userDTO = selectUserByLoginId(quitVO.getLoginId());
-        User user = modelMapper.map(userDTO, User.class);
+        UserEntity user = modelMapper.map(userDTO, UserEntity.class);
         userRepository.delete(user);
     }
 }
