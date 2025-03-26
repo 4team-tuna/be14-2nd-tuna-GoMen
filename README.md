@@ -87,6 +87,7 @@
 
 ### 2-3. DDD
 
+![image](https://github.com/user-attachments/assets/597bd467-02ee-4a8e-a475-96dc5b2de964)
 
 
 ## ⚙️ 3. SPRING SECURITY , 유레카 서버
