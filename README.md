@@ -39,76 +39,7 @@
 ## 📁 1. 프로젝트 기획
 ### 1-1. 개요
 이 플랫폼은 개발자를 준비하는 학생 및 준비생들이 경력 기반으로 검증된 멘토 혹은 GitHub 링크 등을 통해 실력을 인증받은 멘토들과 1:1 또는 팀 단위로 멘토링을 받을 수 있는 커뮤니티 기반 웹사이트입니다. 사용자는 개발 실력 향상을 위한 멘토링뿐 아니라, 서로 프로젝트 팀을 구성하거나 개발 정보를 공유하며 실무 경험을 쌓을 수 있습니다.
-멘토의 신뢰성 확보와 체계적인 커뮤니케이션 기능을 통해, 사용자에게 보다 실질적이고 질 높은 성장 경험을 제공합니다.
-
-### 1-2. 배경 및 필요성
-최근 개발자 취업 시장은 경쟁이 치열해지고 있으며, 단순 이론 학습만으로는 실무 역량을 갖추기에 한계가 있습니다. 준비생들은 실제 개발 환경에서의 경험 부족, 멘토 부재, 협업 경험 부족 등의 문제를 공통적으로 겪고 있습니다.
-
-기존의 멘토링 서비스는 멘토의 전문성과 신뢰도 검증이 어려운 경우가 많았으나, 본 플랫폼은 실제 경력 기반 또는 GitHub 등 외부 포트폴리오를 통해 검증된 멘토만 등록할 수 있어 신뢰성 있는 멘토링이 가능합니다.
-
-또한, 사용자는 멘토링을 통해 실시간 피드백을 받고, 커뮤니티 게시판을 통해 정보를 공유하며, 프로젝트 팀을 구성해 협업 능력까지 키울 수 있습니다. 이러한 환경은 개발자로서의 성장과 커리어 준비에 큰 도움을 줄 것입니다.
-
-
-### 1-3. 주요 기능
-1.함께 프로젝트를 진행할 팀원 모집 및 생성 가능
-2.인증된 멘토들에게 팀단위, 개인단위의 멘토링 가능
-3.칭호, 커뮤니티등을 통해 학습욕구 및 정보공유 가능
-4.별점및 리뷰 시스템을 통해 사용자 퀄리티 향상 가능
-5.신고를 통한 벌점 제도를 통해효율적인 회원관리 가능
-
-### 1-4. WBS
-[WBS 링크](https://docs.google.com/spreadsheets/d/19VZI_1LJ8Jx2r8srhHZ5M0GApO66an1NkPZsmz7pS5Y/edit?gid=1013678623#gid=1013678623)
-![Image](https://github.com/user-attachments/assets/75c8af85-c9b2-4ad8-9297-c3fe8afb94ea)
-### 1-5. 요구사항 명세서
-[요구사항 명세서 링크](https://docs.google.com/spreadsheets/d/19VZI_1LJ8Jx2r8srhHZ5M0GApO66an1NkPZsmz7pS5Y/edit?gid=0#gid=0)
-
-### 1-6. UML
-(내용 생략)
-
----
-
-## 🔎 2. DB 모델링
-
-### 2-1. 논리 모델링
-![image](https://github.com/user-attachments/assets/2ee7f082-4db7-4cac-8b7b-be8b655933f3)
-
-
-### 2-2. 물리 모델링
-(이미지)
-
----
-
-## ⚙️ 3. SPRING SECURITY , 유레카 서버
-### 3-1. 유레카 서버
-(내용 생략)
-
-### 3-2. SPRING SECURITY
-[DDL 파일](#)
-
----
-
-## ✍🏻 4. API TEST
-
-### 4-1. BOARD
-<details><summary>👩🏻‍💻 게시글 조회</summary>
-(쿼리문 예시)
-</details>
-
-<details><summary>👥 게시글 작성 </summary>
-   <img src="https://github.com/user-attachments/assets/6a6b948a-9018-4003-838a-e3d03e9b6da3">
-   
-
-</details>
-
-<details><summary>👥 게시글 수정 </summary>
-![게시글 수정(파일추가업로드, 내용수정)](https://github.com/user-attachments/assets/98ebde41-0aa8-43a3-b2f2-fef813dcc99c)
-
-</details>
-
-<details><summary>👥 게시글 삭제 </summary>
-![게시글 삭제(Y)](https://github.com/user-attachments/assets/8f68bb1e-eede-4291-8172-10ff80503daa)
-
-</details>
+멘토의 신뢰성 확보와요
 
 ### 4-2. MENTORING
 <details><summary>👩🏻‍💻 사용자 정보</summary>
