@@ -1,4 +1,4 @@
-# be14-2nd-tuna-GoMen
+![북마크 삭제](https://github.com/user-attachments/assets/c84ab289-4125-4a0c-a5fd-20e6743c25f5)# be14-2nd-tuna-GoMen
 <img src="https://github.com/user-attachments/assets/ad9fbe23-7288-43b9-ae23-ad764aebf340" width="550" height="400">
 
 ## GoMen -  코딩 멘토-멘티 매칭 서비스
@@ -96,6 +96,10 @@
    <img src="https://github.com/user-attachments/assets/4df6f6bb-6138-410e-bbfe-0e8095f9bf77">
 </details>
 
+<details><summary>👩🏻‍💻 게시글 id로 게시글조회</summary>
+   <img src="https://github.com/user-attachments/assets/02f73e9c-3cce-4da6-96d3-3cd8c3eceef4">
+</details>
+
 <details><summary>👥 게시글 작성 </summary>
    <img src="https://github.com/user-attachments/assets/6a6b948a-9018-4003-838a-e3d03e9b6da3">
    
@@ -130,25 +134,24 @@
 
 <details><summary>👥 북마크 생성 </summary>
 
-   <img src="https://github.com/user-attachments/assets/8f68bb1e-eede-4291-8172-10ff80503daa">
+   <img src="https://github.com/user-attachments/assets/033097ec-59db-4b5f-a2c6-72df59827582">
 
 </details>
 
 <details><summary>👥 북마크 삭제 </summary>
-
-   <img src="https://github.com/user-attachments/assets/8f68bb1e-eede-4291-8172-10ff80503daa">
+  <img src="https://github.com/user-attachments/assets/118b17e0-66c7-4630-af2e-9148add920c1">
 
 </details>
 
 <details><summary>👥 좋아요 생성 </summary>
-
-   <img src="https://github.com/user-attachments/assets/8f68bb1e-eede-4291-8172-10ff80503daa">
+<img src="https://github.com/user-attachments/assets/7c430507-76f3-4ad4-bae9-36045f3a6b3a">
 
 </details>
 
+
 <details><summary>👥 좋아요 삭제 </summary>
 
-   <img src="https://github.com/user-attachments/assets/8f68bb1e-eede-4291-8172-10ff80503daa">
+   <img src="https://github.com/user-attachments/assets/e21b3cb9-4129-462f-800a-18cc0ba38286">
 
 </details>
 
