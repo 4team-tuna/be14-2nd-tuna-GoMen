@@ -82,8 +82,8 @@
 
 
 ### 2-2. ERD
+![image](https://github.com/user-attachments/assets/3ca9a60c-8660-47b3-995d-29a4a0999833)
 
-![image](https://github.com/user-attachments/assets/64cad563-d57f-408c-a44e-1f99ec98b755)
 
 ### 2-3. DDD
 
