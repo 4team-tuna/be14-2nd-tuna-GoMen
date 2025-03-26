@@ -73,7 +73,7 @@ public class QuestionService {
 
         if (request.getFiles() != null && !request.getFiles().isEmpty()) {
             if (space.getExtensionCount() == 0) {
-                throw new IllegalStateException("멘토링 공간의 extensionCount가 0이므로 파일 업로드 불가");
+                throw new IllegalStateException("멘토링이 연장되지 않은 상태에서는 파일 업로드가 제한됩니다.");
             }
 
             for (MultipartFile file : request.getFiles()) {

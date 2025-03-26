@@ -1,0 +1,44 @@
+server:
+  port: 8000
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+spring:
+  application:
+    name: gateway-server
+  cloud:
+    gateway:
+      routes:
+        - id: login-service
+          uri: lb://TUNA-USER-SERVICE
+          predicates:
+            - Path=/login
+
+        - id: user-regist-service
+          uri: lb://TUNA-USER-SERVICE
+          predicates:
+            - Path=/user/regist
+
+        - id: user-service
+          uri: lb://TUNA-USER-SERVICE
+          predicates:
+            - Path=/user/**
+          filters:
+#            - AuthorizationHeaderFilter
+#            - RewritePath=/user/(?<segment>.*), /$\{segment}
+
+        - id: gomen-service
+          uri: lb://TUNA-GOMEN-SERVICE
+          predicates:
+            - Path=/gomen/**
+          filters:
+#            - RewritePath=/gomen-service/(?<segment>.*), /$\{segment}
+            - AuthorizationHeaderFilter
+
+token:
+  expiration_time: 43200000
+  secret: Wg1aYrHUMNSmB7ircggZ+7kuH8VptDOxngpDpE92YQ9ExopMJNqHHywZSUJ8uc2EY32Qxun3w8JlikUX0je3bQ==
