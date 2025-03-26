@@ -38,8 +38,9 @@
 
 | 이혜영 | 이준규 | 한석현 | 김성민 | 서민종 |
 |--------|--------|--------|--------|--------|
-|<img src="https://github.com/user-attachments/assets/90d69166-6eee-4d9b-bdd0-ac230c4b42ef" width="200" height="200"> | <img src="https://github.com/user-attachments/assets/058daceb-2a13-4c5d-a6c6-59dfd3b5e62f" width="200" height="200"> | <img src="https://github.com/user-attachments/assets/c17d7bc2-4a71-4323-8fb4-7fb38f518daa" width="200" height="200"> | <img src="https://github.com/user-attachments/assets/2e2ec6dc-d653-4fbe-85a5-d8cb2706097b" width="200" height="200"> | <img src="https://github.com/user-attachments/assets/4a166e64-9e42-44ae-b554-ab4547eb79bf" width="200" height="200"> |
+|<img src="https://github.com/user-attachments/assets/90d69166-6eee-4d9b-bdd0-ac230c4b42ef" width="200" height="200"> | <img src="https://github.com/user-attachments/assets/058daceb-2a13-4c5d-a6c6-59dfd3b5e62f" width="200" height="200"> | <img src="https://github.com/user-attachments/assets/c17d7bc2-4a71-4323-8fb4-7fb38f518daa" width="200" height="200"> | <img src="https://github.com/user-attachments/assets/2e2ec6dc-d653-4fbe-85a5-d8cb2706097b" width="200" height="200"> | <img src="https://github.com/user-attachments/assets/369c6510-e8bd-48f4-b7d4-c1ed56d4fcdb" width="200" height="200"> |
 | ISTP | ESTP | ENFP | ESFP | ENFP |
+
 
 
 ---
@@ -188,6 +189,34 @@
 ### 4-8. TeamRecruit
 ### 4-9. Title
 ### 4-10. User
+<details><summary> 회원 전체 조회 </summary>
+      <img src="https://github.com/user-attachments/assets/433f93df-3f1c-44d6-b1c3-ad0cdd79de81">
+</details>
+
+
+<details><summary> 회원 ID로 회원 조회 </summary>
+      <img src="https://github.com/user-attachments/assets/ec463662-48a2-4525-baa4-36e6467ddba1">
+</details>
+
+
+### 4-11. Login
+<details><summary> 관리자 계정 생성 </summary>
+   <img src="https://github.com/user-attachments/assets/b5848192-ea6b-4f9f-83a2-fc20cb4087f8">
+</details>
+
+<details><summary> 관리자 로그인 </summary>
+   <img src="https://github.com/user-attachments/assets/f2004b83-3a1c-4da1-91ea-68693fc551cc">
+</details>
+
+<details><summary> 회원 가입 </summary>
+   <img src="https://github.com/user-attachments/assets/ee415f9c-1fd0-4628-a4cb-bec22a0ca5d4">
+</details>
+
+<details><summary> 일반 회원 로그인 </summary>
+   <img src="https://github.com/user-attachments/assets/cebe8d5f-d73f-414f-8154-a9df807538d2">
+</details>
+
+
 
 ---
 
