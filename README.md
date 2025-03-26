@@ -180,8 +180,11 @@
   <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
   <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
   <br>
-   ![MyBatis](https://img.shields.io/badge/MyBatis-FF2D20?style=for-the-badge&logo=mybatis&logoColor=white)  
-![JPA](https://img.shields.io/badge/JPA-6E4C13?style=for-the-badge)  
+
+   <br>
+  <img src="https://img.shields.io/badge/MyBatis-FF2D20?style=for-the-badge&logo=mybatis&logoColor=white">
+  <img src="https://img.shields.io/badge/JPA-6E4C13?style=for-the-badge">
+  <br>
 </div>
 
 ---
