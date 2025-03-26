@@ -185,6 +185,26 @@
 
 ### 4-5. Mail
 ### 4-6. Report
+<details><summary> 회원 신고 </summary>
+<img src="https://github.com/user-attachments/assets/c45e5149-335a-4a1a-8606-cd34910e384a">
+</details>
+
+<details><summary> 게시글 신고 </summary>
+<img src="https://github.com/user-attachments/assets/cacaf9b2-0ce7-46d4-acf5-f0d81455c9e5">
+   </details>
+   
+<details><summary> 댓글 신고 </summary>
+<img src="https://github.com/user-attachments/assets/d2688cd4-0b2c-41e1-9d0d-d6192e07b7dd">
+</details>
+
+<details><summary> 신고 처리상태 변경 </summary>
+<img src="https://github.com/user-attachments/assets/34a5e9e0-8d47-4fcb-96d5-e396e90c697d">
+   </details>
+   
+<details><summary> 신고 처리 완료 목록 </summary>
+<img src="https://github.com/user-attachments/assets/a057e70f-64ac-4d6c-bf88-cf69e03348ca">
+   </details>
+
 ### 4-7. Singtup&Login
 ### 4-8. TeamRecruit
 ### 4-9. Title
