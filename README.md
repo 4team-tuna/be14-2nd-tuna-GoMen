@@ -95,7 +95,7 @@
 
 ### 4-1. BOARD
 <details><summary>👩🏻‍💻 게시글 전체 조회</summary>
-   ![image](https://github.com/user-attachments/assets/b2f23985-e829-49d2-8f47-0aa0d9e79ea3)
+      <img src="https://github.com/user-attachments/assets/b2f23985-e829-49d2-8f47-0aa0d9e79ea3">
 </details>
 
 <details><summary>👩🏻‍💻 게시글 id로 게시글조회</summary>
