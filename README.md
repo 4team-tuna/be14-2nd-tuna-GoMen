@@ -102,48 +102,123 @@
 
 
 ### 3-2. SPRING SECURITY
-[DDL 파일](#)
+![권한별 기능 구현](https://github.com/user-attachments/assets/666e5a32-c90a-4391-adb9-79576c137850)
+
+![관리자 로그인 토큰 생성](https://github.com/user-attachments/assets/a1fd8e24-20f4-4bf8-a1dd-83b648f66b4d)
+
+![토큰으로 신고 처리 가능](https://github.com/user-attachments/assets/bf1f3eb7-f2ff-4116-a0e7-a59ce8c01917)
 
 ---
 
 ## ✍🏻 4. API TEST
 
 ### 4-1. Applicant
-
-<details><summary> 특정 유저가 지원한 모집 게시글 상세 조회 </summary>
-   <img src="">
-</details>
-
-<details><summary> 특정 모집 게시글에 대한 지원자 목록 조회 </summary>
-   <img src="https://github.com/user-attachments/assets/c1a7fe84-e40c-4de8-bc36-9e89d1119d63">
-</details>
-
-<details><summary> 특정 유저가 지원한 모집 게시글 상세 조회 </summary>
-   <img src="https://github.com/user-attachments/assets/964fe877-fe74-49b8-8007-dcf2c768f649">
-</details>
-
-<details><summary> 팀 신청 생성하기 </summary>
-   <img src="https://github.com/user-attachments/assets/5f8d0c23-fe02-4007-82da-29d63bbf23d5">
+<details><summary> 팀 신청하기 </summary>
+   <img src="https://github.com/user-attachments/assets/f6f8430a-361f-4368-9986-c8f099c5a4cc">
 </details>
 
 <details><summary> 팀 신청 취소하기 </summary>
-   <img src="https://github.com/user-attachments/assets/32bdf674-14be-41b8-afb2-1f576fd18d37
-">
+   <img src="https://github.com/user-attachments/assets/769dc62b-9a8a-4043-a7e2-ed6577dbf07f">
 </details>
 
-<details><summary> 팀 신청 처리하기 </summary>
-   <img src="https://github.com/user-attachments/assets/2455629b-cb47-466b-aee5-ddffd0f73f57">
+
+<details><summary> 팀 신청요청 처리하기 </summary>
+   <img src="https://github.com/user-attachments/assets/2b489ef5-8fed-4c5f-a502-cc63908bb04d">
 </details>
 
 ### 4-2. MENTORING
-<details><summary> 사용자 정보</summary>
-(쿼리문 예시)
+<details><summary> 멘토 리스트 조회 </summary>
+   <img src="https://github.com/user-attachments/assets/56a74016-de82-426d-b4dd-57c96cf543ca">
+
 </details>
 
-<details><summary> 매칭 서비스 </summary>
-(쿼리문 예시)
+<details><summary> 잔여 질문 조회 </summary>
+   <img src="https://github.com/user-attachments/assets/1880aeb2-8faf-4803-a5c0-cd9f9ef00453">
 </details>
 
+<details><summary> 멘토링 신청 등록 </summary>
+   <img src="https://github.com/user-attachments/assets/8abaf890-5cec-47d8-8b2b-36c5bcfc7625">
+</details>
+
+<details><summary> 멘토링 신청 수락 </summary>
+   <img src="https://github.com/user-attachments/assets/f51c8e2f-674c-4dfb-a967-d587f80306df">
+</details>
+
+<details><summary> 멘토링 공간 생성 </summary>
+   <img src="https://github.com/user-attachments/assets/87b6c002-e977-43c3-aab3-e7babcee733d">
+</details>
+
+<details><summary> 멘토링 공간 수정 </summary>
+   <img src="https://github.com/user-attachments/assets/af7763f5-f917-40d6-b170-39f68a8ad5ce">
+</details>
+
+<details><summary> 멘토링 멤버 등록 </summary>
+   <img src="https://github.com/user-attachments/assets/4203a148-643f-48ba-9483-46fa414e3acf">
+</details>
+
+<details><summary> 멘토 리스트 등록 </summary>
+   <img src="https://github.com/user-attachments/assets/624b8354-3b05-47e7-832d-4e86ceadd935">
+</details>
+
+<details><summary> 멘토 리스트 삭제 </summary>
+   <img src="https://github.com/user-attachments/assets/ce80db34-7594-4818-8e54-499905361b12">
+</details>
+
+<details><summary> 질문 등록 </summary>
+   <img src="https://github.com/user-attachments/assets/c9d6ce45-064f-4042-b2b3-142462188de3">
+</details>
+
+<details><summary> 답변 등록 </summary>
+   <img src="https://github.com/user-attachments/assets/6a14fb07-7ea3-4d8c-bd10-1a15620cc95f">
+</details>
+
+<details><summary> 답변에 대한 답변 등록 </summary>
+   <img src="https://github.com/user-attachments/assets/b0c7a024-1677-4311-873e-dfd0b38ec916">
+</details>
+
+<details><summary> 답변 수정 </summary>
+   <img src="https://github.com/user-attachments/assets/dc3b5de4-49ac-4269-b6ad-2abaae766d7b">
+</details>
+
+<details><summary> 답변 삭제 </summary>
+   <img src="https://github.com/user-attachments/assets/b7948083-aac5-476a-91fd-d4ee8c8eabdc">
+</details>
+
+<details><summary> 멘토 개인정보 등록, 수정 </summary>
+   <img src="https://github.com/user-attachments/assets/b150ad9b-04cb-45cb-97f1-17a3d8f40001">
+</details>
+
+<details><summary> 멘토 개인정보 공개 요청</summary>
+   <img src="https://github.com/user-attachments/assets/0594bef8-f55e-4a0d-b7e4-0f1671e74dda">
+</details>
+
+<details><summary> 멘토 개인정보 공개 요청 수락 </summary>
+   <img src="https://github.com/user-attachments/assets/2a2078fc-ab14-4d99-a781-de73059a148f">
+</details>
+
+<details><summary> 멘토링 연장 요청 </summary>
+   <img src="https://github.com/user-attachments/assets/6cfcfeae-b2c4-4f0b-89bb-5ec79d5db751">
+</details>
+
+<details><summary> 멘토링 연장 요청 수락 </summary>
+   <img src="https://github.com/user-attachments/assets/58b4325b-9051-4af1-b0c3-f41dbffcddcd">
+</details>
+
+<details><summary> 멘토링 연장 요청 거절 </summary>
+   <img src="https://github.com/user-attachments/assets/a4e8c60b-a2ff-4600-a810-9934a12b7fa2">
+</details>
+
+<details><summary> 질문 등록(파일) </summary>
+   <img src="https://github.com/user-attachments/assets/6fc56d50-88e8-40b1-ae73-21a6225bbd3d">
+</details>
+
+<details><summary> 답변 등록(파일) </summary>
+   <img src="https://github.com/user-attachments/assets/5ae52662-41d9-497b-b316-5193d2e094d8">
+</details>
+
+<details><summary> 답변 수정(파일) </summary>
+   <img src="https://github.com/user-attachments/assets/5db82952-f9ff-4cdc-a8ea-22f0bc46b11f">
+</details>
 
 ### 4-3. BOOKMARK&LIKE
 
