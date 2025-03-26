@@ -62,10 +62,9 @@
 ### 1-5. 요구사항 명세서
 [요구사항 명세서 링크](https://docs.google.com/spreadsheets/d/19VZI_1LJ8Jx2r8srhHZ5M0GApO66an1NkPZsmz7pS5Y/edit?gid=0#gid=0)
 
-### 1-6. UML
-(내용 생략)
+![image](https://github.com/user-attachments/assets/8e653510-e6ef-4c2e-927d-ec7bceee39c6)
 
----
+
 
 ## 🔎 2. 모델링
 
@@ -74,11 +73,11 @@
 
 
 ### 2-2. ERD
-(이미지)
+
 
 ### 2-3. DDD
 
----
+
 
 ## ⚙️ 3. SPRING SECURITY , 유레카 서버
 ### 3-1. 유레카 서버
