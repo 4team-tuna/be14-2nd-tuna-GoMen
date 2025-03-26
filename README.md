@@ -112,6 +112,15 @@
 ## ✍🏻 4. API TEST
 
 ### 4-1. Applicant
+
+<details><summary> 특정 모집 게시글에 대한 지원자 목록 조회 </summary>
+      <img src="https://github.com/user-attachments/assets/2407983f-5fef-443b-bceb-4279da6b438f">
+</details>
+
+<details><summary> 특정 유저가 지원한 모집 게시글 상세 조회 </summary>
+      <img src="https://github.com/user-attachments/assets/6238a98b-bbec-4ac1-9654-457c79a18057">
+</details>
+
 <details><summary> 팀 신청하기 </summary>
    <img src="https://github.com/user-attachments/assets/f6f8430a-361f-4368-9986-c8f099c5a4cc">
 </details>
@@ -365,14 +374,6 @@
 
 <details><summary> 모집중인 팀 모집 게시글 조회 </summary>
       <img src="https://github.com/user-attachments/assets/f376de9a-cf62-471b-9294-7eabd3b8f08a">
-</details>
-
-<details><summary> 특정 모집 게시글에 대한 지원자 목록 조회 </summary>
-      <img src="https://github.com/user-attachments/assets/2407983f-5fef-443b-bceb-4279da6b438f">
-</details>
-
-<details><summary> 특정 유저가 지원한 모집 게시글 상세 조회 </summary>
-      <img src="https://github.com/user-attachments/assets/6238a98b-bbec-4ac1-9654-457c79a18057">
 </details>
 
 <details><summary> 팀 모집 게시글 생성 </summary>
