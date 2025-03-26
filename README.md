@@ -101,24 +101,20 @@
 </details>
 
 <details><summary>👥 게시글 작성 </summary>
-   <img src="https://github.com/user-attachments/assets/6a6b948a-9018-4003-838a-e3d03e9b6da3">
-   
-
+   <img src="https://github.com/user-attachments/assets/528b402e-acbb-4654-899c-d9aeaa25cd05">
 </details>
 
 <details><summary>👥 게시글 수정 </summary>
-      <img src="https://github.com/user-attachments/assets/98ebde41-0aa8-43a3-b2f2-fef813dcc99c">
-
+  <img src="https://github.com/user-attachments/assets/e3fbfa6e-1f6b-4919-971f-0b9b2ef99595">
 </details>
 
 <details><summary>👥 게시글 삭제 </summary>
-
-   <img src="https://github.com/user-attachments/assets/8f68bb1e-eede-4291-8172-10ff80503daa">
+ <img src="https://github.com/user-attachments/assets/c5e9d992-430a-4fb6-8426-067744f92f9d">
 
 </details>
 
 <details><summary>👥 댓글 작성 </summary>
-  <img src="https://github.com/user-attachments/assets/1238f91f-ab89-4f01-a57e-f70e03b745f0">
+  <img src="https://github.com/user-attachments/assets/7f4da93c-f281-4e51-85d3-8a029b38d36c">
 
 </details>
 
@@ -129,7 +125,7 @@
 </details>
 
 <details><summary>👥 댓글 삭제 </summary>
- <img src="https://github.com/user-attachments/assets/aba60107-e60c-4580-9b74-a13b36560b02">
+<img src="https://github.com/user-attachments/assets/ad08a823-5269-4f77-ac9f-5392c73ef38e">
 </details>
 
 <details><summary>👥 북마크 생성 </summary>
