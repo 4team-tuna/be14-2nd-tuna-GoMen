@@ -1,4 +1,4 @@
-# be14-2nd-tuna-GoMen
+![image](https://github.com/user-attachments/assets/4056ffcf-d24b-4657-96e2-2ea3273d9b38)# be14-2nd-tuna-GoMen
 <img src="https://github.com/user-attachments/assets/ad9fbe23-7288-43b9-ae23-ad764aebf340" width="550" height="400">
 
 ## GoMen -  코딩 멘토-멘티 매칭 서비스
@@ -416,6 +416,17 @@
 ---
 
 ## 5. 📗Test Case
+
+<details><summary> test case </summary>
+<img src="https://github.com/user-attachments/assets/ce46fc53-981c-4c98-a550-5721220210ad">
+<img src="https://github.com/user-attachments/assets/6fec7011-11f3-470c-aaa1-ceab63a468eb">
+<img src="https://github.com/user-attachments/assets/640a5fe2-5c50-4491-9b19-c582faba2f84">
+<img src="https://github.com/user-attachments/assets/a6013018-33aa-46c6-9f63-5c1b3bf48c3a">
+<img src="https://github.com/user-attachments/assets/bd128487-aa53-4b54-804f-05ad282ce694">
+<img src="https://github.com/user-attachments/assets/1f907704-e90e-4949-927e-9e75b3fc451f">
+<img src="https://github.com/user-attachments/assets/0ca4ca98-398f-4032-8045-624a4fed7a44">
+</details>
+
 ---
 ## 6.📁REST API
 
