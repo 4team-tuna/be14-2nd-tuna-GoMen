@@ -18,9 +18,16 @@
    - [3-1. 유레카 서버](#3-1)
    - [3-2. SPRING SECURITY](#3-2)
 4. [✍🏻 API TEST](#4)
-   - [4-1. BOARD](#4-1)
+   - [4-1. Applicant](#4-1)
    - [4-2. MENTORING](#4-2)
    - [4-3. BOOKMARK&LIKE](#4-3)
+   - [4-4. BOARD](#4-4)
+   - [4-5. Mail](#4-5)
+   - [4-6. Report](#4-6)
+   - [4-7. Signup&Login](#4-7)
+   - [4-8.TeamRecruit](#4-8)
+   - [4-9.Title](#4-9)
+   - [4-10.User](#4-10)
 5. [🎮 기술 스택](#5)
 6. [📗 회고록](#6)
 7. [ 📋 Peer Review - Team Spark](#7)
@@ -94,83 +101,93 @@
 
 ## ✍🏻 4. API TEST
 
-### 4-1. BOARD
-<details><summary>👩🏻‍💻 게시글 전체 조회</summary>
-      <img src="https://github.com/user-attachments/assets/b2f23985-e829-49d2-8f47-0aa0d9e79ea3">
-</details>
-
-<details><summary>👩🏻‍💻 게시글 id로 게시글조회</summary>
-   <img src="https://github.com/user-attachments/assets/02f73e9c-3cce-4da6-96d3-3cd8c3eceef4">
-</details>
-
-<details><summary>👥 게시글 작성 </summary>
-   <img src="https://github.com/user-attachments/assets/528b402e-acbb-4654-899c-d9aeaa25cd05">
-</details>
-
-<details><summary>👥 게시글 수정 </summary>
-  <img src="https://github.com/user-attachments/assets/e3fbfa6e-1f6b-4919-971f-0b9b2ef99595">
-</details>
-
-<details><summary>👥 게시글 삭제 </summary>
- <img src="https://github.com/user-attachments/assets/c5e9d992-430a-4fb6-8426-067744f92f9d">
-
-</details>
-
-<details><summary>👥 댓글 작성 </summary>
-  <img src="https://github.com/user-attachments/assets/7f4da93c-f281-4e51-85d3-8a029b38d36c">
-
-</details>
-
-<details><summary>👥 댓글 수정 </summary>
- <img src="https://github.com/user-attachments/assets/ae5d7b99-8b66-4b15-8156-2eca49ac440a">
-
-</details>
-
-<details><summary>👥 댓글 삭제 </summary>
-<img src="https://github.com/user-attachments/assets/ad08a823-5269-4f77-ac9f-5392c73ef38e">
-</details>
-
+### 4-1. Applicant
 
 
 ### 4-2. MENTORING
-<details><summary>👩🏻‍💻 사용자 정보</summary>
+<details><summary> 사용자 정보</summary>
 (쿼리문 예시)
 </details>
 
-<details><summary>👥 매칭 서비스 </summary>
+<details><summary> 매칭 서비스 </summary>
 (쿼리문 예시)
 </details>
 
 
 ### 4-3. BOOKMARK&LIKE
 
-<details><summary>👥 북마크 생성 </summary>
+<details><summary> 북마크 생성 </summary>
 
    <img src="https://github.com/user-attachments/assets/033097ec-59db-4b5f-a2c6-72df59827582">
 
 </details>
 
-<details><summary>👥 북마크 삭제 </summary>
+<details><summary>북마크 삭제 </summary>
   <img src="https://github.com/user-attachments/assets/118b17e0-66c7-4630-af2e-9148add920c1">
 
 </details>
 
-<details><summary>👥 북마크 조회 </summary>
+<details><summary>북마크 조회 </summary>
   <img src="https://github.com/user-attachments/assets/d64d851d-34e1-4751-a85e-0900c2fea437">
 </details>
 
 
-<details><summary>👥 좋아요 생성 </summary>
+<details><summary> 좋아요 생성 </summary>
 <img src="https://github.com/user-attachments/assets/7c430507-76f3-4ad4-bae9-36045f3a6b3a">
 
 </details>
 
 
-<details><summary>👥 좋아요 삭제 </summary>
+<details><summary> 좋아요 삭제 </summary>
 
    <img src="https://github.com/user-attachments/assets/e21b3cb9-4129-462f-800a-18cc0ba38286">
 
 </details>
+
+
+### 4-4. Board
+<details><summary> 게시글 전체 조회</summary>
+      <img src="https://github.com/user-attachments/assets/b2f23985-e829-49d2-8f47-0aa0d9e79ea3">
+</details>
+
+<details><summary> 게시글 id로 게시글조회</summary>
+   <img src="https://github.com/user-attachments/assets/02f73e9c-3cce-4da6-96d3-3cd8c3eceef4">
+</details>
+
+<details><summary> 게시글 작성 </summary>
+   <img src="https://github.com/user-attachments/assets/528b402e-acbb-4654-899c-d9aeaa25cd05">
+</details>
+
+<details><summary> 게시글 수정 </summary>
+  <img src="https://github.com/user-attachments/assets/e3fbfa6e-1f6b-4919-971f-0b9b2ef99595">
+</details>
+
+<details><summary> 게시글 삭제 </summary>
+ <img src="https://github.com/user-attachments/assets/c5e9d992-430a-4fb6-8426-067744f92f9d">
+
+</details>
+
+<details><summary> 댓글 작성 </summary>
+  <img src="https://github.com/user-attachments/assets/7f4da93c-f281-4e51-85d3-8a029b38d36c">
+
+</details>
+
+<details><summary> 댓글 수정 </summary>
+ <img src="https://github.com/user-attachments/assets/ae5d7b99-8b66-4b15-8156-2eca49ac440a">
+
+</details>
+
+<details><summary> 댓글 삭제 </summary>
+<img src="https://github.com/user-attachments/assets/ad08a823-5269-4f77-ac9f-5392c73ef38e">
+</details>
+
+
+### 4-5. Mail
+### 4-6. Report
+### 4-7. Singtup&Login
+### 4-8. TeamRecruit
+### 4-9. Title
+### 4-10. User
 
 ---
 
