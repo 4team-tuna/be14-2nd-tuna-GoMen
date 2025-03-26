@@ -90,11 +90,19 @@
 ## ✍🏻 4. API TEST
 
 ### 4-1. BOARD
-<details><summary>👩🏻‍💻 사용자 정보</summary>
+<details><summary>👩🏻‍💻 게시글 조회</summary>
 (쿼리문 예시)
 </details>
 
-<details><summary>👥 매칭 서비스 </summary>
+<details><summary>👥 게시글 작성 </summary>
+(쿼리문 예시)
+</details>
+
+<details><summary>👥 게시글 수정 </summary>
+(쿼리문 예시)
+</details>
+
+<details><summary>👥 게시글 삭제 </summary>
 (쿼리문 예시)
 </details>
 
