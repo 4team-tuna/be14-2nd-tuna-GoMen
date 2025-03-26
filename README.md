@@ -93,7 +93,7 @@
 
 ### 4-1. BOARD
 <details><summary>👩🏻‍💻 게시글 조회</summary>
- <img src="https://github.com/user-attachments/assets/968af291-dc7d-415a-907d-193640390830" width="400" height="250">
+   <img src="https://github.com/user-attachments/assets/4df6f6bb-6138-410e-bbfe-0e8095f9bf77">
 </details>
 
 <details><summary>👥 게시글 작성 </summary>
