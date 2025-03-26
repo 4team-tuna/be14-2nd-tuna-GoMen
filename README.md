@@ -202,6 +202,7 @@
 <details><summary> 쪽지 보내기 </summary>
 <img src="https://github.com/user-attachments/assets/c1a209d7-76c4-4aea-9db1-e63682f926d6">
 </details>
+
 ### 4-6. Report
 <details><summary> 회원 신고 </summary>
 <img src="https://github.com/user-attachments/assets/c45e5149-335a-4a1a-8606-cd34910e384a">
@@ -260,6 +261,10 @@
 
 ## 5.📁REST API
 
+<details><summary>  </summary>
+   <img src="![localhost_63342_dist_index html__ijt=1ro82b1acdc61njrd6opsfbc69](https://github.com/user-attachments/assets/c3fec91f-351b-4787-b7d7-e1f87caa0ffb)
+">
+</details>
 ---
 
 ## 🎮 6. 기술 스택
