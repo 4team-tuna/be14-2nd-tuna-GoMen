@@ -20,6 +20,7 @@
 4. [✍🏻 API TEST](#4)
    - [4-1. BOARD](#4-1)
    - [4-2. MENTORING](#4-2)
+   - [4-3. BOOKMARK&LIKE](#4-3)
 5. [🎮 기술 스택](#5)
 6. [📗 회고록](#6)
 7. [ 📋 Peer Review - Team Spark](#7)
@@ -129,6 +130,20 @@
 <img src="https://github.com/user-attachments/assets/ad08a823-5269-4f77-ac9f-5392c73ef38e">
 </details>
 
+
+
+### 4-2. MENTORING
+<details><summary>👩🏻‍💻 사용자 정보</summary>
+(쿼리문 예시)
+</details>
+
+<details><summary>👥 매칭 서비스 </summary>
+(쿼리문 예시)
+</details>
+
+
+### 4-3. BOOKMARK&LIKE
+
 <details><summary>👥 북마크 생성 </summary>
 
    <img src="https://github.com/user-attachments/assets/033097ec-59db-4b5f-a2c6-72df59827582">
@@ -140,6 +155,11 @@
 
 </details>
 
+<details><summary>👥 북마크 조회 </summary>
+  <img src="https://github.com/user-attachments/assets/d64d851d-34e1-4751-a85e-0900c2fea437">
+</details>
+
+
 <details><summary>👥 좋아요 생성 </summary>
 <img src="https://github.com/user-attachments/assets/7c430507-76f3-4ad4-bae9-36045f3a6b3a">
 
@@ -150,17 +170,6 @@
 
    <img src="https://github.com/user-attachments/assets/e21b3cb9-4129-462f-800a-18cc0ba38286">
 
-</details>
-
-
-
-### 4-2. MENTORING
-<details><summary>👩🏻‍💻 사용자 정보</summary>
-(쿼리문 예시)
-</details>
-
-<details><summary>👥 매칭 서비스 </summary>
-(쿼리문 예시)
 </details>
 
 ---
