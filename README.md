@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/4056ffcf-d24b-4657-96e2-2ea3273d9b38)# be14-2nd-tuna-GoMen
+# be14-2nd-tuna-GoMen
 <img src="https://github.com/user-attachments/assets/ad9fbe23-7288-43b9-ae23-ad764aebf340" width="550" height="400">
 
 ## GoMen -  코딩 멘토-멘티 매칭 서비스
