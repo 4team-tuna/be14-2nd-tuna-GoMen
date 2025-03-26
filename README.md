@@ -103,24 +103,121 @@
 
 
 ### 3-2. SPRING SECURITY
-[DDL 파일](#)
+![관리자 로그인 토큰 생성](https://github.com/user-attachments/assets/63bf8808-0388-4bce-a4e0-591737a6ea60)
+![토큰으로 신고 처리 가능](https://github.com/user-attachments/assets/928fe406-946f-43fe-86b1-50d879542c70)
+![권한별 기능 구현](https://github.com/user-attachments/assets/543c0e1f-87ea-427c-b8fe-5c8720c98238)
 
 ---
 
 ## ✍🏻 4. API TEST
 
 ### 4-1. Applicant
+<details><summary> 팀 신청하기 </summary>
+   <img src="https://github.com/user-attachments/assets/f6f8430a-361f-4368-9986-c8f099c5a4cc">
+</details>
 
+<details><summary> 팀 신청 취소하기 </summary>
+   <img src="https://github.com/user-attachments/assets/769dc62b-9a8a-4043-a7e2-ed6577dbf07f">
+</details>
+
+
+<details><summary> 팀 신청요청 처리하기 </summary>
+   <img src="https://github.com/user-attachments/assets/2b489ef5-8fed-4c5f-a502-cc63908bb04d">
+</details>
 
 ### 4-2. MENTORING
-<details><summary> 사용자 정보</summary>
-(쿼리문 예시)
+<details><summary> 멘토 리스트 조회 </summary>
+   <img src="https://github.com/user-attachments/assets/56a74016-de82-426d-b4dd-57c96cf543ca">
+
 </details>
 
-<details><summary> 매칭 서비스 </summary>
-(쿼리문 예시)
+<details><summary> 잔여 질문 조회 </summary>
+   <img src="https://github.com/user-attachments/assets/1880aeb2-8faf-4803-a5c0-cd9f9ef00453">
 </details>
 
+<details><summary> 멘토링 신청 등록 </summary>
+   <img src="https://github.com/user-attachments/assets/8abaf890-5cec-47d8-8b2b-36c5bcfc7625">
+</details>
+
+<details><summary> 멘토링 신청 수락 </summary>
+   <img src="https://github.com/user-attachments/assets/f51c8e2f-674c-4dfb-a967-d587f80306df">
+</details>
+
+<details><summary> 멘토링 공간 생성 </summary>
+   <img src="https://github.com/user-attachments/assets/87b6c002-e977-43c3-aab3-e7babcee733d">
+</details>
+
+<details><summary> 멘토링 공간 수정 </summary>
+   <img src="https://github.com/user-attachments/assets/af7763f5-f917-40d6-b170-39f68a8ad5ce">
+</details>
+
+<details><summary> 멘토링 멤버 등록 </summary>
+   <img src="https://github.com/user-attachments/assets/4203a148-643f-48ba-9483-46fa414e3acf">
+</details>
+
+<details><summary> 멘토 리스트 등록 </summary>
+   <img src="https://github.com/user-attachments/assets/624b8354-3b05-47e7-832d-4e86ceadd935">
+</details>
+
+<details><summary> 멘토 리스트 삭제 </summary>
+   <img src="https://github.com/user-attachments/assets/ce80db34-7594-4818-8e54-499905361b12">
+</details>
+
+<details><summary> 질문 등록 </summary>
+   <img src="https://github.com/user-attachments/assets/c9d6ce45-064f-4042-b2b3-142462188de3">
+</details>
+
+<details><summary> 답변 등록 </summary>
+   <img src="https://github.com/user-attachments/assets/6a14fb07-7ea3-4d8c-bd10-1a15620cc95f">
+</details>
+
+<details><summary> 답변에 대한 답변 등록 </summary>
+   <img src="https://github.com/user-attachments/assets/b0c7a024-1677-4311-873e-dfd0b38ec916">
+</details>
+
+<details><summary> 답변 수정 </summary>
+   <img src="https://github.com/user-attachments/assets/dc3b5de4-49ac-4269-b6ad-2abaae766d7b">
+</details>
+
+<details><summary> 답변 삭제 </summary>
+   <img src="https://github.com/user-attachments/assets/b7948083-aac5-476a-91fd-d4ee8c8eabdc">
+</details>
+
+<details><summary> 멘토 개인정보 등록, 수정 </summary>
+   <img src="https://github.com/user-attachments/assets/b150ad9b-04cb-45cb-97f1-17a3d8f40001">
+</details>
+
+<details><summary> 멘토 개인정보 공개 요청</summary>
+   <img src="https://github.com/user-attachments/assets/0594bef8-f55e-4a0d-b7e4-0f1671e74dda">
+</details>
+
+<details><summary> 멘토 개인정보 공개 요청 수락 </summary>
+   <img src="https://github.com/user-attachments/assets/2a2078fc-ab14-4d99-a781-de73059a148f">
+</details>
+
+<details><summary> 멘토링 연장 요청 </summary>
+   <img src="https://github.com/user-attachments/assets/6cfcfeae-b2c4-4f0b-89bb-5ec79d5db751">
+</details>
+
+<details><summary> 멘토링 연장 요청 수락 </summary>
+   <img src="https://github.com/user-attachments/assets/58b4325b-9051-4af1-b0c3-f41dbffcddcd">
+</details>
+
+<details><summary> 멘토링 연장 요청 거절 </summary>
+   <img src="https://github.com/user-attachments/assets/a4e8c60b-a2ff-4600-a810-9934a12b7fa2">
+</details>
+
+<details><summary> 질문 등록(파일) </summary>
+   <img src="https://github.com/user-attachments/assets/6fc56d50-88e8-40b1-ae73-21a6225bbd3d">
+</details>
+
+<details><summary> 답변 등록(파일) </summary>
+   <img src="https://github.com/user-attachments/assets/5ae52662-41d9-497b-b316-5193d2e094d8">
+</details>
+
+<details><summary> 답변 수정(파일) </summary>
+   <img src="https://github.com/user-attachments/assets/5db82952-f9ff-4cdc-a8ea-22f0bc46b11f">
+</details>
 
 ### 4-3. BOOKMARK&LIKE
 
@@ -189,7 +286,6 @@
 <img src="https://github.com/user-attachments/assets/ad08a823-5269-4f77-ac9f-5392c73ef38e">
 </details>
 
-
 ### 4-5. Mail
 <details><summary> 받은 쪽지 조회 </summary>
 <img src="https://github.com/user-attachments/assets/c84ea150-674f-4f61-a40b-22d8a8342f1a">
@@ -225,20 +321,7 @@
    </details>
 
 ### 4-7. Singtup&Login
-### 4-8. TeamRecruit
-### 4-9. Title
-### 4-10. User
-<details><summary> 회원 전체 조회 </summary>
-      <img src="https://github.com/user-attachments/assets/433f93df-3f1c-44d6-b1c3-ad0cdd79de81">
-</details>
 
-
-<details><summary> 회원 ID로 회원 조회 </summary>
-      <img src="https://github.com/user-attachments/assets/ec463662-48a2-4525-baa4-36e6467ddba1">
-</details>
-
-
-### 4-11. Login
 <details><summary> 관리자 계정 생성 </summary>
    <img src="https://github.com/user-attachments/assets/b5848192-ea6b-4f9f-83a2-fc20cb4087f8">
 </details>
@@ -255,13 +338,84 @@
    <img src="https://github.com/user-attachments/assets/cebe8d5f-d73f-414f-8154-a9df807538d2">
 </details>
 
+### 4-8. TeamRecruit
+<details><summary> 팀 모집 게시글 전체 목록 조회 </summary>
+      <img src="https://github.com/user-attachments/assets/166809dd-2f12-475c-a1ee-230c0ba88400">
+</details>
+
+<details><summary> 팀 모집 게시글 작성한 회원의 닉네임으로 조회 </summary>
+      <img src="https://github.com/user-attachments/assets/ded344e9-031a-46e4-aa6c-f7a247159d54">
+</details>
+
+<details><summary> 팀 모집 게시글 제목으로 조회 </summary>
+      <img src="https://github.com/user-attachments/assets/e2a00f3e-15db-4037-a442-9763cdf1a3c9">
+</details>
+
+<details><summary> 팀 모집 게시글 팀명으로 조회 </summary>
+      <img src="https://github.com/user-attachments/assets/0368bdc3-73f5-4f97-8a84-bc0905a80d8d">
+</details>
+
+<details><summary> 팀 모집 게시글 최신순으로 조회 </summary>
+      <img src="https://github.com/user-attachments/assets/5d939b25-5db9-498d-813f-60c63123f572">
+</details>
+
+<details><summary> 팀 모집 게시글 기간으로 조회 </summary>
+      <img src="https://github.com/user-attachments/assets/2b77f553-3b36-412d-bfd8-3446c8ab43e3">
+</details>
+
+<details><summary> 모집중인 팀 모집 게시글 조회 </summary>
+      <img src="https://github.com/user-attachments/assets/f376de9a-cf62-471b-9294-7eabd3b8f08a">
+</details>
+
+<details><summary> 특정 모집 게시글에 대한 지원자 목록 조회 </summary>
+      <img src="https://github.com/user-attachments/assets/2407983f-5fef-443b-bceb-4279da6b438f">
+</details>
+
+<details><summary> 특정 유저가 지원한 모집 게시글 상세 조회 </summary>
+      <img src="https://github.com/user-attachments/assets/6238a98b-bbec-4ac1-9654-457c79a18057">
+</details>
+
+<details><summary> 팀 모집 게시글 생성 </summary>
+      <img src="https://github.com/user-attachments/assets/752ccd2a-46a9-42b6-8e2d-7e43334ab483">
+</details>
+
+<details><summary> 팀 모집 게시글 삭제 </summary>
+      <img src="https://github.com/user-attachments/assets/e8c407f6-7dc2-4bee-90a4-2ecd3b032dce">
+</details>
+
+### 4-9. Title
+
+<details><summary> 모든 칭호 조회 </summary>
+      <img src="https://github.com/user-attachments/assets/37b63754-c402-48a9-a131-f41127c68482">
+</details>
+
+<details><summary> 칭호 생성 </summary>
+      <img src="https://github.com/user-attachments/assets/2e8c7000-0763-4ca8-86c3-b2f4ff5fb438">
+</details>
+
+<details><summary> 칭호 수정 </summary>
+      <img src="https://github.com/user-attachments/assets/a734401c-0f39-4b0f-8ff1-f0d4a3251683">
+</details>
+
+<details><summary> 회원에게 칭호 부여 </summary>
+      <img src="https://github.com/user-attachments/assets/4010156f-ac75-4867-ae1c-9e3e636612cc">
+</details>
+
+### 4-10. User
+<details><summary> 회원 전체 조회 </summary>
+      <img src="https://github.com/user-attachments/assets/433f93df-3f1c-44d6-b1c3-ad0cdd79de81">
+</details>
+
+<details><summary> 회원 ID로 회원 조회 </summary>
+      <img src="https://github.com/user-attachments/assets/ec463662-48a2-4525-baa4-36e6467ddba1">
+</details>
 
 
 ---
 
 ## 5.📁REST API
 
-<details><summary>  </summary>
+<details><summary> Rest API </summary>
    <img src="https://github.com/user-attachments/assets/e8d63535-bf96-4b8d-9387-9595bce2f971">
 </details>
 
