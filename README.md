@@ -1,4 +1,4 @@
-![북마크 삭제](https://github.com/user-attachments/assets/c84ab289-4125-4a0c-a5fd-20e6743c25f5)# be14-2nd-tuna-GoMen
+# be14-2nd-tuna-GoMen
 <img src="https://github.com/user-attachments/assets/ad9fbe23-7288-43b9-ae23-ad764aebf340" width="550" height="400">
 
 ## GoMen -  코딩 멘토-멘티 매칭 서비스
@@ -180,6 +180,8 @@
   <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
   <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
   <br>
+   ![MyBatis](https://img.shields.io/badge/MyBatis-FF2D20?style=for-the-badge&logo=mybatis&logoColor=white)  
+![JPA](https://img.shields.io/badge/JPA-6E4C13?style=for-the-badge)  
 </div>
 
 ---
