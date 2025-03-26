@@ -1,4 +1,4 @@
-# be14-2nd-tuna-GoMen
+![ddd5](https://github.com/user-attachments/assets/7da8f05a-91ce-4e17-a548-4924ba634c31)# be14-2nd-tuna-GoMen
 <img src="https://github.com/user-attachments/assets/ad9fbe23-7288-43b9-ae23-ad764aebf340" width="550" height="400">
 
 ## GoMen -  코딩 멘토-멘티 매칭 서비스
@@ -88,8 +88,14 @@
 ### 2-3. DDD
 
 <details>
+   <summary>이미지 보기</summary>
+     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10;">
     <img src="https://github.com/user-attachments/assets/597bd467-02ee-4a8e-a475-96dc5b2de964">
-   <img src="" >
+   <img src="https://github.com/user-attachments/assets/4a16d359-8ff7-4ff1-9afc-c695eef7859f" >
+   <img src="https://github.com/user-attachments/assets/445f7fa9-60f5-4981-96fb-1b06b28df171">
+   <img src="https://github.com/user-attachments/assets/c800ce07-2cf9-4d9d-bfa1-5422b503511d">
+   <img src="https://github.com/user-attachments/assets/49b7ce69-7d5a-4696-9f8a-3eb340e817e9">
+    </div>
 </details>
 
 
