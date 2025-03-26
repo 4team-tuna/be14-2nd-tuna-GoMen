@@ -82,7 +82,9 @@
 
 ## ⚙️ 3. SPRING SECURITY , 유레카 서버
 ### 3-1. 유레카 서버
-(내용 생략)
+![image](https://github.com/user-attachments/assets/d55c799f-ff23-4e41-a63c-31b8de0534a3)
+![image](https://github.com/user-attachments/assets/04e33356-310c-44ce-84d8-eeabd2206e05)
+
 
 ### 3-2. SPRING SECURITY
 [DDL 파일](#)
@@ -92,8 +94,8 @@
 ## ✍🏻 4. API TEST
 
 ### 4-1. BOARD
-<details><summary>👩🏻‍💻 게시글 조회</summary>
-   <img src="https://github.com/user-attachments/assets/4df6f6bb-6138-410e-bbfe-0e8095f9bf77">
+<details><summary>👩🏻‍💻 게시글 전체 조회</summary>
+   ![image](https://github.com/user-attachments/assets/b2f23985-e829-49d2-8f47-0aa0d9e79ea3)
 </details>
 
 <details><summary>👩🏻‍💻 게시글 id로 게시글조회</summary>
@@ -119,8 +121,7 @@
 </details>
 
 <details><summary>👥 댓글 수정 </summary>
-
-   <img src="https://github.com/user-attachments/assets/8d2c23de-d392-4afd-ad97-ca7ff590578e">
+ <img src="https://github.com/user-attachments/assets/ae5d7b99-8b66-4b15-8156-2eca49ac440a">
 
 </details>
 
@@ -176,8 +177,6 @@
   <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
   <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
   <br>
-
-   <br>
   <img src="https://img.shields.io/badge/MyBatis-FF2D20?style=for-the-badge&logo=mybatis&logoColor=white">
   <img src="https://img.shields.io/badge/JPA-6E4C13?style=for-the-badge">
   <br>
