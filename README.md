@@ -262,10 +262,10 @@
 ## 5.📁REST API
 
 <details><summary>  </summary>
-   <img src="![localhost_63342_dist_index html__ijt=1ro82b1acdc61njrd6opsfbc69](https://github.com/user-attachments/assets/c3fec91f-351b-4787-b7d7-e1f87caa0ffb)
-">
+   <img src="https://github.com/user-attachments/assets/e8d63535-bf96-4b8d-9387-9595bce2f971">
 </details>
----
+
+
 
 ## 🎮 6. 기술 스택
 <div align=center><h1>📚 STACKS</h1></div>
