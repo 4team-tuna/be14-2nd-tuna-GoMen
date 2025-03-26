@@ -110,6 +110,30 @@
 
 ### 4-1. Applicant
 
+<details><summary> 특정 유저가 지원한 모집 게시글 상세 조회 </summary>
+   <img src="">
+</details>
+
+<details><summary> 특정 모집 게시글에 대한 지원자 목록 조회 </summary>
+   <img src="https://github.com/user-attachments/assets/c1a7fe84-e40c-4de8-bc36-9e89d1119d63">
+</details>
+
+<details><summary> 특정 유저가 지원한 모집 게시글 상세 조회 </summary>
+   <img src="https://github.com/user-attachments/assets/964fe877-fe74-49b8-8007-dcf2c768f649">
+</details>
+
+<details><summary> 팀 신청 생성하기 </summary>
+   <img src="https://github.com/user-attachments/assets/5f8d0c23-fe02-4007-82da-29d63bbf23d5">
+</details>
+
+<details><summary> 팀 신청 취소하기 </summary>
+   <img src="https://github.com/user-attachments/assets/32bdf674-14be-41b8-afb2-1f576fd18d37
+">
+</details>
+
+<details><summary> 팀 신청 처리하기 </summary>
+   <img src="https://github.com/user-attachments/assets/2455629b-cb47-466b-aee5-ddffd0f73f57">
+</details>
 
 ### 4-2. MENTORING
 <details><summary> 사용자 정보</summary>
@@ -224,6 +248,42 @@
 
 ### 4-7. Singtup&Login
 ### 4-8. TeamRecruit
+
+<details><summary> 전체 조회 </summary>
+<img src="https://github.com/user-attachments/assets/e6f8c69e-f343-4e06-a674-52fbd0d1d5ac">
+<details>
+
+<details><summary> 제목으로 조회 </summary>
+<img src="https://github.com/user-attachments/assets/58a14238-bcd2-46e7-874f-1fa9be67cf01">
+</details>
+
+<details><summary> 닉네임으로 조회 </summary>
+<img src="https://github.com/user-attachments/assets/d5fbea41-6555-44f9-b5ad-ebfd13816a54">
+<details>
+   
+<details><summary> 팀명으로 조회 </summary>
+<img src="https://github.com/user-attachments/assets/8e05a939-af57-4de9-b9bb-8fa25c42a662">
+<details>
+   
+<details><summary> 기간으로 조회 </summary>
+<img src="https://github.com/user-attachments/assets/9f1b7c97-3d03-4656-84d9-0f2fb2c8c69f">
+<details>
+   
+<details><summary> 최신순으로 조회 </summary>
+<img src="https://github.com/user-attachments/assets/2946a3ae-b0f0-4062-8dfe-b8a23b5bba01">
+<details>
+   
+<details><summary> 모집중인 팀 모집 게시글 조회 </summary>
+<img src="https://github.com/user-attachments/assets/8a4e6c16-8e39-4cbc-b290-d4181d513da2">
+<details>
+   
+<details><summary> 팀 모집 게시글 생성 </summary>
+<img src="https://github.com/user-attachments/assets/b1dd5c93-e9bc-450e-8b23-eeceaa41adaa">
+<details>
+   
+<details><summary> 팀 모집 게시글 삭제 </summary>
+<img src="https://github.com/user-attachments/assets/0c4976eb-9800-467e-aaf0-b86bc1344840">   
+<details>
 ### 4-9. Title
 ### 4-10. User
 <details><summary> 회원 전체 조회 </summary>
