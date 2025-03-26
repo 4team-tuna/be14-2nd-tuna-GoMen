@@ -77,20 +77,27 @@
 
 ---
 
-## ⚙️ 3. 서버 구축
-### 3-1. 리플리케이션
+## ⚙️ 3. SPRING SECURITY , 유레카 서버
+### 3-1. 유레카 서버
 (내용 생략)
 
-### 3-2. DDL
+### 3-2. SPRING SECURITY
 [DDL 파일](#)
 
 ---
 
-## ✍🏻 4. 테스트케이스
-### 4-1. 테스트 케이스 정의서
-[테스트 케이스 링크](#)
+## ✍🏻 4. API TEST
 
-### 4-2. 주요 쿼리문
+### 4-1. BOARD
+<details><summary>👩🏻‍💻 사용자 정보</summary>
+(쿼리문 예시)
+</details>
+
+<details><summary>👥 매칭 서비스 </summary>
+(쿼리문 예시)
+</details>
+
+### 4-2. MENTORING
 <details><summary>👩🏻‍💻 사용자 정보</summary>
 (쿼리문 예시)
 </details>
