@@ -95,7 +95,9 @@
 </details>
 
 <details><summary>👥 게시글 작성 </summary>
-https://github.com/user-attachments/assets/6a6b948a-9018-4003-838a-e3d03e9b6da3
+   <img src="https://github.com/user-attachments/assets/6a6b948a-9018-4003-838a-e3d03e9b6da3">
+   
+
 </details>
 
 <details><summary>👥 게시글 수정 </summary>
