@@ -30,7 +30,7 @@
 
 | 이혜영 | 이준규 | 한석현 | 김성민 | 서민종 |
 |--------|--------|--------|--------|--------|
-|<img src="https://github.com/user-attachments/assets/90d69166-6eee-4d9b-bdd0-ac230c4b42ef" width="200" height="200"> | <img src="https://github.com/user-attachments/assets/058daceb-2a13-4c5d-a6c6-59dfd3b5e62f" width="200" height="200"> | <img src="https://github.com/user-attachments/assets/c17d7bc2-4a71-4323-8fb4-7fb38f518daa" width="200" height="200"> | ![사진](#) | <img src="https://github.com/user-attachments/assets/4a166e64-9e42-44ae-b554-ab4547eb79bf" width="200" height="200"> |
+|<img src="https://github.com/user-attachments/assets/90d69166-6eee-4d9b-bdd0-ac230c4b42ef" width="200" height="200"> | <img src="https://github.com/user-attachments/assets/058daceb-2a13-4c5d-a6c6-59dfd3b5e62f" width="200" height="200"> | <img src="https://github.com/user-attachments/assets/c17d7bc2-4a71-4323-8fb4-7fb38f518daa" width="200" height="200"> | <img src="https://github.com/user-attachments/assets/2e2ec6dc-d653-4fbe-85a5-d8cb2706097b" width="200" height="200"> | <img src="https://github.com/user-attachments/assets/4a166e64-9e42-44ae-b554-ab4547eb79bf" width="200" height="200"> |
 | ISTP | ESTP | ENFP | ESFP | ENFP |
 
 
