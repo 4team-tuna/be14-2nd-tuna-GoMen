@@ -1,5 +1,5 @@
 ![댓글 삭제](https://github.com/user-attachments/assets/85ba2623-e7a8-4591-ac48-35bcd4df28b0)# be14-2nd-tuna-GoMen
-<img src="https://github.com/user-attachments/assets/ad9fbe23-7288-43b9-ae23-ad764aebf340" width="750" height="400">
+<img src="https://github.com/user-attachments/assets/ad9fbe23-7288-43b9-ae23-ad764aebf340" width="550" height="400">
 
 ## GoMen -  코딩 멘토-멘티 매칭 서비스
 
@@ -91,7 +91,7 @@
 
 ### 4-1. BOARD
 <details><summary>👩🏻‍💻 게시글 조회</summary>
-(쿼리문 예시)
+ <img src="https://github.com/user-attachments/assets/968af291-dc7d-415a-907d-193640390830" width="400" height="250">
 </details>
 
 <details><summary>👥 게시글 작성 </summary>
