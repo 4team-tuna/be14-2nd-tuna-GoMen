@@ -87,7 +87,9 @@
 
 ### 2-3. DDD
 
-<details>ddd모음 ![image](https://github.com/user-attachments/assets/597bd467-02ee-4a8e-a475-96dc5b2de964)
+<details>
+    <img src="https://github.com/user-attachments/assets/597bd467-02ee-4a8e-a475-96dc5b2de964">
+   <img src="" >
 </details>
 
 
