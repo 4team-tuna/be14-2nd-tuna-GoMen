@@ -95,15 +95,18 @@
 </details>
 
 <details><summary>👥 게시글 작성 </summary>
-(쿼리문 예시)
+![게시글 생성](https://github.com/user-attachments/assets/7dc8658c-69da-44b7-ae0b-0a2135a9f855)
+
 </details>
 
 <details><summary>👥 게시글 수정 </summary>
-(쿼리문 예시)
+![게시글 수정(파일추가업로드, 내용수정)](https://github.com/user-attachments/assets/98ebde41-0aa8-43a3-b2f2-fef813dcc99c)
+
 </details>
 
 <details><summary>👥 게시글 삭제 </summary>
-(쿼리문 예시)
+![게시글 삭제(Y)](https://github.com/user-attachments/assets/8f68bb1e-eede-4291-8172-10ff80503daa)
+
 </details>
 
 ### 4-2. MENTORING
