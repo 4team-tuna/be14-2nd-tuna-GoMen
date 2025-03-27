@@ -87,7 +87,14 @@
 
 ### 2-3. DDD
 
+![image](https://github.com/user-attachments/assets/f6d41145-3ecd-4863-8fb2-13fcadea5c8c)
 
+<div style="width:300px; overflow:hidden;">
+  <img src="https://github.com/user-attachments/assets/f6d41145-3ecd-4863-8fb2-13fcadea5c8c" style="width:100%; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.5)'" onmouseout="this.style.transform='scale(1)'">
+</div>
+
+
+dddddddddd
    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10;">
    <img src="https://github.com/user-attachments/assets/597bd467-02ee-4a8e-a475-96dc5b2de964" width="500" height="300">
    <img src="https://github.com/user-attachments/assets/4a16d359-8ff7-4ff1-9afc-c695eef7859f" width="350" height="200" >
