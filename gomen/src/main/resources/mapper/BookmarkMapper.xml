@@ -5,7 +5,7 @@
 <mapper namespace="com.tuna.gomen.mapper.BookmarkMapper">
 
     <!-- BookmarkedBoardResultMap -->
-    <resultMap id="BookmarkedBoardResultMap" type="com.tuna.gomen.bookMarkandLike.dto.BookmarkedBoardDto">
+    <resultMap id="BookmarkedBoardResultMap" type="com.tuna.gomen.bookMarkandLike.query.dto.BookmarkedBoardDto">
         <id property="postId" column="post_id"/>
         <result property="title" column="title"/>
         <result property="isBlinded" column="is_blinded"/>

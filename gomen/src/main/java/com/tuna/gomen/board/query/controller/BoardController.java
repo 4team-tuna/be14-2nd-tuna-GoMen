@@ -5,10 +5,6 @@ import com.tuna.gomen.board.command.dto.BoardDTO;
 import com.tuna.gomen.board.command.entity.Board;
 
 import com.tuna.gomen.board.command.service.BoardService2;
-import com.tuna.gomen.board.query.dto.BoardDto;
-import com.tuna.gomen.board.query.dto.CommentDto;
-import com.tuna.gomen.board.query.dto.UserDto;
-import com.tuna.gomen.board.query.service.BoardService;
 import com.tuna.gomen.file.entity.BoardFile;
 import com.tuna.gomen.user.command.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,79 +24,17 @@ import java.util.List;
 @RequestMapping("/gomen/boards")
 public class BoardController {
 
-    private final BoardService boardService;
     private final BoardService2 boardService2;
     private final UserService2 userService2;
 
     @Autowired
-    public BoardController(BoardService boardService, BoardService2 boardService2,
+    public BoardController(BoardService2 boardService2,
                             UserService2 userService2) {
-        this.boardService = boardService;
         this.boardService2 = boardService2;
         this.userService2 = userService2;
     }
 
-    // 전체 게시글 조회
-    @GetMapping
-    public List<BoardDto> getBoards() {
-        return boardService.getAllBoardDtos();
-    }
 
-    // 특정 사용자의 게시글 조회
-    @GetMapping("/user")
-    public List<BoardDto> getBoardsByUserId(@RequestParam Long userId) {
-        return boardService.getBoardsByUserId(userId);
-    }
-
-    // 특정 카테고리의 게시글 조회
-    @GetMapping("/category")
-    public List<BoardDto> getBoardsByCategory(@RequestParam String category) {
-        return boardService.getBoardsByCategory(category);
-    }
-
-    // 특정 키워드가 포함된 제목으로 게시글 조회
-    @GetMapping("/search")
-    public List<BoardDto> getBoardsByTitleKeyword(@RequestParam String keyword) {
-        return boardService.getBoardsByTitleKeyword(keyword);
-    }
-
-
-    //특정 게시글 내용 조회
-    @GetMapping("/{postId}")
-    public ResponseEntity<BoardDto> getBoardDetails(@PathVariable int postId) {
-        BoardDto board = boardService.getBoardDetails(postId);
-        if (board != null) {
-            return ResponseEntity.ok(board);
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
-    }
-
-
-    // 특정 게시글의 작성자 회원정보 조회
-    @GetMapping("/{postId}/author")
-    public ResponseEntity<UserDto> getAuthorByPostId(@PathVariable Long postId) {
-        UserDto author = boardService.getAuthorByPostId(postId);
-        if (author == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-        return ResponseEntity.ok(author);
-    }
-
-    // 특정 게시글의 댓글 조회
-    @GetMapping("/{postId}/comments")
-    public ResponseEntity<List<CommentDto>> getCommentsByPostId(@PathVariable Long postId) {
-        List<CommentDto> comments = boardService.getCommentsByPostId(postId);
-        return ResponseEntity.ok(comments);
-    }
-
-    /// 설명.아래부턴JPA(DML)/////////////////////////////////
-    /// 설명.아래부턴JPA(DML)/////////////////////////////////
-    /// 설명.아래부턴JPA(DML)/////////////////////////////////
-    /// 설명.아래부턴JPA(DML)/////////////////////////////////
-    /// /// 설명.아래부턴JPA(DML)/////////////////////////////////
-    /// /// 설명.아래부턴JPA(DML)/////////////////////////////////
-    ///
     @PostMapping
     public BoardDTO createBoard(@RequestParam("board") String boardJson,
                                 @RequestParam(value = "files", required = false) List<MultipartFile> files) throws IOException {
