@@ -38,7 +38,8 @@ CREATE TABLE `tbl_user` (
                             `extension_count`	INT	NOT NULL	DEFAULT 0,
                             `career_info`	VARCHAR(255)	NULL,
                             `is_mentor`	VARCHAR(255)	NOT NULL	DEFAULT 'N',
-                            `violation_score`	INT	NOT NULL	DEFAULT 0
+                            `violation_score`	INT	NOT NULL	DEFAULT 0,
+                            `rating_avg` INT NULL
 );
 
 INSERT INTO `tbl_user` (
