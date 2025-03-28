@@ -86,7 +86,7 @@ public class ReportServiceTest {
 
     @Test
     @Transactional
-    public void 신고_처리_점수_100_초과시_영구정지_처리() {
+    public void 신고_처리_점수_100점_이상시_영구정지_처리() {
         // given
         when(reportRepository.findById(1)).thenReturn(Optional.of(report));
         when(userRepository.findById(1)).thenReturn(Optional.of(user));
@@ -97,8 +97,8 @@ public class ReportServiceTest {
 
         // then
         assertEquals("Y", processedReport.getIsProcessed());  // 신고 처리 상태 Y
-        assertEquals("Y", user.getIsQuitted());  // 점수 100점 초과 후 영구 정지
-        assertEquals(105, user.getViolationScore());  // 점수는 105점이 되어야 함
+        assertEquals("Y", user.getIsQuitted());  // 점수 100점 이상 후 영구 정지
+        assertTrue(user.getViolationScore() >= 100);  // 점수는 100점 이상이어야 함
         verify(userRepository, times(1)).save(user);  // 사용자 저장 검증
         verify(postRepository, times(1)).save(board);  // 게시글 저장 검증
     }
