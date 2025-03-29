@@ -907,32 +907,41 @@ VALUES
 ###################################################### tbl_mentoring
 
 CREATE TABLE `tbl_rating_and_review` (
-                                         `rating_id` INT NOT NULL AUTO_INCREMENT COMMENT 'AUTO_INCREMENT',
+                                         `mentor_id` INT NOT NULL,
+                                         `mentee_id` INT NOT NULL,
+                                         `mentoring_space_id` INT NOT NULL,
                                          `star` INT NOT NULL,
-                                         `review` VARCHAR(255) NOT NULL,
                                          `created_at` DATETIME NOT NULL DEFAULT NOW(),
-                                         `created_id` INT NOT NULL,
-                                         `target_id` INT NOT NULL,
-                                         PRIMARY KEY (`rating_id`)
+                                         PRIMARY KEY (`mentor_id`, `mentee_id`, `mentoring_space_id`),
+                                         CONSTRAINT `FK_Rating_Mentor` FOREIGN KEY (`mentor_id`) REFERENCES `tbl_mentor_list`(`mentor_id`),
+                                         CONSTRAINT `FK_Rating_Mentee` FOREIGN KEY (`mentee_id`) REFERENCES `tbl_user`(`user_id`),
+                                         CONSTRAINT `FK_Rating_MentoringSpace` FOREIGN KEY (`mentoring_space_id`) REFERENCES `tbl_mentoring_space`(`mentoring_space_id`)
 ) ENGINE=InnoDB;
-ALTER TABLE `tbl_rating_and_review`
-    ADD CONSTRAINT `FK_Rating_CreatedID` FOREIGN KEY (`created_id`) REFERENCES `tbl_user`(`user_id`);
 
-ALTER TABLE `tbl_rating_and_review`
-    ADD CONSTRAINT `FK_Rating_TargetID` FOREIGN KEY (`target_id`) REFERENCES `tbl_user`(`user_id`);
-
-INSERT INTO tbl_rating_and_review (star, review, created_at, created_id, target_id)
+INSERT INTO `tbl_rating_and_review` (`mentor_id`, `mentee_id`, `mentoring_space_id`, `star`, `created_at`)
 VALUES
-    (5, '훌륭한 멘토링과 조언을 주셨습니다.', NOW(), 6, 1),
-    (4, '아주 지식이 풍부하고 친근한 멘토입니다.', NOW(), 7, 2),
-    (3, '괜찮은 멘토링이었지만, 개선의 여지가 있습니다.', NOW(), 8, 3),
-    (5, '탁월한 지원과 커리어 조언에 감사합니다.', NOW(), 9, 4),
-    (4, '실용적인 통찰력을 주는 유익한 멘토입니다.', NOW(), 10, 5),
-    (5, '훌륭한 멘토, 적극 추천합니다!', NOW(), 11, 1),
-    (3, '보통 수준의 경험이었으며, 더 자세한 피드백을 기대했습니다.', NOW(), 12, 2),
-    (4, '제 학습 여정에 긍정적인 영향을 주었습니다.', NOW(), 13, 3),
-    (5, '매우 영감을 주는 멘토링 세션이었습니다.', NOW(), 14, 4),
-    (4, '명확한 소통과 전문적인 안내가 인상적이었습니다.', NOW(), 15, 5);
+    (1, 23, 1, 5, NOW()),
+    (2, 45, 2, 4, NOW()),
+    (3, 12, 3, 3, NOW()),
+    (4, 34, 4, 5, NOW()),
+    (5, 50, 5, 4, NOW()),
+    (1, 8, 6, 5, NOW()),
+    (2, 19, 7, 3, NOW()),
+    (3, 3, 8, 4, NOW()),
+    (4, 29, 9, 5, NOW()),
+    (5, 41, 10, 4, NOW()),
+    (1, 25, 11, 5, NOW()),
+    (2, 9, 12, 3, NOW()),
+    (3, 22, 13, 4, NOW()),
+    (4, 17, 14, 5, NOW()),
+    (5, 38, 15, 4, NOW()),
+    (1, 7, 16, 5, NOW()),
+    (2, 33, 17, 3, NOW()),
+    (3, 16, 18, 4, NOW()),
+    (4, 13, 19, 5, NOW()),
+    (5, 5, 20, 4, NOW());
+
+
 
 ########################################## tbl_rating_and_review
 
