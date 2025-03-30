@@ -1,7 +1,7 @@
 package com.tuna.gomen.report.jpa.service;
 
 import com.tuna.gomen.board.command.repository.BoardRepository;
-import com.tuna.gomen.comment.repository.CommentRepository;
+import com.tuna.gomen.comment.command.repository.CommentRepository;
 import com.tuna.gomen.report.jpa.dto.ReportDto;
 import com.tuna.gomen.report.jpa.entity.Report;
 import com.tuna.gomen.report.jpa.entity.ReportCategory;
