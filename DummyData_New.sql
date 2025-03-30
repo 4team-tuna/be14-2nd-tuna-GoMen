@@ -104,7 +104,7 @@ INSERT INTO `tbl_user` (
 
 UPDATE tbl_user
 SET is_mentor = 'Y'
-WHERE user_id in (1,2,3,4,5);
+WHERE user_id in (1,2,3,4,5,6);
 
 ################################### tbl_user
 
