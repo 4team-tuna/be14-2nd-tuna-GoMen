@@ -96,4 +96,12 @@ public class UserService {
         UserEntity user = modelMapper.map(userDTO, UserEntity.class);
         userRepository.delete(user);
     }
+
+    @Transactional
+    public void changeToMentor(String loginId) {
+        UserDTO userDTO = selectUserByLoginId(loginId);
+        UserEntity user = modelMapper.map(userDTO, UserEntity.class);
+        user.setIsMentor("Y");
+        userRepository.save(user);
+    }
 }
