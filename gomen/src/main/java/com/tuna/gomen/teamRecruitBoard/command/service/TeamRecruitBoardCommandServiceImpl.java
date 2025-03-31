@@ -1,19 +1,17 @@
-package com.tuna.gomen.teamRecruitBoard.service;
+package com.tuna.gomen.teamRecruitBoard.command.service;
 
-import com.tuna.gomen.teamRecruitBoard.entity.TeamRecruitBoard;
-import com.tuna.gomen.teamRecruitBoard.repository.TeamRecruitBoardRepository;
+import com.tuna.gomen.teamRecruitBoard.command.entity.TeamRecruitBoard;
+import com.tuna.gomen.teamRecruitBoard.command.repository.TeamRecruitBoardRepository;
 import jakarta.persistence.EntityNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-//import org.springframework.security.access.AccessDeniedException;
 
 @Service
-public class TeamRecruitBoardServiceImpl implements TeamRecruitBoardServiceInterface {
+public class TeamRecruitBoardCommandServiceImpl implements TeamRecruitBoardCommandService {
 
     private final TeamRecruitBoardRepository teamRecruitBoardRepository;
 
-    public TeamRecruitBoardServiceImpl(TeamRecruitBoardRepository teamRecruitBoardRepository) {
+    public TeamRecruitBoardCommandServiceImpl(TeamRecruitBoardRepository teamRecruitBoardRepository) {
         this.teamRecruitBoardRepository = teamRecruitBoardRepository;
     }
 

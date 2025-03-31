@@ -1,7 +1,7 @@
-package com.tuna.gomen.teamRecruitBoard.service;
+package com.tuna.gomen.teamRecruitBoard.query.service;
 
 import com.tuna.gomen.mapper.TeamRecruitBoardMapper;
-import com.tuna.gomen.teamRecruitBoard.dto.TeamRecruitWithApplicantsDTO;
+import com.tuna.gomen.teamRecruitBoard.query.dto.TeamRecruitWithApplicantsDTO;
 import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class TeamRecruitBoardService {
+public class TeamRecruitBoardServiceImpl implements TeamRecruitBoardService {
 
     @Autowired
     private TeamRecruitBoardMapper teamRecruitBoardMapper;

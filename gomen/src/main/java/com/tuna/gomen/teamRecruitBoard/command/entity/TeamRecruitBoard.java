@@ -1,4 +1,4 @@
-package com.tuna.gomen.teamRecruitBoard.entity;
+package com.tuna.gomen.teamRecruitBoard.command.entity;
 
 import com.tuna.gomen.user.command.entity.User;
 import jakarta.persistence.*;

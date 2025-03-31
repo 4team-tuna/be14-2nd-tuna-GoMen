@@ -1,6 +1,6 @@
-package com.tuna.gomen.teamRecruitBoard.repository;
+package com.tuna.gomen.teamRecruitBoard.command.repository;
 
-import com.tuna.gomen.teamRecruitBoard.entity.TeamRecruitBoard;
+import com.tuna.gomen.teamRecruitBoard.command.entity.TeamRecruitBoard;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

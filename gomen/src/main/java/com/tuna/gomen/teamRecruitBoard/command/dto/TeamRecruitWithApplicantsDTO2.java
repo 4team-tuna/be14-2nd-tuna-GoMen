@@ -1,4 +1,4 @@
-package com.tuna.gomen.teamRecruitBoard.dto;
+package com.tuna.gomen.teamRecruitBoard.command.dto;
 
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TeamRecruitWithApplicantsDTO {
+public class TeamRecruitWithApplicantsDTO2 {
 
     private Integer teamPostId;
     private String postTitle;
