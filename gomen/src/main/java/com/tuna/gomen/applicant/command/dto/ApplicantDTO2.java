@@ -1,4 +1,4 @@
-package com.tuna.gomen.applicant.dto;
+package com.tuna.gomen.applicant.command.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ApplicantDTO {
+public class ApplicantDTO2 {
     private Integer userId;
     private String nickname;
     private String introduce;

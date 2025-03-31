@@ -1,38 +1,17 @@
-package com.tuna.gomen.applicant.service;
+package com.tuna.gomen.applicant.command.service;
 
-import com.tuna.gomen.applicant.dto.ApplicantDTO;
-import com.tuna.gomen.applicant.entity.Applicant;
-import com.tuna.gomen.applicant.entity.ApplicantId;
-import com.tuna.gomen.applicant.repository.ApplicantRepository;
-import com.tuna.gomen.mapper.ApplicantMapper;
-import java.util.List;
+import com.tuna.gomen.applicant.command.entity.Applicant;
+import com.tuna.gomen.applicant.command.entity.ApplicantId;
+import com.tuna.gomen.applicant.command.repository.ApplicantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class ApplicantServiceImpl implements ApplicantService {
-
-    @Autowired
-    private ApplicantMapper applicantMapper;
+public class ApplicantCommandServiceImpl implements ApplicantCommandService {
 
     @Autowired
     private ApplicantRepository applicantRepository;
-
-    @Override
-    public List<ApplicantDTO> getApplicants(Integer teamPostId) {
-        return applicantMapper.findApplicantsByPostId(teamPostId);
-    }
-
-    @Override
-    public List<ApplicantDTO> getMyApplications(Integer userId) {
-        return applicantMapper.findMyApplications(userId);
-    }
-
-    @Override
-    public List<ApplicantDTO> getMyApplicationsWithDetails(Integer userId) {
-        return applicantMapper.findMyApplicationsWithDetails(userId);
-    }
 
     // 팀 신청 (POST)
     @Transactional

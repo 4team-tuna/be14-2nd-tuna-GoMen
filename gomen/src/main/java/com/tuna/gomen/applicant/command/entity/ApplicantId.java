@@ -1,4 +1,4 @@
-package com.tuna.gomen.applicant.entity;
+package com.tuna.gomen.applicant.command.entity;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
