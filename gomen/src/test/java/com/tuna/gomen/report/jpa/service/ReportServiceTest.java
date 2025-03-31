@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import com.tuna.gomen.board.command.entity.Board;
 import com.tuna.gomen.board.command.repository.BoardRepository;
-import com.tuna.gomen.comment.entity.Comment;
-import com.tuna.gomen.comment.repository.CommentRepository;
+import com.tuna.gomen.comment.command.entity.Comment;
+import com.tuna.gomen.comment.command.repository.CommentRepository;
 import com.tuna.gomen.report.jpa.entity.Report;
 import com.tuna.gomen.report.jpa.entity.ReportCategory;
 import com.tuna.gomen.report.jpa.repository.ReportCategoryRepository;

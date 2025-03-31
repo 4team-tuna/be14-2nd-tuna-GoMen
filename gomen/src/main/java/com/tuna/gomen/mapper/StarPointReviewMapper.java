@@ -1,4 +1,4 @@
-package com.tuna.gomen.mapper;
-
-public interface StarPointReviewMapper {
-}
+//package com.tuna.gomen.mapper;
+//
+//public interface StarPointReviewMapper {
+//}
