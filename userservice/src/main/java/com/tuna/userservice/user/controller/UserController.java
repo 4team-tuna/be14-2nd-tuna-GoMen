@@ -122,7 +122,18 @@ public class UserController {
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(loginId);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body("멘토로 변경되었습니다.");
+    }
+
+    @PostMapping("/changePassword")
+    public ResponseEntity<String> changePassword(@RequestParam("loginId") String loginId,
+                                                 @RequestParam("password") String password){
+        try {
+            userService.changePassword(loginId, password);
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body("비밀번호 변경이 완료되었습니다.");
     }
 }
 

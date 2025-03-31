@@ -104,4 +104,13 @@ public class UserService {
         user.setIsMentor("Y");
         userRepository.save(user);
     }
+
+    public void changePassword(String loginId, String password) {
+        UserDTO userDTO = selectUserByLoginId(loginId);
+        UserEntity user = modelMapper.map(userDTO, UserEntity.class);
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String encryptedPassword = encoder.encode(password);
+        user.setPassword(encryptedPassword);
+        userRepository.save(user);
+    }
 }
