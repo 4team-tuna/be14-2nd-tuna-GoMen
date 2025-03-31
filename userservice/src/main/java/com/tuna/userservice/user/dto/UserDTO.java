@@ -2,6 +2,8 @@ package com.tuna.userservice.user.dto;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class UserDTO {
     private Integer userId;
@@ -11,9 +13,9 @@ public class UserDTO {
     private String personalNumber;
     private String phoneNumber;
     private String nickname;
-    private java.util.Date createdAt;
-    private java.util.Date updatedAt;
-    private java.util.Date willBeActivated;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+    private LocalDateTime willBeActivated;
     private String isQuitted;
     private String githubAdress;
     private Integer extensionCount;

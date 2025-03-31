@@ -114,5 +114,15 @@ public class UserController {
 
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(quitVO);
     }
+
+    @PostMapping("/changeToMentor")
+    public ResponseEntity<String> changeToMentor(@RequestParam("loginId") String loginId){
+        try {
+            userService.changeToMentor(loginId);
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(loginId);
+    }
 }
 
