@@ -911,6 +911,7 @@ CREATE TABLE `tbl_rating_and_review` (
                                          `mentee_id` INT NOT NULL,
                                          `mentoring_space_id` INT NOT NULL,
                                          `star` INT NOT NULL,
+                                         `review` TEXT,
                                          `created_at` DATETIME NOT NULL DEFAULT NOW(),
                                          PRIMARY KEY (`mentor_id`, `mentee_id`, `mentoring_space_id`),
                                          CONSTRAINT `FK_Rating_Mentor` FOREIGN KEY (`mentor_id`) REFERENCES `tbl_mentor_list`(`mentor_id`),
