@@ -1,7 +1,7 @@
-package com.tuna.userservice.user.repository;
+package com.tuna.userservice.command.repository;
 
 
-import com.tuna.userservice.user.command.entity.UserEntity;
+import com.tuna.userservice.command.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

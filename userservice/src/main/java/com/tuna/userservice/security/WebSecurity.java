@@ -1,6 +1,7 @@
 package com.tuna.userservice.security;
 
-import com.tuna.userservice.user.service.UserService;
+import com.tuna.userservice.command.service.UserCommandService;
+import com.tuna.userservice.query.service.UserQueryService;
 import jakarta.servlet.Filter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -21,7 +22,7 @@ public class WebSecurity {
     private JwtAuthenticationProvider jwtAuthenticationProvider;
     private Environment env;
     private JwtUtil jwtUtil;
-    private UserService userService;
+    private UserQueryService userService;
 
     @Autowired
     public WebSecurity(JwtAuthenticationProvider jwtAuthenticationProvider,
@@ -47,6 +48,7 @@ public class WebSecurity {
                                 .requestMatchers(new AntPathRequestMatcher("/user/changeToMentor")).hasRole("ADMIN")
                                 .requestMatchers(new AntPathRequestMatcher("/user/**", "POST")).permitAll()
                                 .requestMatchers(new AntPathRequestMatcher("/user/**", "GET")).hasRole("USER")
+                                .requestMatchers(new AntPathRequestMatcher("/user/**", "PATCH")).hasRole("USER")
                                 .anyRequest().authenticated()
         )
         .authenticationManager(authenticationManager())

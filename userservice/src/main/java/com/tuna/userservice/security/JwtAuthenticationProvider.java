@@ -1,7 +1,8 @@
 package com.tuna.userservice.security;
 
-import com.tuna.userservice.user.dto.UserDTO;
-import com.tuna.userservice.user.service.UserService;
+import com.tuna.userservice.command.dto.UserCommandDTO;
+import com.tuna.userservice.query.dto.UserQueryDTO;
+import com.tuna.userservice.query.service.UserQueryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -19,12 +20,12 @@ import java.util.ArrayList;
 @Slf4j
 @Component
 public class JwtAuthenticationProvider implements AuthenticationProvider {
-    private UserService userService;
+    private UserQueryService userService;
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public JwtAuthenticationProvider(UserService userService, PasswordEncoder passwordEncoder) {
-        this.userService = userService;
+    public JwtAuthenticationProvider(UserQueryService userCommandService, PasswordEncoder passwordEncoder) {
+        this.userService = userCommandService;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -40,11 +41,11 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
             throw new BadCredentialsException("비밀번호가 일치하지 않습니다.");
         }
 
-        UserDTO userDTO = userService.selectUserByLoginId(loginId);
-        String loginIdAndUserId = loginId + "@" + userDTO.getUserId();
+        UserQueryDTO userQueryDTO = userService.selectUserByLoginId(loginId);
+        String loginIdAndUserId = loginId + "@" + userQueryDTO.getUserId();
         userDetails = new User(loginIdAndUserId, password,
                 true, true, true, true, new ArrayList<>());
-        if(userDTO.getIsQuitted().equals("Y")){
+        if(userQueryDTO.getIsQuitted().equals("Y")){
             throw new RuntimeException("탈퇴한 회원입니다.");
         } else {
             /* 설명. 비밀번호 일치 시에 token발행 */

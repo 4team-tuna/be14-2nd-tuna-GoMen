@@ -1,11 +1,10 @@
-package com.tuna.userservice.user.command.entity;
+package com.tuna.userservice.command.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Getter
 @Setter
@@ -61,6 +60,12 @@ public class UserEntity {
 
     @Column(nullable = false)
     private Integer violationScore;
+
+    @Column(nullable = true)
+    private String college;
+
+    @Column(nullable = true)
+    private String blog;
 
     @PrePersist
     public void prePersist() {
