@@ -1,6 +1,6 @@
 package com.tuna.gomen.mapper;
 
-import com.tuna.gomen.teamRecruitBoard.dto.TeamRecruitWithApplicantsDTO;
+import com.tuna.gomen.teamRecruitBoard.query.dto.TeamRecruitWithApplicantsDTO;
 import java.time.LocalDate;
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;

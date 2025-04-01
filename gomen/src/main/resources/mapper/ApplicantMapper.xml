@@ -5,7 +5,7 @@
 <mapper namespace="com.tuna.gomen.mapper.ApplicantMapper">
 
     <!-- ResultMap 정의 -->
-    <resultMap id="ApplicantResultMap" type="com.tuna.gomen.applicant.dto.ApplicantDTO">
+    <resultMap id="ApplicantResultMap" type="com.tuna.gomen.applicant.query.dto.ApplicantDTO">
         <result column="user_id" property="userId"/>
         <result column="nickname" property="nickname"/>
         <result column="introduce" property="introduce"/>
