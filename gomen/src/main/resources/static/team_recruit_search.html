@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팀 모집 게시글 조회</title>
+    <script>
+        function submitDateRangeForm(event) {
+            event.preventDefault(); // 기본 폼 제출 방지
+
+            // 입력된 날짜 가져오기
+            const startDate = document.getElementById("startDate").value;
+            const endDate = document.getElementById("endDate").value;
+
+            if (!startDate || !endDate) {
+                alert("시작 날짜와 종료 날짜를 입력하세요.");
+                return;
+            }
+
+            // 요청 URL 생성
+            const requestUrl = `http://localhost:8080/gomen/team-recruit/posts-by-date-range/${startDate}/${endDate}`;
+
+            // 페이지 이동
+            window.location.href = requestUrl;
+        }
+
+        function submitTitleSearchForm(event) {
+            event.preventDefault();
+            const title = document.getElementById("searchTitle").value;
+            if (!title) {
+                alert("제목을 입력하세요.");
+                return;
+            }
+            const requestUrl = `http://localhost:8080/gomen/team-recruit/recruit-posts-by-title/${title}`;
+            window.location.href = requestUrl;
+        }
+
+        function submitTeamNameSearchForm(event) {
+            event.preventDefault();
+            const teamName = document.getElementById("searchTeamName").value;
+            if (!teamName) {
+                alert("팀명을 입력하세요.");
+                return;
+            }
+            const requestUrl = `http://localhost:8080/gomen/team-recruit/recruit-posts-by-team-name/${teamName}`;
+            window.location.href = requestUrl;
+        }
+
+        function submitLeaderNicknameSearchForm(event) {
+            event.preventDefault();
+            const nickname = document.getElementById("searchNickname").value;
+            if (!nickname) {
+                alert("리더 닉네임을 입력하세요.");
+                return;
+            }
+            const requestUrl = `http://localhost:8080/gomen/team-recruit/recruit-posts-by-leader/${nickname}`;
+            window.location.href = requestUrl;
+        }
+
+        function submitLatestSearchForm() {
+            window.location.href = "http://localhost:8080/gomen/team-recruit/recruit-posts-by-latest";
+        }
+
+        function submitActiveSearchForm() {
+            window.location.href = "http://localhost:8080/gomen/team-recruit/active-recruit-posts";
+        }
+    </script>
+</head>
+<body>
+<h2>팀 모집 게시글 조회</h2>
+
+<!-- 기간으로 조회 -->
+<h3>기간으로 조회</h3>
+<form onsubmit="submitDateRangeForm(event)">
+    <label for="startDate">시작 날짜:</label>
+    <input type="date" id="startDate" name="startDate" required>
+
+    <label for="endDate">종료 날짜:</label>
+    <input type="date" id="endDate" name="endDate" required>
+
+    <button type="submit">조회</button>
+</form>
+
+<hr>
+
+<!-- 제목으로 조회 -->
+<h3>제목으로 조회</h3>
+<form onsubmit="submitTitleSearchForm(event)">
+    <label for="searchTitle">제목:</label>
+    <input type="text" id="searchTitle" name="title" placeholder="제목을 입력하세요." required>
+    <button type="submit">조회</button>
+</form>
+
+<hr>
+
+<!-- 팀명으로 조회 -->
+<h3>팀명으로 조회</h3>
+<form onsubmit="submitTeamNameSearchForm(event)">
+    <label for="searchTeamName">팀명:</label>
+    <input type="text" id="searchTeamName" name="teamName" placeholder="팀명을 입력하세요." required>
+    <button type="submit">조회</button>
+</form>
+
+<hr>
+
+<!-- 리더 닉네임으로 조회 -->
+<h3>리더 닉네임으로 조회</h3>
+<form onsubmit="submitLeaderNicknameSearchForm(event)">
+    <label for="searchNickname">리더 닉네임:</label>
+    <input type="text" id="searchNickname" name="nickname" placeholder="리더의 닉네임을 입력하세요." required>
+    <button type="submit">조회</button>
+</form>
+
+<hr>
+
+<!-- 최신순 조회 -->
+<h3>최신순 조회</h3>
+<button onclick="submitLatestSearchForm()">최신순으로 조회</button>
+
+<hr>
+
+<!-- 모집중인 팀 모집 게시글 조회 -->
+<h3>모집중인 팀 모집 게시글 조회</h3>
+<button onclick="submitActiveSearchForm()">모집중인 팀 조회</button>
+
+</body>
+</html>
