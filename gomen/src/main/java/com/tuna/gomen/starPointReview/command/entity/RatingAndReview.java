@@ -1,5 +1,3 @@
-// 패키지: com.tuna.gomen.starPointReview.command.entity
-
 package com.tuna.gomen.starPointReview.command.entity;
 
 import jakarta.persistence.*;
@@ -36,6 +34,7 @@ public class RatingAndReview {
 
     private LocalDateTime createdAt;
 
+    @Column(name = "created_at", updatable = false)
     @PrePersist
     public void prePersist() {
         this.createdAt = LocalDateTime.now();

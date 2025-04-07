@@ -62,6 +62,9 @@ public class User {
     @Column(nullable = false)
     private int violationScore = 0;
 
+    @Column(name = "average_rating")
+    private Float averageRating;
+
 
 }
 
