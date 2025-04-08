@@ -39,7 +39,7 @@ CREATE TABLE `tbl_user` (
                             `career_info`	VARCHAR(255)	NULL,
                             `is_mentor`	VARCHAR(255)	NOT NULL	DEFAULT 'N',
                             `violation_score`	INT	NOT NULL	DEFAULT 0,
-                            `rating_avg` DOUBLE NULL
+                            `average_rating` FLOAT DEFAUT 0
 );
 
 INSERT INTO `tbl_user` (
