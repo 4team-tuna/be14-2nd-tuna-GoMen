@@ -8,7 +8,7 @@ import lombok.*;
 @Setter
 @ToString
 public class MentorListDTO {
-    private int mentorId;
+    private Integer mentorId;
     private String mExpert;
     private String mContent;
     private String isDeleted;

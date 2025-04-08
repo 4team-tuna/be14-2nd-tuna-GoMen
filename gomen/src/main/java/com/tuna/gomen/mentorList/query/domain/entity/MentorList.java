@@ -5,10 +5,9 @@ import lombok.*;
 @Getter
 @Setter
 public class MentorList {
-    private int mentorId;
+    private Integer mentorId;
     private String mExpert;
     private String mContent;
     private String isDeleted;
-
-
+    
 }
