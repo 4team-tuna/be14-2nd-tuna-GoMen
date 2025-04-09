@@ -7,25 +7,17 @@ import java.util.Objects;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class RatingAndReviewId implements Serializable {
-    private int mentorId;
-    private int menteeId;
-    private int mentoringSpaceId;
+    private Integer mentorId;
+    private Integer menteeId;
+    private Integer mentoringSpaceId;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        RatingAndReviewId that = (RatingAndReviewId) o;
-        return mentorId == that.mentorId &&
-                menteeId == that.menteeId &&
-                mentoringSpaceId == that.mentoringSpaceId;
+    public RatingAndReviewId() {
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(mentorId, menteeId, mentoringSpaceId);
+    public RatingAndReviewId(Integer mentorId, Integer menteeId, Integer mentoringSpaceId) {
+        this.mentorId = mentorId;
+        this.menteeId = menteeId;
+        this.mentoringSpaceId = mentoringSpaceId;
     }
 }

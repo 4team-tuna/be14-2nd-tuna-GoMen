@@ -63,8 +63,7 @@ public class User {
     private int violationScore = 0;
 
     @Column(name = "average_rating")
-    private Float averageRating;
-
+    private Double averageRating;
 
 }
 

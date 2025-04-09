@@ -1,72 +1,68 @@
 package com.tuna.gomen.starPointReview.command.service;
 
-import com.tuna.gomen.starPointReview.command.dto.RatingReviewRequestDto;
-import com.tuna.gomen.starPointReview.command.entity.MentoringSpace;
+import com.tuna.gomen.mentoringspace.command.entity.MentoringSpace;
+import com.tuna.gomen.starPointReview.command.dto.RatingReviewRequestDTO;
 import com.tuna.gomen.starPointReview.command.entity.RatingAndReview;
-import com.tuna.gomen.starPointReview.command.repository.MentoringRepository2;
-import com.tuna.gomen.starPointReview.command.repository.MentoringSpaceRepository2;
+import com.tuna.gomen.starPointReview.command.entity.RatingAndReviewId;
 import com.tuna.gomen.starPointReview.command.repository.RatingAndReviewRepository;
-import com.tuna.gomen.starPointReview.command.repository.UserRepository2;
-import lombok.RequiredArgsConstructor;
+import com.tuna.gomen.user.command.entity.User;
+import com.tuna.gomen.mentorList.command.repository.MentorListRepository;
+import com.tuna.gomen.mentoringspace.command.repository.MentoringSpaceRepository;
+import com.tuna.gomen.user.command.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class RatingReviewService {
 
-    private final RatingAndReviewRepository ratingRepo;
-    private final MentoringSpaceRepository2 spaceRepo;
-    private final MentoringRepository2 mentoringRepo;
-    private final UserRepository2 userRepository;
+    private final RatingAndReviewRepository ratingAndReviewRepository;
+    private final MentoringSpaceRepository metoringSpaceRepository;
+    private final MentorListRepository mentorListRepository;
+    private final UserRepository userRepository;
+
+    public RatingReviewService(RatingAndReviewRepository ratingRepository, MentoringSpaceRepository spaceRepository,
+                               MentorListRepository mentorListRepository, UserRepository userRepository) {
+        this.ratingAndReviewRepository = ratingRepository;
+        this.metoringSpaceRepository = spaceRepository;
+        this.mentorListRepository = mentorListRepository;
+        this.userRepository = userRepository;
+    }
 
     @Transactional
-    public void writeReview(RatingReviewRequestDto dto) {
-        MentoringSpace space = spaceRepo.findById(dto.getMentoringSpaceId())
-                .orElseThrow(() -> new IllegalArgumentException("멘토링 스페이스를 찾을 수 없습니다."));
+    public String createRatingAndReview(RatingReviewRequestDTO dto) {
+        // 멘토링 공간 활성화 여부 체크
+        Optional<MentoringSpace> mentoringSpaceOpt = metoringSpaceRepository.findById(dto.getMentoringSpaceId());
+        if (mentoringSpaceOpt.isEmpty()) return "존재하지 않는 멘토링 공간입니다.";
 
-        if (!"N".equals(space.getIsActivated())) {
-            throw new IllegalStateException("멘토링이 종료되어야 리뷰 작성이 가능합니다.");
-        }
+        MentoringSpace mentoringSpace = mentoringSpaceOpt.get();
+        if (!"N".equals(mentoringSpace.getIsActivated())) return "멘토링이 종료되지 않았습니다.";
 
-        // 멘토링 관계 있는지 확인 (둘 중 누가 멘토든)
-        boolean isValidRelation = mentoringRepo
-                .findByMentorIdAndMenteeIdAndTeamIdAndIsAccepted(dto.getReviewerId(), dto.getTargetUserId(), 0, "Y")
-                .isPresent()
-                || mentoringRepo
-                .findByMentorIdAndMenteeIdAndTeamIdAndIsAccepted(dto.getTargetUserId(), dto.getReviewerId(), 0, "Y")
-                .isPresent();
+        // 중복 확인
+        RatingAndReviewId id = new RatingAndReviewId(dto.getTargetUserId(), dto.getReviewerId(), dto.getMentoringSpaceId());
+        if (ratingAndReviewRepository.existsById(id)) return "이미 리뷰를 작성하셨습니다.";
 
-        if (!isValidRelation) {
-            throw new IllegalStateException("멘토링 관계가 형성되지 않았습니다.");
-        }
+        // 리뷰 저장
+        RatingAndReview rating = new RatingAndReview();
+        rating.setMentorId(dto.getTargetUserId());
+        rating.setMenteeId(dto.getReviewerId());
+        rating.setMentoringSpaceId(dto.getMentoringSpaceId());
+        rating.setStar(dto.getStar());
+        rating.setReview(dto.getReview());
+        rating.setCreatedAt(LocalDateTime.now());
 
-        // 누가 멘토인지 판단
-        int mentorId, menteeId;
-        if (mentoringRepo.findByMentorIdAndMenteeIdAndTeamIdAndIsAccepted(dto.getReviewerId(), dto.getTargetUserId(), 0, "Y").isPresent()) {
-            mentorId = dto.getReviewerId();
-            menteeId = dto.getTargetUserId();
-        } else {
-            mentorId = dto.getTargetUserId();
-            menteeId = dto.getReviewerId();
-        }
+        ratingAndReviewRepository.save(rating);
 
-        ratingRepo.save(RatingAndReview.builder()
-                .star(dto.getStar())
-                .review(dto.getReview())
-                .mentorId(mentorId)
-                .menteeId(menteeId)
-                .mentoringSpaceId(dto.getMentoringSpaceId())
-                .build());
+        // 평균 별점 계산 및 유저 테이블 업데이트
+        Double averageRating = ratingAndReviewRepository.findAverageStarByMentorId(dto.getTargetUserId());
+        Optional<User> mentorUserOpt = userRepository.findById(dto.getTargetUserId());
+        mentorUserOpt.ifPresent(user -> {
+            user.setAverageRating(averageRating);
+            userRepository.save(user);
+        });
 
-        // 평균 별점 갱신 대상은 받은 사람 (targetUserId)
-        Double avgRating = ratingRepo.findAverageRatingByUserId(dto.getTargetUserId());
-        if (avgRating != null) {
-            userRepository.findById(dto.getTargetUserId()).ifPresent(user -> {
-                user.setAverageRating(avgRating.floatValue());
-                userRepository.save(user);
-            });
-        }
+        return "리뷰 등록이 완료되었습니다.";
     }
 
 }
