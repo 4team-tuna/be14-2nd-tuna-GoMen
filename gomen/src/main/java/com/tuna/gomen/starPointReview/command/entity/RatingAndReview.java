@@ -1,7 +1,8 @@
-// 패키지: com.tuna.gomen.starPointReview.command.entity
-
 package com.tuna.gomen.starPointReview.command.entity;
 
+import com.tuna.gomen.mentorList.command.entity.MentorList;
+import com.tuna.gomen.mentoringspace.command.entity.MentoringSpace;
+import com.tuna.gomen.user.command.entity.User;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,31 +14,40 @@ import java.util.Objects;
 @Table(name = "tbl_rating_and_review")
 @IdClass(RatingAndReviewId.class)
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
-@Builder
+@Setter
 public class RatingAndReview {
 
     @Id
     @Column(name = "mentor_id")
-    private int mentorId;
+    private Integer mentorId;
 
     @Id
     @Column(name = "mentee_id")
-    private int menteeId;
+    private Integer menteeId;
 
     @Id
     @Column(name = "mentoring_space_id")
-    private int mentoringSpaceId;
+    private Integer mentoringSpaceId;
 
-    private int star;
+    @ManyToOne
+    @JoinColumn(name = "mentor_id", insertable = false, updatable = false)
+    private MentorList mentorList;
 
+    @ManyToOne
+    @JoinColumn(name = "mentee_id", insertable = false, updatable = false)
+    private User mentee;
+
+    @ManyToOne
+    @JoinColumn(name = "mentoring_space_id", insertable = false, updatable = false)
+    private MentoringSpace mentoringSpace;
+
+    @Column(name = "star")
+    private Integer star;
+
+    @Column(name = "review")
     private String review;
 
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    @PrePersist
-    public void prePersist() {
-        this.createdAt = LocalDateTime.now();
-    }
 }

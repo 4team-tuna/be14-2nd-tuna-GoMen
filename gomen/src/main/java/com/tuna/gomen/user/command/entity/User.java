@@ -31,37 +31,36 @@ public class User {
     @Column(nullable = false)
     private String phoneNumber;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String nickname;
 
     @Column(nullable = false)
-    private LocalDateTime createdAt;
+    private LocalDateTime createdAt = LocalDateTime.now();
 
-    @Column(nullable = true)
+    @Column
     private LocalDateTime updatedAt;
 
-    @Column(nullable = false)
-    private LocalDateTime willBeActivated;
+    private LocalDateTime willBeActivated = LocalDateTime.now();
 
-    @Column(nullable = false)
-    private String isQuitted;
+    @Column(nullable = false, length = 1)
+    private String isQuitted = "N";
 
-    @Column(nullable = true)
+    @Column
     private String githubAdress;
 
     @Column(nullable = false)
-    private Integer extensionCount;
+    private int extensionCount = 0;
 
-    @Column(nullable = true)
+    @Column
     private String careerInfo;
 
-    @Column(nullable = false)
-    private String isMentor;
+    @Column(nullable = false, length = 1)
+    private String isMentor = "N";
 
     @Column(nullable = false)
-    private Integer violationScore;
+    private int violationScore = 0;
 
-    @Column(nullable = false)
+    @Column(name = "average_rating")
     private Double averageRating;
 
     @Column(nullable = true)
