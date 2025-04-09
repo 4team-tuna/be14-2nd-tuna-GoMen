@@ -40,7 +40,7 @@ CREATE TABLE `tbl_user` (
                             `is_mentor`	VARCHAR(255)	NOT NULL	DEFAULT 'N',
                             `violation_score`	INT	NOT NULL	DEFAULT 0,
                             `college` VARCHAR(255) NULL,
-                            `blog` VARCHAR(255) NULL
+                            `blog` VARCHAR(255) NULL,
                             `rating_avg` DOUBLE NULL
 );
 
