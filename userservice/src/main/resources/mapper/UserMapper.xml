@@ -20,6 +20,7 @@
         <result property="careerInfo" column="career_info"/>
         <result property="isMentor" column="is_mentor"/>
         <result property="violationScore" column="violation_score"/>
+        <result property="averageRating" column="average_rating"/>
         <result property="college" column="college"/>
         <result property="blog" column="blog"/>
     </resultMap>
@@ -44,6 +45,7 @@
             CAREER_INFO,
             IS_MENTOR,
             VIOLATION_SCORE,
+            AVERAGE_RATING,
             COLLEGE,
             BLOG
         FROM tbl_user;
@@ -69,6 +71,7 @@
             CAREER_INFO,
             IS_MENTOR,
             VIOLATION_SCORE,
+            AVERAGE_RATING,
             COLLEGE,
             BLOG
         FROM tbl_user
@@ -95,6 +98,7 @@
             CAREER_INFO,
             IS_MENTOR,
             VIOLATION_SCORE,
+            AVERAGE_RATING,
             COLLEGE,
             BLOG
         FROM tbl_user
@@ -121,6 +125,7 @@
             CAREER_INFO,
             IS_MENTOR,
             VIOLATION_SCORE,
+            AVERAGE_RATING,
             COLLEGE,
             BLOG
         FROM tbl_user
@@ -147,6 +152,7 @@
             CAREER_INFO,
             IS_MENTOR,
             VIOLATION_SCORE,
+            AVERAGE_RATING,
             COLLEGE,
             BLOG
         FROM tbl_user
@@ -175,6 +181,7 @@
             CAREER_INFO,
             IS_MENTOR,
             VIOLATION_SCORE,
+            AVERAGE_RATING,
             COLLEGE,
             BLOG
         FROM tbl_user
@@ -203,6 +210,7 @@
             CAREER_INFO,
             IS_MENTOR,
             VIOLATION_SCORE,
+            AVERAGE_RATING,
             COLLEGE,
             BLOG
         FROM tbl_user
@@ -231,6 +239,7 @@
             CAREER_INFO,
             IS_MENTOR,
             VIOLATION_SCORE,
+            AVERAGE_RATING,
             COLLEGE,
             BLOG
         FROM tbl_user

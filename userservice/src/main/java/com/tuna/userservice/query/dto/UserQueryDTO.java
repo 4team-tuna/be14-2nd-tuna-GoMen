@@ -22,6 +22,7 @@ public class UserQueryDTO {
     private String careerInfo;
     private String isMentor;
     private Integer violationScore;
+    private Double averageRating;
     private String college;
     private String blog;
 }

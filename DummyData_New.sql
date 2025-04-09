@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS tbl_user;
 
 CREATE TABLE `tbl_user` (
                             `user_id`	INT	NOT NULL PRIMARY KEY AUTO_INCREMENT,
-                            `login_id`	VARCHAR(255)	NOT NULL UNIQUE,
+                            `login_id`	VARCHAR(255)	UNIQUE NOT NULL,
                             `password`	VARCHAR(255)	NOT NULL,
                             `name`	VARCHAR(255)	NOT NULL,
                             `personal_number`	VARCHAR(255)	NOT NULL,
@@ -39,9 +39,9 @@ CREATE TABLE `tbl_user` (
                             `career_info`	VARCHAR(255)	NULL,
                             `is_mentor`	VARCHAR(255)	NOT NULL	DEFAULT 'N',
                             `violation_score`	INT	NOT NULL	DEFAULT 0,
+                            `average_rating` DOUBLE DEFAULT 0,
                             `college` VARCHAR(255) NULL,
-                            `blog` VARCHAR(255) NULL,
-                            `rating_avg` DOUBLE NULL
+                            `blog` VARCHAR(255) NULL
 );
 
 INSERT INTO `tbl_user` (

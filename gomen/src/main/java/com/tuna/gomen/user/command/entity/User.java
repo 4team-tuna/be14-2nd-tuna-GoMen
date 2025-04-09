@@ -1,10 +1,8 @@
 package com.tuna.gomen.user.command.entity;
 
-import lombok.Builder;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
@@ -33,35 +31,53 @@ public class User {
     @Column(nullable = false)
     private String phoneNumber;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String nickname;
 
     @Column(nullable = false)
-    private LocalDateTime createdAt = LocalDateTime.now();
+    private LocalDateTime createdAt;
 
-    @Column
+    @Column(nullable = true)
     private LocalDateTime updatedAt;
 
-    private LocalDateTime willBeActivated = LocalDateTime.now();
+    @Column(nullable = false)
+    private LocalDateTime willBeActivated;
 
-    @Column(nullable = false, length = 1)
-    private String isQuitted = "N";
+    @Column(nullable = false)
+    private String isQuitted;
 
-    @Column
+    @Column(nullable = true)
     private String githubAdress;
 
     @Column(nullable = false)
-    private int extensionCount = 0;
+    private Integer extensionCount;
 
-    @Column
+    @Column(nullable = true)
     private String careerInfo;
 
-    @Column(nullable = false, length = 1)
-    private String isMentor = "N";
+    @Column(nullable = false)
+    private String isMentor;
 
     @Column(nullable = false)
-    private int violationScore = 0;
+    private Integer violationScore;
 
+    @Column(nullable = false)
+    private Double averageRating;
 
+    @Column(nullable = true)
+    private String college;
+
+    @Column(nullable = true)
+    private String blog;
+
+    @PrePersist
+    public void prePersist() {
+        this.createdAt = LocalDateTime.now();
+        this.willBeActivated = LocalDateTime.now();
+        this.isQuitted = "N";
+        this.extensionCount = 0;
+        this.isMentor = "N";
+        this.violationScore = 0;
+        this.averageRating = 0.0;
+    }
 }
-

@@ -61,6 +61,9 @@ public class UserEntity {
     @Column(nullable = false)
     private Integer violationScore;
 
+    @Column(nullable = false)
+    private Double averageRating;
+
     @Column(nullable = true)
     private String college;
 
@@ -75,5 +78,6 @@ public class UserEntity {
         this.extensionCount = 0;
         this.isMentor = "N";
         this.violationScore = 0;
+        this.averageRating = 0.0;
     }
 }
