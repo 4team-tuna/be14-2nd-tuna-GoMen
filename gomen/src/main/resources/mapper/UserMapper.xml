@@ -20,10 +20,13 @@
         <result property="careerInfo" column="career_info"/>
         <result property="isMentor" column="is_mentor"/>
         <result property="violationScore" column="violation_score"/>
+        <result property="averageRating" column="average_rating"/>
+        <result property="college" column="college"/>
+        <result property="blog" column="blog"/>
     </resultMap>
 
-<!--    전체 유저 데이터 조회-->
-<!--    localhost:8080/gomen/user/selectAll-->
+    <!--    전체 유저 데이터 조회-->
+    <!--    localhost:8080/gomen/user/selectAll-->
     <select id="selectAllUsers" resultMap="userResultMap">
         SELECT
             USER_ID,
@@ -41,12 +44,15 @@
             EXTENSION_COUNT,
             CAREER_INFO,
             IS_MENTOR,
-            VIOLATION_SCORE
+            VIOLATION_SCORE,
+            AVERAGE_RATING,
+            COLLEGE,
+            BLOG
         FROM tbl_user;
     </select>
 
-<!--    유저id로 유저 데이터 조회-->
-<!--    localhost:8080/gomen/user/findUserByUserId?userId=1-->
+    <!--    유저id로 유저 데이터 조회-->
+    <!--    localhost:8080/gomen/user/findUserByUserId?userId=1-->
     <select id="selectUserByUserId" resultMap="userResultMap" parameterType="int">
         SELECT
             USER_ID,
@@ -54,6 +60,7 @@
             PASSWORD,
             NAME,
             PERSONAL_NUMBER,
+            PHONE_NUMBER,
             NICKNAME,
             CREATED_AT,
             UPDATED_AT,
@@ -63,13 +70,16 @@
             EXTENSION_COUNT,
             CAREER_INFO,
             IS_MENTOR,
-            VIOLATION_SCORE
+            VIOLATION_SCORE,
+            AVERAGE_RATING,
+            COLLEGE,
+            BLOG
         FROM tbl_user
         WHERE USER_ID = ${userId}
     </select>
 
-<!--    로그인id로 유저 데이터 조회-->
-<!--    localhost:8080/gomen/user/findUserPasswordByLoginId?loginId=user17-->
+    <!--    로그인id로 유저 데이터 조회-->
+    <!--    localhost:8080/gomen/user/findUserPasswordByLoginId?loginId=user17-->
     <select id="selectUserByLoginId" resultMap="userResultMap" parameterType="string">
         SELECT
             USER_ID,
@@ -77,6 +87,7 @@
             PASSWORD,
             NAME,
             PERSONAL_NUMBER,
+            PHONE_NUMBER,
             NICKNAME,
             CREATED_AT,
             UPDATED_AT,
@@ -86,13 +97,16 @@
             EXTENSION_COUNT,
             CAREER_INFO,
             IS_MENTOR,
-            VIOLATION_SCORE
+            VIOLATION_SCORE,
+            AVERAGE_RATING,
+            COLLEGE,
+            BLOG
         FROM tbl_user
         WHERE LOGIN_ID = '${loginId}'
     </select>
 
-<!--    닉네임으로 유저 검색-->
-<!--    localhost:8080/gomen/user/findUserByNickname?nickname=a-->
+    <!--    닉네임으로 유저 검색-->
+    <!--    localhost:8080/gomen/user/findUserByNickname?nickname=a-->
     <select id="selectUserByNickname" resultMap="userResultMap" parameterType="string">
         SELECT
             USER_ID,
@@ -100,6 +114,7 @@
             PASSWORD,
             NAME,
             PERSONAL_NUMBER,
+            PHONE_NUMBER,
             NICKNAME,
             CREATED_AT,
             UPDATED_AT,
@@ -109,13 +124,16 @@
             EXTENSION_COUNT,
             CAREER_INFO,
             IS_MENTOR,
-            VIOLATION_SCORE
+            VIOLATION_SCORE,
+            AVERAGE_RATING,
+            COLLEGE,
+            BLOG
         FROM tbl_user
         WHERE NICKNAME LIKE '%${nickname}%'
     </select>
 
-<!--    게시글id로 작성자 닉네임 조회-->
-<!--    localhost:8080/gomen/user/findUserNicknameByPostId?postId=5-->
+    <!--    게시글id로 작성자 닉네임 조회-->
+    <!--    localhost:8080/gomen/user/findUserNicknameByPostId?postId=5-->
     <select id="selectUserByPostId" resultMap="userResultMap" parameterType="int">
         SELECT
             USER_ID,
@@ -123,6 +141,7 @@
             PASSWORD,
             NAME,
             PERSONAL_NUMBER,
+            PHONE_NUMBER,
             NICKNAME,
             CREATED_AT,
             UPDATED_AT,
@@ -132,15 +151,18 @@
             EXTENSION_COUNT,
             CAREER_INFO,
             IS_MENTOR,
-            VIOLATION_SCORE
+            VIOLATION_SCORE,
+            AVERAGE_RATING,
+            COLLEGE,
+            BLOG
         FROM tbl_user
         WHERE user_id = (select user_id
-                           from tbl_board
-                           where post_id = ${postId})
+                         from tbl_board
+                         where post_id = ${postId})
     </select>
 
-<!--    댓글id로 댓글 작성자 닉네임 조회-->
-<!--    localhost:8080/gomen/user/findUserNicknameByCommentId?commentId=3-->
+    <!--    댓글id로 댓글 작성자 닉네임 조회-->
+    <!--    localhost:8080/gomen/user/findUserNicknameByCommentId?commentId=3-->
     <select id="selectUserByCommentId" resultMap="userResultMap" parameterType="int">
         SELECT
             USER_ID,
@@ -148,6 +170,7 @@
             PASSWORD,
             NAME,
             PERSONAL_NUMBER,
+            PHONE_NUMBER,
             NICKNAME,
             CREATED_AT,
             UPDATED_AT,
@@ -157,15 +180,18 @@
             EXTENSION_COUNT,
             CAREER_INFO,
             IS_MENTOR,
-            VIOLATION_SCORE
+            VIOLATION_SCORE,
+            AVERAGE_RATING,
+            COLLEGE,
+            BLOG
         FROM tbl_user
         WHERE user_id = (select user_id
-                           from tbl_comment
-                           where comment_id = ${commentId})
+                         from tbl_comment
+                         where comment_id = ${commentId})
     </select>
 
-<!--    질문id로 질문 작성자 닉네임 조회-->
-<!--    localhost:8080/gomen/user/findUserNicknameByQuestionId?questionId=1-->
+    <!--    질문id로 질문 작성자 닉네임 조회-->
+    <!--    localhost:8080/gomen/user/findUserNicknameByQuestionId?questionId=1-->
     <select id="selectUserByQuestionId" resultMap="userResultMap" parameterType="int">
         SELECT
             USER_ID,
@@ -173,6 +199,7 @@
             PASSWORD,
             NAME,
             PERSONAL_NUMBER,
+            PHONE_NUMBER,
             NICKNAME,
             CREATED_AT,
             UPDATED_AT,
@@ -182,15 +209,18 @@
             EXTENSION_COUNT,
             CAREER_INFO,
             IS_MENTOR,
-            VIOLATION_SCORE
+            VIOLATION_SCORE,
+            AVERAGE_RATING,
+            COLLEGE,
+            BLOG
         FROM tbl_user
         WHERE user_id = (select question_id
-                           from tbl_question
-                           where question_id = ${questionId})
+                         from tbl_question
+                         where question_id = ${questionId})
     </select>
 
-<!--    답변id로 답변 작성자 닉네임 조회-->
-<!--    localhost:8080/gomen/user/findUserNicknameByAnswerId?answerId=3-->
+    <!--    답변id로 답변 작성자 닉네임 조회-->
+    <!--    localhost:8080/gomen/user/findUserNicknameByAnswerId?answerId=3-->
     <select id="selectUserByAnswerId" resultMap="userResultMap" parameterType="int">
         SELECT
             USER_ID,
@@ -198,6 +228,7 @@
             PASSWORD,
             NAME,
             PERSONAL_NUMBER,
+            PHONE_NUMBER,
             NICKNAME,
             CREATED_AT,
             UPDATED_AT,
@@ -207,11 +238,14 @@
             EXTENSION_COUNT,
             CAREER_INFO,
             IS_MENTOR,
-            VIOLATION_SCORE
+            VIOLATION_SCORE,
+            AVERAGE_RATING,
+            COLLEGE,
+            BLOG
         FROM tbl_user
         WHERE user_id = (select answer_id
-                           from tbl_answer
-                           where answer_id = ${answerId})
+                         from tbl_answer
+                         where answer_id = ${answerId})
     </select>
 
 

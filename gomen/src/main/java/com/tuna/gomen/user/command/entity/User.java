@@ -1,10 +1,8 @@
 package com.tuna.gomen.user.command.entity;
 
-import lombok.Builder;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
@@ -65,5 +63,20 @@ public class User {
     @Column(name = "average_rating")
     private Double averageRating;
 
-}
+    @Column(nullable = true)
+    private String college;
 
+    @Column(nullable = true)
+    private String blog;
+
+    @PrePersist
+    public void prePersist() {
+        this.createdAt = LocalDateTime.now();
+        this.willBeActivated = LocalDateTime.now();
+        this.isQuitted = "N";
+        this.extensionCount = 0;
+        this.isMentor = "N";
+        this.violationScore = 0;
+        this.averageRating = 0.0;
+    }
+}

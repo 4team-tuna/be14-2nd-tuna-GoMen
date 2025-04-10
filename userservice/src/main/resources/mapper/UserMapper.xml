@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tuna.userservice.mapper.UserMapper">
-    <resultMap type="com.tuna.userservice.user.dto.UserDTO" id="userResultMap">
+<mapper namespace="com.tuna.userservice.query.mapper.UserMapper">
+    <resultMap type="com.tuna.userservice.query.dto.UserQueryDTO" id="userResultMap">
         <id property="userId" column="user_id"/>
         <result property="loginId" column="login_id"/>
         <result property="password" column="password"/>
@@ -20,6 +20,9 @@
         <result property="careerInfo" column="career_info"/>
         <result property="isMentor" column="is_mentor"/>
         <result property="violationScore" column="violation_score"/>
+        <result property="averageRating" column="average_rating"/>
+        <result property="college" column="college"/>
+        <result property="blog" column="blog"/>
     </resultMap>
 
 <!--    전체 유저 데이터 조회-->
@@ -41,7 +44,10 @@
             EXTENSION_COUNT,
             CAREER_INFO,
             IS_MENTOR,
-            VIOLATION_SCORE
+            VIOLATION_SCORE,
+            AVERAGE_RATING,
+            COLLEGE,
+            BLOG
         FROM tbl_user;
     </select>
 
@@ -64,7 +70,10 @@
             EXTENSION_COUNT,
             CAREER_INFO,
             IS_MENTOR,
-            VIOLATION_SCORE
+            VIOLATION_SCORE,
+            AVERAGE_RATING,
+            COLLEGE,
+            BLOG
         FROM tbl_user
         WHERE USER_ID = ${userId}
     </select>
@@ -88,7 +97,10 @@
             EXTENSION_COUNT,
             CAREER_INFO,
             IS_MENTOR,
-            VIOLATION_SCORE
+            VIOLATION_SCORE,
+            AVERAGE_RATING,
+            COLLEGE,
+            BLOG
         FROM tbl_user
         WHERE LOGIN_ID = '${loginId}'
     </select>
@@ -112,7 +124,10 @@
             EXTENSION_COUNT,
             CAREER_INFO,
             IS_MENTOR,
-            VIOLATION_SCORE
+            VIOLATION_SCORE,
+            AVERAGE_RATING,
+            COLLEGE,
+            BLOG
         FROM tbl_user
         WHERE NICKNAME LIKE '%${nickname}%'
     </select>
@@ -136,7 +151,10 @@
             EXTENSION_COUNT,
             CAREER_INFO,
             IS_MENTOR,
-            VIOLATION_SCORE
+            VIOLATION_SCORE,
+            AVERAGE_RATING,
+            COLLEGE,
+            BLOG
         FROM tbl_user
         WHERE user_id = (select user_id
                            from tbl_board
@@ -162,7 +180,10 @@
             EXTENSION_COUNT,
             CAREER_INFO,
             IS_MENTOR,
-            VIOLATION_SCORE
+            VIOLATION_SCORE,
+            AVERAGE_RATING,
+            COLLEGE,
+            BLOG
         FROM tbl_user
         WHERE user_id = (select user_id
                            from tbl_comment
@@ -188,7 +209,10 @@
             EXTENSION_COUNT,
             CAREER_INFO,
             IS_MENTOR,
-            VIOLATION_SCORE
+            VIOLATION_SCORE,
+            AVERAGE_RATING,
+            COLLEGE,
+            BLOG
         FROM tbl_user
         WHERE user_id = (select question_id
                            from tbl_question
@@ -214,7 +238,10 @@
             EXTENSION_COUNT,
             CAREER_INFO,
             IS_MENTOR,
-            VIOLATION_SCORE
+            VIOLATION_SCORE,
+            AVERAGE_RATING,
+            COLLEGE,
+            BLOG
         FROM tbl_user
         WHERE user_id = (select answer_id
                            from tbl_answer

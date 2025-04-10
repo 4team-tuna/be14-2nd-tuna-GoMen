@@ -1,11 +1,11 @@
-package com.tuna.gomen.user.dto;
+package com.tuna.userservice.query.dto;
 
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Data
-public class UserDTO {
+public class UserQueryDTO {
     private Integer userId;
     private String loginId;
     private String password;

@@ -1,6 +1,7 @@
 package com.tuna.userservice.security;
 
-import com.tuna.userservice.user.service.UserService;
+import com.tuna.userservice.command.service.UserCommandService;
+import com.tuna.userservice.query.service.UserQueryService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -28,15 +29,15 @@ import java.util.stream.Collectors;
 public class JwtUtil {
 
     private final Key key;
-    private final UserService userService;
+    private final UserQueryService userQueryService;
 
     @Autowired
     public JwtUtil(
             @Value("${token.secret}") String secretKey,
-            UserService userService) {
+            UserQueryService userService) {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         this.key = Keys.hmacShaKeyFor(keyBytes);
-        this.userService = userService;
+        this.userQueryService = userService;
     }
 
     public boolean validateToken(String token) {
@@ -58,7 +59,7 @@ public class JwtUtil {
     public Authentication getAuthentication(String token) {
         Claims claims = parseClaims(token);
 
-        UserDetails userDetails = userService.loadUserDetailsByLoginId(claims.getSubject());
+        UserDetails userDetails = userQueryService.loadUserDetailsByLoginId(claims.getSubject());
 
         List<GrantedAuthority> authorities = new ArrayList<>();
         if(claims.get("auth") == null){

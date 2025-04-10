@@ -1,4 +1,4 @@
-package com.tuna.userservice.user.vo;
+package com.tuna.userservice.command.vo;
 
 import lombok.Data;
 

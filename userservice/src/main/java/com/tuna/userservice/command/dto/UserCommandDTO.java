@@ -1,11 +1,11 @@
-package com.tuna.userservice.user.dto;
+package com.tuna.userservice.command.dto;
 
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Data
-public class UserDTO {
+public class UserCommandDTO {
     private Integer userId;
     private String loginId;
     private String password;
@@ -22,4 +22,7 @@ public class UserDTO {
     private String careerInfo;
     private String isMentor;
     private Integer violationScore;
+    private Double averageRating;
+    private String college;
+    private String blog;
 }

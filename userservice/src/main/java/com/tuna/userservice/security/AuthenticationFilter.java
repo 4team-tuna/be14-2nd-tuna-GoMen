@@ -1,8 +1,8 @@
 package com.tuna.userservice.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tuna.userservice.user.service.UserService;
-import com.tuna.userservice.user.vo.RequestLoginVO;
+import com.tuna.userservice.query.service.UserQueryService;
+import com.tuna.userservice.command.vo.RequestLoginVO;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -30,13 +30,13 @@ import java.util.stream.Collectors;
 @Slf4j
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private Environment env;
-    private UserService userService;
+    private UserQueryService userQueryService;
 
 
-    public AuthenticationFilter(AuthenticationManager authenticatonManager, Environment env, UserService userService) {
+    public AuthenticationFilter(AuthenticationManager authenticatonManager, Environment env, UserQueryService userQueryService) {
         super(authenticatonManager);
         this.env = env;
-        this.userService = userService;
+        this.userQueryService = userQueryService;
     }
 
     /* 설명. 로그인 시도 시 동작하는 기능(POST / login 요청 시) */
